@@ -43,4 +43,12 @@ $(CAT) $(XATS2JS)/runtime/xats2js_prelude.js >> $@_out.js
 lambda1:: lambda1.dats; \
 $(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> $@_out.js
 ########################################################################
+lambda1_out1:: ; \
+npx google-closure-compiler -W QUIET \
+  --compilation_level SIMPLE --js=lambda1_out.js --js_output_file=lambda1_out1.js
+lambda1_out2:: ; \
+npx google-closure-compiler -W QUIET \
+  --compilation_level ADVANCED --js=lambda1_out.js --js_output_file=lambda1_out2.js
+########################################################################
+########################################################################
 ##################### end of [Makefile_jsemit01] #######################
