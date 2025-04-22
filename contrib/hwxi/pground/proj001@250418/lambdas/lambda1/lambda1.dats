@@ -10,10 +10,6 @@ Tue 10 Sep 2024 01:39:29 PM EDT
 "prelude/SATS/unsfx00.sats"
 (* ****** ****** *)
 (* ****** ****** *)
-#staload _ =
-"prelude/DATS/gdbg000.dats"
-(* ****** ****** *)
-(* ****** ****** *)
 //
 #include
 "prelude/HATS/prelude_dats.hats"
@@ -162,15 +158,8 @@ prints("Omega = ", Omega, "\n")
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#ifexp
-NODEJS
-#then0
-#else1
-//
 val () =
 console_log(the_print_store_flush((*void*)))
-//
-#endif//end-of-[#ifexp(NODEJS)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
