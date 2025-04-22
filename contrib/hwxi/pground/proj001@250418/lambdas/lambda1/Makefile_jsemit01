@@ -35,7 +35,7 @@ $(XATS2JS)/xats2js_jsemit01_dats_out.js
 ########################################################################
 ########################################################################
 lambda1:: ; \
-$(PRINTF) "%s%s\n" "// " "`date`" > $@_out.js
+$(PRINTF) "// %s\n" "`date`" > $@_out.js
 lambda1:: ; \
 $(CAT) $(XATS2JS)/runtime/xats2js_js1emit.js >> $@_out.js
 lambda1:: ; \
