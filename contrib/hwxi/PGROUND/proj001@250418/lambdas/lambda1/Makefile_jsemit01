@@ -36,6 +36,10 @@ $(XATS2JS)/xats2js_jsemit01_dats_out.js
 ########################################################################
 lambda1:: ; \
 $(PRINTF) "%s%s\n" "// " "`date`" > $@_out.js
+lambda1:: ; \
+$(CAT) $(XATS2JS)/runtime/xats2js_js1emit.js >> $@_out.js
+lambda1:: ; \
+$(CAT) $(XATS2JS)/runtime/xats2js_prelude.js >> $@_out.js
 lambda1:: lambda1.dats; \
 $(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> $@_out.js
 ########################################################################

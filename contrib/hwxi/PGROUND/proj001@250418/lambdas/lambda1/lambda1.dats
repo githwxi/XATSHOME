@@ -59,7 +59,15 @@ pure lambda-calculus
 (* ****** ****** *)
 (* ****** ****** *)
 //
-val () = console_log(the_print_store_flush())
+#ifexp
+NODEJS
+#then0
+#else1
+//
+val () =
+console_log(the_print_store_flush((*0*)))
+//
+#endif//end-of-[#ifexp(NODEJS)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
