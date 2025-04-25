@@ -7,6 +7,8 @@ ATS3 refers to the third edition of ATS, which is currently
 being developed at [ATS-Xanadu](https://github.com/githwxi/ATS-Xanadu).
 XATSHOME is a place for one to learn ATS3 and also contribute to ATS3.
 
+### A Quick Method for Trying ATS3
+
 There is a directory of the name 'contrib'. For now, there is
 contrib/githwxi. You should set up a directory for your own use by
 following the example or from scratch.
@@ -14,7 +16,11 @@ following the example or from scratch.
 The currently released ATS3-to-JS compiler is stored in the following
 BIG file:
 
+```
 xassets/JS/xats2js/xats2js_jsemit01_dats_out.js
+```
+
+which is bootstrapped from the source of compiler.
 
 In the directory 'contrib/githwxi', the compiler can be invoked
 as follows:
