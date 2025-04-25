@@ -18,7 +18,7 @@ The currently released ATS3-to-JS compiler is stored in the following
 BIG file:
 
 ```
-xassets/JS/xats2js/xats2js_jsemit01_dats_out.js
+xassets/JS/xats2js/xats2js_jsemit01_dats_opt0.js
 ```
 
 which is bootstrapped from the source of compiler.
@@ -36,7 +36,7 @@ as follows:
 
 ```
 node --stack-size=8000 \
-  ./../../xassets/JS/xats2js/xats2js_jsemit01_dats_out.js mycode.dats
+  ./../../xassets/JS/xats2js/xats2js_jsemit01_dats_opt0.js mycode.dats
 ```
 
 where mycode.dats contains some ATS3 code to be compiled. The output
