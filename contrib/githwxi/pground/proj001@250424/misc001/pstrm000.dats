@@ -40,14 +40,14 @@ val- ~
 strmcon_vt_cons(x0, xs) = !xs
 in//let
 strmcon_vt_cons(x0,
-f(filter0(xs, lam(x1) => x1%x0 > 0))) end)}
+f(filter0(xs, lam(x1) => x1%x0 > 0)))end)
+}
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 val () =
-print0s
-("sint(>=2) = ", the_primes, "\n")
+print0s("the_primes = ", the_primes, "\n")
 //
 (* ****** ****** *)
 (* ****** ****** *)
