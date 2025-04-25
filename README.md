@@ -36,7 +36,7 @@ as follows:
 
 ```
 node --stack-size=8000 \
-  ./../../xassets/JS/xats2js/xats2js_jsemit01_dats_opt0.js mycode.dats
+  ./../../xassets/JS/xats2js/xats2js_jsemit01_dats_opt1.js mycode.dats
 ```
 
 where mycode.dats contains some ATS3 code to be compiled. The output
