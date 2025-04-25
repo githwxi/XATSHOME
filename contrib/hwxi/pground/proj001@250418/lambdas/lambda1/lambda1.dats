@@ -142,18 +142,12 @@ end//local
 (* ****** ****** *)
 (* ****** ****** *)
 //
-val () =
-prints("I = ", I, "\n")
-val () =
-prints("K = ", K, "\n")
-val () =
-prints("S = ", S, "\n")
-val () =
-prints("K1 = ", K1, "\n")
-val () =
-prints("omega = ", omega, "\n")
-val () =
-prints("Omega = ", Omega, "\n")
+val () = prints("I = ", I, "\n")
+val () = prints("K = ", K, "\n")
+val () = prints("S = ", S, "\n")
+val () = prints("K1 = ", K1, "\n")
+val () = prints("omega = ", omega, "\n")
+val () = prints("Omega = ", Omega, "\n")
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -167,4 +161,4 @@ console_log(the_print_store_flush((*void*)))
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [HWXI/PGROUND/proj001@250418/lambdas/lambda1/lambda1.dats] *)
+(* end of [hwxi/pground/proj001@250418/lambdas/lambda1/lambda1.dats] *)
