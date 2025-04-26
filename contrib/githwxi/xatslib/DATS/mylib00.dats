@@ -205,8 +205,18 @@ end // end of [if-else]
 )(*case+*)//end-of(loop(xs,i0))
 }(*where*)//end-of(strm_vt_len$print0)
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2025-04-25:
+For processing file paths
+*)
+#include "./mylib00_fpath000.dats"
+//
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* end of [XATSHOME/contrib/githwxi/xatslib/DATS/mylib00.dats]
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)

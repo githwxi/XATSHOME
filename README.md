@@ -18,12 +18,12 @@ The currently released ATS3-to-JS compiler is stored in the following
 BIG file:
 
 ```
-xassets/JS/xats2js/xats2js_jsemit01_dats_opt0.js
+xassets/JS/xats2js/xats2js_jsemit01_dats_opt1.js
 ```
 
-which is bootstrapped from the source of compiler.
+which is bootstrapped from the source of the compiler.
 
-Please set the envionment variable XATSHOME to the directory what
+Please set the envionment variable XATSHOME to the directory where
 XATSHOME is located. For instance, I set it to '~/Research/XATSHOME'
 on one of my computers (running bash):
 
