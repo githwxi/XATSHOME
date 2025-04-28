@@ -2,16 +2,7 @@
 (* ****** ****** *)
 //
 (*
-HX-2025-04-24:
-For printing strm_vt
-*)
-#include "./mylib00_strm000.hats"
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-(*
-HX-2025-04-25:
+HX-2025-04-26:
 For processing file paths
 *)
 #include "./mylib00_fpath00.hats"
@@ -20,5 +11,5 @@ For processing file paths
 (* ****** ****** *)(* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-(* end of [XATSHOME/contrib/githwxi/xatslib/DATS/mylib00.dats]
+(* end of [XATSHOME/contrib/githwxi/xatslib/DATS/CATS/JS/mylib00.dats]
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)

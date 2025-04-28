@@ -101,17 +101,17 @@ g_neqrf(a, a): bool
 //
 fun
 <a:vt>
-g_input
+u_input
 ((*void*)): (  a  )
 //
 fun
 <a:vt>
-g_input$exn
+u_input$exn
 ((*void*)): (  a  )
 //
 fun
 <a:vt>
-g_input$opt
+u_input$opt
 ((*void*)): optn_vt(a)
 //
 (* ****** ****** *)

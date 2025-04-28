@@ -21,11 +21,11 @@ basic function templates.
 //
 (*
 HX-2025-04-24:
-This is for concretizing in JS the most basic
+This is for concretizing in PY the most basic
 function templates (e.g., arithmetic and printing)
 *)
 #include
-"prelude/HATS/prelude_JS_dats.hats"
+"prelude/HATS/prelude_PY_dats.hats"
 //
 (* ****** ****** *)
 //
@@ -114,12 +114,6 @@ lense of the verb needs to be 0 (for consuming).
 //
 val () =
 print0s("the_primes = ", the_primes, "\n")
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-val () =
-console_log(the_print_store_flush((*void*)))
 //
 (* ****** ****** *)
 (* ****** ****** *)
