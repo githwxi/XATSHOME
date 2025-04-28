@@ -13,10 +13,22 @@ Tue 10 Sep 2024 01:39:29 PM EDT
 //
 #include
 "prelude/HATS/prelude_dats.hats"
-#include
-"prelude/HATS/prelude_JS_cats.hats"
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#if
+defq(_XATS2JS_)
+#then
 #include
 "prelude/HATS/prelude_JS_dats.hats"
+#endif // end of [#if(defq(_XATS2JS_))]
+//
+#if
+defq(_XATS2PY_)
+#then
+#include
+"prelude/HATS/prelude_PY_dats.hats"
+#endif // end of [#if(defq(_XATS2PY_))]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -152,8 +164,12 @@ val () = prints("Omega = ", Omega, "\n")
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#if
+defq(_XATS2JS_)
+#then
 val () =
 console_log(the_print_store_flush((*void*)))
+#endif // end of [#if(defq(_XATS2JS_))]
 //
 (* ****** ****** *)
 (* ****** ****** *)

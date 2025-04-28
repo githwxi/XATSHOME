@@ -11,11 +11,11 @@ PRINTF=printf
 PYTHON=python3
 ########################################################################
 ########################################################################
-all:: pstrm000
+all:: pstrm000_out.py
 ########################################################################
 ########################################################################
 testall:: \
-pstrm000; $(PYTHON) $<_out.py
+pstrm000_out.py; $(PYTHON) $<
 ########################################################################
 ########################################################################
 clean:: ; rm -f *~
@@ -26,20 +26,21 @@ cleanall:: ; rm -f pstrm000_out.py
 XATSHOME=./../../../../../../XATSHOME
 ########################################################################
 #
-XATS2JS=$(XATSHOME)/xassets/JS/xats2py
 XATS2PY=$(XATSHOME)/xassets/PY/xats2py
-XATS2PY_PYEMIT01=$(XATS2JS)/xats2py_pyemit01_dats_opt1.js
+#
+XATS2PY_PYEMIT01=\
+$(XATSHOME)/xassets/JS/xats2py/xats2py_pyemit01_dats_opt1.js
 #
 ########################################################################
 ########################################################################
-pstrm000:: ; \
-$(PRINTF) "## %s\n" "`date`" > $@_out.py
-pstrm000:: ; \
-$(CAT) $(XATS2PY)/runtime/xats2py_py1emit.py >> $@_out.py
-pstrm000:: ; \
-$(CAT) $(XATS2PY)/runtime/xats2py_prelude.py >> $@_out.py
-pstrm000:: pstrm000.dats; \
-$(NODE) --stack-size=8192 $(XATS2PY_PYEMIT01) $< >> $@_out.py
+pstrm000_out.py:: ; \
+$(PRINTF) "## %s\n" "`date`" > $@
+pstrm000_out.py:: ; \
+$(CAT) $(XATS2PY)/runtime/xats2py_py1emit.py >> $@
+pstrm000_out.py:: ; \
+$(CAT) $(XATS2PY)/runtime/xats2py_prelude.py >> $@
+pstrm000_out.py:: ; \
+$(NODE) --stack-size=8192 $(XATS2PY_PYEMIT01) pstrm000.dats >> $@
 ########################################################################
 ########################################################################
 ##################### end of [Makefile_pyemit01] #######################

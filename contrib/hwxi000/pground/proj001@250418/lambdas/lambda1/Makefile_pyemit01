@@ -9,46 +9,40 @@ BUN=bun
 ECHO=echo
 NODE=node
 PRINTF=printf
+PYTHON=python3
 ########################################################################
 ########################################################################
-all:: lambda1_out.js
+all:: lambda1_out.py
 ########################################################################
 ########################################################################
 testall:: \
-lambda1_out.js; $(NODE) $<
+lambda1_out.py; $(PYTHON) $<
 ########################################################################
 ########################################################################
 clean:: ; rm -f *~
 cleanall:: ; rm -f *~
-cleanall:: ; rm -f lambda1_out.js
-cleanall:: ; rm -f lambda1_out?.js
+cleanall:: ; rm -f lambda1_out.py
 ########################################################################
 ########################################################################
 XATSHOME=./../../../../../../../XATSHOME
 ########################################################################
 #
 XATS2JS=$(XATSHOME)/xassets/JS/xats2js
+XATS2PY=$(XATSHOME)/xassets/PY/xats2py
 #
-XATS2JS_JSEMIT01=\
-$(XATSHOME)/xassets/JS/xats2js/xats2js_jsemit01_dats_opt1.js
+XATS2PY_PYEMIT01=\
+$(XATSHOME)/xassets/JS/xats2py/xats2py_pyemit01_dats_opt1.js
 #
 ########################################################################
 ########################################################################
-lambda1_out.js:: ; \
-$(PRINTF) "// %s\n" "`date`" > $@
-lambda1_out.js:: ; $(CAT) \
-$(XATS2JS)/runtime/xats2js_js1emit.js >> $@
-lambda1_out.js:: ; $(CAT) \
-$(XATS2JS)/runtime/xats2js_prelude.js >> $@
-lambda1_out.js:: ; $(NODE) \
---stack-size=8192 $(XATS2JS_JSEMIT01) lambda1.dats --_XATS2JS_ >> $@
-########################################################################
-lambda1_out1.js:: ; \
-npx google-closure-compiler -W QUIET \
-  --compilation_level SIMPLE --js=lambda1_out.js --js_output_file=$@
-lambda1_out2.js:: ; \
-npx google-closure-compiler -W QUIET \
-  --compilation_level ADVANCED --js=lambda1_out.js --js_output_file=$@
+lambda1_out.py:: ; \
+$(PRINTF) "## %s\n" "`date`" > $@
+lambda1_out.py:: ; $(CAT) \
+$(XATS2PY)/runtime/xats2py_py1emit.py >> $@
+lambda1_out.py:: ; $(CAT) \
+$(XATS2PY)/runtime/xats2py_prelude.py >> $@
+lambda1_out.py:: ; $(NODE) \
+--stack-size=8192 $(XATS2PY_PYEMIT01) lambda1.dats --_XATS2PY_ >> $@
 ########################################################################
 ########################################################################
-##################### end of [Makefile_jsemit01] #######################
+##################### end of [Makefile_pyemit01] #######################
