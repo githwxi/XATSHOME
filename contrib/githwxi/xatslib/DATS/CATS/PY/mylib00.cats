@@ -3,6 +3,14 @@
 ##
 ## HX-2025-04-28:
 ##
+def GITHWXI_stdin_readline_exn():
+  line = sys.stdin.readline()
+  return line
+##
+########################################################################.
+##
+## HX-2025-04-28:
+##
 def GITHWXI_fpath_readfile_exn(fpx):
   filr = open(fpx, "r")
   text = filr.read()

@@ -36,7 +36,48 @@ where{
 #extern
 fun
 GITHWXI_fpath_readfile$exn(fpx: fpath): strn = $extnam()
-}(*where*)//end-of-[impltmp(fpath_char$strmize$exn<>(fpx))]
+}(*where*)//end-of-[impltmp(fpath_char$strmize$exn(fpx))]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+g_stdin$chunk$strmize$exn
+  ( (*void*) ) =
+(
+  auxmain((*0*))
+) where
+{
+//
+fun
+auxmain
+((*0*)):
+strm_vt(strn) = $llazy
+let
+//
+val
+line = // with newline
+GITHWXI_stdin$readline$exn()
+//
+in//let
+//
+if
+(length(line) = 0)
+then strmcon_vt_nil() else
+(
+strmcon_vt_cons(line, auxmain((*0*))))
+//
+end(*let*)//end-of-[fun(auxmain((*0*)))]
+//
+} where
+{
+//
+  #extern
+  fun
+  GITHWXI_stdin$readline$exn(): strn = $extnam()
+//
+}(*where*)//end-of-[impltmp(g_stdin$chunk$strmize$exn<>()]
 //
 (* ****** ****** *)
 (* ****** ****** *)

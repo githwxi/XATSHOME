@@ -25,6 +25,21 @@ to process file contents.
 //
 (* ****** ****** *)
 //
+(*
+val
+chars =
+g_stdin$char$strmize$exn()
+val () =
+let
+#impltmp
+strm_vt_print$len<>() = -1
+in//let
+  print0s("chars = ", chars, "\n")
+end//let
+*)
+//
+(* ****** ****** *)
+//
 val
 cstrm =
 fpath_cgtz$strmize$exn
