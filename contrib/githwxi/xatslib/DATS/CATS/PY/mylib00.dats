@@ -11,5 +11,5 @@ For processing file paths
 (* ****** ****** *)(* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-(* end of [XATSHOME/contrib/githwxi/xatslib/DATS/CATS/JS/NODE/mylib00.dats]
+(* end of [XATSHOME/contrib/githwxi/xatslib/DATS/CATS/PY/mylib00.dats]
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)

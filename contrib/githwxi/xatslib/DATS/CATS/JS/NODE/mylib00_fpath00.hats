@@ -95,5 +95,5 @@ end//let
 (* ****** ****** *)
 //
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-(* end of [XATSHOME/contrib/githwxi/xatslib/DATS/CATS/JS/mylib00_fpath00.hats]
+(* end of [XATSHOME/contrib/githwxi/xatslib/DATS/CATS/JS/NODE/mylib00_fpath00.hats]
 (* ****** ****** *)(* ****** ****** *)(* ****** ****** *)

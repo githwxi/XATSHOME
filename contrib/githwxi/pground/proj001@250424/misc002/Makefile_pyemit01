@@ -37,7 +37,18 @@ pstrm000:: ; \
 $(CAT) $(XATS2PYD)/runtime/xats2py_py1emit.py >> OUTS/$@_out.py
 pstrm000:: ; \
 $(CAT) $(XATS2PYD)/runtime/xats2py_prelude.py >> OUTS/$@_out.py
-pstrm000:: ; \
+pstrm000:: pstrm000.dats; \
+$(NODE) --stack-size=8192 $(XATS2PY_PYEMIT01) $@.dats >> OUTS/$@_out.py
+########################################################################
+fpath000:: ; \
+$(PRINTF) "## %s\n" "`date`" > OUTS/$@_out.py
+fpath000:: ; \
+$(CAT) $(XATS2PYD)/runtime/xats2py_py1emit.py >> OUTS/$@_out.py
+fpath000:: ; \
+$(CAT) $(XATS2PYD)/runtime/xats2py_prelude.py >> OUTS/$@_out.py
+fpath000:: ; \
+$(CAT) $(XATSHOME)/contrib/githwxi/xatslib/DATS/CATS/PY/mylib00.cats >> OUTS/$@_out.py
+fpath000:: fpath000.dats; \
 $(NODE) --stack-size=8192 $(XATS2PY_PYEMIT01) $@.dats >> OUTS/$@_out.py
 ########################################################################
 ########################################################################
