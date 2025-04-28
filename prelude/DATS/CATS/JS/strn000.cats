@@ -73,6 +73,12 @@ XATS2JS_strn_get$at$raw
 {
   return cs.charCodeAt(i0) // HX: ascii
 }
+function
+XATS000_strn_get$at$raw
+  (cs, i0)
+{
+  return XATS2JS_strn_get$at$raw(cs, i0)
+}
 //
 ////////////////////////////////////////////////////////////////////////.
 //
@@ -85,6 +91,13 @@ XATS2JS_strn_fmake_fwork
   return String.fromCharCode.apply(null, cs)
 }
 //
+function
+XATS000_strn_fmake_fwork
+  (fwork)
+{
+  return XATS2JS_strn_fmake_fwork(fwork)
+}
+//
 ////////////////////////////////////////////////////////////////////////.
 //
 function
@@ -92,6 +105,43 @@ XATS2JS_strn_print
   ( cs )
 {
   XATS2JS_the_print_store.push(cs); return
+}
+//
+////////////////////////////////////////////////////////////////////////.
+//
+/*
+HX-2025-04-26:
+Sat Apr 26 08:48:02 PM EDT 2025
+*/
+//
+function
+XATS2JS_strn_fmake0_env$fwork
+  (env, fwork)
+{
+  var cs = []
+  fwork(env, (ch) => {cs.push(ch);return})
+  return String.fromCharCode.apply(null, cs)
+}
+function
+XATS2JS_strn_fmake1_env$fwork
+  (env, fwork)
+{
+  var cs = []
+  fwork(env, (ch) => {cs.push(ch);return})
+  return String.fromCharCode.apply(null, cs)
+}
+//
+function
+XATS000_strn_fmake0_env$fwork
+  (env, fwork)
+{
+  return XATS2JS_strn_fmake0_env$fwork(env, fwork)
+}
+function
+XATS000_strn_fmake1_env$fwork
+  (env, fwork)
+{
+  return XATS2JS_strn_fmake1_env$fwork(env, fwork)
 }
 //
 ////////////////////////////////////////////////////////////////////////.

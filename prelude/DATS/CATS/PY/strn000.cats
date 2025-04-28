@@ -35,8 +35,63 @@
 ########################################################################.
 ########################################################################.
 ##
+def XATS2PY_strn_cmp(x1, x2):
+  df = 0
+  i0 = 0
+  n1 = len(x1)
+  n2 = len(x2)
+  n0 = n1 if (n1 <= n2) else n2
+  while (i0 < n0):
+    df = ord(x1[i0]) - ord(x2[i0])
+    if (df != 0):
+      return df
+    else:
+      i0 = i0 + 1
+  return (n1 - n2)
+##
+########################################################################.
+##
+def XATS2PY_strn_length(cs):
+  return len(cs) # PY special [len]
+##
+########################################################################.
+##
 def XATS2PY_strn_print(cs):
   sys.stdout.write(cs); return None
+##
+########################################################################.
+##
+def XATS2PY_strn_get_at_raw(cs, i0):
+  return ord(cs[i0]) # PY is charless
+def XATS000_strn_get_at_raw(cs, i0):
+  return XATS2PY_strn_get_at_raw(cs, i0)
+##
+########################################################################.
+##
+def XATS2PY_strn_fmake_fwork(fwork):
+  res = []
+  fwork(lambda ch: res.append(chr(ch)))
+  return "".join(res)
+def XATS000_strn_fmake_fwork(fwork):
+  return XATS2PY_strn_fmake_fwork(fwork)
+##
+########################################################################.
+##
+def \
+XATS2PY_strn_fmake0_env_fwork(env, fwork):
+  res = []
+  fwork(env, lambda ch: res.append(chr(ch)))
+  return "".join(res)
+def \
+XATS2PY_strn_fmake1_env_fwork(env, fwork):
+  res = []
+  fwork(env, lambda ch: res.append(chr(ch)))
+  return "".join(res)
+##
+def XATS000_strn_fmake0_env_fwork(env, fwork):
+  return XATS2PY_strn_fmake0_env_fwork(env, fwork)
+def XATS000_strn_fmake1_env_fwork(env, fwork):
+  return XATS2PY_strn_fmake1_env_fwork(env, fwork)
 ##
 ########################################################################.
 ########################################################################.

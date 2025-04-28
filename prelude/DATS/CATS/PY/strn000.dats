@@ -73,23 +73,6 @@ XATS2PY_strn_cmp
 //
 #impltmp
 <(*tmp*)>
-strn_fmake_fwork
-  (fwork) =
-(
-XATS2PY_strn_fmake_fwork
-  (fwork)) where
-{
-#extern
-fun
-XATS2PY_strn_fmake_fwork
-(fwork: ((cgtz)->void)->void): strn = $extnam()
-}
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-<(*tmp*)>
 strn_print
   ( cs ) =
 (

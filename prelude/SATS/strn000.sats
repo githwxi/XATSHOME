@@ -42,6 +42,16 @@ Authoremail: gmhwxiATgmailDOTcom
 #typedef cgtz =
 [c:c0 | c > 0] char(c)
 //
+#typedef
+strnlst = list(strn)
+#typedef
+strnopt = optn(strn)
+//
+#vwtpdef
+strnllst = list_vt(strn)
+#vwtpdef
+strnlopt = optn_vt(strn)
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -282,6 +292,19 @@ strn_make1_llist
 {n0:i0}
 (cs: !list_vt(cgtz,n0)): strn(n0)
 //
+#symload
+strn with strn_make0_llist of 1000
+//
+(* ****** ****** *)
+//
+fun<>
+strn_make0_lstrm
+{n0:i0}
+(cs: ~strm_vt(cgtz,n0)): strn(n0)
+//
+#symload
+strn with strn_make0_lstrm of 1000
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -290,6 +313,7 @@ strn_append
 {m0,n0:i0}
 ( xs: strn(m0)
 , ys: strn(n0)): strn(m0+n0)
+#symload + with strn_append of 1000
 #symload append with strn_append of 1000
 //
 (* ****** ****** *)

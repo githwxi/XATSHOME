@@ -40,6 +40,8 @@ lambda1_out.js:: ; $(CAT) \
 $(XATS2JS)/runtime/xats2js_js1emit.js >> $@
 lambda1_out.js:: ; $(CAT) \
 $(XATS2JS)/runtime/xats2js_prelude.js >> $@
+# HX-2025-04-28:
+# the flag '--_XATS2JS_' can soon be dropped!
 lambda1_out.js:: ; $(NODE) \
 --stack-size=8192 $(XATS2JS_JSEMIT01) lambda1.dats --_XATS2JS_ >> $@
 ########################################################################

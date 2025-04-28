@@ -136,6 +136,10 @@ strn_gmake0
 strn_gmake1
 <list_vt(cgtz)> = strn_make1_llist<>
 //
+#impltmp
+strn_gmake0
+<strm_vt(cgtz)> = strn_make0_lstrm<>
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -305,12 +309,12 @@ end//let//end-of-[strn_map$make_gseq(xs)]
 $UN.strn_get$at$raw
   (cs, i0) =
 (
-XATS2JS_strn_get$at$raw
+XATS000_strn_get$at$raw
   (cs, i0)) where
 {
 #extern
 fun
-XATS2JS_strn_get$at$raw
+XATS000_strn_get$at$raw
   (cs: strn, i0: nint): cgtz = $extnam()
 }
 //
@@ -326,6 +330,91 @@ lam(work) =>
 strn_iforitm$f2un(cs,
 lam(i1,c1) =>
 (if (i0 = i1) then work(c0) else work(c1))))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+strn_make0_llist
+  ( cs ) =
+let
+//
+#vwtpdef
+env = list_vt(cgtz)
+//
+fun fwork
+( cs: env
+, work: cgtz->void) =
+(
+case+ cs of
+| ~
+list_vt_nil() => ()
+| ~
+list_vt_cons(c1, cs) =>
+(work(c1); fwork(cs, work)))
+//
+in//let
+//
+(
+strn_fmake0_env$fwork<env>(cs, fwork))
+end(*let*)//end-of-[strn_make0_llist(cs)]
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+strn_make1_llist
+  ( cs ) =
+let
+//
+#vwtpdef
+env = list_vt(cgtz)
+//
+fun fwork
+( cs: !env
+, work: cgtz->void) =
+(
+case+ cs of
+| !
+list_vt_nil() => ()
+| !
+list_vt_cons(c1, cs) =>
+(work(c1); fwork(cs, work)))
+//
+in//let
+//
+(
+strn_fmake1_env$fwork<env>(cs, fwork))
+end(*let*)//end-of-[strn_make1_llist(cs)]
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+strn_make0_lstrm
+  ( cs ) =
+let
+//
+#vwtpdef
+env = strm_vt(cgtz)
+//
+fun fwork
+( cs: env
+, work: cgtz->void) =
+(
+case+ !cs of
+| ~
+strmcon_vt_nil() => ()
+| ~
+strmcon_vt_cons(c1, cs) =>
+(work(c1); fwork(cs, work)))
+//
+in//let
+//
+(
+strn_fmake0_env$fwork<env>(cs, fwork))
+end(*let*)//end-of-[strn_make0_lstrm(cs)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

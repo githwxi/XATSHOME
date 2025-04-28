@@ -41,6 +41,8 @@ lambda1_out.py:: ; $(CAT) \
 $(XATS2PY)/runtime/xats2py_py1emit.py >> $@
 lambda1_out.py:: ; $(CAT) \
 $(XATS2PY)/runtime/xats2py_prelude.py >> $@
+# HX-2025-04-28:
+# the flag '--_XATS2PY_' can soon be dropped!
 lambda1_out.py:: ; $(NODE) \
 --stack-size=8192 $(XATS2PY_PYEMIT01) lambda1.dats --_XATS2PY_ >> $@
 ########################################################################

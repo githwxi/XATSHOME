@@ -76,23 +76,6 @@ XATS2JS_strn_cmp
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#impltmp
-<(*tmp*)>
-strn_fmake_fwork
-  (fwork) =
-(
-XATS2JS_strn_fmake_fwork
-  (fwork)) where
-{
-#extern
-fun
-XATS2JS_strn_fmake_fwork
-(fwork: ((cgtz)->void)->void): strn = $extnam()
-}
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 (*
 HX-2024-09-05:
 Thu 05 Sep 2024 11:11:27 AM EDT
