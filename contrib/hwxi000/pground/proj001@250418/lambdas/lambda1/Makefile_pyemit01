@@ -32,8 +32,8 @@ XATS2PY=$(XATSHOME)/xassets/PY/xats2py
 #
 XATS2PY_PYEMIT01=\
 $(XATSHOME)/xassets/JS/xats2py/xats2py_pyemit01_ats2_opt1.js
-XATS2PY_PYEMIT01=\
-$(XATSHOME)/xassets/JS/xats2py/xats2py_pyemit01_ats3_opt1.js
+# XATS2PY_PYEMIT01=\
+# $(XATSHOME)/xassets/JS/xats2py/xats2py_pyemit01_ats3_opt1.js
 #
 ########################################################################
 ########################################################################
