@@ -12,18 +12,16 @@ PRINTF=printf
 PYTHON=python3
 ########################################################################
 ########################################################################
-all:: lambda1_out.py
-########################################################################
-########################################################################
-testall:: \
-lambda1_out.py; $(PYTHON) $<
-########################################################################
+all:: lambda1
 ########################################################################
 clean:: ; rm -f *~
 cleanall:: ; rm -f *~
-cleanall:: ; rm -f lambda1_out.js
-cleanall:: ; rm -f lambda1_out.py
+cleanall:: ; rm -f OUTS/*_out.js
+cleanall:: ; rm -f OUTS/*_out.py
+cleanall:: ; rm -f OUTS/*_out?.js
 ########################################################################
+testall:: \
+lambda1; $(PYTHON) OUTS/$<_out.py
 ########################################################################
 XATSHOME=./../../../../../../../XATSHOME
 ########################################################################
@@ -38,16 +36,17 @@ $(XATSHOME)/xassets/JS/xats2py/xats2py_pyemit01_ats3_opt1.js
 #
 ########################################################################
 ########################################################################
-lambda1_out.py:: ; \
-$(PRINTF) "## %s\n" "`date`" > $@
-lambda1_out.py:: ; $(CAT) \
-$(XATS2PY)/runtime/xats2py_py1emit.py >> $@
-lambda1_out.py:: ; $(CAT) \
-$(XATS2PY)/runtime/xats2py_prelude.py >> $@
+lambda1:: ; \
+$(PRINTF) "## %s\n" "`date`" > OUTS/$@_out.py
+lambda1:: ; $(CAT) \
+$(XATS2PY)/runtime/xats2py_py1emit.py >> OUTS/$@_out.py
+lambda1:: ; $(CAT) \
+$(XATS2PY)/runtime/xats2py_prelude.py >> OUTS/$@_out.py
 # HX-2025-04-28:
 # the flag '--_XATS2PY_' can soon be dropped!
-lambda1_out.py:: ; $(NODE) \
---stack-size=8192 $(XATS2PY_PYEMIT01) lambda1.dats --_XATS2PY_ >> $@
+lambda1:: ; \
+$(NODE) --stack-size=8192 \
+$(XATS2PY_PYEMIT01) lambda1.dats --_XATS2PY_ >> OUTS/$@_out.py
 ########################################################################
 ########################################################################
 ##################### end of [Makefile_pyemit01] #######################

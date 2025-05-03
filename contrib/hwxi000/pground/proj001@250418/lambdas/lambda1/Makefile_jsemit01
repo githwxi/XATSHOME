@@ -11,16 +11,17 @@ NODE=node
 PRINTF=printf
 ########################################################################
 ########################################################################
-all:: lambda1_out.js
+all:: lambda1
 ########################################################################
 ########################################################################
 testall:: \
-lambda1_out.js; $(NODE) $<
+lambda1; $(NODE) OUTS/$<_out.js
 ########################################################################
 ########################################################################
 clean:: ; rm -f *~
 cleanall:: ; rm -f *~
 cleanall:: ; rm -f lambda1_out.js
+cleanall:: ; rm -f lambda1_out.py
 cleanall:: ; rm -f lambda1_out?.js
 ########################################################################
 ########################################################################
@@ -36,23 +37,24 @@ $(XATSHOME)/xassets/JS/xats2js/xats2js_jsemit01_ats3_opt1.js
 #
 ########################################################################
 ########################################################################
-lambda1_out.js:: ; \
-$(PRINTF) "// %s\n" "`date`" > $@
-lambda1_out.js:: ; $(CAT) \
-$(XATS2JS)/runtime/xats2js_js1emit.js >> $@
-lambda1_out.js:: ; $(CAT) \
-$(XATS2JS)/runtime/xats2js_prelude.js >> $@
+lambda1:: ; \
+$(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
+lambda1:: ; $(CAT) \
+$(XATS2JS)/runtime/xats2js_js1emit.js >> OUTS/$@_out.js
+lambda1:: ; $(CAT) \
+$(XATS2JS)/runtime/xats2js_prelude.js >> OUTS/$@_out.js
 # HX-2025-04-28:
 # the flag '--_XATS2JS_' can soon be dropped!
-lambda1_out.js:: ; $(NODE) \
---stack-size=8192 $(XATS2JS_JSEMIT01) lambda1.dats --_XATS2JS_ >> $@
+lambda1:: ; \
+$(NODE) --stack-size=8192 \
+$(XATS2JS_JSEMIT01) lambda1.dats --_XATS2JS_ >> OUTS/$@_out.js
 ########################################################################
-lambda1_out1.js:: ; \
+lambda1_out1:: ; \
 npx google-closure-compiler -W QUIET \
-  --compilation_level SIMPLE --js=lambda1_out.js --js_output_file=$@
-lambda1_out2.js:: ; \
+  --compilation_level SIMPLE --js=OUTS/lambda1_out.js --js_output_file=OUTS/$@.js
+lambda1_out2:: ; \
 npx google-closure-compiler -W QUIET \
-  --compilation_level ADVANCED --js=lambda1_out.js --js_output_file=$@
+  --compilation_level ADVANCED --js=OUTS/lambda1_out.js --js_output_file=OUTS/$@.js
 ########################################################################
 ########################################################################
 ##################### end of [Makefile_jsemit01] #######################
