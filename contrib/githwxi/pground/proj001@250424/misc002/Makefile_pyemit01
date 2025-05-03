@@ -12,6 +12,7 @@ PYTHON=python3
 ########################################################################
 ########################################################################
 all:: pstrm000
+all:: fpath000
 ########################################################################
 clean:: ; rm -f *~
 cleanall:: ; rm -f *~
@@ -19,6 +20,7 @@ cleanall:: ; rm -f OUTS/*~
 cleanall:: ; rm -f OUTS/*_out.py
 ########################################################################
 testall:: pstrm000; $(PYTHON) OUTS/$<_out.py
+testall:: fpath000; $(PYTHON) OUTS/$<_out.py
 ########################################################################
 ########################################################################
 XATSHOME=./../../../../../../XATSHOME
@@ -27,7 +29,9 @@ XATSHOME=./../../../../../../XATSHOME
 XATS2PYD=\
 $(XATSHOME)/xassets/PY/xats2py
 XATS2PY_PYEMIT01=\
-$(XATSHOME)/xassets/JS/xats2py/xats2py_pyemit01_dats_opt1.js
+$(XATSHOME)/xassets/JS/xats2py/xats2py_pyemit01_ats2_opt1.js
+XATS2PY_PYEMIT01=\
+$(XATSHOME)/xassets/JS/xats2py/xats2py_pyemit01_ats3_opt1.js
 #
 ########################################################################
 ########################################################################
