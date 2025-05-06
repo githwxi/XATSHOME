@@ -28,11 +28,14 @@ XATSHOME=./../../../../../../XATSHOME
 ########################################################################
 #
 XATS2JSD=$(XATSHOME)/xassets/JS/xats2js
+#
 XATS2JS_JSEMIT01=\
 $(XATSHOME)/xassets/JS/xats2js/xats2js_jsemit01_ats2_opt1.js
 XATS2JS_JSEMIT01=\
 $(XATSHOME)/xassets/JS/xats2js/xats2js_jsemit01_ats3_opt1.js
 #
+PY_XATS2JS_JSEMIT01=\
+$(XATSHOME)/xassets/PY/xats2js/xats2js_jsemit01_ats3_opt0.py
 ########################################################################
 ########################################################################
 pstrm000:: ; \
@@ -65,9 +68,6 @@ npx google-closure-compiler -W QUIET \
 pstrm000_out2:: ; \
 npx google-closure-compiler -W QUIET \
   --compilation_level ADVANCED --js=OUTS/pstrm000_out.js --js_output_file=OUTS/pstrm000_out2.js
-########################################################################
-########################################################################
-PY_XATS2JS_JSEMIT01=$(XATSHOME)/xassets/PY/xats2js/xats2js_jsemit01_ats3.py
 ########################################################################
 ########################################################################
 PY_pstrm000:: ; \
