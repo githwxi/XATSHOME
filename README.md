@@ -45,7 +45,7 @@ code in the following directory in order to run:
 
 ```
 ./../../xassets/JS/xats2js/runtime/xats2js_js1emit.js
-./../../xassets/JS/xats2js/runtime/xats2js_prelude.js
+./../../xassets/JS/xats2js/runtime/srcgen2_prelude.js
 ```
 
 Please see the following Makefile for a complete example of compiling
