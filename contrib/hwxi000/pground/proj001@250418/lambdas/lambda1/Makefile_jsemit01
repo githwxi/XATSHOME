@@ -42,7 +42,7 @@ $(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
 lambda1:: ; $(CAT) \
 $(XATS2JS)/runtime/xats2js_js1emit.js >> OUTS/$@_out.js
 lambda1:: ; $(CAT) \
-$(XATS2JS)/runtime/xats2js_prelude.js >> OUTS/$@_out.js
+$(XATS2JS)/runtime/srcgen2_prelude.js >> OUTS/$@_out.js
 # HX-2025-04-28:
 # the flag '--_XATS2JS_' can soon be dropped!
 lambda1:: ; \

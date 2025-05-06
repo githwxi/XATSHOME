@@ -1,4 +1,4 @@
-// Mon Apr 28 12:13:50 AM EDT 2025
+// Tue May  6 11:35:24 AM EDT 2025
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
 /*
@@ -38,78 +38,100 @@ the beg of
 ////////////////////////////////////////////////////////////////////////.
 /*
 Author: Hongwei Xi
-Sun 01 Sep 2024 08:04:48 AM EDT
+Sun 15 Sep 2024 05:51:02 PM EDT
 Authoremail: gmhwxiATgmailDOTcom
 */
 ////////////////////////////////////////////////////////////////////////.
 ////////////////////////////////////////////////////////////////////////.
-const
-XATS2JS_NODE_fs =
-require('node:fs')
-// HX: the same as require('fs')
-////////////////////////////////////////////////////////////////////////.
 //
 function
-XATS2JS_NODE_g_print
-  (x0)
+XATS2JS_NODE_g_stdin()
 {
-  let rep = x0.toString();
-  process.stdout.write(rep);
-  return; // XATS2JS_NODE_g_print
+  return process.stdin ; }
+//
+function
+XATS2JS_NODE_g_stdout()
+{
+  return process.stdout ; }
+function
+XATS2JS_NODE_g_stderr()
+{
+  return process.stderr ; }
+//
+////////////////////////////////////////////////////////////////////////.
+//
+// HX-2025-04-26:
+// [write] is done synchronously!
+//
+function
+XATS2JS_NODE_g_fprint
+  (x0, out)
+{
+  out.write(x0.toString());
+  return; // XATS2JS_NODE_g_fprint
 }
 //
 ////////////////////////////////////////////////////////////////////////.
 //
 function
-XATS2JS_NODE_sint_print
-  (i0)
+XATS2JS_NODE_sint_fprint
+  (i0, out)
 {
-  XATS2JS_NODE_g_print(i0);
-  return; // XATS2JS_NODE_sint_print
-}
-////////////////////////////////////////////////////////////////////////.
-//
-function
-XATS2JS_NODE_bool_print
-  (b0)
-{
-  XATS2JS_NODE_g_print(b0);
-  return; // XATS2JS_NODE_bool_print
-}
-////////////////////////////////////////////////////////////////////////.
-//
-function
-XATS2JS_NODE_char_print
-  (c0)
-{
-  let cs =
-  String.fromCharCode(c0)
-  XATS2JS_NODE_g_print(cs);
-  return; // XATS2JS_NODE_char_print
+  XATS2JS_NODE_g_fprint(i0, out);
+  return; // XATS2JS_NODE_sint_fprint
 }
 //
 ////////////////////////////////////////////////////////////////////////.
 //
 function
-XATS2JS_NODE_dflt_print
-  (f0)
+XATS2JS_NODE_bool_fprint
+  (b0, out)
 {
-  XATS2JS_NODE_g_print(f0);
-  return; // XATS2JS_NODE_dflt_print
+  XATS2JS_NODE_g_fprint(b0, out);
+  return; // XATS2JS_NODE_bool_fprint
 }
 //
 ////////////////////////////////////////////////////////////////////////.
 //
 function
-XATS2JS_NODE_strn_print
-  (cs)
+XATS2JS_NODE_char_fprint
+  (c0, out)
 {
-  XATS2JS_NODE_g_print(cs);
-  return; // XATS2JS_NODE_strn_print
+  XATS2JS_NODE_g_fprint(c0, out);
+  return; // XATS2JS_NODE_char_fprint
+}
+//
+////////////////////////////////////////////////////////////////////////.
+//
+function
+XATS2JS_NODE_dflt_fprint
+  (f0, out)
+{
+  XATS2JS_NODE_g_fprint(f0, out);
+  return; // XATS2JS_NODE_dflt_fprint
+}
+//
+////////////////////////////////////////////////////////////////////////.
+//
+function
+XATS2JS_NODE_strn_fprint
+  (cs, out)
+{
+  XATS2JS_NODE_g_fprint(cs, out);
+  return; // XATS2JS_NODE_strn_fprint
+}
+//
+////////////////////////////////////////////////////////////////////////.
+//
+function
+XATS2JS_NODE_process_argv
+  (/*void*/)
+{
+  return process.argv // HX: a1sz(strn)
 }
 //
 ////////////////////////////////////////////////////////////////////////.
 ////////////////////////////////////////////////////////////////////////.
-// end of [ATS3/XANADU_prelude_DATS_CATS_JS_NODE_node000.cats]
+// end of [ATS3/XANADU_xatslib_libcats_DATS_CATS_JS_NODE_gbas000.cats]
 ////////////////////////////////////////////////////////////////////////.
 ////////////////////////////////////////////////////////////////////////.
