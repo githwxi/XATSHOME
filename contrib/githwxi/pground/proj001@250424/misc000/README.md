@@ -14,8 +14,10 @@ zero number of bits), which is returned by a call to `println`.
 
 However, in order to compile and then execute the program, we need to
 indicate explicitly where library code for implementing `println` can
-be located. In this regard, ATS3 is quite different from most programming
-languages out there.
+be located. In this regard, ATS3 is quite different from most
+programming languages out there; it is particularly designed to
+produce code that can be embedded in programs written in other
+programming languages.
 
 Let us put the following lines of code into a file named `hello.dats`:
 
