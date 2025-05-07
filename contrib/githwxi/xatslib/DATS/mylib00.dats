@@ -8,6 +8,13 @@ For printing strm_vt
 #include "./mylib00_strm000.hats"
 //
 (* ****** ****** *)
+//
+(*
+HX-2025-05-07:
+*)
+#include "./mylib00_strx000.hats"
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (*

@@ -1,0 +1,6 @@
+JS_XATS2JSD=./../../../../../xassets/JS/xats2js
+hello: ; \
+node --stack-size=8800 \
+  ${JS_XATS2JSD}/xats2js_jsemit01_ats3_opt1.js hello.dats | \
+cat \
+  ${JS_XATS2JSD}/runtime/xats2js_js1emit.js ${JS_XATS2JSD}/runtime/srcgen2_prelude.js ${JS_XATS2JSD}/runtime/srcgen2_prelude_node.js - | node

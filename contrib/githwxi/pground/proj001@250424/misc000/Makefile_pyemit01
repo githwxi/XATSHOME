@@ -1,0 +1,7 @@
+JS_XATS2PYD=./../../../../../xassets/JS/xats2py
+PY_XATS2PYD=./../../../../../xassets/PY/xats2py
+hello: ; \
+node --stack-size=8800 \
+  ${JS_XATS2PYD}/xats2py_pyemit01_ats3_opt1.js hello.dats | \
+cat \
+  ${PY_XATS2PYD}/runtime/xats2py_py1emit.py ${PY_XATS2PYD}/runtime/srcgen2_prelude.py - | python3

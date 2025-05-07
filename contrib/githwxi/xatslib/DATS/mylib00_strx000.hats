@@ -15,12 +15,26 @@ fun
 <y0:vt>
 strx_vt_map0_lstrm
 (xs: ~strx_vt(x0)): strm_vt(y0)
-#extern
-fun
+//
+#impltmp
 <x0:vt>
 <y0:vt>
-strx_vt_map0_lstrx
-(xs: ~strx_vt(x0)): strx_vt(y0)
+strx_vt_map0
+ (  xs  ) =
+(
+  auxmain(xs)) where
+{
+fun
+auxmain
+( xs:
+~ strx_vt(x0)): strx_vt(y0) = $llazy
+(
+case+ !xs of
+| ~
+strxcon_vt_cons(x0, xs) =>
+strxcon_vt_cons(map$fopr0<x0><y0>(x0), auxmain(xs))
+)
+}
 //
 #impltmp
 <x0:vt>
@@ -39,26 +53,6 @@ case+ !xs of
 | ~
 strxcon_vt_cons(x0, xs) =>
 strmcon_vt_cons(map$fopr0<x0><y0>(x0), auxmain(xs))
-)
-}
-//
-#impltmp
-<x0:vt>
-<y0:vt>
-strx_vt_map0_lstrx
- (  xs  ) =
-(
-  auxmain(xs)) where
-{
-fun
-auxmain
-( xs:
-~ strx_vt(x0)): strx_vt(y0) = $llazy
-(
-case+ !xs of
-| ~
-strxcon_vt_cons(x0, xs) =>
-strxcon_vt_cons(map$fopr0<x0><y0>(x0), auxmain(xs))
 )
 }
 //
