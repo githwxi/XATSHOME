@@ -56,10 +56,8 @@ pure lambda-calculus
 |TMlam of (tvar, term)
 |TMapp of (term, term)
 //
-(*
 |TMopr of (topr, list(term))
 |TMif0 of (term, term, term)
-*)
 //
 (*
 |TMfix of (tvar, tvar, term)
@@ -136,6 +134,14 @@ prints("TMlam(", nam, ";", tm1, ")")
 TMapp(tm1, tm2) =>
 prints("TMapp(", tm1, ";", tm2, ")")
 //
+|
+TMopr(opr, tms) =>
+prints("TMopr(", opr, ";", tms, ")")
+|
+TMif0(tm1, tm2, tm3) =>
+prints(
+"TMif0(", tm1, ";", tm2, ";", tm3, ")")
+//
 ) where
 {
   #impltmp g_print<term> = auxpr }
@@ -154,12 +160,64 @@ end//local
 (* ****** ****** *)
 (* ****** ****** *)
 //
-val () = prints("I = ", I, "\n")
-val () = prints("K = ", K, "\n")
-val () = prints("S = ", S, "\n")
-val () = prints("K1 = ", K1, "\n")
-val () = prints("omega = ", omega, "\n")
-val () = prints("Omega = ", Omega, "\n")
+val () = printsln("I = ", I)
+val () = printsln("K = ", K)
+val () = printsln("S = ", S)
+val () = printsln("K1 = ", K1)
+val () = printsln("omega = ", omega)
+val () = printsln("Omega = ", Omega)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+#symload list with list_make_2val
+*)
+//
+val TMadd =
+lam(a1, a2) => TMopr("+", list@(a1, a2))
+val TMsub =
+lam(a1, a2) => TMopr("-", list@(a1, a2))
+val TMmul =
+lam(a1, a2) => TMopr("*", list@(a1, a2))
+val TMdiv =
+lam(a1, a2) => TMopr("/", list@(a1, a2))
+val TMmod =
+lam(a1, a2) => TMopr("%", list@(a1, a2))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val TMdbl =
+let
+val x =
+TMvar"x" in
+TMlam("x", TMadd(x, x)) end
+val TMtpl =
+let
+val x =
+TMvar"x" in
+TMlam("x", TMadd(x, TMadd(x, x))) end
+//
+val ((*0*)) = printsln("TMdbl = ", TMdbl)
+val ((*0*)) = printsln("TMtpl = ", TMtpl)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val TMsqr =
+let
+val x =
+TMvar"x" in
+TMlam("x", TMmul(x, x)) end
+val TMcbr =
+let
+val x =
+TMvar"x" in
+TMlam("x", TMmul(x, TMmul(x, x))) end
+//
+val ((*0*)) = printsln("TMsqr = ", TMsqr)
+val ((*0*)) = printsln("TMcbr = ", TMcbr)
 //
 (* ****** ****** *)
 (* ****** ****** *)
