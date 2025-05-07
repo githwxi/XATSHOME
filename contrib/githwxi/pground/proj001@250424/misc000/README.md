@@ -7,6 +7,11 @@ the string "Hello, world!" plus a newline:
 val () = println("Hello, world!")
 ```
 
+The syntax of ATS3 used here follows the tradition of
+Standard ML (SML). For example, in the above line, `()`
+refers to a pattern that only matches the void value (containing
+zero number of bits), which is returned by a call to `println`.
+
 However, in order to compile and then execute the program, we need to
 indicate explicitly where library code for implementing `println` can
 be located. In this regard, ATS3 is quite different from most programming
