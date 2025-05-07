@@ -26,46 +26,34 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
-(*
-Sun 08 Sep 2024 01:55:00 PM EDT
-*)
+Fri Sep 20 08:59:26 AM EDT 2024
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
-HX-2025-05-02:
-The semantics is involved
-for a mutable map (hashmap)!
-It really depends on the actual
-implementation of these functions.
-*)
-//
+#impltmp
+<(*tmp*)>
+bool_assert$errmsg
+  (cond, emsg) =
+(
+XATS000_bool_assert$errmsg
+  (cond, emsg)) where
+{
+#extern
 fun
-<map:t0>
-<key:vt>
-<itm:vt>
-gmap_key$strmize(map): strm_vt(key)
-fun
-<map:t0>
-<key:vt>
-<itm:vt>
-gmap_val$strmize(map): strm_vt(itm)
-fun
-<map:t0>
-<key:vt>
-<itm:vt>
-gmap_keyval$strmize(map): strm_vt@(key, itm)
+XATS000_bool_assert$errmsg
+(cond: bool, emsg: strn): void = $extnam()
+}
 //
-(* ****** ****** *)
-(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)
-
-(* end of [ATS3/XANADU_prelude_SATS_gmap001.sats] *)
+(***********************************************************************)
+(* end of [ATS3/XANADU_prelude_DATS_CATS_gdbg000.dats] *)
+(***********************************************************************)

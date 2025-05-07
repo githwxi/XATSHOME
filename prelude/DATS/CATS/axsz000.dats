@@ -26,156 +26,165 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
-(*
-Mon 08 Jul 2024 08:46:41 AM EDT
-*)
+Thu 15 Aug 2024 05:05:45 AM EDT
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#typedef ni = nint
-(* ****** ****** *)
-(* ****** ****** *)
 //
-fun
-<a:t0>
-g_void( a ): void
-fun
-<a:vt>
-g_self( a ): ( a )
+#absimpl
+a1sz_vt_i0_tx
+(a: vt, n: i0) = $extbox("a1sz_tx")
+#absimpl
+a1sz_vt_i0_vx
+(a: vt, n: i0) = $extbox("a1sz_vx")
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+< a: vt >
+a1sz_length
+ {n:i0}( A ) =
+(
+XATS000_a1sz_length
+ {a}{n}( A )) where
+{
+#extern
 fun
-<a:vt>
-g_free( ~a ): void
-fun
-<a:vt>
-g_copy( !a ): ( a )
+XATS000_a1sz_length
+{a:vt}
+{n:i0}
+(A: a1sz(a, n)): sint(n) = $extnam()
+}
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+< a: vt >
+a1sz_lget$at
+  (A, i) =
+(
+XATS000_a1sz_lget$at
+  (A, i)) where
+{
+#extern
 fun
-<a:t0>
-g_work(x : a): void
-fun
-<a:t0>
-g_test(x : a): bool
+XATS000_a1sz_lget$at
+{a:vt}
+( A
+: a1sz(a)
+, i: nint): (owed(a) | a) = $extnam()
+}
 //
+#impltmp
+< a: vt >
+a1sz_lset$at
+  (f | A, i, x) =
+(
+XATS000_a1sz_lset$at
+  (f | A, i, x)) where
+{
+#extern
 fun
-<a0:t0>
-g_iwork
-(i0:ni,x0:a0): void
-fun
-<a0:t0>
-g_itest
-(i0:ni,x0:a0): bool
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<a:t0>
-g_equal(a, a): bool
-fun
-<a:t0>
-g_noteq(a, a): bool
-//
-(* ****** ****** *)
-//
-fun
-<a:t0>
-g_eqref(a, a): bool
-fun
-<a:t0>
-g_neqrf(a, a): bool
+XATS000_a1sz_lset$at
+{a:vt}
+(f:owed(a)
+|A:a1sz(a),i:nint,x:a): void = $extnam()
+}
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (*
+HX-2024-09-06:
+Fri 06 Sep 2024 03:24:35 PM EDT
+*)
+//
+#impltmp
+< x0:t0 >
+a1sz_make_none
+  ( asz ) =
+(
+XATS000_a1sz_make_none
+  ( asz )) where
+{
+#extern
+fun
+XATS000_a1sz_make_none
+{n:nat}
+(asz: nint(n)): a1sz(x0, n) = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< a: t0 >
+a1sz_make_ncpy
+  (n, x) =
+(
+XATS000_a1sz_make_ncpy
+  (n, x)) where
+{
+#extern
+fun
+XATS000_a1sz_make_ncpy
+{a:t0}(n:nint, x:a): a1sz(a) = $extnam()
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+< a: vt >
+a1sz_make_nfun
+  (n, f) =
+(
+XATS000_a1sz_make_nfun
+  (n, f)) where
+{
+#extern
+fun
+XATS000_a1sz_make_nfun
+{a:t0}
+(n:nint, f:(nint)->(a)): a1sz(a) = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (*
-HX-2025-04-26:
-Is this a good idea?
-*)
-fun
-<a:vt>
-g_input
-((*void*)): (  a  )
-fun
-<a:vt>
-g_input$exn
-((*void*)): (  a  )
-fun
-<a:vt>
-g_input$opt
-((*void*)): optn_vt(a)
+HX-2024-08-17:
+Sat 17 Aug 2024 07:33:26 PM EDT
 *)
 //
-(* ****** ****** *)
-(* ****** ****** *)
-//
-(*
-HX-2025-04-26:
-Is this a good idea?
-BTW, naming convention:
-'parse' is like 'strn$make'
-*)
+#impltmp
+< x0:vt >
+a1sz_fmake_fwork
+  (fwork) =
+(
+XATS000_a1sz_fmake_fwork
+  (fwork)) where
+{
+#extern
 fun
-<a:vt>
-g_parse
-(rep: strn): (  a  )
-fun
-<a:vt>
-g_parse$exn
-(rep: strn): (  a  )
-fun
-<a:vt>
-g_parse$opt
-(rep: strn): optn_vt(a)
+XATS000_a1sz_fmake_fwork
+{ x0:vt }
+(
+fwork:
+((~x0) -> void) -> void): a1sz(x0) = $extnam()
+}
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-<a:t0>
-g_torep(obj: a): strn
-fun
-<a:t0>
-g_tostr(obj: a): strn
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<x0:t0>
-g_print(obj: x0): void
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#symload void with g_void of 0100
-#symload self with g_self of 0100
-//
-(* ****** ****** *)
-//
-#symload torep with g_torep of 0100
-#symload tostr with g_tostr of 0100
-//
-(* ****** ****** *)
-//
-#symload print with g_print of 0100
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_SATS_gbas000.sats] *)
+(* end of [ATS3/XANADU_prelude_DATS_CATS_axsz000.dats] *)

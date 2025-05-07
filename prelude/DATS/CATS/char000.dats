@@ -26,156 +26,185 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
-(*
-Mon 08 Jul 2024 08:46:41 AM EDT
-*)
+Sun 01 Sep 2024 04:48:38 PM EDT
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#typedef ni = nint
-(* ****** ****** *)
-(* ****** ****** *)
 //
+#impltmp
+<(*tmp*)>
+char_lt
+(c1, c2) =
+(
+XATS000_char_lt
+  (c1, c2)) where
+{
+#extern
 fun
-<a:t0>
-g_void( a ): void
-fun
-<a:vt>
-g_self( a ): ( a )
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<a:vt>
-g_free( ~a ): void
-fun
-<a:vt>
-g_copy( !a ): ( a )
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<a:t0>
-g_work(x : a): void
-fun
-<a:t0>
-g_test(x : a): bool
-//
-fun
-<a0:t0>
-g_iwork
-(i0:ni,x0:a0): void
-fun
-<a0:t0>
-g_itest
-(i0:ni,x0:a0): bool
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<a:t0>
-g_equal(a, a): bool
-fun
-<a:t0>
-g_noteq(a, a): bool
+XATS000_char_lt
+(c1: char, c2: char): bool = $extnam()
+}
 //
 (* ****** ****** *)
 //
+#impltmp
+<(*tmp*)>
+char_gt
+(c1, c2) =
+(
+XATS000_char_gt
+  (c1, c2)) where
+{
+#extern
 fun
-<a:t0>
-g_eqref(a, a): bool
+XATS000_char_gt
+(c1: char, c2: char): bool = $extnam()
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+char_eq
+(c1, c2) =
+(
+XATS000_char_eq
+  (c1, c2)) where
+{
+#extern
 fun
-<a:t0>
-g_neqrf(a, a): bool
+XATS000_char_eq
+(c1: char, c2: char): bool = $extnam()
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+char_lte
+(c1, c2) =
+(
+XATS000_char_lte
+  (c1, c2)) where
+{
+#extern
+fun
+XATS000_char_lte
+(c1: char, c2: char): bool = $extnam()
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+char_gte
+(c1, c2) =
+(
+XATS000_char_gte
+  (c1, c2)) where
+{
+#extern
+fun
+XATS000_char_gte
+(c1: char, c2: char): bool = $extnam()
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+char_neq
+(c1, c2) =
+(
+XATS000_char_neq
+  (c1, c2)) where
+{
+#extern
+fun
+XATS000_char_neq
+(c1: char, c2: char): bool = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+char_add$sint
+  (c1, i2) =
+(
+XATS000_char_add$sint
+  (c1, i2)) where
+{
+#extern
+fun
+XATS000_char_add$sint
+(c1: char, i2: sint): char = $extnam()
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+char_sub$char
+  (c1, c2) =
+(
+XATS000_char_sub$char
+  (c1, c2)) where
+{
+#extern
+fun
+XATS000_char_sub$char
+(c1: char, c2: char): sint = $extnam()
+}
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (*
+HX-2024-09-05:
+Thu 05 Sep 2024 11:11:27 AM EDT
+*)
+//
+#impltmp
+<(*tmp*)>
+char_print
+  ( c0 ) =
+(
+XATS000_char_print
+  ( c0 )) where
+{
+#extern
+fun
+XATS000_char_print(c0: char): void = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (*
-HX-2025-04-26:
-Is this a good idea?
+HX-2025-01-19: from gavinz
+Sun Jan 19 01:11:19 AM EST 2025
 *)
+#impltmp
+<(*tmp*)>
+char_make_sint(i0) =
+(
+XATS000_char_make_int(i0))
+where
+{
+#extern
 fun
-<a:vt>
-g_input
-((*void*)): (  a  )
-fun
-<a:vt>
-g_input$exn
-((*void*)): (  a  )
-fun
-<a:vt>
-g_input$opt
-((*void*)): optn_vt(a)
-*)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-(*
-HX-2025-04-26:
-Is this a good idea?
-BTW, naming convention:
-'parse' is like 'strn$make'
-*)
-fun
-<a:vt>
-g_parse
-(rep: strn): (  a  )
-fun
-<a:vt>
-g_parse$exn
-(rep: strn): (  a  )
-fun
-<a:vt>
-g_parse$opt
-(rep: strn): optn_vt(a)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<a:t0>
-g_torep(obj: a): strn
-fun
-<a:t0>
-g_tostr(obj: a): strn
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<x0:t0>
-g_print(obj: x0): void
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#symload void with g_void of 0100
-#symload self with g_self of 0100
-//
-(* ****** ****** *)
-//
-#symload torep with g_torep of 0100
-#symload tostr with g_tostr of 0100
-//
-(* ****** ****** *)
-//
-#symload print with g_print of 0100
-//
-(* ****** ****** *)
-(* ****** ****** *)
+XATS000_char_make_int(i0: sint): char = $extnam()
+}
 //
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_SATS_gbas000.sats] *)
+(* end of [ATS3/XANADU_prelude_DATS_CATS_char000.dats] *)

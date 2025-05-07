@@ -28,7 +28,14 @@
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 //
-#define XATSPACK="XATSHOME@20250421"
+#define
+XATSPACK="ATS-Xanadu@20220500"
+(*
+#define // HX: first start
+XATSPACK="ATS-Xanadu@20180400"
+#define // HX: more explicit
+XATSPACK="ATS3-Xanadu@20220500"
+*)
 //
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
@@ -82,6 +89,7 @@
 (* ****** ****** *)(* ****** ****** *)
 //
 #sortdef i0 = int0
+//
 #sortdef a0 = addr
 #sortdef b0 = bool
 #sortdef c0 = char
@@ -116,6 +124,7 @@ ints_cons of
 #sortdef
 ints = ints_sort // int-seqs
 //
+(* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 //
 (*

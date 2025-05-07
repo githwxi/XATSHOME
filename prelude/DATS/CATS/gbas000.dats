@@ -26,46 +26,84 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
-(*
-Sun 08 Sep 2024 01:55:00 PM EDT
-*)
+Mon 09 Sep 2024 08:48:13 AM EDT
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
-HX-2025-05-02:
-The semantics is involved
-for a mutable map (hashmap)!
-It really depends on the actual
-implementation of these functions.
-*)
+#extern
+fun<>
+strn_sint$parse$fwork
+( rep0: strn
+, work: (sint)->void): void
 //
+#impltmp
+g_parse$opt
+< sint >
+( rep0 ) =
+list_head$opt
+(
+list_fmake_fwork
+(
+lam(work) =>
+strn_sint$parse$fwork(rep0, work)))
+//
+#impltmp
+<(*tmp*)>
+strn_sint$parse$fwork
+  (rep0, work) =
+(
+XATS000_strn_sint$parse$fwork
+  (rep0, work)) where
+{
+#extern
 fun
-<map:t0>
-<key:vt>
-<itm:vt>
-gmap_key$strmize(map): strm_vt(key)
-fun
-<map:t0>
-<key:vt>
-<itm:vt>
-gmap_val$strmize(map): strm_vt(itm)
-fun
-<map:t0>
-<key:vt>
-<itm:vt>
-gmap_keyval$strmize(map): strm_vt@(key, itm)
+XATS000_strn_sint$parse$fwork
+(rep0: strn, work:(sint)->void): void = $extnam()
+}
 //
 (* ****** ****** *)
-(* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)
-
-(* end of [ATS3/XANADU_prelude_SATS_gmap001.sats] *)
+#extern
+fun<>
+strn_dflt$parse$fwork
+( rep0: strn
+, work: (dflt)->void): void
+//
+#impltmp
+g_parse$opt
+< dflt >
+( rep0 ) =
+list_head$opt
+(
+list_fmake_fwork
+(
+lam(work) =>
+strn_dflt$parse$fwork(rep0, work)))
+//
+#impltmp
+<(*tmp*)>
+strn_dflt$parse$fwork
+  (rep0, work) =
+(
+XATS000_strn_dflt$parse$fwork
+  (rep0, work)) where
+{
+#extern
+fun
+XATS000_strn_dflt$parse$fwork
+(rep0: strn, work:(dflt)->void): void = $extnam()
+}
+//
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+//
+(***********************************************************************)
+(* end of [ATS3/XANADU_prelude_DATS_CATS_gbas000.dats] *)
+(***********************************************************************)

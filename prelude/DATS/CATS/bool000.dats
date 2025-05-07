@@ -26,151 +26,126 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
-(*
-Mon 08 Jul 2024 08:46:41 AM EDT
-*)
+Sun 01 Sep 2024 04:25:37 PM EDT
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#typedef ni = nint
-(* ****** ****** *)
-(* ****** ****** *)
 //
+#impltmp
+<(*tmp*)>
+bool_lt
+(b1, b2) =
+(
+XATS000_bool_lt
+  (b1, b2)) where
+{
+#extern
 fun
-<a:t0>
-g_void( a ): void
-fun
-<a:vt>
-g_self( a ): ( a )
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<a:vt>
-g_free( ~a ): void
-fun
-<a:vt>
-g_copy( !a ): ( a )
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<a:t0>
-g_work(x : a): void
-fun
-<a:t0>
-g_test(x : a): bool
-//
-fun
-<a0:t0>
-g_iwork
-(i0:ni,x0:a0): void
-fun
-<a0:t0>
-g_itest
-(i0:ni,x0:a0): bool
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<a:t0>
-g_equal(a, a): bool
-fun
-<a:t0>
-g_noteq(a, a): bool
+XATS000_bool_lt
+(b1: bool, b2: bool): bool = $extnam()
+}
 //
 (* ****** ****** *)
 //
+#impltmp
+<(*tmp*)>
+bool_gt
+(b1, b2) =
+(
+XATS000_bool_gt
+  (b1, b2)) where
+{
+#extern
 fun
-<a:t0>
-g_eqref(a, a): bool
+XATS000_bool_gt
+(b1: bool, b2: bool): bool = $extnam()
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+bool_eq
+(b1, b2) =
+(
+XATS000_bool_eq
+  (b1, b2)) where
+{
+#extern
 fun
-<a:t0>
-g_neqrf(a, a): bool
+XATS000_bool_eq
+(b1: bool, b2: bool): bool = $extnam()
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+bool_lte
+(b1, b2) =
+(
+XATS000_bool_lte
+  (b1, b2)) where
+{
+#extern
+fun
+XATS000_bool_lte
+(b1: bool, b2: bool): bool = $extnam()
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+bool_gte
+(b1, b2) =
+(
+XATS000_bool_gte
+  (b1, b2)) where
+{
+#extern
+fun
+XATS000_bool_gte
+(b1: bool, b2: bool): bool = $extnam()
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+bool_neq
+(b1, b2) =
+(
+XATS000_bool_neq
+  (b1, b2)) where
+{
+#extern
+fun
+XATS000_bool_neq
+(b1: bool, b2: bool): bool = $extnam()
+}
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (*
-(*
-HX-2025-04-26:
-Is this a good idea?
-*)
-fun
-<a:vt>
-g_input
-((*void*)): (  a  )
-fun
-<a:vt>
-g_input$exn
-((*void*)): (  a  )
-fun
-<a:vt>
-g_input$opt
-((*void*)): optn_vt(a)
+HX-2024-09-05:
+Thu 05 Sep 2024 11:11:27 AM EDT
 *)
 //
-(* ****** ****** *)
-(* ****** ****** *)
-//
-(*
-HX-2025-04-26:
-Is this a good idea?
-BTW, naming convention:
-'parse' is like 'strn$make'
-*)
-fun
-<a:vt>
-g_parse
-(rep: strn): (  a  )
-fun
-<a:vt>
-g_parse$exn
-(rep: strn): (  a  )
-fun
-<a:vt>
-g_parse$opt
-(rep: strn): optn_vt(a)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<a:t0>
-g_torep(obj: a): strn
-fun
-<a:t0>
-g_tostr(obj: a): strn
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<x0:t0>
-g_print(obj: x0): void
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#symload void with g_void of 0100
-#symload self with g_self of 0100
-//
-(* ****** ****** *)
-//
-#symload torep with g_torep of 0100
-#symload tostr with g_tostr of 0100
-//
-(* ****** ****** *)
-//
-#symload print with g_print of 0100
+#impltmp
+<(*tmp*)>
+bool_print(b0) =
+(
+if b0
+then strn_print<>("true")
+else strn_print<>("false"))//end(impl)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -178,4 +153,4 @@ g_print(obj: x0): void
 (* ****** ****** *)(* ****** ****** *)
 (* ****** ****** *)(* ****** ****** *)
 
-(* end of [ATS3/XANADU_prelude_SATS_gbas000.sats] *)
+(* end of [ATS3/XANADU_prelude_DATS_CATS_bool000.dats] *)
