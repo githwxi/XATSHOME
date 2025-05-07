@@ -49,7 +49,8 @@ hello: ; \
 node --stack-size=8800 \
   ${JS_XATS2JSD}/xats2js_jsemit01_ats3_opt1.js hello.dats | \
 cat \
-  ${JS_XATS2JSD}/runtime/xats2js_js1emit.js ${JS_XATS2JSD}/runtime/srcgen2_prelude.js ${JS_XATS2JSD}/runtime/srcgen2_prelude_node.js - | node
+  ${JS_XATS2JSD}/runtime/xats2js_js1emit.js \
+  ${JS_XATS2JSD}/runtime/srcgen2_prelude.js ${JS_XATS2JSD}/runtime/srcgen2_prelude_node.js - | node
 ```
 
 One can use a Makefile like `Makefile_pyemit01` and `Makefile_jsemit01` to streamline
