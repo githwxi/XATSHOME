@@ -1,11 +1,12 @@
 (* ****** ****** *)
 (* ****** ****** *)
 (*
-HX-2025-04-24:
-This example shows how to
-generate a linear stream of
-all the prime numbers, which
-are infinite.
+HX-2025-05-07:
+This example shows how to generate a linear
+stream of all the prime numbers, which are infinite.
+Note that what is used here is strx-streams (only
+for infinite streams) instead of strm-streams (for
+both finite and infinite streams).
 *)
 (* ****** ****** *)
 (* ****** ****** *)
@@ -63,5 +64,5 @@ print0s("the_primes = ", strmize0(the_primes), "\n")
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [githwxi/pground/proj001@250424/misc002/pstrm001.dats] *)
+(* end of [githwxi/pground/proj001@250424/misc002/pstrx000.dats] *)
 (***********************************************************************)
