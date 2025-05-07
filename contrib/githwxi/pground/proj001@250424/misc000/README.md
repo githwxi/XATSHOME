@@ -7,10 +7,12 @@ the string "Hello, world!" plus a newline:
 val () = println("Hello, world!")
 ```
 
-However, we need to indicate where
-library code for implementing `println`
-can be located. Let us put the following
-lines of code into a file named `hello.dats`:
+However, in order to compile and then execute the program, we need to
+indicate explicitly where library code for implementing `println` can
+be located. In this regard, ATS3 is quite different from most programming
+languages out there.
+
+Let us put the following lines of code into a file named `hello.dats`:
 
 ```
 #include
@@ -20,10 +22,11 @@ lines of code into a file named `hello.dats`:
 val () = println("Hello, world!")
 ```
 
-We can use xats2py to compile `hello.dats` to generate some PY
+We can use `xats2py` to compile `hello.dats` to generate some PY
 code. In order to run the code, we need a few extra lines of PY code
 implementing certain functions (emitted by the compiler) in the
-generated PY code.
+generated PY code. Here is a way to compile and execute the program
+from the current directory:
 
 ```
 JS_XATS2PYD=./../../../../../xassets/JS/xats2py; \
@@ -34,10 +37,11 @@ cat \
   ${PY_XATS2PYD}/runtime/xats2py_py1emit.py ${PY_XATS2PYD}/runtime/srcgen2_prelude.py - | python3
 ```
 
-We can also use xats2js to compile `hello.dats` to generate some JS
+We can also use `xats2js` to compile `hello.dats` to generate some JS
 code. We also need a few extra lines of JS code implementing certain
 functions (emitted by the compiler) in the generated JS code in order
-to run it:
+to run it. Here is a way to compile and execute the program from the
+current directory:
 
 ```
 JS_XATS2JSD=./../../../../../xassets/JS/xats2js
