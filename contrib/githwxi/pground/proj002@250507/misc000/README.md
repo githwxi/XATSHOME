@@ -31,7 +31,6 @@ Inside `hello.dats`, we have the following lines:
 "prelude/HATS/prelude_dats.hats"
 #include
 "prelude/HATS/prelude_JS_dats.hats"
-
 #extern
 fun
 DATS_hello$onclick
@@ -49,8 +48,8 @@ something different as the name for this counterpart function in JS.
 As the name for this counterpart function is known, we are able to
 call it inside `hello_cats.js`. This shows how to call ATS3 functions
 from JS. The very same idea allows JS functions to be called from ATS3
-as well. However, we should probably emphasize that
-minimizing the need to call from one side to the other
-side is in general considered a good programming style that one should follow.
+as well. However, we should probably emphasize that minimizing the
+need to call from one side to the other side is in general considered
+a good programming style and one should follow it.
 
 Happy ATS programming!
