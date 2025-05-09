@@ -1,0 +1,48 @@
+# XATS2PY: Reading from STDIN
+
+Linear streams are a wonderful feature in ATS3.  To quite a large
+extent, a linear stream resembles a generator in Python (and many
+other languages). However, the underlying mechanism of linear streams
+is fundamentally different from that of generators.
+
+In `tally.dats`, the following lines of code computes and
+then prints the tally of some integer numbers input from the
+standard input (STDIN).
+The function call `g_stdin$line$strmize$exn<>()` return
+a linear stream of lines (of the type `strn`). This is an illusion
+in the sense these lines are not yet produced. However, we can readily
+proceed to write code to process these lines as if they were available.
+
+```
+//
+val tally =
+strm_vt_folditm0(lines, 0)
+where
+{
+//
+#typedef x0 = strn
+#typedef r0 = sint
+//
+val lines =
+g_stdin$line$strmize$exn<>()
+//
+#impltmp
+folditm$fopr0<x0><r0>(r0, x0) =
+case+
+g_parse$opt(x0) of
+| ~optn_vt_nil() => r0
+| ~optn_vt_cons(i0) => (r0+i0) }
+//
+val ((*0*)) = printsln("tally = ", tally)
+//
+```
+
+The function `strm_vt_folditm0` is the standard left-folding operator
+on linear streams. In this case, left-folding with integer addition
+computes the tally of the numbers represented by the lines read from
+STDIN. If we replace integer addition with integer multiplication,
+then what is computed is the product of these numbers (as long as the
+initial value of `r0` is properly changed to 1).
+  
+  
+Happy ATS programming!

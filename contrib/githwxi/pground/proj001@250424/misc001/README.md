@@ -118,7 +118,7 @@ fix f(n: sint) => $llazy(strmcon_vt_cons(n, f(n+1)))
 Without `$llazy`, `sint_gte$strmize` would be a non-terminating
 function. The keyword `$llazy` used here stops the evaluation of the
 expression following it, forming a thunk (that is, a nullary
-function). For instance, the following lines of code binds `x0` to 0,
+function). For instance, the following lines of code bind `x0` to 0,
 `x1` to 1, and `x2` to 2, where the bang symbol `!` resumes a
 suspended evaluation (that is, it calls the thunk following it).
 
