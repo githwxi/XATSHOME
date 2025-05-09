@@ -68,7 +68,7 @@ if x > 0 then x * fact(x-1) else 1
 
 However, the above lam-expression is not a stand-alone expression that
 can be used elsewhere. In ATS3, one can use the keyword `fix` to
-construct an anonymous function as follows:
+construct an anonymous recursive function as follows:
 
 ```
 val fact = // [fix] for fixed-point
@@ -76,6 +76,12 @@ fix f(x: sint) => if x > 0 then x * f(x-1) else 1
 ```
 
 The fix-expression is a stand-alone expression that can be used elsewhere
-in a expression context.
+in an expression context. For instance, we can write the following code
+to compute the factorial of 10:
+
+```
+val fact10 =
+(fix f(x: sint) => if x > 0 then x * f(x-1) else 1)10
+```
 
 Happy ATS programming!
