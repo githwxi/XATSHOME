@@ -3,8 +3,9 @@
 There are several examples here showing compilation
 from ATS3 to JS (JavaScript) via the XATS2JS compiler.
 
-In `pstrm000.dats`, the code constructs a linear stream of
-all the prime numbers in the increasing order: 2, 3, 5, 7, 11, etc.
+Let us focus on the code in `pstrm000.dats`, which constructs a linear
+stream of all the prime numbers in the increasing order: 2, 3, 5, 7,
+11, etc.
 
 The following code is taken from `pstrm000.dats`:
 
@@ -16,7 +17,16 @@ fix f(n: sint) => $llazy(strmcon_vt_cons(n, f(n+1)))
 
 The value `sint_gte$strmize` implements a function, which
 takes an integer `n` and returns a linear stream of all the
-integers starting from $n$.
+integers starting from $n$. ATS3 supports a relatively involved
+convention for naming functions. For instance, in the name
+`sint_gte$strmize`, `sint` is the type for the first argument
+of the function, which happens to be the only argument;
+and `gte$strmize` is a so-called `verb phrase`, which roughly
+describes what the function does; the verb `strmize` means to
+generate a linear stream (more precisely, a value of `strm_vt`),
+and the `gte` prefix indicates that the generated stream consists
+of integer greater than or equal to the integer argument passed
+to `sint_gte$strmize`.
 
 Note that `fix` is a keyword in ATS3 for constructing an anonymous
 recursive function. In addition, `$llazy` is a keyword for suspending
