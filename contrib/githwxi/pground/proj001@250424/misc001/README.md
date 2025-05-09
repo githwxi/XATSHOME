@@ -25,7 +25,7 @@ and `gte$strmize` is a so-called `verb phrase`, which roughly
 describes what the function does; the verb `strmize` means to
 generate a linear stream (more precisely, a value of `strm_vt`),
 and the `gte` prefix indicates that the generated stream consists
-of integer greater than or equal to the integer argument passed
+of integers greater than or equal to the integer argument passed
 to `sint_gte$strmize`.
 
 Note that `fix` is a keyword in ATS3 for constructing an anonymous
@@ -92,6 +92,31 @@ to compute the factorial of 10:
 ```
 val fact10 =
 (fix f(x: sint) => if x > 0 then x * f(x-1) else 1)10
+```
+
+Let us revist the code for implementing `sint_gte$strmize`:
+
+```
+val
+sint_gte$strmize =
+fix f(n: sint) => $llazy(strmcon_vt_cons(n, f(n+1)))
+```
+
+Without `$llazy`, `sint_gte$strmize` would be a non-terminating
+function. The keyword `$llazy` used here stops the evaluation of the
+expression following it, forming a thunk (that is, a nullary
+function). For instance, the following lines of code binds `x0` to 0,
+`x1` to 1, and `x2` to 2, where the bang symbol `!` resumes a
+suspended evaluation (that is, calling the thunk following it).
+
+```
+//
+val ints$gte$0 = sint_gte$strmize(0)
+//
+val strmcon_vt_cons(x0, ints$gte$1) = !ints$gte$0
+val strmcon_vt_cons(x1, ints$gte$2) = !ints$gte$1
+val strmcon_vt_cons(x2, ints$gte$3) = !ints$gte$2
+//
 ```
 
 Happy ATS programming!
