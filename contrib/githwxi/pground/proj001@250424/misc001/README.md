@@ -14,7 +14,7 @@ sint_gte$strmize =
 fix f(n: sint) => $llazy(strmcon_vt_cons(n, f(n+1)))
 ```
 
-The value `sint_gte$strmize` represents a function, which
+The value `sint_gte$strmize` implements a function, which
 takes an integer `n` and returns a linear stream of all the
 integers starting from $n$.
 
@@ -57,13 +57,25 @@ if x > 0 then x * fact(x-1) else 1
 ```
 
 where the name `fact` in the body of the anonymous function is unbound
-(since `val` is not recursive). However, we can use `fix` to construct
-an anonymous function as follows:
+(since `val` is not recursive). One solution is to introduce `vlr`, the
+recursive version of `val`:
 
 ```
-val fact =
+vlr fact =
+lam(x: sint) =>
+if x > 0 then x * fact(x-1) else 1
+```
+
+However, the above lam-expression is not a stand-alone expression that
+can be used elsewhere. In ATS3, one can use the keyword `fix` to
+construct an anonymous function as follows:
+
+```
+val fact = // [fix] for fixed-point
 fix f(x: sint) => if x > 0 then x * f(x-1) else 1
 ```
 
+The fix-expression is a stand-alone expression that can be used elsewhere
+in a expression context.
 
 Happy ATS programming!
