@@ -44,8 +44,17 @@ val
 cstrm =
 fpath_cgtz$strmize$exn
 (fpath("./fpath000.dats"))
+val
+((*0*)) =
+cstrm.foritm0(lam c => print(c))
+(*
+(*
+HX-2025-05-09:
+This is verbose but good for debugging:
+*)
 val () =
 strm_vt_foritm0$f1un(cstrm, lam c => print(c))
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
