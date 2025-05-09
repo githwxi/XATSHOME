@@ -20,7 +20,7 @@ the evaluation of the expression following it. What `$llazy` forms is
 essentially a linear thunk (that is, a linear nullary function), which
 can be safely freed by the programmer.
 
-Let us give some further explanation on `fix`. The following code
+Let us give further explanation on `fix`. The following code
 implements a function for computing the cube of its integer argument:
 
 ```
@@ -33,21 +33,33 @@ where `sint` is for signed integers. We can also define `cube` as follows:
 val cube = lam(x: sint) => x * x * x
 ```
 
-where the keywork `lam` is for constructing an anonymouse
-non-recursive function (like `cube`). Let us define a function `fact`
-as follows for computing factorials:
+where the keyword `lam` is for constructing an anonymouse
+non-recursive function (like `cube`). Let us define a recursive
+function `fact` as follows for computing factorials:
 
 ```
-fun fact(x: sint): sint = if x > 0 then x * fact(x-1) else 1
+fun
+fact(x: sint): sint =
+if x > 0 then x * fact(x-1) else 1
 ```
 
 How can we turn `fact` into an anonymous function?  We cannot define
 `fact` as follows:
 
 ```
-val fact = lam(x: sint) => if x > 0 then x * fact(x-1) else 1
+val fact =
+lam(x: sint) =>
+if x > 0 then x * fact(x-1) else 1
 ```
 
+where the name `fact` in the body of the anonymous function is unbound
+(since `val` is not recursive). However, we can use `fix` to construct
+an anonymous function as follows:
+
+```
+val fact =
+fix f(x: sint) => if x > 0 then x * f(x-1) else 1
+```
 
 
 Happy ATS programming!
