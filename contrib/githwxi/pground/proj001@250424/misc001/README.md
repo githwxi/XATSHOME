@@ -107,7 +107,7 @@ function. The keyword `$llazy` used here stops the evaluation of the
 expression following it, forming a thunk (that is, a nullary
 function). For instance, the following lines of code binds `x0` to 0,
 `x1` to 1, and `x2` to 2, where the bang symbol `!` resumes a
-suspended evaluation (that is, calling the thunk following it).
+suspended evaluation (that is, it calls the thunk following it).
 
 ```
 //
@@ -118,5 +118,9 @@ val strmcon_vt_cons(x1, ints$gte$2) = !ints$gte$1
 val strmcon_vt_cons(x2, ints$gte$3) = !ints$gte$2
 //
 ```
+
+The rest of the code in `pstrm000.dats` implements the famous sieve
+method by Eratosthenes for enumerating all the prime numbers. We skip further
+details.
 
 Happy ATS programming!
