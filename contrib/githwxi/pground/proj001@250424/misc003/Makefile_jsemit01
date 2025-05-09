@@ -1,6 +1,6 @@
 ########################################################################
 ########################################################################
-# Makefile for misc001
+# Makefile for misc003
 ########################################################################
 ########################################################################
 CAT=cat
@@ -55,9 +55,6 @@ $(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
 tally000_out1:: ; \
 npx google-closure-compiler -W QUIET \
   --compilation_level SIMPLE --js=OUTS/tally000_out.js --js_output_file=OUTS/tally000_out1.js
-tally000_out2:: ; \
-npx google-closure-compiler -W QUIET \
-  --compilation_level ADVANCED --js=OUTS/tally000_out.js --js_output_file=OUTS/tally000_out2.js
 ########################################################################
 ########################################################################
 ##################### end of [Makefile_jsemit01] #######################
