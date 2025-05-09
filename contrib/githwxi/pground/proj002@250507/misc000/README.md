@@ -21,10 +21,10 @@ function CATS_hello$onclick() {
     DATS_hello$onclick((msg) => alert(msg))
 }
 ```
-And `CATS_hello$onclick` is the callback function attached to the
-button declared in `hello.html`.
-
-Inside `hello.dats`, we have the following lines:
+The function `CATS_hello$onclick` is the callback attached to the
+button declared in `hello.html`. The function `DATS_hello$onclick`,
+which does the actual work, is implemented in `hello.dats`, which
+contains the following lines:
 
 ```
 #include
