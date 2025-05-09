@@ -1,11 +1,12 @@
 # Presenting Streams
 
 [comment]: # HX-2025-05-08: It is ongoing.
+[comment]: # HX-2025-05-09: It is completed.
 
 Let us build a webpage for presenting the elements in a (lazy) stream.
-For instance, we can build a stream of all the prime numbers and
+For instance, we can build a stream of all the prime numbers and then
 present these primes by clicking a button. One prime is shown after a
-clicking and the next prime is shown after the next clicking.
+click and the next prime is shown after the next click.
 
 We first create a simple html file `prime.html`, where we have
 the following two lines for loading JS code from the directory where
@@ -43,9 +44,9 @@ stream (strx_vt) of all the primes listed in the increasing order. The
 function `onclick_make_lstrx` saves a given stream (of integers) in a
 reference and returns a higher-order function; this higher-order
 function, when called, passes to its argument (which itself is a
-function) some representation of the first element of the stream saved
-in the reference and then reset the reference with the tail of the
-stream.
+function) some string representation of the first element of the
+stream saved in the reference and then reset the reference with the
+tail of the stream.
 
 We can see the following kind of code in the implementation of
 `onclick_make_lstrx`:  
