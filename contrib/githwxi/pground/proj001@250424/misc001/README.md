@@ -14,6 +14,10 @@ sint_gte$strmize =
 fix f(n: sint) => $llazy(strmcon_vt_cons(n, f(n+1)))
 ```
 
+The value `sint_gte$strmize` represents a function, which
+takes an integer `n` and returns a linear stream of all the
+integers starting from $n$.
+
 Note that `fix` is a keyword in ATS3 for constructing an anonymous
 recursive function. In addition, `$llazy` is a keyword for suspending
 the evaluation of the expression following it. What `$llazy` forms is
