@@ -1,13 +1,16 @@
 (* ****** ****** *)
+(* ****** ****** *)
 #include
 "prelude/HATS/prelude_dats.hats"
 #include
 "prelude/HATS/prelude_JS_dats.hats"
 (* ****** ****** *)
+(* ****** ****** *)
 #extern
 fun
 DATS_prime$onclick
 (work: strn -> void): void = $extnam()
+(* ****** ****** *)
 (* ****** ****** *)
 //
 val
@@ -48,24 +51,35 @@ onclick_make_lstrx
 (xs: strx_vt(sint)) =
 let
 val
-arf1 = a0rf_make_elt(0)
+arf1 = a0rf_make_1val(0)
 val
-arf2 = a0rf_make_elt(xs)
+arf2 = a0rf_make_1val(xs)
 in//let
-lam(work: strn): void =>
+lam(
+work: strn->void): void =>
 let
 //
-val pn = !a0rf
-val () = !a0rf := pn + 1
+val pn =
+a0rf_get(arf1)
+val () =
+a0rf_set(arf1, pn + 1)
 //
 val
 (pf|xs) = a0rf_lget(arf2)
-val ~strxcons(x1, xs) = xs
+val ~
+strxcon_vt_cons(x1, xs) = !xs
 val ( ) = a0rf_lset(pf | arf2, xs)
 in//let
-work(tostrs("Prime(", pn, ") = ", x1))
+work(
+tostrs("Prime(", pn+1, ") = ", x1))
 end//let
 end//let//end-of-[onclick_make_lstrx]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#implval
+DATS_prime$onclick = onclick_make_lstrx(the_primes)
 //
 (* ****** ****** *)
 (* ****** ****** *)
