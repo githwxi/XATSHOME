@@ -51,7 +51,11 @@ g_stdin$chunk$strmize$exn
 {
 //
 val STDIN = 0(*fd*)
+(*
 val BUFSZ = ( 1024 )
+*)
+val BUFSZ =
+g_stdin$chunk$bufsz<>()
 //
 val buffer =
 GITHWXI_Buffer_alloc(BUFSZ)

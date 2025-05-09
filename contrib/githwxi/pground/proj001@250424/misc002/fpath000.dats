@@ -44,6 +44,7 @@ val
 cstrm =
 fpath_cgtz$strmize$exn
 (fpath("./fpath000.dats"))
+//
 val
 ((*0*)) =
 cstrm.foritm0(lam c => print(c))

@@ -67,11 +67,30 @@ filter$test1<x0><y0>(c0) = neqz(c0)
 fun<>
 g_stdin$char$strmize$exn
   ( (*void*) ): strm_vt(char)
+//
+(* ****** ****** *)
+//
+#extern
+fun<>
+g_stdin$line$strmize$exn
+  ( (*void*) ): strm_vt(strn)
+//
+(* ****** ****** *)
+//
+#extern
+fun<>
+g_stdin$chunk$bufsz
+  ( (*void*) ): sintgte(1)
+#impltmp
+<(*tmp*)>
+g_stdin$chunk$bufsz() = 1024
+//
 #extern
 fun<>
 g_stdin$chunk$strmize$exn
   ( (*void*) ): strm_vt(strn)
 //
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
@@ -100,6 +119,61 @@ strm_vt_append00(strn_strmize(x1), auxmain(xs))
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+#impltmp
+<(*tmp*)>
+g_stdin$line$strmize$exn
+  ( (*void*) ) =
+let
+val cs =
+g_stdin$char$strmize$exn<>
+  ( (*void*) )
+//
+in//let
+//
+$llazy
+(
+auxloop(cs, list_vt_nil())
+) where
+{
+//
+#define rev0 = list_vt_reverse0
+//
+fnx
+auxloop
+( cs
+: strm_vt(char)
+, rs
+: list_vt(char)): strmcon_vt(strn) =
+(
+case+ !cs of
+|
+strmcon_vt_nil() =>
+(
+case+ rs of
+|
+list_vt_nil() =>
+strmcon_vt_nil()
+|
+list_vt_cons _ =>
+strmcon_vt_cons(strn(rev0(rs)), strm_vt_nil())
+)
+|
+strmcon_vt_cons(c1, cs) =>
+if
+(c1 != '\n')
+then
+auxloop(cs, list_vt_cons(c1, rs))
+else
+strmcon_vt_cons
+(strn(rev0(rs)), $llazy(auxloop(cs, list_vt_nil())))
+)(*case+*)//end-of-[auxloop(cs, rs)]
+}(*where*)//end-of-[auxloop(cs, list_vt_nil())]
+//
+end(*let*)//end-of-[impltmp(g_stdin$line$strmize$exn)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(***********************************************************************)
 (* end of [XATSHOME/contrib/githwxi/xatslib/DATS/mylib00_fpath00.hats]
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
+(***********************************************************************)
