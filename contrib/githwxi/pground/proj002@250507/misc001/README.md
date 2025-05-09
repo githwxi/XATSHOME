@@ -1,6 +1,7 @@
 # Presenting Streams
 
 [comment]: # HX-2025-05-08: It is ongoing.
+
 [comment]: # HX-2025-05-09: It is completed.
 
 Let us build a webpage for presenting the elements in a (lazy) stream.
