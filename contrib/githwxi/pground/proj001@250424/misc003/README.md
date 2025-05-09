@@ -8,10 +8,6 @@ is fundamentally different from that of generators.
 In `tally.dats`, the following lines of code computes and
 then prints the tally of some integer numbers input from the
 standard input (STDIN).
-The function call `g_stdin$line$strmize$exn<>()` return
-a linear stream of lines (of the type `strn`). This is an illusion
-in the sense these lines are not yet produced. However, we can readily
-proceed to write code to process these lines as if they were available.
 
 ```
 //
@@ -36,6 +32,11 @@ g_parse$opt(x0) of
 val ((*0*)) = printsln("tally = ", tally)
 //
 ```
+
+The function call `g_stdin$line$strmize$exn<>()` return
+a linear stream of lines (of the type `strn`). This is an illusion
+in the sense these lines are not yet produced. However, we can readily
+proceed to write code to process these lines as if they were available.
 
 The function `strm_vt_folditm0` is the standard left-folding operator
 on linear streams. In this case, left-folding with integer addition
