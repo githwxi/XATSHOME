@@ -48,13 +48,20 @@ strxcon_vt_cons(@(m0, ub), auxmain(m0, ub))
 end // let // end of [auxmain(lb, ub)]
 //
 in
-  auxmain(lb, ub)
+  auxmain(lb, ub) where
+{
+  val () =
+  assert(f0(lb) <= 0, "f1un_zero$bsrch_lstrx")
+  and () =
+  assert(f0(ub) >= 0, "f1un_zero$bsrch_lstrx")
+}
 end // end of [f1un_zero$bsrch_lstrx(f0, lb, ub)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-val EPSILON = 1E-6
+#define
+EPSILON = 1E-6
 //
 val f0 =
 lam(x: dflt): dflt => (x * x - 2.0)

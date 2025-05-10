@@ -56,10 +56,10 @@ Newton-Raphson method for computing square roots is given (in Section
 the square root of 2 is given. This example is of the same programming
 style as is advocated in the paper by Hughes, though its
 implementation is much superior due to the use of a linear stream
-(which is similar but different from the kind of streams supported in
-the Haskell programming language). Alas! It is truly a pity that
-Haskell formed too early to allow it to be greatly influenced by
-_linear_ lazy evaluation.
+(which is similar but different from the kind of _functional_ streams
+supported in the Haskell programming language). Alas! It is truly a
+pity that Haskell formed too early to allow it to be greatly
+influenced by _linear_ lazy evaluation.
   
 
 Happy ATS programming!
