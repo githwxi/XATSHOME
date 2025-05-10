@@ -4,6 +4,8 @@
 #include
 "prelude/HATS/prelude_dats.hats"
 //
+(* ****** ****** *)
+//
 #include
 "prelude/HATS/prelude_JS_dats.hats"
 #include
@@ -11,8 +13,12 @@
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
 #staload
-"./../../../xatslib/DATS/mylib00.dats"
+"xatslib/githwxi/DATS/VT/strm000_vt.dats"
+#staload
+"xatslib/githwxi/DATS/VT/strx000_vt.dats"
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -71,9 +77,10 @@ dflt2s =
 f1un_zero$bsrch_lstrx(f0, 1.0, 2.0)
 val
 dflt2s = strx_vt_filter0$f1un
-(dflt2s, lam(df2) => (df2.1 - df2.0) < EPSILON)
+( dflt2s
+, lam(df2) => (df2.1 - df2.0) < EPSILON)
 //
-val () = print0s("dflt2s = ", strmize0(dflt2s), "\n")
+val () = print0s("dflt2s = ", dflt2s, "\n")
 //
 (***********************************************************************)
 (* end of [githwxi/pground/proj001@250424/misc002/bsrch000.dats] *)
