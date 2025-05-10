@@ -11,6 +11,7 @@ PRINTF=printf
 PYTHON=python3
 ########################################################################
 ########################################################################
+all:: bsrch000
 all:: tally000
 ########################################################################
 clean:: ; rm -f *~
@@ -19,6 +20,7 @@ cleanall:: ; rm -f OUTS/*~
 cleanall:: ; rm -f OUTS/*_out.js
 cleanall:: ; rm -f OUTS/*_out?.js
 ########################################################################
+testall:: bsrch000; $(NODE) OUTS/$<_out.js
 testall:: tally000; $(NODE) OUTS/$<_out.js
 ########################################################################
 ########################################################################
@@ -36,6 +38,17 @@ PY_XATS2JS_JSEMIT01=\
 $(XATSHOME)/xassets/PY/xats2js/xats2js_jsemit01_ats3_opt0.py
 #
 ########################################################################
+########################################################################
+bsrch000:: ; \
+$(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
+bsrch000:: ; \
+$(CAT) $(XATS2JSD)/runtime/xats2js_js1emit.js >> OUTS/$@_out.js
+bsrch000:: ; \
+$(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/$@_out.js
+bsrch000:: ; \
+$(CAT) $(XATS2JSD)/runtime/srcgen2_prelude_node.js >> OUTS/$@_out.js
+bsrch000:: bsrch000.dats; \
+$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
 ########################################################################
 tally000:: ; \
 $(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
