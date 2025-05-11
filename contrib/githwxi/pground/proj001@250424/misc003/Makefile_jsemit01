@@ -21,7 +21,7 @@ cleanall:: ; rm -f OUTS/*_out.js
 cleanall:: ; rm -f OUTS/*_out?.js
 ########################################################################
 testall:: bsrch000; $(NODE) OUTS/$<_out.js
-testall:: tally000; $(NODE) OUTS/$<_out.js
+testall:: tally000; $(PRINTF) "1\n2\n3\n" | $(NODE) OUTS/$<_out.js
 ########################################################################
 ########################################################################
 XATSHOME=./../../../../../../XATSHOME
