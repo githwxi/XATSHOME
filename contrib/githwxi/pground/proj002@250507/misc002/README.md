@@ -1,4 +1,4 @@
-# Implementing a Counter
+# Implementing a Counter (1)
 
 Let us build a webpage containing a counter whose count can be
 increased and decreased by clicking buttons.
