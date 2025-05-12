@@ -7,6 +7,9 @@
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX: it is just [setTimeout]!
+*)
 #extern
 fun
 CATS_call$after
@@ -69,10 +72,10 @@ in//let0
 let
 val n0 = a0rf_get(theCount)
 val () = a0rf_set(theCount, n0+1)
-in//let
+in//let1
   update(tostr(n0+1));
   CATS_call$after(loop, 1000(*ms*))
-end//let
+end//let1
 //
 end(*let0*)//end-of-[DATS_Up$button$onclick]
 //
@@ -109,10 +112,10 @@ in//let0
 let
 val n0 = a0rf_get(theCount)
 val () = a0rf_set(theCount, n0-1)
-in//let
+in//let1
   update(tostr(n0-1));
   CATS_call$after(loop, 1000(*ms*))
-end//let
+end//let1
 //
 end(*let0*)//end-of-[DATS_Down$button$onclick]
 //
@@ -135,5 +138,5 @@ val () = a0rf_set(theStamp, p0+1)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [githwxi/pground/proj002@250507/misc002/counter.dats] *)
+(* end of [githwxi/pground/proj002@250507/misc003/counter.dats] *)
 (***********************************************************************)

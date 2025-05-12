@@ -1,7 +1,13 @@
+/* ****** ****** */
+/* ****** ****** */
+
 function
 theCount$update(msg) {
   $("#theCount").text(msg);
 }
+
+/* ****** ****** */
+/* ****** ****** */
 
 function
 CATS_Up$button$onclick() {
@@ -15,3 +21,10 @@ function
 CATS_Reset$button$onclick() {
   DATS_Reset$button$onclick(theCount$update);
 }
+
+/* ****** ****** */
+/* ****** ****** */
+//
+/***********************************************************************/
+// end of [githwxi/pground/proj002@250507/misc002/counter.cats]
+/***********************************************************************/
