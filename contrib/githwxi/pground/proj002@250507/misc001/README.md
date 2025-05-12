@@ -9,9 +9,9 @@ For instance, we can build a stream of all the prime numbers and then
 present these primes by clicking a button. One prime is shown after a
 click and the next prime is shown after the next click.
 
-We first create a simple html file `prime.html`, where we have
+We first create a simple html file `primes.html`, where we have
 the following two lines for loading JS code from the directory where
-the file is stored:
+the files are stored:
 
 ```
   <script src="./OUTS/prime_cats.js"></script>
@@ -27,8 +27,8 @@ function CATS_prime$onclick() {
 }
 ```
 The function `CATS_prime$onclick` is the callback attached to the
-button declared in `prime.html`. The function `DATS_prime$onclick`,
-which does the actual work, is implemented in `prime.dats`, which
+button declared in `primes.html`. The function `DATS_prime$onclick`,
+which does the actual work, is implemented in `primes.dats`, which
 contains the following lines:
 
 ```

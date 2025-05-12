@@ -21,14 +21,13 @@ DATS_Reset$button$onclick
 (* ****** ****** *)
 (* ****** ****** *)
 //
-val
-theCount = a0rf(0)
+val theCount = a0rf(0)
 //
 (* ****** ****** *)
 //
 #implfun
 DATS_Up$button$onclick
-(update) =
+  (update) =
 (
   update(tostr(n0+1)))
 where
@@ -39,7 +38,7 @@ val () = a0rf_set(theCount, n0+1)
 //
 #implfun
 DATS_Down$button$onclick
-(update) =
+  (update) =
 (
   update(tostr(n0-1)))
 where
@@ -50,7 +49,7 @@ val () = a0rf_set(theCount, n0-1)
 //
 #implfun
 DATS_Reset$button$onclick
-(update) =
+  (update) =
 (
   update(tostr(  0  )))
 where
