@@ -18,14 +18,13 @@ Tue 10 Sep 2024 01:39:29 PM EDT
 //
 #if
 defq(_XATS2JS_)
-#then
 #include
 "prelude/HATS/prelude_JS_dats.hats"
+(*
 #endif // end of [#if(defq(_XATS2JS_))]
-//
-#if
+*)
+#elsif
 defq(_XATS2PY_)
-#then
 #include
 "prelude/HATS/prelude_PY_dats.hats"
 #endif // end of [#if(defq(_XATS2PY_))]
@@ -76,11 +75,9 @@ and z = TMvar("z")
 //
 in(*local*)
 //
-val I =
-TMlam("x", x)
+val I = TMlam("x", x)
 //
-val K =
-TMlam("x", TMlam("y", x))
+val K = TMlam("x", TMlam("y", x))
 //
 val S =
 TMlam("x",
@@ -88,13 +85,12 @@ TMlam("y",
 TMlam("z",
 TMapp(TMapp(x, z), TMapp(y, z)))))
 //
-val K1 =
-TMlam("x", TMlam("y", y))
+val K1 = TMlam("x", TMlam("y", y))
 //
-val omega =
+val omega = TMlam("x", TMapp(x, x))
+val Omega =
 (
-  TMlam("x", TMapp(x, x)))
-val Omega = TMapp(omega, omega)
+  TMapp(omega(*fun*), omega(*arg*)))
 //
 end//local(for-various-common-combinators)
 
@@ -222,17 +218,62 @@ val ((*0*)) = printsln("TMcbr = ", TMcbr)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#extern
+fun
+term_subst
+( tm0: term
+, x00: tvar, sub: term): term
+//
+#implfun
+term_subst
+(tm0, x00, sub) =
+let
+//
+val subst =
+lam(tm0) =>
+term_subst(tm0, x00, sub)
+//
+in//let
+//
+case+ tm0 of
+//
+|TMint _ => tm0
+|TMbtf _ => tm0
+//
+|TMvar(x01) =>
+if
+x00=x01 then sub else tm0
+//
+|TMlam(x01, tm1) =>
+if
+(x00=x01)
+then (tm0)
+else TMlam(x01, subst(tm1))
+//
+|TMapp(tm1, tm2) =>
+(
+  TMapp(subst(tm1), subst(tm2)))
+//
+|TMopr(f00, tms) =>
+TMopr(f00, list_map(tms, subst))
+|TMif0(tm1, tm2, tm3) =>
+TMif0(subst(tm1), subst(tm2), subst(tm3))
+//
+end(*let*)//endof(term_subst(tm0,x00,sub))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #if
 defq(_XATS2JS_)
 #then
 val () =
 console_log(the_print_store_flush((*void*)))
-#endif // end of [#if(defq(_XATS2JS_))]
+#endif // end-of-[#if(defq(_XATS2JS_))]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-
+(***********************************************************************)
 (* end of [hwxi/pground/proj001@250418/lambdas/lambda1/lambda1.dats] *)
+(***********************************************************************)

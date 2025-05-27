@@ -1,5 +1,9 @@
 # XATSHOME/xassets
-For various pre-built code and head files.
+For various pre-built code and header files.
+
+(Note that one primary purpose of a header file is for directing the
+compiler to locate template implementations during the phase of
+template resolution.)
 
 ## Asset Description
 
