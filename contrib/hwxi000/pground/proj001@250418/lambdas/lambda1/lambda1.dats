@@ -485,33 +485,35 @@ end//let//end-of-[TMif0(...)]
 (* ****** ****** *)
 (* ****** ****** *)
 
-val () =
-printsln("TMapp(TMdbl, TMint(10)) = ", TMapp(TMdbl, TMint(10)))
-val () =
-printsln("TMapp(TMdbl, TMint(10)) = ", term_interp(TMapp(TMdbl, TMint(10))))
+val () = printsln("\
+TMapp(TMdbl, TMint(10)) = ", TMapp(TMdbl, TMint(10)))
+val () = printsln("\
+TMapp(TMdbl, TMint(10)) = ", term_interp(TMapp(TMdbl, TMint(10)))
+)(*end-of(printsln)*)
 
 val () =
-printsln("TMapp(TMsqr, TMint(10)) = ", TMapp(TMsqr, TMint(10)))
+printsln("\
+TMapp(TMsqr, TMint(10)) = ", TMapp(TMsqr, TMint(10)))
 val () =
-printsln("TMapp(TMsqr, TMint(10)) = ", term_interp(TMapp(TMsqr, TMint(10))))
+printsln("\
+TMapp(TMsqr, TMint(10)) = ", term_interp(TMapp(TMsqr, TMint(10)))
+)(*end-of(printsln)*)
 
-val () =
-printsln("TMapp(TMapp(TMtwo, TMtpl), TMint(10)) = ", term_interp(TMapp(TMapp(TMtwo, TMtpl), TMint(10))))
+val () = printsln("\
+TMapp(TMapp(TMtwo, TMtpl), TMint(10)) = ",
+term_interp(TMapp(TMapp(TMtwo, TMtpl), TMint(10))))
 
-val () =
-printsln("TMapp(TMapp(TMapp(TMtwo, TMtwo), TMtpl), TMint(10)) = ", term_interp(TMapp(TMapp(TMapp(TMtwo, TMtwo), TMtpl), TMint(10))))
+val () = printsln("\
+TMapp(TMapp(TMapp(TMtwo, TMtwo), TMtpl), TMint(10)) = ",
+term_interp(TMapp(TMapp(TMapp(TMtwo, TMtwo), TMtpl), TMint(10))))
 
 (* ****** ****** *)
 (* ****** ****** *)
 
-val Y =
-TMlam
-(
-"f",
-TMapp(fomega, fomega)) where
+val Y = TMlam
+("f", TMapp(fomega, fomega)) where
 {
-val f = TMvar"f"
-val x = TMvar"x"
+val f = TMvar"f" and x = TMvar"x"
 val fomega = TMlam("x", TMapp(f, TMapp(x, x)))
 }
 
@@ -573,7 +575,8 @@ val () = printsln
 defq(_XATS2JS_)
 #then
 val () =
-console_log(the_print_store_flush((*void*)))
+console_log
+(the_print_store_flush((*void*)))
 #endif // end-of-[#if(defq(_XATS2JS_))]
 //
 (* ****** ****** *)
