@@ -58,9 +58,7 @@ pure lambda-calculus
 |TMopr of (topr, list(term))
 |TMif0 of (term, term, term)
 //
-(*
 |TMfix of (tvar, tvar, term)
-*)
 //
 #typedef termlst = list(term)
 //
@@ -124,8 +122,8 @@ prints("TMbtf(", btf, ")")
 TMvar(nam) =>
 prints("TMvar(", nam, ")")
 |
-TMlam(nam, tm1) =>
-prints("TMlam(", nam, ";", tm1, ")")
+TMlam(x01, tmx) =>
+prints("TMlam(", x01, ";", tmx, ")")
 |
 TMapp(tm1, tm2) =>
 prints("TMapp(", tm1, ";", tm2, ")")
@@ -137,6 +135,11 @@ prints("TMopr(", opr, ";", tms, ")")
 TMif0(tm1, tm2, tm3) =>
 prints(
 "TMif0(", tm1, ";", tm2, ";", tm3, ")")
+//
+|
+TMfix(f00, x01, tmx) =>
+prints(
+"TMfix(", f00, ";", x01, ";", tmx, ")")
 //
 ) where
 {
@@ -281,20 +284,32 @@ case+ tm0 of
 if
 x00=x01 then sub else tm0
 //
-|TMlam(x01, tm1) =>
+|TMlam(x01, tmx) =>
 if
 (x00=x01)
 then (tm0)
-else TMlam(x01, subst(tm1))
+else TMlam(x01, subst(tmx))
 //
 |TMapp(tm1, tm2) =>
 (
   TMapp(subst(tm1), subst(tm2)))
 //
 |TMopr(f00, tms) =>
-TMopr(f00, list_map(tms, subst))
+(
+TMopr(f00, f_map$list(subst)(tms)))
 |TMif0(tm1, tm2, tm3) =>
-TMif0(subst(tm1), subst(tm2), subst(tm3))
+(
+TMif0
+(subst(tm1), subst(tm2), subst(tm3)))
+//
+|TMfix(f00, x01, tmx) =>
+(
+if
+(x00 = f00)
+then tm0 else
+if
+(x00 = x01)
+then tm0 else TMfix(f00,x01,subst(tmx)))
 //
 end(*let*)//endof(term_subst(tm0,x00,sub))
 //
@@ -480,6 +495,10 @@ TMbtf(btf) =>
 term_interp(if btf then tm2 else tm3)
 end//let//end-of-[TMif0(...)]
 //
+|TMfix(f00, x01, tmx) =>
+(
+TMlam(x01, term_subst(tmx, f00, tm0)))
+//
 )
 //
 (* ****** ****** *)
@@ -568,6 +587,24 @@ TMlam
 val () = printsln
 ("TMapp(TMfact, TMint(5)) = ", term_interp(TMapp(TMfact, TMint(5))))
 
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val
+TMfact2 =
+(
+TMfix
+("f", "x", TMif0
+(TMlte(x, TMint(0))
+,TMint(1), TMmul(x, TMapp(f, TMsub(x, TMint(1)))))))
+where
+{
+val f = TMvar"f" and x = TMvar"x"
+}
+//
+val () = printsln
+("TMapp(TMfact2, TMint(5)) = ", term_interp(TMapp(TMfact2, TMint(5))))
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
