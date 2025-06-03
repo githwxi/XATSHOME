@@ -58,6 +58,8 @@ pure lambda-calculus
 |TMopr of (topr, list(term))
 |TMif0 of (term, term, term)
 //
+// TMfix(f, x, ...) =
+// Y(lam f.lam x. ...)
 |TMfix of (tvar, tvar, term)
 //
 #typedef termlst = list(term)
@@ -582,6 +584,10 @@ tval =
 |TVbtf of bool
 |TVclo of (term, envx)
 //
+(*
+HX: [envx] is
+like a read-only stack!
+*)
 and envx =
 |EVnil of ()
 |EVcons of (tvar, tval, envx)
@@ -684,7 +690,7 @@ TMvar(x00) =>
 let
 val opt =
 envx_search(env, x00)
-in
+in//let
 case- opt of
 (*
 | ~optn_vt_nil
@@ -895,8 +901,10 @@ term_eval01
 ) where
 {
 //
+(*
 val () =
 printsln("term_eval01: tm0 = ", tm0)
+*)
 //
 }(*where*)//end-of-[term_eval01(tm0,env)]
 //

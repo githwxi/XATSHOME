@@ -116,6 +116,53 @@ iz2forcmp$test1
 fun
 <x0:vt>
 <y0:vt>
+z2foritm$work0
+(x0: ~x0, y0: ~y0): void
+fun
+<x0:vt>
+<y0:vt>
+z2foritm$work1
+(x0: !x0, y0: !y0): void
+//
+fun
+<x0:vt>
+<y0:vt>
+rz2foritm$work0
+(x0: ~x0, y0: ~y0): void
+fun
+<x0:vt>
+<y0:vt>
+rz2foritm$work1
+(x0: !x0, y0: !y0): void
+//
+fun
+<x0:vt>
+<y0:vt>
+iz2foritm$work0
+(i0: ni, x0: ~x0, y0: ~y0): void
+fun
+<x0:vt>
+<y0:vt>
+iz2foritm$work1
+(i0: ni, x0: !x0, y0: !y0): void
+//
+fun
+<x0:vt>
+<y0:vt>
+irz2foritm$work0
+(i0: ni, x0: ~x0, y0: ~y0): void
+fun
+<x0:vt>
+<y0:vt>
+irz2foritm$work1
+(i0: ni, x0: !x0, y0: !y0): void
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+<y0:vt>
 <z0:vt>
 z2map$fopr0(x0: ~x0, y0: ~y0): ( z0 )
 fun
@@ -160,7 +207,6 @@ irz2map$fopr1(i0: ni, x0: !x0, y0: !y0): ( z0 )
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-
+(***********************************************************************)
 (* end of [ATS3/XANADU_prelude_SATS_VT_gbas002_vt.sats] *)
+(***********************************************************************)

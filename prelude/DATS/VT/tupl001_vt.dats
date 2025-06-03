@@ -39,59 +39,173 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#impltmp
-{ x0:vt }
-gseq_forall0
-<t0up(x0,x0)><x0>
-  ( tup ) =
-let
-val b0 =
-forall$test0<x0>(tup.0)
-in//let
-if b0 then
-forall$test0<x0>(tup.1) else false
-end//let//end-of-[gseq_forall0(...)]
+#vwtpdef
+atup2(x0:vt) = @(x0,x0)
+#vwtpdef
+atup3(x0:vt) = @(x0,x0,x0)
+#vwtpdef
+atup4(x0:vt) = @(x0,x0,x0,x0)
+#vwtpdef
+atup5(x0:vt) = @(x0,x0,x0,x0,x0)
+#vwtpdef
+atup6(x0:vt) = @(x0,x0,x0,x0,x0,x0)
+#vwtpdef
+atup7(x0:vt) = @(x0,x0,x0,x0,x0,x0,x0)
+#vwtpdef
+atup8(x0:vt) = @(x0,x0,x0,x0,x0,x0,x0,x0)
 //
 (* ****** ****** *)
-//
-#impltmp
-{ x0:vt }
-gseq_forall0
-<t0up3(x0,x0,x0)><x0>
-  ( tup ) =
-let
-val b0 =
-forall$test0<x0>(tup.0)
-in//let
-if b0 then
-forall$test0<x0>(tup.1) else
-if b0 then
-forall$test0<x0>(tup.2) else false
-end//let//end-of-[gseq_forall0(...)]
-//
 (* ****** ****** *)
 //
 #impltmp
 { x0:vt }
 gseq_forall0
-<t0up4(x0,x0,x0,x0)><x0>
+<atup2(x0)><x0>
   ( tup ) =
 let
 val b0 =
 forall$test0<x0>(tup.0)
 in//let
-if b0 then
-forall$test0<x0>(tup.1) else
-if b0 then
-forall$test0<x0>(tup.2) else
-if b0 then
-forall$test0<x0>(tup.3) else false
-end//let//end-of-[gseq_forall0(...)]
+if ~b0
+then false
+else forall$test0<x0>(tup.1)
+end//let//end-of-[gseq_forall0<atup2(x0)><x0>(...)]
+//
+(* ****** ****** *)
+//
+#impltmp
+{ x0:vt }
+gseq_forall0
+<atup3(x0)><x0>
+  ( tup ) =
+let
+val b0 =
+forall$test0<x0>(tup.0)
+in//let
+if ~b0
+then false else
+if ~(forall$test0<x0>(tup.1))
+then false else forall$test0<x0>(tup.2)
+end//let//end-of-[gseq_forall0<atup3(x0)><x0>(...)]
+//
+(* ****** ****** *)
+//
+#impltmp
+{ x0:vt }
+gseq_forall0
+<atup4(x0)><x0>
+  ( tup ) =
+let
+val b0 =
+forall$test0<x0>(tup.0)
+in//let
+if ~b0
+then false else
+if ~(forall$test0<x0>(tup.1))
+then false else
+if ~(forall$test0<x0>(tup.2))
+then false else forall$test0<x0>(tup.3)
+end//let//end-of-[gseq_forall0<atup4(x0)><x0>(...)]
+//
+(* ****** ****** *)
+//
+#impltmp
+{ x0:vt }
+gseq_forall0
+<atup5(x0)><x0>
+  ( tup ) =
+let
+val b0 =
+forall$test0<x0>(tup.0)
+in//let
+if ~b0
+then false else
+if ~(forall$test0<x0>(tup.1))
+then false else
+if ~(forall$test0<x0>(tup.2))
+then false else
+if ~(forall$test0<x0>(tup.3))
+then false else forall$test0<x0>(tup.4)
+end//let//end-of-[gseq_forall0<atup5(x0)><x0>(...)]
+//
+(* ****** ****** *)
+//
+#impltmp
+{ x0:vt }
+gseq_forall0
+<atup6(x0)><x0>
+  ( tup ) =
+let
+val b0 =
+forall$test0<x0>(tup.0)
+in//let
+if ~b0
+then false else
+if ~(forall$test0<x0>(tup.1))
+then false else
+if ~(forall$test0<x0>(tup.2))
+then false else
+if ~(forall$test0<x0>(tup.3))
+then false else
+if ~(forall$test0<x0>(tup.4))
+then false else forall$test0<x0>(tup.5)
+end//let//end-of-[gseq_forall0<atup6(x0)><x0>(...)]
+//
+(* ****** ****** *)
+//
+#impltmp
+{ x0:vt }
+gseq_forall0
+<atup7(x0)><x0>
+  ( tup ) =
+let
+val b0 =
+forall$test0<x0>(tup.0)
+in//let
+if ~b0
+then false else
+if ~(forall$test0<x0>(tup.1))
+then false else
+if ~(forall$test0<x0>(tup.2))
+then false else
+if ~(forall$test0<x0>(tup.3))
+then false else
+if ~(forall$test0<x0>(tup.4))
+then false else
+if ~(forall$test0<x0>(tup.5))
+then false else forall$test0<x0>(tup.6)
+end//let//end-of-[gseq_forall0<atup7(x0)><x0>(...)]
+//
+(* ****** ****** *)
+//
+#impltmp
+{ x0:vt }
+gseq_forall0
+<atup8(x0)><x0>
+  ( tup ) =
+let
+val b0 =
+forall$test0<x0>(tup.0)
+in//let
+if ~b0
+then false else
+if ~(forall$test0<x0>(tup.1))
+then false else
+if ~(forall$test0<x0>(tup.2))
+then false else
+if ~(forall$test0<x0>(tup.3))
+then false else
+if ~(forall$test0<x0>(tup.4))
+then false else
+if ~(forall$test0<x0>(tup.5))
+then false else
+if ~(forall$test0<x0>(tup.6))
+then false else forall$test0<x0>(tup.7)
+end//let//end-of-[gseq_forall0<atup8(x0)><x0>(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-
+(***********************************************************************)
 (* end of [ATS3/XANADU_prelude_DATS_VT_tupl001_vt.dats] *)
+(***********************************************************************)

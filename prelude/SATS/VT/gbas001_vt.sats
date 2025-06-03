@@ -80,24 +80,24 @@ fun
 <xs:vt>
 <x0:vt>
 set$at$exn0
-(xs: ~xs, x0, ni): void
+(xs: ~xs, ni, x0): void
 *)
 fun
 <xs:vt>
 <x0:vt>
 set$at$exn1
-(xs: !xs, x0, ni): void
+(xs: !xs, ni, x0): void
 //
 fun
 <xs:vt>
 <x0:vt>
 fset$at$exn0
-(xs: ~xs, x0, ni): (xs)
+(xs: ~xs, ni, x0): (xs)
 fun
 <xs:vt>
 <x0:vt>
 fset$at$exn1
-(xs: !xs, x0, ni): (xs)
+(xs: !xs, ni, x0): (xs)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -388,7 +388,58 @@ c3hoose$forall$test0(~x0, ~x0, ~x0): bool
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-
+(*
+HX-2025-05-31:
+Sat May 31 08:14:34 PM EDT 2025
+*)
+//
+fun
+<x0:vt>
+<y0:vt>
+<e1:vt>
+map$e1nv$fopr0(x0: ~x0, e1: !e1): ( y0 )
+fun
+<x0:vt>
+<y0:vt>
+<e1:vt>
+map$e1nv$fopr1(x0: !x0, e1: !e1): ( y0 )
+//
+fun
+<x0:vt>
+<y0:vt>
+<e1:vt>
+rmap$e1nv$fopr0(x0: ~x0, e1: !e1): ( y0 )
+fun
+<x0:vt>
+<y0:vt>
+<e1:vt>
+rmap$e1nv$fopr1(x0: !x0, e1: !e1): ( y0 )
+//
+fun
+<x0:vt>
+<y0:vt>
+<e1:vt>
+imap$e1nv$fopr0(ni, ~x0, e1: !e1): ( y0 )
+fun
+<x0:vt>
+<y0:vt>
+<e1:vt>
+imap$e1nv$fopr1(ni, !x0, e1: !e1): ( y0 )
+//
+fun
+<x0:vt>
+<y0:vt>
+<e1:vt>
+irmap$e1nv$fopr0(ni, ~x0, e1: !e1): ( y0 )
+fun
+<x0:vt>
+<y0:vt>
+<e1:vt>
+irmap$e1nv$fopr1(ni, !x0, e1: !e1): ( y0 )
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(***********************************************************************)
 (* end of [ATS3/XANADU_prelude_SATS_VT_gbas001_vt.sats] *)
+(***********************************************************************)
