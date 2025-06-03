@@ -9,6 +9,7 @@ BUN=bun
 ECHO=echo
 NODE=node
 PRINTF=printf
+PYTHON=python3
 ########################################################################
 ########################################################################
 all:: lambda1
@@ -48,6 +49,12 @@ $(XATS2JS)/runtime/srcgen2_prelude.js >> OUTS/$@_out.js
 lambda1:: ; \
 $(NODE) --stack-size=8192 \
 $(XATS2JS_JSEMIT01) lambda1.dats --_XATS2JS_ >> OUTS/$@_out.js
+########################################################################
+# lambda1:: ; \
+# XATS2JS_JSEMIT01=\
+# $(XATSHOME)/xassets/PY/xats2js/xats2js_jsemit01_ats3_opt0.py
+# $(PYTHON) \
+# $(XATS2JS_JSEMIT01) __void__ lambda1.dats --_XATS2JS_ >> OUTS/$@_out.js
 ########################################################################
 lambda1_out1:: ; \
 npx google-closure-compiler -W QUIET \
