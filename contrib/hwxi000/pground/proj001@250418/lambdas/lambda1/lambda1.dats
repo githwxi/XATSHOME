@@ -1,8 +1,8 @@
 (* ****** ****** *)
 (* ****** ****** *)
 (*
-HX-2024-09-10:
-Tue 10 Sep 2024 01:39:29 PM EDT
+HX-2025-06-02:
+Tue Jun  2 02:45:51 PM EDT 2025
 *)
 (* ****** ****** *)
 (* ****** ****** *)
@@ -335,6 +335,11 @@ HX: call-by-name
 *)
 val
 tm1 = term_interp(tm1)
+(*
+HX: call-by-value:
+val
+tm2 = term_interp(tm2)
+*)
 in//let
 case+ tm1 of
 |
@@ -497,17 +502,32 @@ term_interp(TMapp(TMapp(TMapp(TMtwo, TMtwo), TMtpl), TMint(10))))
 
 (* ****** ****** *)
 (* ****** ****** *)
-
-val Y = TMlam
+//
+val Y =
+TMlam
 ("f", TMapp(fomega, fomega)) where
 {
 val f = TMvar"f" and x = TMvar"x"
 val fomega = TMlam("x", TMapp(f, TMapp(x, x)))
 }
-
+//
+(*
+HX:
+This one is for call-by-value:
+*)
+val Y' =
+TMlam
+("f", TMapp(fomegay, fomegay)) where
+{
+val f = TMvar"f"
+and x = TMvar"x" and y = TMvar"y"
+val fomegay =
+TMlam("x", TMlam("y", TMapp(TMapp(f, TMapp(x, x)), y)))
+}
+//
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 fun
 TMlt
 (tm1: term, tm2: term) =
@@ -520,6 +540,7 @@ fun
 TMeq
 (tm1: term, tm2: term) =
 TMopr("=", list@(tm1, tm2))
+//
 fun
 TMlte
 (tm1: term, tm2: term) =
@@ -532,7 +553,20 @@ fun
 TMneq
 (tm1: term, tm2: term) =
 TMopr("!=", list@(tm1, tm2))
-
+fun
+TMcmp
+(tm1: term, tm2: term) =
+TMopr("cmp", list@(tm1, tm2))
+//
+fun
+TMconj
+(tm1: term, tm2: term) =
+TMopr("&&", list@(tm1, tm2))
+fun
+TMdisj
+(tm1: term, tm2: term) =
+TMopr("||", list@(tm1, tm2))
+//
 (* ****** ****** *)
 (* ****** ****** *)
 
@@ -582,15 +616,15 @@ tval =
 //
 |TVint of sint
 |TVbtf of bool
-|TVclo of (term, envx)
+|TVclo of (term, xenv)
 //
 (*
-HX: [envx] is
+HX: [xenv] is
 like a read-only stack!
 *)
-and envx =
+and xenv =
 |EVnil of ()
-|EVcons of (tvar, tval, envx)
+|EVcons of (tvar, tval, xenv)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -600,7 +634,7 @@ fun<>
 tval_print(tval: tval): void
 #extern
 fun<>
-evnx_print(envx: envx): void
+evnx_print(xenv: xenv): void
 //
 #impltmp
 <(*tmp*)>
@@ -645,7 +679,7 @@ fun
 term_eval00(tm0: term): tval
 #extern
 fun
-term_eval01(tm0: term, env: envx): tval
+term_eval01(tm0: term, env: xenv): tval
 //
 #implfun
 term_eval00(tm0) = term_eval01(tm0, EVnil())
@@ -654,8 +688,8 @@ term_eval00(tm0) = term_eval01(tm0, EVnil())
 (* ****** ****** *)
 //
 fun
-envx_search
-( env: envx
+xenv_search
+( env: xenv
 , x00: tvar): optn_vt(tval) =
 (
 case+ env of
@@ -669,8 +703,8 @@ EVcons
   (x00 = x01)
   then
   optn_vt_cons(v01)
-  else envx_search(env, x00))
-)(*case+*)//end-of-[envx_search(...)]
+  else xenv_search(env, x00))
+)(*case+*)//end-of-[xenv_search(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -689,7 +723,7 @@ TMbtf(btf) => TVbtf(btf)
 TMvar(x00) =>
 let
 val opt =
-envx_search(env, x00)
+xenv_search(env, x00)
 in//let
 case- opt of
 (*
@@ -883,6 +917,44 @@ TVint(i01) = term_eval01(tm1, env)
 val-
 TVint(i02) = term_eval01(tm2, env)
 }
+//
+|"||" =>
+let
+val-list_cons(tm1, tms) = tms
+val-list_cons(tm2, tms) = tms
+val-
+TVbtf(b01) = term_eval01(tm1, env)
+in//let
+//
+if
+(b01)
+then
+TVbtf(true)
+else TVbtf(b02) where
+{
+val-
+TVbtf(b02) = term_eval01(tm2, env)}
+//
+end//let
+//
+|"&&" =>
+let
+val-list_cons(tm1, tms) = tms
+val-list_cons(tm2, tms) = tms
+val-
+TVbtf(b01) = term_eval01(tm1, env)
+in//let
+//
+if
+(~b01)
+then
+TVbtf(~true)
+else TVbtf(b02) where
+{
+val-
+TVbtf(b02) = term_eval01(tm2, env)}
+//
+end//let
 //
 )(*case+*)//end-of-[TMopr(pnm,tms)]
 //
