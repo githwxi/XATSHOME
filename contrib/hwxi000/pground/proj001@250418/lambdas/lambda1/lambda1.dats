@@ -594,6 +594,28 @@ val () = printsln
 (* ****** ****** *)
 //
 val
+TMfibo =
+(
+TMfix
+(
+"f", "x", TMif0
+(
+TMlte(x, TMint(1)), x,
+TMadd(
+TMapp(f, TMsub(x, TMint(1))),
+TMapp(f, TMsub(x, TMint(2)))))))
+where
+{
+val f = TMvar"f" and x = TMvar"x"
+}
+//
+val () = printsln
+("TMapp(TMfibo, TMint(10)) = ", term_interp(TMapp(TMfibo, TMint(10))))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val
 TMfact2 =
 (
 TMfix
