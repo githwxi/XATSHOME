@@ -1,0 +1,56 @@
+########################################################################
+########################################################################
+# Makefile for
+# CS525-2024F-lambdas-lambda2
+########################################################################
+########################################################################
+CAT=cat
+BUN=bun
+ECHO=echo
+NODE=node
+PRINTF=printf
+PYTHON=python3
+########################################################################
+########################################################################
+all:: lambda2
+########################################################################
+clean:: ; rm -f *~
+cleanall:: ; rm -f *~
+cleanall:: ; rm -f OUTS/*_out.js
+cleanall:: ; rm -f OUTS/*_out.py
+cleanall:: ; rm -f OUTS/*_out?.js
+########################################################################
+testall:: \
+lambda2; $(PYTHON) OUTS/$<_out.py
+########################################################################
+XATSHOME=./../../../../../../../XATSHOME
+########################################################################
+#
+XATS2JSD=$(XATSHOME)/xassets/JS/xats2js
+XATS2PYD=$(XATSHOME)/xassets/PY/xats2py
+#
+XATS2PY_PYEMIT01=\
+$(XATSHOME)/xassets/JS/xats2py/xats2py_pyemit01_ats2_opt1.js
+XATS2PY_PYEMIT01=\
+$(XATSHOME)/xassets/JS/xats2py/xats2py_pyemit01_ats3_opt1.js
+#
+########################################################################
+########################################################################
+lambda2:: ; \
+$(PRINTF) "## %s\n" "`date`" > OUTS/$@_out.py
+lambda2:: ; $(CAT) \
+$(XATS2PYD)/runtime/xats2py_py1emit.py >> OUTS/$@_out.py
+lambda2:: ; $(CAT) \
+$(XATS2PYD)/runtime/srcgen2_prelude.py >> OUTS/$@_out.py
+# HX-2025-04-28:
+# the flag '--_XATS2PY_' can soon be dropped!
+lambda2:: ; \
+$(NODE) --stack-size=8192 \
+$(XATS2PY_PYEMIT01) lambda2.dats --_XATS2PY_ >> OUTS/$@_out.py
+########################################################################
+# lambda2:: ; \
+# XATS2PY_PYEMIT01=$(XATSHOME)/xassets/PY/xats2py/xats2py_pyemit01_ats3_opt0.py \
+# $(PYTHON) $(XATS2PY_PYEMIT01) __void__ lambda2.dats --_XATS2PY_ >> OUTS/$@_out.py
+########################################################################
+########################################################################
+##################### end of [Makefile_pyemit01] #######################
