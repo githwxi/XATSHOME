@@ -24,7 +24,7 @@ node --stack-size=8800 $(SOME_PATH_TO)/xats2js_jsemit01_ats3_opt1.js mycode.dats
 ```
 
 The expected output of the above command-line is some code in JavaScript,
-which be readily mixed with other code in JavaScript obtained elsewhere.
+which can be readily mixed with other code in JavaScript obtained elsewhere.
 Please find some running examples inside `contrib/githwxi/pground` for
 more details.
 
@@ -45,7 +45,7 @@ node --stack-size=8800 $(SOME_PATH_TO)/xats2py_pyemit01_ats3_opt1.js mycode.dats
 ```
 
 The expected output of the above command-line is some code in Python3,
-which be readily mixed with other code in Python3 obtained elsewhere. Please
+which can be readily mixed with other code in Python3 obtained elsewhere. Please
 find some running examples inside `contrib/githwxi/pground` for more details.
 
 ### ATS3-to-JS-in-ATS3.py ###

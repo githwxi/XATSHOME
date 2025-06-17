@@ -62,6 +62,8 @@ pure lambda-calculus
 // Y(lam f.lam x. ...)
 |TMfix of (tvar, tvar, term)
 //
+|TMlet of (tvar, term, term)
+//
 #typedef termlst = list(term)
 //
 (* ****** ****** *)
@@ -142,6 +144,11 @@ prints(
 TMfix(f00, x01, tmx) =>
 prints(
 "TMfix(", f00, ";", x01, ";", tmx, ")")
+//
+|
+TMlet(x01, tm1, tm2) =>
+prints(
+"TMlet(", x01, ";", tm1, ";", tm2, ")")
 //
 ) where
 {
@@ -310,6 +317,14 @@ then tm0 else
 if
 (x00 = x01)
 then tm0 else TMfix(f00,x01,subst(tmx)))
+//
+|TMlet(x01, tm1, tm2) =>
+(
+  TMlet(x01, tm1, tm2)) where
+{
+val tm1 = subst(tm1)
+val tm2 =
+if (x00 = x01) then tm2 else subst(tm2) }
 //
 end(*let*)//endof(term_subst(tm0,x00,sub))
 //
