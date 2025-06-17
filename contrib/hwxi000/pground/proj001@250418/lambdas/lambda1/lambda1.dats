@@ -1003,9 +1003,19 @@ val-
 TVbtf(btf) =
 term_eval01(tm1, env)
 in//let
-(
 term_eval01
-(if btf then tm2 else tm3, env)) end
+(if btf then tm2 else tm3, env)
+end//let
+//
+|
+TMlet
+(x01, tm1, tm2) =>
+(
+  term_eval01(tm2, env)
+) where
+{
+val tv1 = term_eval01(tm1, env)
+val env = EVcons(x01, tv1, env) }
 //
 ) where
 {
