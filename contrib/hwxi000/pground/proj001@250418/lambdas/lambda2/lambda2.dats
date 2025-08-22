@@ -642,8 +642,10 @@ where
 val f = TMvar"f" and x = TMvar"x"
 }
 //
+(*
 val () = printsln
 ("TMapp(TMfact2, TMint(5)) = ", term_interp(TMapp(TMfact2, TMint(5))))
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1052,5 +1054,5 @@ console_log
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [hwxi/pground/proj001@250418/lambdas/lambda2/lambda2.dats] *)
+(* end of [hwxi000/pground/proj001@250418/lambdas/lambda2/lambda2.dats] *)
 (***********************************************************************)
