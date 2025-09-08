@@ -214,13 +214,16 @@ meant to test whether all the elements in some sequence satisfies
   related to `forall`. 
 - `z2irforall` is related to `z2forall` in the same way as `irforall` is
   related to `forall`.
-- Prefixes `z3` and `z4` mean the zip of 3 and 4 sequences, respectively.
 - `x2forall` essentially means to apply `forall` to the cross of two
   given sequences.
 - `x2iforall` is related to `x2forall` in the same way as `iforall` is
   related to `forall`. 
 - `ix2forall` essentially means to apply `forall` to the i-cross of two 
   given sequences.
+
+Prefixes `z3` and `z4` mean the zip of 3 and 4 sequences,
+respectively.  Similarly, prefixes `x3` and `x4` mean the cross of 3
+and 4 sequences, respectively.
 
 <!--
 ########################## end of [README.md] ##########################
