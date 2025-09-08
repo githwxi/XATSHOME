@@ -193,3 +193,28 @@ out-of-bounds array access, which can be taken advantage of by a
 malicious program. Therefore, when applying `gseq_head$raw` to a
 sequence, one must possess, formally or informally, a proof of some
 kind that attests to the non-emptiness of the sequence.
+
+## Rules for naming combinators
+
+Let us use `forall` as an example. Generally speaking, `forall` is
+meant to test whether all the elements in some sequence satisfies
+`forall$test`. 
+
+- `rforall` means to test elements in the order that is the reverse
+  of the order used by `forall`.
+- `iforall` means to test elements paired with their positions, where
+  the initial position is set to be zero.
+- `irforall` is related to `rforall` in the same way as `iforall` is
+  related to `forall`.
+- `z2forall` essentially means to apply `forall` to the zip of two
+  given sequences.
+- `z2rforall` is related to `z2forall` in the same way as `rforall` is
+  related to `forall`. 
+- `z2iforall` is related to `z2forall` in the same way as `iforall` is
+  related to `forall`. 
+- `z2irforall` is related to `z2forall` in the same way as `irforall` is
+  related to `forall`. 
+  
+<!--
+########################## end of [README.md] ##########################
+-->
