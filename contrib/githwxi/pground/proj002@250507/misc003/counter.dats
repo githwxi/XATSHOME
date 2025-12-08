@@ -31,6 +31,7 @@ DATS_Down$button$onclick
 fun
 DATS_Reset$button$onclick
 (work: strn -> void): void = $extnam()
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -132,6 +133,7 @@ where
 val () = theCount.set(0)
 val p0 = a0rf_get(theStamp)
 val () = a0rf_set(theStamp, p0+1)
+//
 }(*where*)//end-of-[DATS_Reset$button$onclick]
 //
 (* ****** ****** *)

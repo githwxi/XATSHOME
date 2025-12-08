@@ -6,6 +6,7 @@
 "prelude/HATS/prelude_JS_dats.hats"
 (* ****** ****** *)
 (* ****** ****** *)
+//
 #extern
 fun
 DATS_Up$button$onclick
@@ -18,6 +19,7 @@ DATS_Down$button$onclick
 fun
 DATS_Reset$button$onclick
 (work: strn -> void): void = $extnam()
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
