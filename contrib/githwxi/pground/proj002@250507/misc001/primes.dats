@@ -85,5 +85,7 @@ DATS_prime$onclick = onclick_make_lstrx(the_primes)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [githwxi/pground/proj002@250507/misc001/primes.dats] *)
+(*
+The end of
+[XATSHOME/contrib/githwxi/pground/proj002@250507/misc001/primes.dats] *)
 (***********************************************************************)

@@ -201,6 +201,22 @@ XATS2JS_dflt_neq$dflt
 }
 //
 (* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+dflt_cmp$dflt
+  (f1, f2) =
+(
+XATS2JS_dflt_cmp$dflt
+  (f1, f2)) where
+{
+#extern
+fun
+XATS2JS_dflt_cmp$dflt
+(f1: dflt, f2: dflt): sint = $extnam()
+}
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
@@ -357,7 +373,6 @@ XATS2JS_dflt_trunc(df: dflt): dflt = $extnam()
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)
-
+(***********************************************************************)
 (* end of [ATS3/XANADU_prelude_DATS_CATS_JS_gint000.dats] *)
+(***********************************************************************)

@@ -63,5 +63,7 @@ val () = a0rf_set(theCount, ( 0 ))
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [githwxi/pground/proj002@250507/misc002/counter.dats] *)
+(*
+The end of
+[XATSHOME/contrib/githwxi/pground/proj002@250507/misc002/counter.dats] *)
 (***********************************************************************)

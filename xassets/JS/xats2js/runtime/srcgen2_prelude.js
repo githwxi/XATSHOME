@@ -1,4 +1,4 @@
-// Thu May  8 11:06:34 PM EDT 2025
+// Sat Dec 13 05:23:45 PM EST 2025
 ////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////
 /*
@@ -350,6 +350,48 @@ XATS2JS_sint_print
 //
 ////////////////////////////////////////////////////////////////////////.
 ////////////////////////////////////////////////////////////////////////.
+//
+// HX-2025-09-27:
+// for unsigned ints
+// Sat Sep 27 12:38:38 PM EDT 2025
+//
+////////////////////////////////////////////////////////////////////////.
+//
+function
+XATS2JS_uint_print
+  ( u0 )
+{
+  let cs = u0.toString()
+  XATS2JS_the_print_store.push(cs); return
+}
+//
+////////////////////////////////////////////////////////////////////////.
+//
+function
+XATS2JS_sint_to$uint
+  ( i0 )
+{
+  if (i0>=0)
+  {
+    return i0 // i0>=0
+  } else {
+    throw new Error("XATS2JS_sint_to$uint: i0 = " + i0.toString())
+  } // end of [if(i0>=0)]
+}
+function
+XATS2JS_uint_to$sint
+  ( u0 )
+{
+  if (u0>=0)
+  {
+    return u0 // always?
+  } else {
+    throw new Error("XATS2JS_uint_to$sint: u0 = " + u0.toString())
+  } // end of [if(u0>=0)]
+}
+//
+////////////////////////////////////////////////////////////////////////.
+////////////////////////////////////////////////////////////////////////.
 // end of [ATS3/XANADU_prelude_DATS_CATS_JS_gint000.cats]
 ////////////////////////////////////////////////////////////////////////.
 ////////////////////////////////////////////////////////////////////////.
@@ -655,13 +697,29 @@ function
 XATS2JS_dflt_eq$dflt
   (f1, f2)
 {
-  return (f1 === f2) // HX: equal
+  return (f1 === f2) // HX: eq
 }
 function
 XATS2JS_dflt_neq$dflt
   (f1, f2)
 {
-  return (f1 !== f2) // HX: noteq
+  return (f1 !== f2) // HX: neq
+}
+//
+/*
+HX-2025-12-13:
+Sat Dec 13 05:19:31 PM EST 2025
+*/
+//
+function
+XATS2JS_dflt_cmp$dflt
+  (f1, f2)
+{
+  if (f1 < f2)
+    return (-1) // lt
+  else // f1 >= f2
+    return (f1 > f2 ? 1 : 0)
+  // HX: end-of-if( f1 < f2 )
 }
 //
 ////////////////////////////////////////////////////////////////////////.
@@ -850,6 +908,12 @@ XATS000_strn_fmake_fwork
 //
 ////////////////////////////////////////////////////////////////////////.
 //
+function
+XATS000_strn_print
+  ( cs )
+{
+  return XATS2JS_strn_print(cs)
+}
 function
 XATS2JS_strn_print
   ( cs )

@@ -140,5 +140,7 @@ val () = a0rf_set(theStamp, p0+1)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [githwxi/pground/proj002@250507/misc003/counter.dats] *)
+(*
+The end of
+[XATSHOME/contrib/githwxi/pground/proj002@250507/misc003/counter.dats] *)
 (***********************************************************************)

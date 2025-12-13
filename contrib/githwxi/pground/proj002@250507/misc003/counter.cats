@@ -33,5 +33,7 @@ CATS_Reset$button$onclick() {
 /* ****** ****** */
 //
 /***********************************************************************/
-// end of [githwxi/pground/proj002@250507/misc003/counter.cats]
+/*
+The end of
+[XATSHOME/contrib/githwxi/pground/proj002@250507/misc003/counter.cats] */
 /***********************************************************************/

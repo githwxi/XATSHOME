@@ -1,6 +1,6 @@
 ########################################################################
 ########################################################################
-# Makefile for misc003
+# Makefile for misc004
 ########################################################################
 ########################################################################
 CAT=cat
@@ -11,7 +11,7 @@ PRINTF=printf
 PYTHON=python3
 ########################################################################
 ########################################################################
-all:: counter
+all:: Game-of-24
 ########################################################################
 clean:: ; rm -f *~
 ########################################################################
@@ -31,16 +31,25 @@ $(XATSHOME)/xassets/JS/xats2js/xats2js_jsemit01_ats3_opt1.js
 #
 ########################################################################
 ########################################################################
-counter:: ; \
-$(CPF) counter.cats OUTS/counter_cats.js
-counter:: ; \
-$(PRINTF) "// %s\n" "`date`" > OUTS/$@_dats.js
-counter:: ; \
-$(CAT) $(XATS2JSD)/runtime/xats2js_js1emit.js >> OUTS/$@_dats.js
-counter:: ; \
-$(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/$@_dats.js
-counter:: counter.dats; \
-$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_dats.js
+test:: ; \
+$(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
+test:: ; \
+$(CAT) $(XATS2JSD)/runtime/xats2js_js1emit.js >> OUTS/$@_out.js
+test:: ; \
+$(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/$@_out.js
+test:: Game-of-24.dats; \
+$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
 ########################################################################
+embedded:: ; \
+$(CPF) Game-of-24.cats OUTS/Game-of-24_cats.js
+embedded:: ; \
+$(PRINTF) "// %s\n" "`date`" > OUTS/$@_dats.js
+embedded:: ; \
+$(CAT) $(XATS2JSD)/runtime/xats2js_js1emit.js >> OUTS/$@_dats.js
+embedded:: ; \
+$(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/$@_dats.js
+embedded:: Game-of-24_dats
+Game-of-24_dats: Game-of-24.dats; \
+$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_dats.js
 ########################################################################
 ##################### end of [Makefile_jsemit01] #######################
