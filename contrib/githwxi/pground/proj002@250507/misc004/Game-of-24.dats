@@ -386,18 +386,22 @@ GameOf24_solve$print
 GameOf24_solve$print
 ( n1 , n2 , n3 , n4 ) =
 let
-val sols = GameOf24_solve(n1, n2, n3, n3)
-in
+val sols = GameOf24_solve(n1, n2, n3, n4)
+in//let
+//
 if // if
 list_nilq(sols) then
 println("No solution found!") else
 (
 println("The solutions found:");
 list_foritm$f1un(sols, lam(sol) => println(sol)))
+//
 end(*let*)//end-of-[GameOf24_solve$print(n1,n2,n3,n4)]
 //
+(*
 val () = GameOf24_solve$print(3, 3, 8, 8)
 val () = GameOf24_solve$print(4, 4, 10, 10)
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

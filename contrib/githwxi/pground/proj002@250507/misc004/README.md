@@ -1,9 +1,13 @@
 # Game-of-24
 
+## Date
+
+Sun Dec 14 12:56:52 PM EST 2025
+
 ## Description
 
-Given four integers n1, n2, n3 and n4, one chooses two and uses them
-to produce a rational number r1 by applying either addition,
+Given four integers n1, n2, n3 and n4, one chooses two and uses
+them to produce a rational number r1 by applying either addition,
 subtraction, multiplication or division; one mixes r1 with the
 remaining two numbers and chooses two of them to produce a rational
 number r2 by applying either addition, subtraction, multiplication or
@@ -21,5 +25,4 @@ It is a straightforward tree-based search.
 
 ## Implementation
 
-An implementation is given that makes direct use of depth-first
-tree-based (linear) streamization.
+An implementation is given that makes direct use of breadth-first search.
