@@ -20,8 +20,18 @@ a click, and the next prime is shown after the next click, and so on.
 
 ## [misc002](./misc002)
 
+A webpage is built that contains a counter whose count can be
+increased and decreased via clicking buttons.
+
 ## [misc003](./misc003)
 
+A webpage is built that contains a counter whose count can be
+increased and decreased *continuously* via clicking buttons.
+
 ## [misc004](./misc004)
+
+A webpage is built that gives a demo of the so-called Game-of-24.
+This example is adapted from some ancient code written in the early
+days of ATS development.
 
 Happy ATS programming!
