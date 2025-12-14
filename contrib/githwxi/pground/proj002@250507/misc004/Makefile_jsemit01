@@ -18,6 +18,7 @@ clean:: ; rm -f *~
 cleanall:: ; rm -f *~
 cleanall:: ; rm -f OUTS/*_cats.js
 cleanall:: ; rm -f OUTS/*_dats.js
+cleanall:: ; rm -f OUTS/test_out.js
 ########################################################################
 XATSHOME=./../../../../../../XATSHOME
 ########################################################################
@@ -43,13 +44,13 @@ $(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
 embedded:: ; \
 $(CPF) Game-of-24.cats OUTS/Game-of-24_cats.js
 embedded:: ; \
-$(PRINTF) "// %s\n" "`date`" > OUTS/$@_dats.js
+$(PRINTF) "// %s\n" "`date`" > OUTS/Game-of-24_dats.js
 embedded:: ; \
-$(CAT) $(XATS2JSD)/runtime/xats2js_js1emit.js >> OUTS/$@_dats.js
+$(CAT) $(XATS2JSD)/runtime/xats2js_js1emit.js >> OUTS/Game-of-24_dats.js
 embedded:: ; \
-$(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/$@_dats.js
+$(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/Game-of-24_dats.js
 embedded:: Game-of-24_dats
 Game-of-24_dats: Game-of-24.dats; \
-$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_dats.js
+$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/Game-of-24_dats.js
 ########################################################################
 ##################### end of [Makefile_jsemit01] #######################
