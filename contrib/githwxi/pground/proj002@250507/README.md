@@ -5,4 +5,23 @@ mixed with JS code obtained otherwise (e.g., manually written). The
 essential feature needed is the one that allows functions defined in ATS3
 to be called in JS and vice versa.
 
+## [misc000](./misc000)
+
+A webpage is built in which there is a button that can be clicked
+to issue an alert. The very point of this exercise is to show how a
+function implemented in ATS3 can be called inside JS.
+
+## [misc001](./misc001)
+
+A webpage is built for presenting the elements in a (lazy) stream.
+In this example, a stream of all the prime numbers is created and then
+presented through the use of a click button. One prime is shown after
+a click, and the next prime is shown after the next click, and so on.
+
+## [misc002](./misc002)
+
+## [misc003](./misc003)
+
+## [misc004](./misc004)
+
 Happy ATS programming!
