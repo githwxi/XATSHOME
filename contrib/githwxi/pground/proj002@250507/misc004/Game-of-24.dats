@@ -242,6 +242,11 @@ val () = printsln
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-12-14:
+This part is now
+in the prelude library.
+*)
 #extern
 fun
 <a:t0>
