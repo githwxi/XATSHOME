@@ -4,5 +4,25 @@ We are not here to systematically present programming features in
 ATS3.  Instead, we, more or less, randomly choose some features that
 we think may be of importance for those interested in doing practical
 programming in ATS3.
-  
+
+## [misc000](./misc000)
+
+This example shows how to print "Hello, world!" in ATS3.  There is
+some explanation on how to use xats2py and xats2js to compile it to
+Python3 and JavaScript, respectively.
+
+## [misc001](./misc001)
+
+Here one can find some code making use of linear streams.
+
+## [misc002](./misc002)
+
+There are several examples here showing compilation from ATS3 to PY
+(Python3) via the XATS2PY compiler.
+
+## [misc003](./misc003)
+
+Like [misc001](./misc001), one can find here some code making use of
+linear streams.
+
 Happy ATS programming!

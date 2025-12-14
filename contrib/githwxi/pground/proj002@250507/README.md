@@ -27,6 +27,7 @@ increased and decreased via clicking buttons.
 
 A webpage is built that contains a counter whose count can be
 increased and decreased *continuously* via clicking buttons.
+This example is a variant of [misc002](./misc002).
 
 ## [misc004](./misc004)
 
