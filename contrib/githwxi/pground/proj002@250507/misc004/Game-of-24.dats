@@ -242,54 +242,18 @@ val () = printsln
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
-HX-2025-12-14:
-This part is now
-in the prelude library.
-*)
 #extern
 fun
 <a:t0>
 list_list$concat
-(xss: list(list(a))): list(a)
-#extern
-fun
-<a:t0>
-list_list$concat_vt
-(xss: list(list(a))): list_vt(a)
-//
+(xz:list(list(a))): list(a)
 #impltmp
 < a:t0 >
 list_list$concat
-  (   xss   ) =
-list_vt2t(
-list_list$concat_vt<a>(xss))
-//
-#impltmp
-< a:t0 >
-list_list$concat_vt
-  (   xss   ) =
-(
-  loop(xss, res)) where
-{
-//
-val res = list_vt_nil(*0*)
-//
-fun
-loop
-( xss
-: list(list(a))
-, res: list_vt(a)): list_vt(a) =
-(
-case+ xss of
-|
-list_nil() =>
-list_vt_reverse0(res)
-|
-list_cons(xs1, xss) =>
-loop(xss, list_rappendx0_vt(xs1, res)))
-//
-}(*where*)//end-of-[list$list_concat_vt(xss)]
+  (   xz   ) =
+list(
+gseq_concat_lstrm
+<list(list(a))><list(a)><a>(xz))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -357,9 +321,9 @@ sint2_combine(n1, n4)\aops(sint2_combine(n2, n3)))
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
+// (*
 val () = printsln("sint4_combine(1,2,3,4) = ", sint4_combine(1,2,3,4))
-*)
+// *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -403,10 +367,10 @@ list_foritm$f1un(sols, lam(sol) => println(sol)))
 //
 end(*let*)//end-of-[GameOf24_solve$print(n1,n2,n3,n4)]
 //
-(*
+// (*
 val () = GameOf24_solve$print(3, 3, 8, 8)
 val () = GameOf24_solve$print(4, 4, 10, 10)
-*)
+// *)
 //
 (* ****** ****** *)
 (* ****** ****** *)

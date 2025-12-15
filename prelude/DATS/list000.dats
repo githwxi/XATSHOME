@@ -86,6 +86,15 @@ case+ xs of
 | list_nil() => true
 | list_cons(_, _) => false)
 //
+#impltmp
+< (*0*) >
+list_consq
+{a:t0}(xs) =
+(
+case+ xs of
+| list_nil() => false
+| list_cons(_, _) => (true))
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -593,6 +602,68 @@ list_cons(x1,
 list_cons(x2,
   list_make_3val<x0>(x3, x4, x5)))))
 end//let//end-of-[list_make_t0up6(xs)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2025-12-13:
+Sat Dec 13 10:31:30 PM EST 2025
+*)
+#impltmp
+< a:t0 >
+list_list$concat
+  (   xss   ) =
+list_vt2t(
+list_list$concat_vt<a>(xss))
+//
+#impltmp
+< a:t0 >
+list_list$concat_vt
+  (   xss   ) =
+(
+  loop(xss, res)) where
+{
+//
+val res = list_vt_nil(*0*)
+//
+fun
+loop
+( xss
+: list(list(a))
+, res: list_vt(a)): list_vt(a) =
+(
+case+ xss of
+|
+list_nil() =>
+list_vt_reverse0(res)
+|
+list_cons(xs1, xss) =>
+loop(xss, list_rappendx0_vt(xs1, res)))
+//
+}(*where*)//end-of-[list_list$concat_vt(xss)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2025-12-15:
+Mon Dec 15 02:47:01 PM EST 2025
+*)
+//
+#impltmp
+< a:t0 >
+list_make0_lstrm(xs) =
+(
+list_vt2t(strm_vt_listize0<a>(xs)))
+//end-of-[impltmp<a:t0>(list_make0_lstrm(xs))]
+//
+#impltmp
+< a:t0 >
+list_make0_lstrq(xs) =
+(
+  list_vt2t(strq_vt_listize0<a>(xs)))
+//end-of-[impltmp<a:t0>(list_make0_lstrq(xs))]
 //
 (* ****** ****** *)
 (* ****** ****** *)

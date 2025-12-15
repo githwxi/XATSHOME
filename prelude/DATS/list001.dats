@@ -47,11 +47,6 @@ Authoremail: gmhwxiATgmailDOTcom
 g_forall
 <list(x0)> =
 gseq_forall<list(x0)><x0>
-#impltmp
-{ x0:t0 }
-g_exists
-<list(x0)> =
-gseq_exists<list(x0)><x0>
 //
 (* ****** ****** *)
 //
@@ -145,23 +140,148 @@ rforall$test<x0> = rforall$test1<x0>
 #impltmp
 < x0:t0 >
 list_iforall =
-gseq_iforall<list(x0)><x0>(* void *)
+gseq_iforall<list(x0)><x0>(*void*)
 //
 #impltmp
 < x0:t0 >
 list_irforall =
-gseq_irforall<list(x0)><x0>(* void *)
+gseq_irforall<list(x0)><x0>(*void*)
 //
 (* ****** ****** *)
 //
 #impltmp
 < x0:t0 >
 list_forall$f1un =
-gseq_forall$f1un<list(x0)><x0>(* void *)
+gseq_forall$f1un<list(x0)><x0>(*void*)
 #impltmp
 < x0:t0 >
 list_iforall$f2un =
-gseq_iforall$f2un<list(x0)><x0>(* void *)
+gseq_iforall$f2un<list(x0)><x0>(*void*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2025-10-15:
+Wed Oct 15 02:26:54 AM EDT 2025
+*)
+//
+(* ****** ****** *)
+//
+#impltmp
+{ x0:t0 }
+g_exists
+<list(x0)> =
+gseq_exists<list(x0)><x0>
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+list_exists
+  ( xs ) = 
+(
+  loop(xs) ) where
+{
+fun
+loop
+(xs: list(x0)): bool =
+(
+case+ xs of
+| ~
+list_nil() =>
+  (false)
+| ~
+list_cons(x1, xs) =>
+let
+val test =
+exists$test<x0>(x1) in//let
+(if test
+ then true else loop(xs)) end)
+}
+//
+#impltmp
+{ x0:t0 }
+gseq_exists
+<list(x0)><x0> = list_exists<x0>
+#impltmp
+{ x0:t0 }
+gseq_exists0
+<list(x0)><x0>(xs) =
+list_exists<x0>(xs) where
+{
+#impltmp
+exists$test<x0> = exists$test0<x0>
+}
+#impltmp
+{ x0:t0 }
+gseq_exists1
+<list(x0)><x0>(xs) =
+list_exists<x0>(xs) where
+{
+#impltmp
+exists$test<x0> = exists$test1<x0>
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+list_rexists
+  ( xs ) =
+(
+list_vt_exists0<x0>
+(list_reverse_vt<x0>(xs))) where
+{
+#impltmp
+exists$test0<x0> = rexists$test<x0>
+}
+//
+#impltmp
+{ x0:t0 }
+gseq_rexists
+<list(x0)><x0> = list_rexists<x0>
+#impltmp
+{ x0:t0 }
+gseq_rexists0
+<list(x0)><x0>(xs) =
+list_rexists<x0>(xs) where
+{
+#impltmp
+rexists$test<x0> = rexists$test0<x0>
+}
+#impltmp
+{ x0:t0 }
+gseq_rexists1
+<list(x0)><x0>(xs) =
+list_rexists<x0>(xs) where
+{
+#impltmp
+rexists$test<x0> = rexists$test1<x0>
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+list_iexists =
+gseq_iexists<list(x0)><x0>(*void*)
+//
+#impltmp
+< x0:t0 >
+list_irexists =
+gseq_irexists<list(x0)><x0>(*void*)
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+list_exists$f1un =
+gseq_exists$f1un<list(x0)><x0>(*void*)
+#impltmp
+< x0:t0 >
+list_iexists$f2un =
+gseq_iexists$f2un<list(x0)><x0>(*void*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -275,8 +395,17 @@ list_foritm$f1un =
 gseq_foritm$f1un<list(x0)><x0>(* void *)
 #impltmp
 < x0:t0 >
+list_rforitm$f1un =
+gseq_rforitm$f1un<list(x0)><x0>(* void *)
+//
+#impltmp
+< x0:t0 >
 list_iforitm$f2un =
 gseq_iforitm$f2un<list(x0)><x0>(* void *)
+#impltmp
+< x0:t0 >
+list_irforitm$f2un =
+gseq_irforitm$f2un<list(x0)><x0>(* void *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -348,7 +477,7 @@ Wed 31 Jul 2024 10:34:56 AM EDT
 //
 #impltmp
 < x0:t0 >
-list_c2hoose_lstrm
+list_2choose_lstrm
   ( xs ) =
 (
   auxmain(xs)) where
@@ -379,40 +508,40 @@ gseq_map_lstrm<xs><x0><y0>(xs)
 #impltmp
 map$fopr<x0><y0>(x2) = @(x1, x2) } }//whr
 )(*case+*)
-}(*where*)//end-of-[list_c2hoose_lstrm(xs)]
+}(*where*)//end-of-[list_2choose_lstrm(xs)]
 //
 #impltmp
 < x0:t0 >
-list_c2hoose$forall
+list_2choose$forall
   ( xs ) =
 (
 strm_vt_forall0<x2>
-(list_c2hoose_lstrm<x0>(xs))
+(list_2choose_lstrm<x0>(xs))
 ) where
 {
 #typedef x2 = @(x0, x0)
 #impltmp
 forall$test0<x2>(x2) =
 c2hoose$forall$test<x0>(x2.0, x2.1)
-}(*where*)//end-of-[list_c2hoose$forall(xs)]
+}(*where*)//end-of-[list_2choose$forall(xs)]
 //
 #impltmp
 < x0:t0 >
-list_c2hoose$forall$f2un
+list_2choose$forall$f2un
   (xs, test) =
 (
-list_c2hoose$forall<x0>(xs)
+list_2choose$forall<x0>(xs)
 ) where
 {
 #impltmp
 c2hoose$forall$test<x0>(x1, x2) = test(x1, x2)
-}(*where*)//end-of-[list_c2hoose$forall$f2un(...)]
+}(*where*)//end-of-[list_2choose$forall$f2un(...)]
 //
 (* ****** ****** *)
 //
 #impltmp
 < x0:t0 >
-list_c3hoose_lstrm
+list_3choose_lstrm
   ( xs ) =
 (
   auxmain(xs)) where
@@ -439,7 +568,7 @@ strm_vt_append00
 val r1 =
 (
 strm_vt_map0<xx><y0>
-(list_c2hoose_lstrm<x0>(xs))
+(list_2choose_lstrm<x0>(xs))
 ) where
 {
 #impltmp
@@ -447,34 +576,34 @@ map$fopr
 <xx><y0>(xx) = @(x1, xx.0, xx.1) } }//whr
 //
 )(*case+*)
-}(*where*)//end-of-[list_c3hoose_lstrm(xs)]
+}(*where*)//end-of-[list_3choose_lstrm(xs)]
 //
 #impltmp
 < x0:t0 >
-list_c3hoose$forall
+list_3choose$forall
   ( xs ) =
 (
 strm_vt_forall0<x3>
-(list_c3hoose_lstrm<x0>(xs))
+(list_3choose_lstrm<x0>(xs))
 ) where
 {
 #typedef x3 = @(x0, x0, x0)
 #impltmp
 forall$test0<x3>(x3) =
 c3hoose$forall$test<x0>(x3.0, x3.1, x3.2)
-}(*where*)//end-of-[list_c3hoose$forall(xs)]
+}(*where*)//end-of-[list_3choose$forall(xs)]
 //
 #impltmp
 < x0:t0 >
-list_c3hoose$forall$f3un
+list_3choose$forall$f3un
   (xs, test) =
 (
-list_c3hoose$forall<x0>(xs)
+list_3choose$forall<x0>(xs)
 ) where
 {
 #impltmp
 c3hoose$forall$test<x0>(x1, x2, x3) = test(x1, x2, x3)
-}(*where*)//end-of-[list_c3hoose$forall$f3un(...)]
+}(*where*)//end-of-[list_3choose$forall$f3un(...)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -592,6 +721,247 @@ Sat May 31 09:19:05 PM EDT 2025
 < e1:vt >
 list_map$e1nv =
 gseq_map$e1nv_list<list(x0)><x0><y0><e1>(*void*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2025-11-03:
+Mon Nov  3 04:07:29 PM EST 2025
+*)
+//
+#impltmp
+< x0:t0 >
+< r0:vt >
+list_folditm
+  (xs, r0) = 
+(
+  loop(xs, r0)) where
+{
+//
+fun
+loop
+( xs
+: list(x0), r0: r0): (r0) =
+(
+case+ xs of
+| ~
+list_nil() => ( r0 )
+| ~
+list_cons(x1, xs) =>
+let
+val r0 =
+folditm$fopr
+<x0><r0>(r0, x1) in loop(xs, r0) end)
+//
+}(*where*)//end-of-[list_folditm<x0><r0>(xs,r0)]
+//
+#impltmp
+{ x0:t0 }
+{ r0:vt }
+gseq_folditm
+<list(x0)><x0><r0> = list_folditm<x0><r0>
+#impltmp
+{ x0:t0 }
+{ r0:vt }
+gseq_folditm0
+<list(x0)><x0><r0>(xs, r0) =
+(
+list_folditm<x0><r0>(xs, r0)) where
+{
+#impltmp
+folditm$fopr<x0><r0> = folditm$fopr0<x0><r0>
+}(*where*)//end(gseq_folditm0<list(x0)><x0><r0>)
+#impltmp
+{ x0:t0 }
+{ r0:vt }
+gseq_folditm1
+<list(x0)><x0><r0>(xs, r0) =
+(
+list_folditm<x0><r0>(xs, r0)) where
+{
+#impltmp
+folditm$fopr<x0><r0> = folditm$fopr1<x0><r0>
+}(*where*)//end(gseq_folditm1<list(x0)><x0><r0>)
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+< r0:vt >
+list_folditm$f2un =
+gseq_folditm$f2un<list(x0)><x0><r0>(*void*)
+#impltmp
+< x0:t0 >
+< r0:vt >
+list_ifolditm$f3un =
+gseq_ifolditm$f3un<list(x0)><x0><r0>(*void*)
+//
+#impltmp
+< x0:t0 >
+< r0:vt >
+list_rfolditm$f2un =
+gseq_rfolditm$f2un<list(x0)><x0><r0>(*void*)
+#impltmp
+< x0:t0 >
+< r0:vt >
+list_irfolditm$f3un =
+gseq_irfolditm$f3un<list(x0)><x0><r0>(*void*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2025-12-14:
+Sun Dec 14 10:39:18 AM EST 2025
+*)
+//
+#impltmp
+< x0:t0 >
+list_filter
+  (  xs  ) =
+list_vt2t(list_filter_vt<x0>(xs))
+#impltmp
+< x0:t0 >
+list_filter$f1un
+  (xs, test) =
+list_vt2t(list_filter$f1un_vt<x0>(xs, test))
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+list_filter_vt
+  (  xs  ) =
+(
+  loop(xs, rs)) where
+{
+//
+val rs = list_vt_nil(*0*)
+//
+fun
+loop
+( xs: list(x0)
+, rs: list_vt(x0)): list_vt(x0) =
+(
+case+ xs of
+//
+|list_nil
+( (*00*) ) =>
+list_vt_reverse0<x0>(rs)
+//
+|list_cons
+( x1, xs ) =>
+if
+filter$test<x0>(x1)
+then loop(xs, list_vt_cons(x1, rs))
+else loop(xs, rs))//end(else)//end(if)
+//
+}(*where*)//end-of-[list_filter_vt(xs)]
+//
+#impltmp
+< x0:t0 >
+list_filter$f1un_vt
+  (xs, test) =
+(
+  list_filter_vt<x0>(xs))
+where
+{
+#impltmp filter$test<x0> = test(*void*)
+}(*where*)//end-of-[list_filter$f1un_vt(xs)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2025-12-14:
+This code is VERY inefficient!
+Sun Dec 14 05:49:39 PM EST 2025
+*)
+#impltmp
+< x0:t0 >
+list_1choose$split_lstrm
+  (  xs  ) =
+$llazy(
+//
+case+ xs of
+|
+list_nil
+((*void*)) =>
+(
+strmcon_vt_nil(*void*))
+|
+list_cons
+( x1, xs ) =>
+let
+//
+#vwtpdef
+xxs = (x0, list_vt(x0))
+//
+in//let
+//
+strmcon_vt_cons
+(
+(x1, list_copy_vt(xs)),
+strm_vt_map0$f1un<xxs><xxs>
+(
+list_1choose$split_lstrm(xs),
+lam(xxs) => (xxs.0, list_vt_cons(x1, xxs.1))))
+//
+end(*let*)//end-of-[list_cons(x1,xs)]
+//
+)(*case+*)//end-of-[list_1choose$split_lstrm<x0>]
+//
+(* ****** ****** *)
+//
+(*
+HX-2025-12-14:
+Compared to the above one,
+this one is more efficient!
+Sun Dec 14 08:17:41 PM EST 2025
+*)
+#impltmp
+< x0:t0 >
+list_1choose$split_lstrm
+  (  xs  ) =
+(
+case+ xs of
+|list_nil() =>
+(
+  strm_vt_nil())
+|list_cons(x1, xs) =>
+(
+  auxmain(x1, xs, ys))
+) where
+{
+//
+val ys = list_vt_nil(*void*)
+//
+fun
+auxmain
+(x1: x0
+,xs: list(x0)
+,ys: list_vt(x0))
+: strm_vt@(x0, list_vt(x0)) =
+$llazy(
+//
+case+ xs of
+|
+list_nil() =>
+strmcon_vt_cons
+((x1, rs), strm_vt_nil())
+where{
+  val rs = list_vt_reverse0(ys) }
+|
+list_cons _ =>
+strmcon_vt_cons((x1, rs),
+  auxmain(xs.0, xs.1, list_vt_cons(x1, ys)))
+where{
+  val rs = 
+  list_vt_rappend10(ys, list_reverse_vt(xs)) }
+)(*case+*)//end-of-[auxmain(x1, xs, ys)]
+//
+}(*where*)//end-of-[list_1choose$split_lstrm<x0>]
 //
 (* ****** ****** *)
 (* ****** ****** *)

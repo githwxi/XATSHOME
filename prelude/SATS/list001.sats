@@ -128,6 +128,45 @@ list_iforall$f2un
 //
 fun
 <x0:t0>
+list_exists(xs: list(x0)): bool
+fun
+<x0:t0>
+list_rexists(xs: list(x0)): bool
+fun
+<x0:t0>
+list_iexists(xs: list(x0)): bool
+fun
+<x0:t0>
+list_irexists(xs: list(x0)): bool
+//
+#symload exists with list_exists of 1000
+#symload rexists with list_rexists of 1000
+#symload iexists with list_iexists of 1000
+#symload irexists with list_irexists of 1000
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+list_exists$f1un
+( xs
+: list(x0), test: (x0) -> bool): bool
+#symload exists with list_exists$f1un of 1000
+#symload exists$fun with list_exists$f1un of 1000
+//
+fun
+<x0:t0>
+list_iexists$f2un
+( xs
+: list(x0), test: (ni,x0) -> bool): bool
+#symload iexists with list_iexists$f2un of 1000
+#symload iexists$fun with list_iexists$f2un of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:t0>
 list_foritm(xs: list(x0)): void
 fun
 <x0:t0>
@@ -156,6 +195,14 @@ list_foritm$f1un
 //
 fun
 <x0:t0>
+list_rforitm$f1un
+( xs
+: list(x0), work: (x0) -> void): void
+#symload rforitm with list_rforitm$f1un of 1000
+#symload rforitm$fun with list_rforitm$f1un of 1000
+//
+fun
+<x0:t0>
 list_iforitm$f2un
 ( xs
 : list(x0), work: (ni,x0) -> void): void
@@ -166,46 +213,118 @@ list_iforitm$f2un
 (* ****** ****** *)
 //
 (*
-HX-2024-07-31:
-Wed 31 Jul 2024 03:16:49 AM EDT
+HX-2025-11-03:
+Mon Nov  3 03:57:40 PM EST 2025
 *)
-fun
-<x0:t0>
-list_c2hoose_lstrm
-(xs: list(x0)): strm_vt@(x0, x0)
-//
-#symload c2hoose_lstrm with list_c2hoose_lstrm
 //
 fun
 <x0:t0>
-list_c2hoose$forall(list(x0)): bool
+<r0:vt>
+list_folditm
+(xs: list(x0), r0: r0): ( r0 )
 fun
 <x0:t0>
-list_c2hoose$forall$f2un
-(xs:list(x0), test:(x0,x0)->bool): bool
+<r0:vt>
+list_rfolditm
+(xs: list(x0), r0: r0): ( r0 )
+fun
+<x0:t0>
+<r0:vt>
+list_ifolditm
+(xs: list(x0), r0: r0): ( r0 )
+fun
+<x0:t0>
+<r0:vt>
+list_rfolditm
+(xs: list(x0), r0: r0): ( r0 )
 //
-#symload c2hoose$forall with list_c2hoose$forall
-#symload c2hoose$forall with list_c2hoose$forall$f2un
+#symload folditm with list_folditm of 1000
+#symload rfolditm with list_rfolditm of 1000
+#symload ifolditm with list_ifolditm of 1000
+#symload irfolditm with list_irfolditm of 1000
 //
 (* ****** ****** *)
 //
 fun
 <x0:t0>
-list_c3hoose_lstrm
+<r0:vt>
+list_folditm$f2un
+( xs
+: list(x0), r0: r0, fopr: (r0, x0) -> r0): (r0)
+#symload folditm with list_folditm$f2un of 1000
+#symload folditm$fun with list_folditm$f2un of 1000
+//
+fun
+<x0:t0>
+<r0:vt>
+list_rfolditm$f2un
+( xs
+: list(x0), r0: r0, fopr: (x0, r0) -> r0): (r0)
+#symload rfolditm with list_rfolditm$f2un of 1000
+#symload rfolditm$fun with list_rfolditm$f2un of 1000
+//
+fun
+<x0:t0>
+<r0:vt>
+list_ifolditm$f3un
+( xs
+: list(x0), r0: r0, fopr: (r0,ni,x0) -> r0): (r0)
+#symload ifolditm with list_ifolditm$f3un of 1000
+#symload ifolditm$fun with list_ifolditm$f3un of 1000
+//
+fun
+<x0:t0>
+<r0:vt>
+list_irfolditm$f3un
+( xs
+: list(x0), r0: r0, fopr: (ni,x0,r0) -> r0): (r0)
+#symload irfolditm with list_irfolditm$f3un of 1000
+#symload irfolditm$fun with list_irfolditm$f3un of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-07-31:
+Wed 31 Jul 2024 03:16:49 AM EDT
+*)
+fun
+<x0:t0>
+list_2choose_lstrm
+(xs: list(x0)): strm_vt@(x0, x0)
+//
+#symload c2hoose_lstrm with list_2choose_lstrm
+//
+fun
+<x0:t0>
+list_2choose$forall(list(x0)): bool
+fun
+<x0:t0>
+list_2choose$forall$f2un
+(xs:list(x0), test:(x0,x0)->bool): bool
+//
+#symload c2hoose$forall with list_2choose$forall
+#symload c2hoose$forall with list_2choose$forall$f2un
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+list_3choose_lstrm
 (xs: list(x0)): strm_vt@(x0, x0, x0)
 //
-#symload c3hoose_lstrm with list_c3hoose_lstrm
+#symload c3hoose_lstrm with list_3choose_lstrm
 //
 fun
 <x0:t0>
-list_c3hoose$forall(list(x0)): bool
+list_3choose$forall(list(x0)): bool
 fun
 <x0:t0>
-list_c3hoose$forall$f3un
+list_3choose$forall$f3un
 (xs:list(x0), test:(x0,x0,x0)->bool): bool
 //
-#symload c3hoose$forall with list_c3hoose$forall
-#symload c3hoose$forall with list_c3hoose$forall$f3un
+#symload c3hoose$forall with list_3choose$forall
+#symload c3hoose$forall with list_3choose$forall$f3un
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -235,13 +354,13 @@ fun
 <x0:t0>
 <y0:t0>
 list_map
-{ln:n0}
+{ln:i0}
 (xs: list(x0, ln)): list(y0, ln)
 fun
 <x0:t0>
 <y0:t0>
 list_map$f1un
-{ln:n0}
+{ln:i0}
 ( xs
 : list(x0, ln), fopr: (x0)->y0): list(y0, ln)
 //
@@ -256,13 +375,13 @@ fun
 <x0:t0>
 <y0:vt>
 list_map_vt
-{ln:n0}
+{ln:i0}
 (xs: list(x0, ln)): list_vt(y0, ln)
 fun
 <x0:t0>
 <y0:vt>
 list_map$f1un_vt
-{ln:n0}
+{ln:i0}
 ( xs
 : list(x0, ln), fopr: (x0)->y0): list_vt(y0, ln)
 //
@@ -278,13 +397,13 @@ fun
 <x0:t0>
 <y0:t0>
 list_maprev
-{ln:n0}
+{ln:i0}
 (xs: list(x0, ln)): list(y0, ln)
 fun
 <x0:t0>
 <y0:t0>
 list_maprev$f1un
-{ln:n0}
+{ln:i0}
 ( xs
 : list(x0, ln), fopr: (x0)->y0): list(y0, ln)
 //
@@ -299,13 +418,13 @@ fun
 <x0:t0>
 <y0:vt>
 list_maprev_vt
-{ln:n0}
+{ln:i0}
 (xs: list(x0, ln)): list_vt(y0, ln)
 fun
 <x0:t0>
 <y0:vt>
 list_maprev$f1un_vt
-{ln:n0}
+{ln:i0}
 ( xs
 : list(x0, ln), fopr: (x0)->y0): list_vt(y0, ln)
 //
@@ -327,22 +446,84 @@ fun
 <y0:t0>
 <e1:vt>
 list_map$e1nv
-{ln:n0}
+{ln:i0}
 (xs: list(x0, ln), e1: !e1): list(y0, ln)
 fun
 <x0:t0>
 <y0:t0>
 <e1:vt>
 list_map$e1nv$f2un
-{ln:n0}
+{ln:i0}
 ( xs
 : list(x0, ln), e1: !e1, fopr: (x0, !e1)->y0): list(y0, ln)
 //
-#symload map with list_map$e1nv of 1000
-#symload map with list_map$e1nv$f1un of 1000
+#symload map$e1nv with list_map$e1nv of 1000
+#symload map$e1nv with list_map$e1nv$f2un of 1000
+(*
+HX-2025-09-08:
+Mon Sep  8 02:35:01 AM EDT 2025
+This conflicts with list_map$f2un:
 #symload list_map with list_map$e1nv of 1000
 #symload list_map with list_map$e1nv$f2un of 1000
+*)
 #symload list_map$e1nv with list_map$e1nv$f2un of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2025-12-14:
+Sun Dec 14 10:33:19 AM EST 2025
+*)
+//
+fun
+<x0:t0>
+list_filter
+{ln:i0}
+(xs: list(x0, ln)): listlte(x0, ln)
+fun
+<x0:t0>
+list_filter_vt
+{ln:i0}
+(xs: list(x0, ln)): listlte_vt(x0, ln)
+//
+fun
+<x0:t0>
+list_filter$f1un
+{ln:i0}
+( xs
+: list(x0, ln), test: (x0)->bool): listlte(x0, ln)
+fun
+<x0:t0>
+list_filter$f1un_vt
+{ln:i0}
+( xs
+: list(x0, ln), test: (x0)->bool): listlte_vt(x0, ln)
+//
+#symload filter with list_filter of 1000
+#symload filter with list_filter$f1un of 1000
+#symload filter$fun with list_filter$f1un of 1000
+#symload list_filter with list_filter$f1un of 1000
+//
+#symload filter_vt with list_filter_vt of 1000
+#symload filter_vt with list_filter$f1un_vt of 1000
+#symload filter$fun_vt with list_filter$f1un_vt of 1000
+#symload list_filter_vt with list_filter$f1un_vt of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2025-12-14:
+Sun Dec 14 11:11:41 AM EST 2025
+*)
+//
+fun
+<x0:t0>
+list_1choose$split_lstrm
+{ln:i0}
+(xs: list(x0, n0)): strm_vt@(x0, list_vt(x0, ln-1))
+#symload c1hoose$split_lstrm with list_1choose$split_lstrm
 //
 (* ****** ****** *)
 (* ****** ****** *)

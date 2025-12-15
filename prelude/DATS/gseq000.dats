@@ -271,6 +271,26 @@ gseq_foritm0$f1un<ys><x0>(ys, work)))
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-12-14:
+Sun Dec 14 05:20:43 PM EST 2025
+*)
+#impltmp
+< xz:t0 >
+< xs:t0 >
+< x0:t0 >
+gseq_concat_lstrm
+  (   xz   ) =
+let
+#vwtpdef ys = strm_vt(x0)
+in//let
+strm_vt_lstrm$concat0<x0>(
+gseq_map$f1un_lstrm<xz><xs><ys>(xz, gseq_strmize<xs><x0>))
+end(*let*)//end-of-[gseq_concat(xz)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_DATS_gseq000.dats] *)
 (***********************************************************************)

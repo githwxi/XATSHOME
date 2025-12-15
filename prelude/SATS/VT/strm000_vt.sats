@@ -47,6 +47,15 @@ strq_vt_nil
 //
 fun
 <a:vt>
+strm_vt_sing
+( x0: (a) ): strm_vt(a)
+fun
+<a:vt>
+strq_vt_sing
+( x0: (a) ): strq_vt(a, 1)
+//
+fun
+<a:vt>
 strm_vt_cons
 (
 x0: (a),
@@ -115,16 +124,6 @@ fun
 strq_vt_length0
 {n0:i0}
 (xs: strq_vt(x0,n0)): sint(n0)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<x0:vt>
-strm_vt_concat0
-( xss
-: ~strm_vt
- ( strm_vt(x0) )): strm_vt(x0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -217,6 +216,26 @@ g_make0_lstrq(xs: strq_vt(x0)): (ys)
 //
 (* ****** ****** *)
 //
+(*
+HX-2025-12-13:
+concat0 -> lstrm$concat0
+Sat Dec 13 11:42:48 PM EST 2025
+*)
+//
+fun
+<x0:vt>
+strm_vt_lstrm$concat0
+( xss
+: ~strm_vt(strm_vt(x0))): strm_vt(x0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+//
+(*
+HX-2025-12-15:
+These are in
+[prelude/SATS/list000.sats]!
 fun
 <x0:t0>
 list_make0_lstrm
@@ -229,6 +248,7 @@ list_make0_lstrq
 //
 #symload list with list_make0_lstrm of 1000
 #symload list with list_make0_lstrq of 1000
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

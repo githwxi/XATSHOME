@@ -167,6 +167,17 @@ list_vt_make0 with list_vt_make0_lstrq
 //
 fun
 <x0:vt>
+list_vt_free
+ {n0:i0}
+(xs: ~list_vt(x0,n0)): void
+//
+#symload free with list_vt_free of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:vt>
 list_vt_copy
  {n0:i0}
 ( xs
@@ -273,6 +284,21 @@ GLSEQ_make0_list_vt
 {a:vt}
 (xs: list_vt(a)): GLSEQ(list_vt(a), a)
 #symload GLSEQ with GLSEQ_make0_list_vt of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2025-09-04:
+Thu Sep  4 12:15:50 AM EDT 2025
+*)
+fun
+<a:vt>
+list_vt_mergesort0
+{n:i0}(xs: ~list_vt(a, n)): list_vt(a, n)
+//
+#symload
+mergesort0 with list_vt_mergesort0 of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

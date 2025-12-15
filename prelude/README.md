@@ -194,37 +194,263 @@ malicious program. Therefore, when applying `gseq_head$raw` to a
 sequence, one must possess, formally or informally, a proof of some
 kind that attests to the non-emptiness of the sequence.
 
-## Rules for naming combinators
+## Naming Convention for Combinators
 
-Let us use `forall` as an example. Generally speaking, `forall` is
-meant to test whether all the elements in some sequence satisfies
-`forall$test`. 
+Let us take `map` as an example to illustrate some conventional rules
+employed for naming various combinators in the prelude library of
+ATS3.  In general, `map` means to apply some function `fopr` to each
+value in a collection to form another collection of values (where each
+value is a result of `fopr`). For instance, a sequence of values of
+type `X` can be "mapped" to another sequence of values of type `Y`,
+where each value of type `X` is mapped to a value of type `Y`. The
+`fopr` function for `map` is declared as follows in
+`prelude/SATS/gbas001.sats`:
 
-- `rforall` means to test elements in the order that is the reverse
-  of the order used by `forall`.
-- `iforall` means to test elements paired with their positions, where
-  the initial position is set to be zero.
-- `irforall` is related to `rforall` in the same way as `iforall` is
-  related to `forall`.
-- `z2forall` essentially means to apply `forall` to the zip of two
-  given sequences.
-- `z2rforall` is related to `z2forall` in the same way as `rforall` is
-  related to `forall`. 
-- `z2iforall` is related to `z2forall` in the same way as `iforall` is
-  related to `forall`. 
-- `z2irforall` is related to `z2forall` in the same way as `irforall` is
-  related to `forall`.
-- `x2forall` essentially means to apply `forall` to the cross of two
-  given sequences.
-- `x2iforall` is related to `x2forall` in the same way as `iforall` is
-  related to `forall`. 
-- `ix2forall` essentially means to apply `forall` to the i-cross of two 
-  given sequences.
+```
+fun
+<x0:t0>
+<y0:vt>
+map$fopr(itm: x0): (y0)
+```
 
-Prefixes `z3` and `z4` mean the zip of 3 and 4 sequences,
-respectively.  Similarly, prefixes `x3` and `x4` mean the cross of 3
-and 4 sequences, respectively.
+We use `gseq_map` for an operation that traverses a given sequence and
+applies `map$fopr` to the value of each encountered item; the sequence
+traversal performed by `gseq_map` is referred to as the default or
+standard traversal of the sequence.
+
+The output sequence of performing `gseq_map` on an input sequence may be
+represented differently from the input sequence. For instance, the
+input sequence can be an array-based string (representing a sequence
+of characters) while the output sequence can be a linked list of some
+kind. The most generic sequence-based `map` is declared as follows:
+
+```
+fun
+<xs:t0>
+<x0:t0>
+<ys:vt>
+<y0:vt>
+gseq_map_ares(xs: xs): (ys)
+```
+
+where the (suffix) word `ares` indicates that the return value of
+`gseq_map_ares` is the most generic (that is, threre is practically no
+information revealed on the representation of the return value).
+
+There are many variants of `gseq_map_ares`. For instance, the
+following variant indicates that the return value is represented as
+a linear list (given the type `list_vt`):
+
+```
+fun
+<xs:t0>
+<x0:t0>
+<y0:vt>
+gseq_map_llist(xs: xs): list_vt(y0)
+```
+
+### Reversed Traversal
+
+There is a default or standard traversal associated with a given
+sequence, and we refer to this traversal as the left-to-right
+traversal of sequence. Then there is also the right-to-left traversal
+(completely opposite to the left-to-right traversal), which we refer
+to as the reversed traversal. We use the verb `r-traverse` to mean
+performing a reversed traversal.
+
+When r-traversing a sequence of items, `gseq_rmap` employs the
+following function to process each encountered item:
+
+```
+fun
+<x0:t0>
+<y0:vt>
+rmap$fopr(itm: x0): (y0)
+```
+
+The most generic sequence-based `rmap` is declared as follows:
+
+```
+fun
+<xs:t0>
+<x0:t0>
+<ys:vt>
+<y0:vt>
+gseq_rmap_ares(xs: xs): (ys)
+```
+
+The naming convention we follow changes `map` into `rmap` to indicate
+that the (standard) sequence traversal (for `map`) is replaced with
+the reversed sequence traversal (for `rmap`).
+
+### Indexed Traversal
+
+When traversing a sequence of items, `gseq_imap` employs the following
+function to process each encountered item:
+
+```
+fun
+<x0:t0>
+<y0:vt>
+imap$fopr(pos: ni, itm: x0): (y0)
+```
+
+Note that the first argument of `imap$fopr` is a natural number of
+the type `ni` (a shorthand for `nint`) that indicates the position
+of the encountered item in the given sequence while the second
+argument is the value of the item.  The most generic sequence-based
+`imap` is declared as follows:
+
+```
+fun
+<xs:t0>
+<x0:t0>
+<ys:vt>
+<y0:vt>
+gseq_imap_ares(xs: xs): (ys)
+```
+
+The naming convention we follow changes `map` into `imap` to indicate
+that the (standard) sequence traversal (for `map`) is replaced with
+the indexed sequence traversal (for `imap`) that records the position
+of each encountered item.
+
+### Z-Combined Traversal
+
+The letter `z` in `z-combined` stands for `zip`.
+
+What `gseq_z2map` does is essentially to perform `gseq_map` on the
+sequence obtained from zipping two given sequences. It should be easy
+to extrapolate what `gseq_z3map` does and beyond. The fopr-function employed
+by `gseq_z2map` is given as follows:
+
+```
+fun
+<x0:t0>
+<y0:t0>
+<z0:vt>
+z2map$fopr(x0: x0, y0: y0): (z0)
+```
+
+The most generic sequence-based `z2map` is declared as follows:
+
+
+```
+fun
+<xs:t0>
+<x0:t0>
+<ys:t0>
+<y0:t0>
+<zs:vt>
+<z0:vt>
+gseq_z2map_ares(xs: xs, ys: ys): (zs)
+```
+
+The naming convention we follow changes `map` into `z2map` to indicate
+the traversal of a seqeunce obtained from zipping two given sequences.
+And the interpretation for `z3map` (and beyond) extrapolates naturally.
+
+### X-Combined Traversal
+
+The letter `x` in `x-combined` stands for `cross`.
+
+Given two sequences `[1, 2, 3]` and `["a", "b"]`, their cross product
+is the following sequence of pairs:
+
+```
+[(1, "a"), (1, "b"), (2, "a"), (2, "b"), (3, "a"), (3, "b")]
+```
+
+It is straightforward to defined the cross product of two sequences.
+What `gseq_x2map` does is essentially to perform `gseq_map` on the
+sequence obtained from the cross product of two given sequences. It
+should be easy to extrapolate what `gseq_x3map` does and beyond. The
+fopr-function employed by `gseq_x2map` is given as follows:
+
+```
+fun
+<x0:t0>
+<y0:t0>
+<z0:vt>
+x2map$fopr(x0: x0, y0: y0): (x0)
+```
+
+The most generic sequence-based `x2map` is declared as follows:
+
+
+```
+fun
+<xs:t0>
+<x0:t0>
+<ys:t0>
+<y0:t0>
+<zs:vt>
+<z0:vt>
+gseq_x2map_ares(xs: xs, ys: ys): (zs)
+```
+
+The naming convention we follow changes `map` into `x2map` to
+indicate the traversal of a seqeunce obtained from the cross product
+of two given sequences.  And the interpretation for `x3map` (and
+beyond) extrapolates naturally.
+
+### IX-Combined Traversal
+
+The prefix `ix` in `ix-combined` stands for `i-cross`.
+
+Given a sequence `["a", "b", "c"]`, its indexed version is
+the following sequence of pairs:
+
+```
+[(0, "a"), (1, "b"), (2, "c")]
+```
+
+where each pair consists of an integer and a value such that the
+integer refers to the position of the value in the original sequence.
+
+It is straightforward to define the indexed version of a given
+sequence.
+
+The indexed cross (i-cross) product of two given sequences consists of
+quadruples of the form `(i, x, j, y)`, where `i` and `j` are integers
+referring, respectively, to the positions of `x` and `y` in the first
+and second of the given sequences. For instance, the corresponding
+`fopr` for `ix2map` (which does mapping via i-crossing) is given as
+follows:
+
+```
+fun
+<x0:t0>
+<y0:t0>
+<z0:vt>
+ix2map$fopr(px: ni, x0: x0, py: ni, y0: y0): (z0)
+```
+
+### Many Styles of Traversal Combination
+
+There are unlimited number of ways to combine traversals.
+
+We can combine indexed traversal with reversed traversal to form
+index-reversed traversal.  What `gseq_irmap` does is essentially to
+perform mapping via an indexed-traversal over the reverse of a given
+sequence. In other words, it does `gseq_imap` on the reverse of a
+given sequence.
+
+We can also combine reversed traversal with indexed traversal to form
+reverse-indexed traversal.  What `gseq_rimap` does is essentially to
+perform `gseq_rmap` on the sequence obtained from indexing a given
+sequence. However, `gseq_rimap` is of little practical use as it can
+be readily replaced with `gseq_irmap`.
+
+From this point on, one should be clear about the meaning of
+combinators like `gseq_z2imap`, `gseq_x2imap`, `gseq_ix2rmap`, etc.
+For instance, given `[0, 1]` and `["a", "b"]`, `gseq_ix2rmap`
+should process the following four quadruples from left to right:
+
+```
+(1, 1, 1, "b"), (1, 1, 0, "a"), (0, 0, 1, "b"), (0, 0, 0, "a")
+```
 
 <!--
-########################## end of [README.md] ##########################
+##############################(README.md)##############################
 -->

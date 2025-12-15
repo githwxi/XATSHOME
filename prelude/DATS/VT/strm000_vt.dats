@@ -71,9 +71,41 @@ $llazy
 //
 #impltmp
 < a: vt >
+strm_vt_sing(x0) =
+(
+strm_vt_cons(x0, xs))
+where
+{
+val xs = strm_vt_nil() }
+//
+#impltmp
+< a: vt >
 strm_vt_cons(x0, xs) =
 $llazy
 (strmcon_vt_cons(x0, xs))
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+strq_vt_nil() =
+$llazy
+(strqcon_vt_nil(*void*))
+//
+#impltmp
+< a: vt >
+strq_vt_sing(x0) =
+(
+strq_vt_cons(x0, xs))
+where
+{
+val xs = strq_vt_nil() }
+//
+#impltmp
+< a: vt >
+strq_vt_cons(x0, xs) =
+$llazy
+(strqcon_vt_cons(x0, xs))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -82,6 +114,10 @@ $llazy
 { x0:vt }
 g_free//~xs
 <strm_vt(x0)>(xs) = $free(xs)
+#impltmp
+{ x0:vt }
+g_free//~xs
+<strq_vt(x0)>(xs) = $free(xs)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -146,33 +182,6 @@ g_make0_lstrm
 { x0:vt }
 g_make0_lstrq
 <x0><list_vt(x0)> = strq_vt_listize0<x0>
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-(*
-HX-2024-09-05:
-Thu 05 Sep 2024 07:59:10 PM EDT
-*)
-#impltmp
-<a>(*tmp*)
-strm_vt_concat0
-  ( xss ) =
-(
-  auxmain(xss)) where
-{
-fun auxmain(xss) = $llazy
-(
-case+ !xss of
-| ~
-strmcon_vt_nil() =>
-strmcon_vt_nil()
-| ~
-strmcon_vt_cons(xs1, xss) => !
-(
- strm_vt_append00<a>(xs1, auxmain(xss)))
-)
-}(*where*)//end-of-[strm_vt_concat0(xss)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -259,6 +268,36 @@ strmcon_vt_nil() => optn_vt_nil(*0*)
 strmcon_vt_cons(x1, xs) => let
 val () = g_free<x0>(x1) in optn_vt_cons(xs) end
 )
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2024-09-05:
+Thu 05 Sep 2024 07:59:10 PM EDT
+HX-2025-12-13
+concat0 -> lstrm$concat0
+Sat Dec 13 11:42:48 PM EST 2025
+*)
+#impltmp
+<a>(*tmp*)
+strm_vt_lstrm$concat0
+  ( xss ) =
+(
+  auxmain(xss)) where
+{
+fun auxmain(xss) = $llazy
+(
+case+ !xss of
+| ~
+strmcon_vt_nil() =>
+strmcon_vt_nil()
+| ~
+strmcon_vt_cons(xs1, xss) => !
+(
+ strm_vt_append00<a>(xs1, auxmain(xss)))
+)
+}(*where*)//end-of-[strm_vt_lstrm$concat0(xss)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

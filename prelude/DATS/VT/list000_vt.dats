@@ -221,6 +221,38 @@ gseq_length1
 (* ****** ****** *)
 //
 (*
+HX-2025-07-02:
+Wed Jul  2 07:23:22 PM EDT 2025
+*)
+//
+#impltmp
+<a>(*tmp*)
+list_vt_free
+  {n}(xs) =
+( loop(xs) ) where
+{
+//
+fnx
+loop
+{n:nat}.<n>.
+( xs:
+~ list_vt(a, n)): void =
+(
+case+ xs of
+| ~
+list_vt_nil() => ()
+| ~
+list_vt_cons(x0, xs) =>
+let
+  val () =
+  g_free<a>(x0) in loop(xs) end)
+//
+}(*where*)//end-of-[list_vt_free(xs)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
 HX-2024-07-27:
 Sat 27 Jul 2024 05:56:34 PM EDT
 *)
@@ -383,7 +415,7 @@ list_vt_cons(_, _) =>
 let
   val xs1 = xs0.1
   val ( ) = xs0.1 := ys0
-in
+in//let
 (
   $fold(xs0); loop(xs1, xs0) )
 end // end of [list_vt_cons(...)]
@@ -397,6 +429,121 @@ end // end of [list_vt_cons(...)]
 < a: vt >
 list_vt_reverse0(xs) =
 list_vt_rappend00<a>(xs, list_vt_nil(*void*))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2025-09-04:
+Thu Sep  4 12:19:19 AM EDT 2025
+*)
+//
+//
+#impltmp
+< a: vt >
+list_vt_mergesort0
+  (xs) = let
+//
+#vwtpdef
+xs = list_vt(a)
+//
+fnx
+amain
+( xs: xs
+, n0: nint): xs =
+if
+(n0 <= 1)
+then xs else
+(
+let
+  var xs: xs
+in
+  merge(ys, zs, xs); xs
+end
+) where
+{
+  val n2 = n0 / 2
+  val n1 = n0 - n2
+  var ys = xs
+  val zs = split(ys, n1)
+  val ys = amain(ys, n1)
+  val zs = amain(zs, n2)
+} (*where*) // end of [amain(xs, n0)]
+//
+and
+split
+( ys:
+& xs >> xs
+, n1: nint): xs =
+(
+if
+(n1 >= 2)
+then
+split(ys.1, n1-1)
+else
+let
+val zs = ys.1 in//let
+(
+ys.1 :=
+list_vt_nil<a>(); zs)
+endlet // end of [else]
+) (* if *) // end of [split(ys, n1)]
+//
+and
+merge
+( ys: ~xs
+, zs: ~xs
+, xs: &(?xs) >> xs): void =
+(
+case+ ys of
+| ~
+list_vt_nil() =>
+( xs := zs )
+| @
+list_vt_cons(y0, ys1) =>
+(
+case+ zs of
+| ~
+list_vt_nil() =>
+($fold(ys); xs := ys)
+| @
+list_vt_cons(z0, zs1) =>
+let
+//
+val
+sgn = g_cmp11<a>(y0, z0)
+//
+in//let
+//
+if
+(sgn <= 0)
+then
+let
+val nd = ys
+val ys = ys1
+val () = $fold(zs)
+in//let
+  xs := nd;
+  merge(ys, zs, xs.1); $fold(xs)
+end // end-of-[then]
+else
+let
+val nd = zs
+val zs = zs1
+val () = $fold(ys)
+in//let
+  xs := nd;
+  merge(ys, zs, xs.1); $fold(xs)
+end // end-of-[else]
+//
+end // list_vt_cons(...)
+) (*case+*) // list_vt_cons(y0,ys1)]
+) (*case+*) // end of [merge(ys,zs,xs)]
+//
+in//let
+(
+  amain(xs, list_vt_length1<a>(xs)) )
+end(*let*)//end-of-[list_vt_mergesort0(xs)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

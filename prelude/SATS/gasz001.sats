@@ -162,6 +162,11 @@ gasz_rexists$f1un
 (*
 HX-2024-07-25:
 Thu 25 Jul 2024 01:47:26 PM EDT
+HX-2025-09-08:
+There seems to be overlapping
+between [mapref] and [foritm1r]
+Let us keep [mapref] as a special
+combinator for now.
 *)
 //
 fun
@@ -169,11 +174,9 @@ fun
 mapref$fopr0(~x0): x0
 fun
 <x0:vt>
-mapref$fopr1(!x0): x0
-fun
-<x0:vt>
 mapref$fopr1r
 ( ref: &x0 >> x0 ): void
+//
 (*
 fun
 <x0:vt>
@@ -205,10 +208,33 @@ gasz_mapref_c1bv
 //
 fun
 <x0:vt>
-imapref$fopr0(ni, ~x0): x0
+rmapref$fopr0(~x0): x0
 fun
 <x0:vt>
-imapref$fopr1(ni, !x0): x0
+rmapref$fopr1r
+( ref: &x0 >> x0 ): void
+//
+fun
+<xs:t0>
+<x0:vt>
+gasz_rmapref(xs: xs): void
+fun
+<xs:t0>
+<x0:vt>
+gasz_rmapref_c1bv
+(xs: xs, fopr: (~x0)->(x0)): void
+//
+(*
+#symload rmapref with gasz_rmapref_c1bv of 0100
+#symload rmapref_cbv with gasz_rmapref_c1bv of 0100
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+imapref$fopr0(ni, ~x0): x0
 fun
 <x0:vt>
 imapref$fopr1r
@@ -228,6 +254,33 @@ gasz_imapref_c2bv
 (*
 #symload imapref with gasz_imapref_c2bv of 0100
 #symload imapref_cbv with gasz_imapref_c2bv of 0100
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:vt>
+irmapref$fopr0(ni, ~x0): x0
+fun
+<x0:vt>
+irmapref$fopr1r
+(i0: ni, ref: &x0 >> x0): void
+//
+//
+fun
+<xs:t0>
+<x0:vt>
+gasz_irmapref(xs: xs): void
+fun
+<xs:t0>
+<x0:vt>
+gasz_irmapref_c2bv
+(xs: xs, fopr: (ni, ~x0)->(x0)): void
+//
+(*
+#symload irmapref with gasz_irmapref_c2bv of 0100
+#symload irmapref_cbv with gasz_irmapref_c2bv of 0100
 *)
 //
 (* ****** ****** *)

@@ -5,8 +5,8 @@ The prelude library for ATS3/Xanadu is
 a concrete example that clearly demonstrates
 the power of template-based programming.
 ############################################################
-Here are some notes for helping understand
-the design and implementation of this library.
+Here are some notes for helping understand the
+design and implementation of this library.
 ############################################################
 Rough split:
 gbas000: basic
