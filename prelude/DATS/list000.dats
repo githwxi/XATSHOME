@@ -648,21 +648,21 @@ loop(xss, list_rappendx0_vt(xs1, res)))
 //
 (*
 HX-2025-12-15:
-Mon Dec 15 02:47:01 PM EST 2025
+Mon Dec 15 04:37:34 PM EST 2025
 *)
 //
 #impltmp
 < a:t0 >
 list_make0_lstrm(xs) =
 (
-list_vt2t(strm_vt_listize0<a>(xs)))
+list_vt2t(list_vt_make0_lstrm<a>(xs)))
 //end-of-[impltmp<a:t0>(list_make0_lstrm(xs))]
 //
 #impltmp
 < a:t0 >
 list_make0_lstrq(xs) =
 (
-  list_vt2t(strq_vt_listize0<a>(xs)))
+list_vt2t(list_vt_make0_lstrq<a>(xs)))
 //end-of-[impltmp<a:t0>(list_make0_lstrq(xs))]
 //
 (* ****** ****** *)

@@ -321,9 +321,9 @@ sint2_combine(n1, n4)\aops(sint2_combine(n2, n3)))
 (* ****** ****** *)
 (* ****** ****** *)
 //
-// (*
+(*
 val () = printsln("sint4_combine(1,2,3,4) = ", sint4_combine(1,2,3,4))
-// *)
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -367,10 +367,12 @@ list_foritm$f1un(sols, lam(sol) => println(sol)))
 //
 end(*let*)//end-of-[GameOf24_solve$print(n1,n2,n3,n4)]
 //
-// (*
+(*
 val () = GameOf24_solve$print(3, 3, 8, 8)
+val () = GameOf24_solve$print(5, 5, 7, 11)
+val () = GameOf24_solve$print(5, 7, 7, 11)
 val () = GameOf24_solve$print(4, 4, 10, 10)
-// *)
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
