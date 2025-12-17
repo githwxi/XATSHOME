@@ -381,18 +381,6 @@ val () = printsln("GameOf24_solve(4, 4, 10, 10) = ", GameOf24_solve(4, 4, 10, 10
 //
 (* ****** ****** *)
 (* ****** ****** *)
-fun<>
-list_vt_nilq1
-{a:t0}{n:i0}
-(xs:
-!list_vt(a,n)): bool(n=0) =
-(
-case+ xs of
-|list_vt_nil() => true
-|list_vt_cons _ => false)
-#symload
-nilq1 with list_vt_nilq1 of 1000
-(* ****** ****** *)
 //
 #extern
 fun
