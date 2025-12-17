@@ -90,7 +90,7 @@ g_si<rat> = g_si<dflt>
 #impltmp g_print<rat> = g_print<dflt>
 *)
 //
-endloc//end-of-[local(absopen(rat_type))]
+endloc//end-of-[local(absimpl(rat_type))]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -114,7 +114,9 @@ fun
 auxpr(x0: expr): void =
 (
 case+ x0 of
+//
 |Int(i0) => print(i0)
+//
 |Add(x1, x2) =>
 (
   prints("(", x1, "+", x2, ")"))
@@ -242,6 +244,7 @@ val () = printsln
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
 #extern
 fun
 <a:t0>
@@ -254,6 +257,7 @@ list_list$concat
 list(
 gseq_concat_lstrm
 <list(list(a))><list(a)><a>(xz))
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
