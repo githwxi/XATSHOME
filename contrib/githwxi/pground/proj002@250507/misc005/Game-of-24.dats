@@ -1,0 +1,459 @@
+(* ****** ****** *)
+(* ****** ****** *)
+#include
+"prelude/HATS/prelude_dats.hats"
+#include
+"prelude/HATS/prelude_JS_dats.hats"
+(* ****** ****** *)
+(* ****** ****** *)
+(*
+//
+Game-of-24:
+//
+Given four integers n1, n2, n3 and n4, one chooses two and uses
+them to produce a rational number r1 by applying either addition,
+subtraction, multiplication or division; one mixes r1 with the
+remaining two numbers and chooses two of them to produce a rational
+number r2 by applying either addition, subtraction, multiplication or
+division; one then takes r2 and the last remaining number to produce a
+rational number r3 by applying addition, subtraction, multiplication,
+or division. If there exists a way to make r3 equal 24, then (n1, n2,
+n3, n4) is said to be a good quad. For instance, (10,10,4,4) is a good
+quad since we have: (10*10-4)/4 = 24. And (5,7,7,11) is also a good
+quad since we have: (5-11/7)*7 = 24. Game-of-24 is a game that
+determines whether four given integers form a good quad or not.
+//
+*)
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#typedef
+rat = double
+#abstype
+rat_type == rat
+//
+#typedef rat = rat_type
+//
+(* ****** ****** *)
+(* ****** ****** *)
+#impltmp
+g_ptype
+< rat >
+((*void*)) = pstrn("rat")
+(* ****** ****** *)
+//
+#symload < with g_lt of 100
+#symload > with g_gt of 100
+#symload = with g_eq of 100
+//
+#symload + with g_add of 100
+#symload - with g_sub of 100
+#symload * with g_mul of 100
+#symload / with g_div of 100
+//
+#symload abs with g_abs of 100
+#symload neg with g_neg of 100
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+local
+//
+#absimpl
+rat_type = dflt
+//
+in//let
+//
+fun
+rat_mkof_dflt
+(df: dflt): rat = df
+fun
+rat_mkof_sint
+(si: sint): rat =
+rat_mkof_dflt(g_si<dflt>(si))
+#symload rat with rat_mkof_dflt
+#symload rat with rat_mkof_sint
+//
+#impltmp
+g_si<rat> = g_si<dflt>
+//
+#impltmp g_abs<rat> = dflt_abs<>
+//
+#impltmp g_cmp<rat> = dflt_cmp$dflt<>
+//
+#impltmp g_add<rat> = dflt_add$dflt<>
+#impltmp g_sub<rat> = dflt_sub$dflt<>
+#impltmp g_mul<rat> = dflt_mul$dflt<>
+#impltmp g_div<rat> = dflt_div$dflt<>
+//
+(*
+#impltmp g_print<rat> = g_print<dflt>
+*)
+//
+endloc//end-of-[local(absimpl(rat_type))]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+datatype expr =
+| Int of (int)
+| Add of (expr, expr) | Sub of (expr, expr)
+| Mul of (expr, expr) | Div of (expr, expr)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+g_print<expr>
+(    exp0    ) =
+(
+  auxpr(exp0)) where
+{
+//
+fun
+auxpr(x0: expr): void =
+(
+case+ x0 of
+//
+|Int(i0) => print(i0)
+//
+|Add(x1, x2) =>
+(
+  prints("(", x1, "+", x2, ")"))
+|Sub(x1, x2) =>
+(
+  prints("(", x1, "-", x2, ")"))
+|Mul(x1, x2) =>
+(
+  prints("(", x1, "*", x2, ")"))
+|Div(x1, x2) =>
+(
+  prints("(", x1, "/", x2, ")"))
+) where
+{
+#impltmp g_print<expr> = auxpr(*expr*)
+}
+//
+}(*where*)//end-of-[g_print<expr>(exp0)]
+//
+(* ****** ****** *)
+//
+(*
+val () =
+printsln("Int(1) = ", Int(1))
+val () =
+printsln("Add(Int(1), Mul(Int(2), Int(3))) = ", Add(Int(1), Mul(Int(2), Int(3))))
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+expr_eval
+(x0: expr): rat =
+(
+case+ x0 of
+| Int(i0) => g_si<rat>(i0)
+| Add(x1, x2) =>
+  expr_eval(x1) + expr_eval(x2)
+| Sub(x1, x2) =>
+  expr_eval(x1) - expr_eval(x2)
+| Mul(x1, x2) =>
+  expr_eval(x1) * expr_eval(x2)
+| Div(x1, x2) =>
+  expr_eval(x1) / expr_eval(x2))
+//
+#symload eval with expr_eval of 1000
+//
+(* ****** ****** *)
+//
+(*
+val () = printsln("\
+eval(Add(Int(1), Mul(Int(2), Int(3)))) = ", eval(Add(Int(1), Mul(Int(2), Int(3)))))
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val
+EPSILON = rat(1E-6)
+//
+fun
+expr_iseqz
+(x0: expr): bool =
+abs(expr_eval(x0)) < EPSILON
+//
+fun
+expr_iseq24
+(x0: expr): bool =
+abs(
+expr_eval(x0)-g_si(24)) < EPSILON
+//
+#symload iseqz with expr_iseqz
+#symload iseq24 with expr_iseq24
+//
+(* ****** ****** *)
+//
+(*
+val () = printsln("iseq24(Int(24)) = ", iseq24(Int(24)))
+val () = printsln("iseq24(Int(25)) = ", iseq24(Int(25)))
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+expr_aops$expr
+( x1: expr
+, x2: expr): list_vt(expr) =
+(
+  xs
+) where
+{
+//
+val xs =
+list_vt_nil()
+//
+val xs =
+if
+expr_iseqz(x1)
+then xs
+else list_vt_cons(Div(x2, x1), xs)
+//
+val xs =
+if
+iseqz(x2)
+then xs
+else list_vt_cons(Div(x1, x2), xs)
+//
+val xs = list_vt_cons(Mul(x1, x2), xs)
+val xs = list_vt_cons(Sub(x2, x1), xs)
+val xs = list_vt_cons(Sub(x1, x2), xs)
+val xs = list_vt_cons(Add(x1, x2), xs)
+}
+//
+#symload aops with expr_aops$expr of 1000
+//
+(* ****** ****** *)
+//
+(*
+val () = print0s(
+"expr_aops$expr(Int(1), Int(2)) = ", expr_aops$expr(Int(1), Int(2)))
+val () = printsln()
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+expr_aops$exprlst
+( x0
+: expr
+, xs
+: list_vt(expr)): list_vt(expr) =
+concat0(
+list_vt_map0$f1un(xs,lam(x1)=>x0\aops(x1)))
+#symload aops with expr_aops$exprlst of 1000
+//
+fun
+exprlst_aops$expr
+( xs
+: list_vt(expr)
+, x0: expr(*0*)): list_vt(expr) =
+concat0(
+list_vt_map0$f1un(xs,lam(x1)=>x1\aops(x0)))
+#symload aops with exprlst_aops$expr of 1000
+//
+fun
+exprlst_aops$exprlst
+( xs
+: list_vt(expr)
+, ys
+: list_vt(expr)): list_vt(expr) =
+(
+concat0(
+loop(xs, ys, list_vt_nil(*0*))))
+where
+{
+//
+#vwtpdef exps = list_vt(expr)
+//
+fun loop
+( xs
+: list_vt(expr)
+, ys
+: list_vt(expr)
+, rs
+: list_vt(exps)): list_vt(exps) =
+(
+case+ xs of
+| ~
+list_vt_nil
+( (*void*) ) =>
+(free(ys)
+;list_vt_reverse0(rs))
+| ~
+list_vt_cons
+(  x1, xs  ) =>
+(
+  loop(xs, ys, rs)) where
+{
+val rs =
+list_vt_cons(r1, rs) where
+{
+val r1 =
+expr_aops$exprlst(x1, copy(ys))}
+}
+)
+}(*where*)//end-of-[exprlst_aops$exprlst(...)]
+//
+#symload aops with exprlst_aops$exprlst of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+val () = print0s
+("(Int(1)\aops(Int(2)))\aops(Int(2)\aops(Int(3))) = ", (Int(1)\aops(Int(2)))\aops(Int(2)\aops(Int(3))))
+val () = printsln()
+*)
+val () = console_log(the_print_store_flush((*void*)))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+sint2_combine
+(n1: sint, n2: sint): list_vt(expr) =
+Int(n1)\aops(Int(n2))
+fun
+sint3_combine
+(n1: sint
+,n2: sint, n3: sint): list_vt(expr) =
+(
+Int(n1)\aops(sint2_combine(n2, n3))
+\append0(
+Int(n2)\aops(sint2_combine(n1, n3)))
+\append0(
+Int(n3)\aops(sint2_combine(n1, n2))))
+fun
+sint4_combine
+( n1: sint, n2: sint
+, n3: sint, n4: sint): list_vt(expr) =
+(
+Int(n1)\aops(sint3_combine(n2, n3, n4))
+\append0(
+Int(n2)\aops(sint3_combine(n1, n3, n4))
+\append0(
+Int(n3)\aops(sint3_combine(n1, n2, n4))
+\append0(
+Int(n4)\aops(sint3_combine(n1, n2, n3))
+\append0(
+sint2_combine(n1, n2)\aops(sint2_combine(n3, n4))
+\append0(
+sint2_combine(n1, n3)\aops(sint2_combine(n2, n4))
+\append0(
+sint2_combine(n1, n4)\aops(sint2_combine(n2, n3)))))))))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+val () = printsln("sint4_combine(1,2,3,4) = ", sint4_combine(1,2,3,4))
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_filter0$f1un_llist
+  (xs, test) =
+(
+  gseq_filter0_llist(xs))
+where
+{
+#impltmp filter$test1<x0> = test }
+//
+(* ****** ****** *)
+//
+fun
+GameOf24_solve
+( n1: sint, n2: sint
+, n3: sint, n4: sint): list_vt(expr) =
+gseq_filter0$f1un_llist
+(sint4_combine(n1, n2, n3, n4), expr_iseq24)
+//
+(*
+val () = printsln("GameOf24_solve(3, 3, 8, 8) = ", GameOf24_solve(3, 3, 8, 8))
+val () = printsln("GameOf24_solve(5, 5, 7, 11) = ", GameOf24_solve(5, 5, 7, 11))
+val () = printsln("GameOf24_solve(5, 7, 7, 11) = ", GameOf24_solve(5, 7, 7, 11))
+val () = printsln("GameOf24_solve(4, 4, 10, 10) = ", GameOf24_solve(4, 4, 10, 10))
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+fun<>
+list_vt_nilq1
+{a:t0}{n:i0}
+(xs:
+!list_vt(a,n)): bool(n=0) =
+(
+case+ xs of
+|list_vt_nil() => true
+|list_vt_cons _ => false)
+#symload
+nilq1 with list_vt_nilq1 of 1000
+(* ****** ****** *)
+//
+#extern
+fun
+GameOf24_solve$print
+( n1: sint, n2: sint
+, n3: sint, n4: sint): void = $extnam()
+//
+#implfun
+GameOf24_solve$print
+( n1 , n2 , n3 , n4 ) =
+let
+val sols = GameOf24_solve(n1, n2, n3, n4)
+in//let
+//
+if // if
+nilq1(sols) then
+println
+("No solution found!") else
+(
+println("\
+The solutions found:");
+(
+  list_vt_foritm0(sols)) where
+{
+#impltmp foritm$work0<expr>(sol) = println(sol) }
+)
+//
+end(*let*)//end-of-[GameOf24_solve$print(n1,n2,n3,n4)]
+//
+// (*
+val () = GameOf24_solve$print(3, 3, 8, 8)
+val () = GameOf24_solve$print(5, 5, 7, 11)
+val () = GameOf24_solve$print(5, 7, 7, 11)
+val () = GameOf24_solve$print(4, 4, 10, 10)
+// *)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val () =
+console_log(the_print_store_flush((*void*)))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(***********************************************************************)
+(*
+The end of
+[XATSHOME/contrib/githwxi/pground/proj002@250507/misc004/Game-of-24.dats]
+*)
+(***********************************************************************)

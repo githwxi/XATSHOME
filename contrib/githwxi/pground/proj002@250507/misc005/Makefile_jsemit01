@@ -1,0 +1,56 @@
+########################################################################
+########################################################################
+# Makefile for misc004
+########################################################################
+########################################################################
+CAT=cat
+CPF=cp -f
+ECHO=echo
+NODE=node
+PRINTF=printf
+PYTHON=python3
+########################################################################
+########################################################################
+all:: Game-of-24
+########################################################################
+clean:: ; rm -f *~
+########################################################################
+cleanall:: ; rm -f *~
+cleanall:: ; rm -f OUTS/*_cats.js
+cleanall:: ; rm -f OUTS/*_dats.js
+cleanall:: ; rm -f OUTS/test_out.js
+########################################################################
+XATSHOME=./../../../../../../XATSHOME
+########################################################################
+#
+XATS2JSD=$(XATSHOME)/xassets/JS/xats2js
+#
+XATS2JS_JSEMIT01=\
+$(XATSHOME)/xassets/JS/xats2js/xats2js_jsemit01_ats2_opt1.js
+XATS2JS_JSEMIT01=\
+$(XATSHOME)/xassets/JS/xats2js/xats2js_jsemit01_ats3_opt1.js
+#
+########################################################################
+########################################################################
+test:: ; \
+$(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
+test:: ; \
+$(CAT) $(XATS2JSD)/runtime/xats2js_js1emit.js >> OUTS/$@_out.js
+test:: ; \
+$(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/$@_out.js
+test:: Game-of-24.dats; \
+$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+########################################################################
+embedded:: ; \
+$(CPF) Game-of-24.cats OUTS/Game-of-24_cats.js
+embedded:: ; \
+$(PRINTF) "// %s\n" "`date`" > OUTS/Game-of-24_dats.js
+embedded:: ; \
+$(CAT) $(XATS2JSD)/runtime/xats2js_js1emit.js >> OUTS/Game-of-24_dats.js
+embedded:: ; \
+$(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/Game-of-24_dats.js
+embedded:: Game-of-24_dats
+Game-of-24_dats: Game-of-24.dats; \
+$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/Game-of-24_dats.js
+########################################################################
+##################### end of [Makefile_jsemit01] #######################
