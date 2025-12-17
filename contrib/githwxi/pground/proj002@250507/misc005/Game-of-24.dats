@@ -365,19 +365,6 @@ val () = printsln("sint4_combine(1,2,3,4) = ", sint4_combine(1,2,3,4))
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#impltmp
-< xs:vt >
-< x0:vt >
-gseq_filter0$f1un_llist
-  (xs, test) =
-(
-  gseq_filter0_llist(xs))
-where
-{
-#impltmp filter$test1<x0> = test }
-//
-(* ****** ****** *)
-//
 fun
 GameOf24_solve
 ( n1: sint, n2: sint
@@ -435,12 +422,12 @@ The solutions found:");
 //
 end(*let*)//end-of-[GameOf24_solve$print(n1,n2,n3,n4)]
 //
-// (*
+(*
 val () = GameOf24_solve$print(3, 3, 8, 8)
 val () = GameOf24_solve$print(5, 5, 7, 11)
 val () = GameOf24_solve$print(5, 7, 7, 11)
 val () = GameOf24_solve$print(4, 4, 10, 10)
-// *)
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -454,6 +441,6 @@ console_log(the_print_store_flush((*void*)))
 (***********************************************************************)
 (*
 The end of
-[XATSHOME/contrib/githwxi/pground/proj002@250507/misc004/Game-of-24.dats]
+[XATSHOME/contrib/githwxi/pground/proj002@250507/misc005/Game-of-24.dats]
 *)
 (***********************************************************************)
