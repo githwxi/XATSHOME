@@ -20,7 +20,7 @@ Sun Dec 21 12:41:05 PM EST 2025
 (* ****** ****** *)
 //
 val
-sint_gte$strmize =
+sints_gte =
 fix f(n: sint) =>
 $lazy(
 strmcon_cons(n, f(n+1)))
@@ -30,12 +30,15 @@ cons = strmcon_cons
 #define // a shorthand
 filter = strm_filter$f1un
 //
+(* ****** ****** *)
+(* ****** ****** *)
+//
 val
 the_primes =
 sieve
 (
-sint_gte$strmize(2))
-where
+sints_gte(2)
+) where
 {
 val sieve =
 fix
@@ -44,16 +47,49 @@ $lazy(
 let
 val-
 cons(x0, xs) = !xs
+(*
+val () =
+printsln("fix(f): x0 = ", x0)
+*)
 in//let
 cons(x0,
 f(filter(xs, lam(x1) => x1%x0 > 0)))end)
 }
 //
 (* ****** ****** *)
+val ps = the_primes
 (* ****** ****** *)
 //
-val () = print0s("\
-the_primes = ", strmize(the_primes), "\n")
+val-
+strmcon_cons(p1, ps) = !ps
+val () = printsln("p1 = ", p1)
+val-
+strmcon_cons(p2, ps) = !ps
+val () = printsln("p2 = ", p2)
+val-
+strmcon_cons(p3, ps) = !ps
+val () = printsln("p3 = ", p3)
+val-
+strmcon_cons(p4, ps) = !ps
+val () = printsln("p4 = ", p4)
+val-
+strmcon_cons(p5, ps) = !ps
+val () = printsln("p5 = ", p5)
+val-
+strmcon_cons(p6, ps) = !ps
+val () = printsln("p6 = ", p6)
+val-
+strmcon_cons(p7, ps) = !ps
+val () = printsln("p7 = ", p7)
+val-
+strmcon_cons(p8, ps) = !ps
+val () = printsln("p8 = ", p8)
+val-
+strmcon_cons(p9, ps) = !ps
+val () = printsln("p9 = ", p9)
+val-
+strmcon_cons(p10, ps) = !ps
+val () = printsln("p10 = ", p10)
 //
 (* ****** ****** *)
 (* ****** ****** *)
