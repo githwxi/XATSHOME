@@ -116,7 +116,7 @@ gseq_forall0
 (* ****** ****** *)
 //
 #impltmp
-< x0:t0 >
+< x0:vt >
 strm_vt_forall0$f1un
   (xs, test) =
 (
@@ -124,7 +124,7 @@ strm_vt_forall0
 <  x0  >(  xs  )) where
 {
 #impltmp
-forall$test0<x0>(x0) = test(x0)
+forall$test0<x0> = test(*x0*)
 }(*where*)//end-of-[strm_vt_forall0$f1un]
 //
 #impltmp
@@ -143,7 +143,8 @@ auxmain(0, xs)) where
 {
 fun
 auxmain
-( i0: nint
+( i0
+: nint
 , xs
 : strm_vt(x0)): bool =
 (
@@ -171,7 +172,7 @@ strm_vt_iforall0<x0>(xs))
 where
 {
 #impltmp
-iforall$test0<x0>(i0, x0) = test(i0, x0)
+iforall$test0<x0> = test(*ni,x0*)
 }
 //
 #impltmp
@@ -249,7 +250,8 @@ auxmain(0, xs)) where
 {
 fun
 auxmain
-( i0: nint
+( i0
+: nint
 , xs
 : strm_vt(x0)
 ) : strm_vt(y0) = $llazy
@@ -319,6 +321,8 @@ else
 )
 }(*where*)//end-of-[strm_vt_filter0(xs)]
 //
+(* ****** ****** *)
+//
 #impltmp
 < x0:vt >
 strm_vt_filter0$f1un
@@ -360,7 +364,8 @@ HX-2024-07-13:
 *)
 fnx
 auxloop
-( i0: nint
+( i0
+: nint
 , xs
 : strmcon_vt(x0)
 ) : strmcon_vt(x0) =
@@ -386,6 +391,8 @@ else
 g_free<x0>(x1); auxloop(i0+1, !xs)) end
 )
 }(*where*)//end-of-[strm_vt_ifilter0(xs)]
+//
+(* ****** ****** *)
 //
 #impltmp
 < x0:vt >
@@ -435,7 +442,6 @@ strmcon_vt_cons
 (* ****** ****** *)
 (* ****** ****** *)
 //
-//
 (*
 HX-2025-01-12:
 Sun Jan 12 09:30:32 AM EST 2025
@@ -472,9 +478,6 @@ gseq_ifolditm0$f3un<strm_vt(x0)><x0><r0>
 HX-2025-05-31:
 Sat May 31 09:00:51 PM EDT 2025
 *)
-//
-(* ****** ****** *)
-(* ****** ****** *)
 //
 #impltmp
 < x0:vt >
