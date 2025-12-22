@@ -85,7 +85,7 @@ if
 i0 >= N
 then
 (
-printsln((*void*))) else
+println((*0*))) else
 (
 (
 if

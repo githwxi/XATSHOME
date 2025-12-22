@@ -1,4 +1,4 @@
-# 8-Queen Puzzle
+# Eight-Queen Puzzle
 
 ## Date
 
