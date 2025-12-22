@@ -70,7 +70,7 @@ $llazy
 (strmcon_vt_nil(*void*))
 //
 #impltmp
-< x0:vt >
+< a: vt >
 strm_vt_sing(x0) =
 (
 strm_vt_cons(x0, xs))
@@ -79,7 +79,7 @@ where
 val xs = strm_vt_nil() }
 //
 #impltmp
-< x0:vt >
+< a: vt >
 strm_vt_cons(x0, xs) =
 $llazy
 (strmcon_vt_cons(x0, xs))
@@ -93,7 +93,7 @@ $llazy
 (strqcon_vt_nil(*void*))
 //
 #impltmp
-< x0:vt >
+< a: vt >
 strq_vt_sing(x0) =
 (
 strq_vt_cons(x0, xs))
@@ -102,7 +102,7 @@ where
 val xs = strq_vt_nil() }
 //
 #impltmp
-< x0:vt >
+< a: vt >
 strq_vt_cons(x0, xs) =
 $llazy
 (strqcon_vt_cons(x0, xs))
@@ -111,13 +111,23 @@ $llazy
 (* ****** ****** *)
 //
 #impltmp
-{ x0:vt }
-g_free//~xs
-<strm_vt(x0)>(xs) = $free(xs)
+< a: vt >
+strm_vt_free(xs) = $free(xs)
 #impltmp
-{ x0:vt }
+< a: vt >
+strm_vt_eval(xs) = $eval(xs)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+{ a: vt }
 g_free//~xs
-<strq_vt(x0)>(xs) = $free(xs)
+<strm_vt(a)> = strm_vt_free<a>
+#impltmp
+{ a: vt }
+g_free//~xs
+<strq_vt(a)> = strq_vt_free<a>
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -130,36 +140,27 @@ Wed 17 Jul 2024 10:27:26 PM EDT
 #impltmp
 { x0:vt }
 gseq_sep
-<strm_vt(x0)><x0>() = ","
+<
+strm_vt(x0)><x0>() = ","
 #impltmp
 { x0:vt }
 gseq_end
-<strm_vt(x0)><x0>() = ")"
+<
+strm_vt(x0)><x0>() = ")"
 #impltmp
 { x0:vt }
 gseq_beg
-<strm_vt(x0)><x0>() = "strm_vt("
+<
+strm_vt(x0)><x0>() = "strm_vt("
 //
 (* ****** ****** *)
 //
 #impltmp
 { x0:vt }
 g_print0
-<strm_vt(x0)>(xs) =
-(
+<strm_vt(x0)> =
 gseq_print0
-<strm_vt(x0)><x0>(xs))
-//end-[g_print0<strm_vt>]
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-< x0:vt >
-strm_vt_free(xs) = $free(xs)
-#impltmp
-< x0:vt >
-strm_vt_eval(xs) = $eval(xs)
+<strm_vt(x0)><x0>(*strm_vt(x0)*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -345,6 +346,181 @@ val
 end//let//end-of-[strmcon_vt_cons(x1,xs)]
 )
 }(*where*)//end-of-[strm_vt_length0( xs )]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2025-12-21:
+Sun Dec 21 07:20:03 PM EST 2025
+*)
+//
+(* ****** ****** *)
+//
+#impltmp
+<>(*tmp*)
+strm_vt_end() = ")"
+#impltmp
+<>(*tmp*)
+strm_vt_sep() = ","
+#impltmp
+<>(*tmp*)
+strm_vt_rst() = "..."
+//
+#impltmp
+<>(*tmp*)
+strm_vt_beg() = "$strm_vt("
+//
+(* ****** ****** *)
+//
+#impltmp
+<>(*tmp*)
+strm_vt_print$len() = (10)
+//
+(* ****** ****** *)
+//
+#impltmp
+<x0>(*tmp*)
+strm_vt_print0(xs) =
+let
+val len = 
+strm_vt_print$len<>()
+in//let
+if
+(len < 0)
+then strm_vt_all$print0<x0>(xs)
+else strm_vt_len$print0<x0>(xs, len)
+end(*let*)//end-of-[strm_vt_print0(xs)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<x0>(*tmp*)
+strm_vt_all$print0
+  (xs) =
+(
+loop
+(xs, 0(*i0*)) where
+{
+val () =
+pstrn(strm_vt_beg<>())
+}
+) where
+{
+#vwtpdef
+xs = strm_vt(x0)
+fnx
+loop
+( xs: xs
+, i0: nint): void =
+(
+case+ !xs of
+| ~
+strmcon_vt_nil() =>
+(
+pstrn(strm_vt_end<>())
+)
+| ~
+strmcon_vt_cons(x0, xs) =>
+let
+//
+val () =
+if
+(i0 > 0)
+then
+pstrn(strm_vt_sep<>())
+//
+in
+(
+  loop(xs, i0+1)) where
+{
+  val () = g_print0<x0>(x0)
+}
+end // end of [strmcon_vt_cons]
+)
+}(*where*)//end-of-(strm_vt_all$print0(xs))
+//
+(* ****** ****** *)
+//
+#impltmp
+<x0>(*tmp*)
+strm_vt_len$print0
+  (xs, n0) =
+(
+loop
+(xs, 0(*i0*)) where
+{
+val () =
+pstrn(strm_vt_beg<>())
+}
+) where
+{
+//
+#vwtpdef
+xs = strm_vt(x0)
+//
+fnx
+loop
+( xs: xs
+, i0: nint): void =
+(
+case+ !xs of
+| ~
+strmcon_vt_nil() =>
+pstrn(strm_vt_end<>())
+| ~
+strmcon_vt_cons(x0, xs) =>
+if
+(i0 >= n0)
+then
+let
+//
+val () =
+g_free<x0>(x0)
+val () =
+strm_vt_free<x0>(xs)
+//
+val () =
+if
+(i0 > 0)
+then
+pstrn(strm_vt_sep<>())
+//
+val () =
+pstrn(strm_vt_rst<>())
+//
+in
+(
+pstrn(strm_vt_end<>()))
+end // end of [if-then]
+else
+let
+//
+val () =
+if
+(i0 > 0)
+then
+pstrn(strm_vt_sep<>())
+//
+in//let
+(
+  loop(xs, i0+1)) where
+{
+  val () = g_print0<x0>(x0)
+}
+end // end of [if-else]
+)(*case+*)//end-of-(loop(xs,i0))
+}(*where*)//end-of-(strm_vt_len$print0(xs,ln))
+//
+(* ****** ****** *)
+//
+#impltmp
+{ x0:vt }
+g_print0<strm_vt(x0)> = strm_vt_print0<x0>(*xs*)
+#impltmp
+{ x0:vt }
+gseq_print0<strm_vt(x0)><x0> = strm_vt_print0<x0>(*xs*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

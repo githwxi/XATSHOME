@@ -72,18 +72,31 @@ xs: strq_vt(a,n)): strq_vt(a,n+1)
 (* ****** ****** *)
 //
 fun
-<x0:vt>
+<a:vt>
 strm_vt_free
-(~strm_vt(x0)): ( void )
+(~strm_vt(a)): ( void )
 fun
-<x0:vt>
+<a:vt>
+strq_vt_free
+(~strq_vt(a)): ( void )
+//
+fun
+<a:vt>
 strm_vt_eval
-(~strm_vt(x0)): strmcon_vt(x0)
+(~strm_vt(a)): strmcon_vt(a)
+fun
+<a:vt>
+strq_vt_eval
+(~strm_vt(a)): strqcon_vt(a)
 //
 #symload
 free with strm_vt_free of 1000
 #symload
+free with strq_vt_free of 1000
+#symload
 eval with strm_vt_eval of 1000
+#symload
+eval with strq_vt_eval of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -291,6 +304,35 @@ list_vt_make0_lstrq
 #symload list_vt with list_vt_make0_lstrm of 1000
 #symload list_vt with list_vt_make0_lstrq of 1000
 *)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+Sun Dec 21 07:15:47 PM EST 2025
+*)
+fun<>
+strm_vt_beg(): strn
+fun<>
+strm_vt_end(): strn
+fun<>
+strm_vt_sep(): strn
+fun<>
+strm_vt_rst(): strn
+//
+fun
+<x0:vt>
+strm_vt_print0(xs: strm_vt(x0)): void
+//
+fun
+<x0:vt>
+strm_vt_all$print0(xs: strm_vt(x0)): void
+//
+fun<>
+strm_vt_print$len(): sint
+fun
+<x0:vt>
+strm_vt_len$print0(xs: strm_vt(x0), ln: sint): void
 //
 (* ****** ****** *)
 (* ****** ****** *)

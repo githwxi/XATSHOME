@@ -26,14 +26,16 @@ fun
 <x0:vt>
 strm_vt_print0
 (xs: strm_vt(x0)): void
-fun<>
-strm_vt_print$len(): sint
 //
 #extern
 fun
 <x0:vt>
 strm_vt_all$print0
 (xs: strm_vt(x0)): void
+//
+#extern
+fun<>
+strm_vt_print$len(): sint
 #extern
 fun
 <x0:vt>

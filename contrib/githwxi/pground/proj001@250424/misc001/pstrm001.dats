@@ -94,6 +94,17 @@ val () = printsln("p10 = ", p10)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+local
+#impltmp
+strm_print$len<>() = 100
+in//let
+val () =
+printsln("the_primes = ", the_primes)
+end//local//end-of-(strm_print$len<>())
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 val () =
 console_log(the_print_store_flush((*void*)))
 //
