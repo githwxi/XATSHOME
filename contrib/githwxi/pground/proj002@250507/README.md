@@ -35,4 +35,18 @@ A webpage is built that gives a demo of the so-called Game-of-24.
 This example is adapted from some ancient code written in the early
 days of ATS development.
 
+## [misc005](./misc005)
+
+This one is a refinement of [misc004](./misc004), replacing functional
+lists with linear functional lists.
+
+## [misc006](./misc006)
+
+An implementation is given that solves the so-called 8-queen puzzle.
+Note that there is NO webpage built for the purpose of demo.
+
+########################################################################
+
 Happy ATS programming!
+
+########################################################################
