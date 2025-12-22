@@ -4,8 +4,15 @@
 HX-2025-04-24:
 For printing linear streams
 Thu Apr 24 11:34:32 PM EDT 2025
+HX-2025-12-22:
+The following code for printing
+strm_vt (strm_vt_print0) has been
+moved to the prelude library:
+prelude/DATS/VT/strm000_vt.dats
+Mon Dec 22 11:55:28 AM EST 2025
 *)
 (* ****** ****** *)
+(*
 (* ****** ****** *)
 //
 #extern
@@ -208,6 +215,7 @@ end // end of [if-else]
 }(*where*)//end-of(strm_vt_len$print0)
 //
 (* ****** ****** *)
+*)
 (* ****** ****** *)
 //
 (***********************************************************************)

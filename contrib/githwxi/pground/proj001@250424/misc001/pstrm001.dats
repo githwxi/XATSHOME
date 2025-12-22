@@ -98,7 +98,7 @@ local
 #impltmp
 strm_print$len<>() = 100
 in//let
-val () =
+val (  ) =
 printsln("the_primes = ", the_primes)
 end//local//end-of-(strm_print$len<>())
 //

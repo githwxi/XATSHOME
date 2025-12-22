@@ -50,7 +50,17 @@ fpath_cgtz$strmize$exn
 (fpath("./fpath000.dats"))
 //
 val () =
-strm_vt_foritm0$f1un(cstrm, lam c => print(c))
+foritm0(cstrm, lam(c)=>print(c))
+(*
+HX-2025-12-22:
+Each of the choices works:
+val () =
+foritm0$fun(cstrm, lam(c)=>print(c))
+val () =
+strm_vt_foritm0(cstrm, lam(c)=>print(c))
+val () =
+strm_vt_foritm0$f1un(cstrm, lam(c)=>print(c))
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
