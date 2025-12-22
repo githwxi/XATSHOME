@@ -1,4 +1,17 @@
 (* ****** ****** *)
+//
+(*
+//
+HX-2019-05-09:
+For ATS-Temptory
+HX-2020-10-20:
+Porting from HX-2019-05-09
+//
+HX-2025-12-22:
+Porting from HX-2020-10-20
+Mon Dec 22 03:51:52 PM EST 2025
+*)
+//
 (* ****** ****** *)
 #include
 "prelude/HATS/prelude_dats.hats"
@@ -40,8 +53,7 @@ gseq_strmize
 <board><sint> = list_strmize<sint>
 #impltmp
 gseq_rstrmize
-<board><sint>(xs) =
-strmize0(list_reverse_vt<sint>(xs))
+<board><sint> = list_rstrmize<sint>
 //
 endloc//local//end-of-[local(absimpl(board))]
 //
@@ -157,7 +169,10 @@ list_append(board_extend(xs), r0)
 (* ****** ****** *)
 //
 fun
-qsolve() =
+qsolve
+(
+// empty
+) : list(board) =
 (
 loop(0,
 list_sing(board_nil())))
