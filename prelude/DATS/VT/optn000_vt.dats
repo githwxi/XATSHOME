@@ -188,6 +188,60 @@ optn_vt_nil() => 0 | !optn_vt_cons _ => 1)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-12-22:
+Mon Dec 22 12:15:42 PM EST 2025
+*)
+//
+#impltmp
+< x0:vt >
+optn_vt_free
+(    xs    ) =
+(
+case+ xs of
+| ~
+optn_vt_nil
+( (*void*) ) => ()
+| ~
+optn_vt_cons
+(    x1    ) => g_free<x0>(x1))
+//
+#impltmp
+{ x0:vt }
+g_free<
+optn_vt(x0)> = optn_vt_free<x0>(*void*)
+#impltmp
+{ x0:vt }
+gseq_free<
+optn_vt(x0)><x0> = optn_vt_free<x0>(*void*)
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:vt >
+optn_vt_copy
+(    xs    ) =
+(
+case+ xs of
+|optn_vt_nil
+( (*void*) ) => optn_vt_nil()
+|optn_vt_cons
+(    x1    ) =>
+(
+  optn_vt_cons(g_copy<x0>(x1))))
+//
+#impltmp
+{ x0:vt }
+g_copy<
+optn_vt(x0)> = optn_vt_copy<x0>(*void*)
+#impltmp
+{ x0:vt }
+gseq_copy<
+optn_vt(x0)><x0> = optn_vt_copy<x0>(*void*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_DATS_VT_optn000_vt.dats] *)
 (***********************************************************************)
