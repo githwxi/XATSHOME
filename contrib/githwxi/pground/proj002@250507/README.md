@@ -43,21 +43,23 @@ lists with linear functional lists.
 ## [misc006](./misc006)
 
 An implementation is given that solves the so-called 8-queen puzzle.
-Note that there is NO webpage built for the purpose of demo.
+This implementation builds levels of a search tree, performing
+breadth-first search.  Note that there is NO demo webpage built for
+this one.
 
 ## [misc007](./misc007)
 
 An implementation is given that solves the so-called 8-queen puzzle.
 This implementation makes direct use of depth-first search, which
 itself is implemented as a template library (gtree.dats).  Note that
-there is NO webpage built for the purpose of demo.
+there is NO demo webpage built for this one.
 
 ## [misc008](./misc008)
 
 An implementation is given that solves the so-called 8-queen puzzle.
 This implementation makes direct use of breadth-first search, which
 itself is implemented as a template library (gtree.dats).  Note that
-there is NO webpage built for the purpose of demo.
+there is NO demo webpage built for this one.
 
 ########################################################################
 
