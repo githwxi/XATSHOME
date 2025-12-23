@@ -51,15 +51,15 @@ this one.
 
 An implementation is given that solves the so-called 8-queen puzzle.
 This implementation makes direct use of depth-first search, which
-itself is implemented as a template library (gtree.dats).  Note that
-there is NO demo webpage built for this one.
+itself is implemented as a template library ([gtree](./gtree.dats)).
+Note that there is NO demo webpage built for this one.
 
 ## [misc008](./misc008)
 
 An implementation is given that solves the so-called 8-queen puzzle.
 This implementation makes direct use of breadth-first search, which
-itself is implemented as a template library (gtree.dats).  Note that
-there is NO demo webpage built for this one.
+itself is implemented as a template library ([gtree](./gtree.dats)).
+Note that there is NO demo webpage built for this one.
 
 ########################################################################
 
