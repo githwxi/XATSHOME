@@ -50,21 +50,21 @@ end//let//end-of-[gtree$node_dfs$enumerate(node)]
 gtree$nodelst_dfs$enumerate
   ( nds0 ) =
 (
-  auxmain(frnt, rest)) where
+  auxmain(frst, rest)) where
 {
 //
-val frnt = nds0
+val frst = nds0
 val rest = list_vt_nil(*void*)
 //
 fun
 auxmain
-( frnt
+( frst
 : strm_vt(node)
 , rest
 : list_vt
   (strm_vt(node))): strm_vt(node) =
 $llazy(
-case+ !frnt of
+case+ !frst of
 //
 | ~
 strmcon_vt_nil
@@ -84,16 +84,18 @@ list_vt_cons
 //
 | ~
 strmcon_vt_cons
-( node , frnt ) =>
+( node , frst ) =>
 let
 val rest =
-list_vt_cons(frnt, rest)
-val frnt = // HX: depth-first!
+// HX: depth-first!
+(
+list_vt_cons(frst, rest))
+val subs =
 gtree$node_subs$get<node>(node)
 in//let
-strmcon_vt_cons(node, auxmain(frnt, rest))
-end//let//end-of-[strmcon_vt_cons(node,frnt)]
-)(*case+*)//(*llazy*)//end-of-[auxmain(frnt,rest)]
+strmcon_vt_cons(node, auxmain(subs, rest))
+end//let//end-of-[strmcon_vt_cons(node,frst)]
+)(*case+*)//(*llazy*)//end-of-[auxmain(frst,rest)]
 //
 }(*where*)//end-of-[gtree$nodelst_dfs$enumerate(nds)]
 //
