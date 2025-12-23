@@ -2,7 +2,7 @@
 
 ## Date
 
-Tue Dec 23 01:09:10 PM EST 2025
+Tue Dec 23 03:17:26 PM EST 2025
 
 ## Description
 
@@ -13,5 +13,5 @@ on the same row, the same column, or the same diagnal.
 
 ## Implementation
 
-An implementation is given that makes direct use of depth-first search,
+An implementation is given that makes direct use of breadth-first search,
 which itself is implemented as a template library (gtree.dats).
