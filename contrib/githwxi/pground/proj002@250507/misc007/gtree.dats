@@ -29,17 +29,6 @@ fun
 gtree$nodelst_dfs$enumerate
 (nds: strm_vt(node)): strm_vt(node)
 //
-#extern
-fun
-<node:t0>
-gtree$node_bfs$enumerate
-(nd0: node): strm_vt(node)
-#extern
-fun
-<node:t0>
-gtree$nodelst_bfs$enumerate
-(nds: strm_vt(node)): strm_vt(node)
-//
 (* ****** ****** *)
 (* ****** ****** *)
 //
