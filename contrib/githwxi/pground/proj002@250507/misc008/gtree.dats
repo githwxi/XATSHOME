@@ -58,6 +58,19 @@ val frst = nds0
 val r1st = list_vt_nil(*void*)
 val r2st = list_vt_nil(*void*)
 //
+(*
+//
+HX-2025-12-24:
+Tue Dec 23 03:38:41 PM EST 2025
+//
+auxmain:
+r1st: 1st part of queue
+r2st: 2nd part of queue in reverse
+Note that
+(frst, r1st, r2st) is interpreted as
+the sequence (frst@r1st@reverse(r2st))
+//
+*)
 fun
 auxmain
 ( frst
