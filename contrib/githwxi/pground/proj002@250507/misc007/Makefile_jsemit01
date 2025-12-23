@@ -38,9 +38,11 @@ test:: ; \
 $(CAT) $(XATS2JSD)/runtime/xats2js_js1emit.js >> OUTS/$@_out.js
 test:: ; \
 $(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/$@_out.js
-test:: gtree.dats; \
-$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
-test:: queen_puzzle.dats; \
-$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+test:: gtree
+gtree: gtree.dats; \
+$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/test_out.js
+test:: queen_puzzle
+queen_puzzle: queen_puzzle.dats; \
+$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/test_out.js
 ########################################################################
 ##################### end of [Makefile_jsemit01] #######################
