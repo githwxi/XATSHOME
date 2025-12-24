@@ -61,6 +61,11 @@ This implementation makes direct use of breadth-first search, which
 itself is implemented as a template library ([gtree](./misc008/gtree.dats)).
 Note that there is NO demo webpage built for this one.
 
+## [misc009](./misc009)
+
+This one is for presenting the stream of prime numbers. One can move
+forward and backward along this stream by clicking on some buttons.
+
 ########################################################################
 
 Happy ATS programming!
