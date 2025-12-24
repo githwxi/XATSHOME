@@ -16,9 +16,8 @@ all:: gtree
 clean:: ; rm -f *~
 ########################################################################
 cleanall:: ; rm -f *~
-cleanall:: ; rm -f OUTS/*_cats.js
-cleanall:: ; rm -f OUTS/*_dats.js
-cleanall:: ; rm -f OUTS/test_out.js
+cleanall:: ; rm -f OUTS/JS_StreamDemo_cats.js
+cleanall:: ; rm -f OUTS/JS_StreamDemo_dats.js
 ########################################################################
 XATSHOME=./../../../../../../XATSHOME
 ########################################################################
@@ -32,14 +31,19 @@ $(XATSHOME)/xassets/JS/xats2js/xats2js_jsemit01_ats3_opt1.js
 #
 ########################################################################
 ########################################################################
-test:: ; \
-$(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
-test:: ; \
-$(CAT) $(XATS2JSD)/runtime/xats2js_js1emit.js >> OUTS/$@_out.js
-test:: ; \
-$(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/$@_out.js
-test:: StreamDemo
+embedded:: ; \
+$(CPF) JS_StreamDemo.cats OUTS/JS_StreamDemo_cats.js
+embedded:: ; \
+$(PRINTF) "// %s\n" "`date`" > OUTS/JS_StreamDemo_dats.js
+embedded:: ; \
+$(CAT) $(XATS2JSD)/runtime/xats2js_js1emit.js >> OUTS/JS_StreamDemo_dats.js
+embedded:: ; \
+$(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/JS_StreamDemo_dats.js
+embedded:: StreamDemo
 StreamDemo: StreamDemo.dats; \
-$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/test_out.js
+$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/JS_StreamDemo_dats.js
+embedded:: JS_StreamDemo
+JS_StreamDemo: JS_StreamDemo.dats; \
+$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/JS_StreamDemo_dats.js
 ########################################################################
 ##################### end of [Makefile_jsemit01] #######################
