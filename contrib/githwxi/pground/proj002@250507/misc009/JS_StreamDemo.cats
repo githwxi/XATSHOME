@@ -2,7 +2,7 @@
 /***********************************************************************/
 //
 function
-JS_StreaxDemo_show_none
+JS_StreamDemo_show_none
   ()
 {
   alert("?"); return;
@@ -11,7 +11,7 @@ JS_StreaxDemo_show_none
 /***********************************************************************/
 //
 function
-JS_StreaxDemo_show_some
+JS_StreamDemo_show_some
   (int)
 {
   alert(String(int)); return;
