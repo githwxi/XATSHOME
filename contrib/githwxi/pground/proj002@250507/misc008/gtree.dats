@@ -21,12 +21,12 @@ gtree$node_subs$get
 #extern
 fun
 <node:t0>
-gtree$node_bfs$enumerate
+gtree$node_bfs$strmize
 (nd0: node): strm_vt(node)
 #extern
 fun
 <node:t0>
-gtree$nodelst_bfs$enumerate
+gtree$nodelst_bfs$strmize
 (nds: strm_vt(node)): strm_vt(node)
 //
 (* ****** ****** *)
@@ -34,20 +34,20 @@ gtree$nodelst_bfs$enumerate
 //
 #impltmp
 <node:t0>
-gtree$node_bfs$enumerate
+gtree$node_bfs$strmize
   ( node ) =
 let
 val nds0 =
 strm_vt_sing(node)
 in//let
-gtree$nodelst_bfs$enumerate<node>(nds0)
-end//let//end-of-[gtree$node_bfs$enumerate(node)]
+gtree$nodelst_bfs$strmize<node>(nds0)
+end//let//end-of-[gtree$node_bfs$strmize(node)]
 //
 (* ****** ****** *)
 //
 #impltmp
 <node:t0>
-gtree$nodelst_bfs$enumerate
+gtree$nodelst_bfs$strmize
   ( nds0 ) =
 (
   auxmain(frst, r1st, r2st)
@@ -145,7 +145,7 @@ end//let//end-of-[strmcon_vt_cons(node,frst)]
 //
 )(*case+*)//(*llazy*)//end-of-[auxmain(frst,...)]
 //
-}(*where*)//end-of-[gtree$nodelst_bfs$enumerate(nds)]
+}(*where*)//end-of-[gtree$nodelst_bfs$strmize(nds)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

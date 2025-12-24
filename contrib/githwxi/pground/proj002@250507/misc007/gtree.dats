@@ -21,12 +21,12 @@ gtree$node_subs$get
 #extern
 fun
 <node:t0>
-gtree$node_dfs$enumerate
+gtree$node_dfs$strmize
 (nd0: node): strm_vt(node)
 #extern
 fun
 <node:t0>
-gtree$nodelst_dfs$enumerate
+gtree$nodelst_dfs$strmize
 (nds: strm_vt(node)): strm_vt(node)
 //
 (* ****** ****** *)
@@ -34,20 +34,20 @@ gtree$nodelst_dfs$enumerate
 //
 #impltmp
 <node:t0>
-gtree$node_dfs$enumerate
+gtree$node_dfs$strmize
   ( node ) =
 let
 val nds0 =
 strm_vt_sing(node)
 in//let
-gtree$nodelst_dfs$enumerate<node>(nds0)
-end//let//end-of-[gtree$node_dfs$enumerate(node)]
+gtree$nodelst_dfs$strmize<node>(nds0)
+end//let//end-of-[gtree$node_dfs$strmize(node)]
 //
 (* ****** ****** *)
 //
 #impltmp
 <node:t0>
-gtree$nodelst_dfs$enumerate
+gtree$nodelst_dfs$strmize
   ( nds0 ) =
 (
   auxmain(frst, rest)) where
@@ -97,7 +97,7 @@ strmcon_vt_cons(node, auxmain(subs, rest))
 end//let//end-of-[strmcon_vt_cons(node,frst)]
 )(*case+*)//(*llazy*)//end-of-[auxmain(frst,rest)]
 //
-}(*where*)//end-of-[gtree$nodelst_dfs$enumerate(nds)]
+}(*where*)//end-of-[gtree$nodelst_dfs$strmize(nds)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
