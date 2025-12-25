@@ -57,6 +57,9 @@
 #include "prelude/SATS/gmap000.sats"
 #include "prelude/SATS/gmap001.sats"
 //
+#include "prelude/SATS/gamp000.sats"
+#include "prelude/SATS/gamp001.sats"
+//
 (* ****** ****** *)
 //
 #include "prelude/SATS/gsyn000.sats"
@@ -92,6 +95,8 @@
 #include "prelude/SATS/list000.sats"
 #include "prelude/SATS/list001.sats"
 #include "prelude/SATS/list002.sats"
+//
+#include "prelude/SATS/lsrt000.sats"
 //
 #include "prelude/SATS/optn000.sats"
 #include "prelude/SATS/optn001.sats"
@@ -139,6 +144,8 @@ HX: for viewtypes (that is, linear types)
 //
 #include "prelude/SATS/VT/list000_vt.sats"
 #include "prelude/SATS/VT/list001_vt.sats"
+//
+#include "prelude/SATS/VT/lsrt000_vt.sats"
 //
 #include "prelude/SATS/VT/optn000_vt.sats"
 #include "prelude/SATS/VT/optn001_vt.sats"

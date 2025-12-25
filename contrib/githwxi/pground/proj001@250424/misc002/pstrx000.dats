@@ -13,7 +13,6 @@ both finite and infinite streams).
 //
 #include
 "prelude/HATS/prelude_dats.hats"
-//
 #include
 "prelude/HATS/prelude_PY_dats.hats"
 //

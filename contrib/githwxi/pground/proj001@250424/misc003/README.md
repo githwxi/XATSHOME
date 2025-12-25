@@ -1,9 +1,10 @@
 # Linear Streamization
 
-Linear streams are a wonderful feature in ATS3.  To quite a large
-extent, a linear stream resembles a generator in Python (and many
-other languages). However, the underlying mechanism of linear streams
-is fundamentally different from that of generators.
+Linear streams are a versatile and powerful feature in ATS3!
+
+To quite a large extent, a linear stream resembles a generator in
+Python (and many other languages). However, the underlying mechanism
+of linear streams is fundamentally different from that of generators.
 
 ## Reading from STDIN
 

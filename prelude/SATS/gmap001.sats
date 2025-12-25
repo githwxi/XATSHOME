@@ -38,28 +38,20 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
-HX-2025-05-02:
-The semantics is involved
-for a mutable map (hashmap)!
-It really depends on the actual
-implementation of these functions.
-*)
-//
 fun
 <map:t0>
-<key:vt>
-<itm:vt>
+<key:t0>
+<itm:t0>
 gmap_key$strmize(map): strm_vt(key)
 fun
 <map:t0>
-<key:vt>
-<itm:vt>
+<key:t0>
+<itm:t0>
 gmap_val$strmize(map): strm_vt(itm)
 fun
 <map:t0>
-<key:vt>
-<itm:vt>
+<key:t0>
+<itm:t0>
 gmap_keyval$strmize(map): strm_vt@(key, itm)
 //
 (* ****** ****** *)

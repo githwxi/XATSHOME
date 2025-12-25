@@ -58,10 +58,11 @@ gmap_beg((*void*)) = "gmap{"
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
 #impltmp
 < m0:t0 >
 < k0:t0 >
-< x0:vt >
+< x0:t0 >
 gmap_keyq
 (map, k0) =
 gseq_exists0
@@ -71,12 +72,22 @@ gmap_key$strmize
 <m0><k0><x0>(map)) where
 {
 #impltmp
-exists$test0<k0>(k1) = g_equal<k0>(k0, k1)
-}
+exists$test0
+< k0 >( k1 ) = g_equal<k0>(k0, k1)
+}(*where*)//end-of-[gmap_keyq(map,k0)]
+*)
+#impltmp
+< m0:t0 >
+< k0:t0 >
+< x0:t0 >
+gmap_keyq
+(map, k0) =
+gmap_search$tst<m0><k0><x0>(map, k0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
 #impltmp
 < m0:t0 >
 < k0:t0 >
@@ -84,13 +95,46 @@ exists$test0<k0>(k1) = g_equal<k0>(k0, k1)
 gmap_search$tst
  (map, k0) =
 let
-#typedef kx = @(k0, x0)
+//
+#typedef
+kx = @(k0, x0)
+//
 in//let
+//
 gseq_consq0
-<strm_vt(kx)><kx>(
-strm_vt_filter0$f1un(
-gseq_strmize<m0><(k0,x0)>(map),
-lam(kx:kx) => g_equal<k0>(k0, kx.0))) end
+<strm_vt(kx)><kx>
+(
+strm_vt_filter0<kx>
+(
+let
+#impltmp
+filter$test
+< kx >( kx ) =
+(
+  g_equal<k0>(k0, kx.0))
+in//let
+  gseq_strmize<m0><(k0,x0)>(map)end))
+//
+end//let//end-of-[gmap_search$tst(map,k0)]
+*)
+//
+#impltmp
+< m0:t0 >
+< k0:t0 >
+< x0:t0 >
+gmap_search$tst
+ (map, k0) =
+(
+case+ opt0 of
+| ~
+optn_vt_nil() => false
+| ~
+optn_vt_cons(x0) => true)
+where
+{
+val opt0 =
+gmap_search$get<m0><k0><x0>(map, k0)
+}(*where*)//end-of-[gmap_search$tst(map,k0)]
 //
 (* ****** ****** *)
 //
@@ -98,26 +142,38 @@ lam(kx:kx) => g_equal<k0>(k0, kx.0))) end
 < m0:t0 >
 < k0:t0 >
 < x0:t0 >
-gmap_search$cpy
+gmap_search$get
  (map, k0) =
 (
 case+ opt0 of
 | ~
-optn_vt_nil() => optn_vt_nil()
+optn_vt_nil
+( (*void*) ) => optn_vt_nil()
 | ~
-optn_vt_cons(kx) => optn_vt_cons(kx.1)
+optn_vt_cons
+(    kx    ) => optn_vt_cons(kx.1)
 ) where
 {
 //
-#typedef kx = (k0, x0)
+#typedef
+kx = (k0, x0)
 //
 val opt0 =
 gseq_head$opt0
-<strm_vt(kx)><kx>(
-strm_vt_filter0$f1un<kx>(
-gmap_keyval$strmize<m0><k0><x0>(map), lam(kx) => g_equal<k0>(k0, kx.0)))
+<strm_vt(kx)><kx>
+(
+strm_vt_filter0<kx>
+(
+let
+#impltmp
+filter$test
+< kx >( kx ) =
+(
+  g_equal<k0>(k0, kx.0))
+in//let
+  gseq_strmize<m0><(k0,x0)>(map)end))
 //
-}
+}(*where*)//end-of-[gmap_search$get(map,k0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
