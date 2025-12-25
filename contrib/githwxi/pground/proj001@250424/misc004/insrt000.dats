@@ -19,14 +19,14 @@ Thu Dec 25 02:39:15 PM EST 2025
 fun
 <x0:t0>
 insrtsort
-(xs: list(x0)): lsrt(x0) =
+( xs
+: list(x0)): lsrt(x0) =
 (
   loop(xs, lsrt_nil()))
 where
 {
 //
-val xs =
-list_reverse_vt(xs)
+val xs = list_reverse_vt(xs)
 //
 fun
 loop(xs, rs) =

@@ -11,6 +11,6 @@ ordering). Also, there is a viewtype (lsrt_vt) for sorted linear
 lists. In [insrt000](./insrt000.dats), one can find an implementation
 of insert-sort making use of the type lsrt. While unsafe casting is
 needed to support types like lsrt and lsrt_vt, it can nonetheless be
-quite useful to introduce such types for refined type-checking.
+quite useful to introduce such types so as to refine type-checking.
 
 Happy ATS programming!
