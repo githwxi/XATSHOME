@@ -182,20 +182,31 @@ irfoldall$fopr
 //
 fun
 <x0:t0>
-<y0:vt>
-map$fopr(itm: x0): (y0)
+search$test(itm: x0): bool
 fun
 <x0:t0>
-<y0:vt>
-rmap$fopr(itm: x0): (y0)
+search$tcmp(itm: x0): sint
+//
 fun
 <x0:t0>
-<y0:vt>
-imap$fopr(pos: ni, itm: x0): (y0)
+rsearch$test(itm: x0): bool
 fun
 <x0:t0>
-<y0:vt>
-irmap$fopr(pos: ni, itm: x0): (y0)
+rsearch$tcmp(itm: x0): sint
+//
+fun
+<x0:t0>
+isearch$test(pos: ni, itm: x0): bool
+fun
+<x0:t0>
+isearch$tcmp(pos: ni, itm: x0): sint
+//
+fun
+<x0:t0>
+irsearch$test(pos: ni, itm: x0): bool
+fun
+<x0:t0>
+irsearch$tcmp(pos: ni, itm: x0): sint
 //
 (* ****** ****** *)
 //
@@ -211,6 +222,26 @@ ifilter$test(pos: ni, itm: x0): bool
 fun
 <x0:t0>
 irfilter$test(pos: ni, itm: x0): bool
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+<y0:vt>
+map$fopr(itm: x0): (y0)
+fun
+<x0:t0>
+<y0:vt>
+rmap$fopr(itm: x0): (y0)
+fun
+<x0:t0>
+<y0:vt>
+imap$fopr(pos: ni, itm: x0): (y0)
+fun
+<x0:t0>
+<y0:vt>
+irmap$fopr(pos: ni, itm: x0): (y0)
 //
 (* ****** ****** *)
 //
@@ -300,13 +331,28 @@ fun
 exists$test(x0: x0): bool
 fun
 <x0:t0>
+exists$tcmp(itm: x0): sint
+//
+fun
+<x0:t0>
 rexists$test(x0: x0): bool
+fun
+<x0:t0>
+rexists$tcmp(x0: x0): sint
+//
 fun
 <x0:t0>
 iexists$test(ni, x0): bool
 fun
 <x0:t0>
+iexists$tcmp(ni, x0): sint
+//
+fun
+<x0:t0>
 irexists$test(ni, x0): bool
+fun
+<x0:t0>
+irexists$tcmp(ni, x0): sint
 //
 (* ****** ****** *)
 (* ****** ****** *)
