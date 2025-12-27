@@ -13,6 +13,7 @@ PYTHON=python3
 ########################################################################
 all:: bsrch000
 all:: tally000
+all:: tally001
 ########################################################################
 clean:: ; rm -f *~
 cleanall:: ; rm -f *~
@@ -64,6 +65,18 @@ tally000:: ; \
 $(CAT) $(XATSHOME)/contrib/githwxi/xatslib/DATS/CATS/JS/NODE/mylib00.cats >> OUTS/$@_out.js
 tally000:: tally000.dats; \
 $(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+########################################################################
+tally001:: ; \
+$(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
+tally001:: ; \
+$(CAT) $(XATS2JSD)/runtime/xats2js_js1emit.js >> OUTS/$@_out.js
+tally001:: ; \
+$(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/$@_out.js
+tally001:: ; \
+$(CAT) $(XATS2JSD)/runtime/srcgen2_prelude_node.js >> OUTS/$@_out.js
+tally001:: tally001.dats; \
+$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+########################################################################
 ########################################################################
 tally000_out1:: ; \
 npx google-closure-compiler -W QUIET \

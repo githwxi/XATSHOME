@@ -8,9 +8,9 @@ of linear streams is fundamentally different from that of generators.
 
 ## Reading from STDIN
 
-In `tally.dats`, the following lines of code computes and
-then prints the tally of some integer numbers input from the
-standard input (STDIN).
+In `tally000.dats`, the following lines of code computes and then
+prints the tally of some integer numbers input from the standard input
+(STDIN).
 
 ```
 //
@@ -48,19 +48,24 @@ STDIN. If we replace integer addition with integer multiplication,
 then what is computed is the product of these numbers (as long as the
 initial value of `r0` is properly changed to 1).
   
-## Streamizing an Iterative Loop
+## Streamizing a Recursive Function
 
-In the paper "Why Functional Programming Matters" by John Hughes,
-which can be readily found on-line, an example of using the
-Newton-Raphson method for computing square roots is given (in Section
-4.1). In `bsrch000.dats`, an example of using binary search to find
-the square root of 2 is given. This example is of the same programming
-style as is advocated in the paper by Hughes, though its
-implementation is much superior due to the use of a linear stream
-(which is similar but different from the kind of _functional_ streams
-supported in the Haskell programming language). Alas! It is truly a
-pity that Haskell formed too early to allow it to be greatly
-influenced by _linear_ lazy evaluation.
-  
+This example (tally001) demonstrates a CPS-based streamization of a
+recursive (but not tail-recursive) function.
+
+## Streamizing a Tail-Recursive Function
+
+A tail-recursive function corresponds to an iterative loop.  In the
+paper "Why Functional Programming Matters" by John Hughes, which can
+be readily found on-line, an example of using the Newton-Raphson
+method for computing square roots is given (in Section 4.1). In
+`bsrch000.dats`, an example of using binary search to find the square
+root of 2 is given. This example is of the same programming style as
+is advocated in the paper by Hughes, though its implementation is much
+superior due to the use of a linear stream (which is similar but
+different from the kind of _functional_ streams supported in the
+Haskell programming language). Alas! It is truly a pity that Haskell
+formed too early to allow it to be greatly influenced by _linear_ lazy
+evaluation.
 
 Happy ATS programming!
