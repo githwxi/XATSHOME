@@ -47,10 +47,14 @@ loop(xs, lsrt_insert<x0>(rs, x1))))
 val xs =
 appends(
   list@(3,1,4,6,2)
+, list@(0,2,4,6,8)
+, list@(5,6,7,8,9)
 , list@(8,9,0,7,5))
 val () = printsln("xs(bef) = ", xs)
 val xs = insrtsort<sint>(xs)
 val () = printsln("xs(aft) = ", xs)
+val mxs = lsrt_msetize(xs)
+val () = printsln("mxs(aft) = ", mxs)
 //
 (* ****** ****** *)
 (* ****** ****** *)

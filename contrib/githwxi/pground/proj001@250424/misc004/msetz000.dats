@@ -15,6 +15,28 @@ Fri Dec 26 08:51:20 PM EST 2025
 (* ****** ****** *)
 (* ****** ****** *)
 //
+fun
+strn_msetize(cs: strn) =
+lsrt_msetize(
+UN_lsrt_encd(
+list_vt2t(mergesort0(listize(cs)))))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val mcs =
+strn_msetize("hello, world!")
+local
+#impltmp
+g_print<char>(ch) =
+prints("'", ch, "'")
+in//local
+val ( ) = printsln("mcs = ", mcs)
+end//local
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 val () =
 console_log(the_print_store_flush((*void*)))
 //
