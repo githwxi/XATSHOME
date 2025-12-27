@@ -210,11 +210,11 @@ Fri Dec 26 10:46:11 PM EST 2025
 fun
 <x0:t0>
 lsrt_msetize
-(xs: lsrt(x0)): list@(igtz, x0)
+(xs: lsrt(x0)): list@(x0, igtz)
 fun
 <x0:t0>
 lsrt_msetize_vt
-(xs: lsrt(x0)): list_vt@(igtz, x0)
+(xs: lsrt(x0)): list_vt@(x0, igtz)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -235,7 +235,7 @@ lsrt$map_search$tst
 fun
 <k0:t0>
 <x0:t0>
-lsrt$map_search$get
+lsrt$map_search$opt
 ( map
 : lsrt@(k0,x0), key: k0): optn_vt(x0)
 //
