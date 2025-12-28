@@ -27,8 +27,11 @@ strmcon_vt_nil())
 |
 list_cons
 ( x1, xs ) =>
-strmcon_vt_cons(
+strmcon_vt_cons
+(
 lam(r0) => x1+r0, ktally_strmize(xs)))
+//
+(* ****** ****** *)
 //
 fun tally
 (xs: list(sint)): sint =
@@ -37,20 +40,29 @@ let
 val ks =
 ktally_strmize(xs)
 val ks =
-strm_vt_listize0(ks)
-val ks = list_vt2t(ks)
+strm_vt_rlistize0(ks)
 //
 in//let
 //
-folditm(ks, 0, lam(r0, k1) => k1(r0))
+list_vt_folditm0(ks, r0)
+where
+{
 //
-end//let//end-of-[tally(xs:list(sint))]
+val r0:sint = (0)
+//
+#typedef r0 = sint
+#typedef k0 = (sint)->sint
+//
+#impltmp
+folditm$fopr0<k0><r0>(r0, k0) = k0(r0)
+}
+//
+end(*let*)//end-of-[tally(xs:list(sint))]
 //
 (* ****** ****** *)
 //
 val xs =
-list_vt2t(
-listize0(nint_strmize(10)))
+list_vt2t(nint_listize(10))
 val () =
 printsln("tally(", xs, ") = ", tally(xs))
 //

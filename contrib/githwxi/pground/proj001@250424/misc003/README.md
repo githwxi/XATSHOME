@@ -50,8 +50,9 @@ initial value of `r0` is properly changed to 1).
   
 ## Streamizing a Recursive Function
 
-This example (tally001) demonstrates a CPS-based streamization of a
-recursive (but not tail-recursive) function.
+This example (tally001) demonstrates a CPS-based streamization of
+a recursive (but not tail-recursive) function where only one single
+recursive call is involved.
 
 ## Streamizing a Tail-Recursive Function
 

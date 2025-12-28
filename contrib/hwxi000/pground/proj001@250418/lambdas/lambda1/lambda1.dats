@@ -10,7 +10,6 @@ Tue Jun  2 02:45:51 PM EDT 2025
 "prelude/SATS/unsfx00.sats"
 (* ****** ****** *)
 (* ****** ****** *)
-//
 #include
 "prelude/HATS/prelude_dats.hats"
 (* ****** ****** *)
@@ -492,13 +491,13 @@ TMlam(x01, term_subst(tmx, f00, tm0)))
 //
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 val () = printsln("\
 TMapp(TMdbl, TMint(10)) = ", TMapp(TMdbl, TMint(10)))
 val () = printsln("\
 TMapp(TMdbl, TMint(10)) = ", term_interp(TMapp(TMdbl, TMint(10)))
 )(*end-of(printsln)*)
-
+//
 val () =
 printsln("\
 TMapp(TMsqr, TMint(10)) = ", TMapp(TMsqr, TMint(10)))
@@ -506,15 +505,15 @@ val () =
 printsln("\
 TMapp(TMsqr, TMint(10)) = ", term_interp(TMapp(TMsqr, TMint(10)))
 )(*end-of(printsln)*)
-
+//
 val () = printsln("\
 TMapp(TMapp(TMtwo, TMtpl), TMint(10)) = ",
 term_interp(TMapp(TMapp(TMtwo, TMtpl), TMint(10))))
-
+//
 val () = printsln("\
 TMapp(TMapp(TMapp(TMtwo, TMtwo), TMtpl), TMint(10)) = ",
 term_interp(TMapp(TMapp(TMapp(TMtwo, TMtwo), TMtpl), TMint(10))))
-
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -584,7 +583,7 @@ TMopr("||", list@(tm1, tm2))
 //
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 val
 TMfact =
 TMapp(Y, F) where
@@ -604,7 +603,7 @@ TMlam
 
 val () = printsln
 ("TMapp(TMfact, TMint(5)) = ", term_interp(TMapp(TMfact, TMint(5))))
-
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
