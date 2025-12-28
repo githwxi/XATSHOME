@@ -6,6 +6,9 @@ Sat Dec 27 10:51:39 PM EST 2025
 It is still unclear how one can
 streamize a function with multiple
 recursive calls!
+What is presented below is not
+a good answer. It is kept here to
+serve as a reference.
 *)
 (* ****** ****** *)
 (* ****** ****** *)
@@ -57,18 +60,17 @@ kfibo_strmize
 : sint)
 : strm_vt((sint)->sint) =
 (
-if
+if // if1
 (n0 <= 1)
-then
+then // if1
 (
 strm_vt_sing
-(*
 <(sint)->sint>
-*)
 (
-lam(r0) => r0+n0))
-else $llazy
-(
+lam
+(r0)=>(r0+n0)))
+else // if1
+$llazy(
 strmcon_vt_cons(
 lam(r0) =>
 (r0 + kfibo(n0-1)), kfibo_strmize(n0-2)))
