@@ -65,13 +65,6 @@ XATS2JS_the_prerr_store = [] // HX: for reporting errors
 ////////////////////////////////////////////////////////////////////////.
 //
 function
-XATS2JS_the_print_store_clear
-  ( /*void*/ )
-{
-  XATS2JS_the_print_store.length = 0; return
-}
-//
-function
 XATS2JS_the_print_store_flush
   ( /*void*/ )
 {
@@ -936,7 +929,7 @@ Sat Apr 26 08:48:02 PM EDT 2025
 */
 //
 function
-XATS2JS_strn_fmake0_env$fwork
+XATS2JS_strn_fmake_env$fwork
   (env, fwork)
 {
   var cs = []
@@ -953,10 +946,10 @@ XATS2JS_strn_fmake1_env$fwork
 }
 //
 function
-XATS000_strn_fmake0_env$fwork
+XATS000_strn_fmake_env$fwork
   (env, fwork)
 {
-  return XATS2JS_strn_fmake0_env$fwork(env, fwork)
+  return XATS2JS_strn_fmake_env$fwork(env, fwork)
 }
 function
 XATS000_strn_fmake1_env$fwork
