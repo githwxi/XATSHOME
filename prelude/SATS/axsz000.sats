@@ -121,6 +121,17 @@ arrsz with a1sz_make_ncpy//of 1000
 arrsz with a1sz_make_nfun//of 1000
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<a:vt>
+a1sz_make_llist
+ {n:i0}
+(xs: list_vt(a, n)): a1sz(a, n)
+#symload
+a1sz with a1sz_make_llist//of 1000
+//
+(* ****** ****** *)
 //
 fun
 <a:vt>
