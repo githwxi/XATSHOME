@@ -176,10 +176,25 @@ the subject here, is polymorphic.
 *)
 fun
 <a:vt>
-strn_gmake(x: (~a)): (strn)
+strn_gmake(x: (~a)): strn
 fun
 <a:vt>
-strn_gmake1(x: (!a)): (strn)
+strn_gmake1(x: (!a)): strn
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun<>
+strn_lower
+{ln:i0}(strn(ln)): strn(ln)
+fun<>
+strn_upper
+{ln:i0}(strn(ln)): strn(ln)
+//
+#symload
+lower with strn_lower of 1000
+#symload
+upper with strn_upper of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -352,10 +367,10 @@ GSEQ_make_strn
 #symload GSEQ_strn with GSEQ_make_strn of 1000
 //
 fcast // fun
-GASZ_make_strn
-(xs: strn): GASZ(strn, cgtz)
-#symload GASZ with GASZ_make_strn of 1000
-#symload GASZ_strn with GASZ_make_strn of 1000
+GASQ_make_strn
+(xs: strn): GASQ(strn, cgtz)
+#symload GASQ with GASQ_make_strn of 1000
+#symload GASQ_strn with GASQ_make_strn of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

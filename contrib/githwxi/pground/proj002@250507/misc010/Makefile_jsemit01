@@ -1,0 +1,61 @@
+########################################################################
+########################################################################
+# Makefile for misc004
+########################################################################
+########################################################################
+CAT=cat
+CPF=cp -f
+ECHO=echo
+NODE=node
+PRINTF=printf
+PYTHON=python3
+########################################################################
+########################################################################
+all:: gtree
+########################################################################
+clean:: ; rm -f *~
+########################################################################
+cleanall:: ; rm -f *~
+cleanall:: ; rm -f OUTS/JS_spelling_cats.js
+cleanall:: ; rm -f OUTS/JS_spelling_dats.js
+########################################################################
+XATSHOME=./../../../../../../XATSHOME
+########################################################################
+#
+XATS2JSD=$(XATSHOME)/xassets/JS/xats2js
+#
+XATS2JS_JSEMIT01=\
+$(XATSHOME)/xassets/JS/xats2js/xats2js_jsemit01_ats2_opt1.js
+XATS2JS_JSEMIT01=\
+$(XATSHOME)/xassets/JS/xats2js/xats2js_jsemit01_ats3_opt1.js
+#
+########################################################################
+test:: ; \
+$(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
+test:: ; \
+$(CAT) $(XATS2JSD)/runtime/xats2js_js1emit.js >> OUTS/$@_out.js
+test:: ; \
+$(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/$@_out.js
+test:: spelling
+spelling: spelling.dats; \
+$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+test:: JS_spelling
+JS_spelling: JS_spelling.dats; \
+$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+########################################################################
+embedded:: ; \
+$(CPF) JS_spelling.cats OUTS/JS_spelling_cats.js
+embedded:: ; \
+$(PRINTF) "// %s\n" "`date`" > OUTS/JS_spelling_dats.js
+embedded:: ; \
+$(CAT) $(XATS2JSD)/runtime/xats2js_js1emit.js >> OUTS/JS_spelling_dats.js
+embedded:: ; \
+$(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/JS_spelling_dats.js
+embedded:: \
+spelling.dats ; \
+$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/JS_spelling_dats.js
+embedded:: \
+JS_spelling.dats ; \
+$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/JS_spelling_dats.js
+########################################################################
+##################### end of [Makefile_jsemit01] #######################
