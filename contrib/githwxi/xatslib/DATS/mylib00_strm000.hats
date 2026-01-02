@@ -219,5 +219,5 @@ end // end of [if-else]
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [XATSHOME/contrib/githwxi/xatslib/DATS/mylib00_strm000.hats]
+(* end of [XATSHOME/contrib/githwxi/xatslib/DATS/mylib00_strm000.hats] *)
 (***********************************************************************)

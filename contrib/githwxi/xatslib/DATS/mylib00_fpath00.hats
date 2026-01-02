@@ -50,8 +50,7 @@ fpath_cgtz$strmize$exn
   (fpx) =
 (
 strm_vt_filter0(
-fpath_char$strmize$exn<>(fpx))
-)
+fpath_char$strmize$exn<>(fpx)))
 where
 {
 #typedef x0 = char
@@ -146,14 +145,14 @@ auxloop
 : list_vt(char)): strmcon_vt(strn) =
 (
 case+ !cs of
-|
+| ~
 strmcon_vt_nil() =>
 (
 case+ rs of
-|
+| ~
 list_vt_nil() =>
 strmcon_vt_nil()
-|
+| // !
 list_vt_cons _ =>
 strmcon_vt_cons(strn(rev0(rs)), strm_vt_nil())
 )
@@ -175,5 +174,5 @@ end(*let*)//end-of-[impltmp(g_stdin$line$strmize$exn)]
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [XATSHOME/contrib/githwxi/xatslib/DATS/mylib00_fpath00.hats]
+(* end of [XATSHOME/contrib/githwxi/xatslib/DATS/mylib00_fpath00.hats] *)
 (***********************************************************************)

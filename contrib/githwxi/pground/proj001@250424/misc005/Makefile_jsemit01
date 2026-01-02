@@ -1,0 +1,70 @@
+########################################################################
+########################################################################
+# Makefile for misc001
+########################################################################
+########################################################################
+CAT=cat
+BUN=bun
+ECHO=echo
+NODE=node
+PRINTF=printf
+PYTHON=python3
+########################################################################
+########################################################################
+all:: mydict00
+########################################################################
+clean:: ; rm -f *~
+cleanall:: ; rm -f *~
+cleanall:: ; rm -f OUTS/*~
+cleanall:: ; rm -f OUTS/*_out.js
+cleanall:: ; rm -f OUTS/*_out?.js
+########################################################################
+testall:: mydict00; $(NODE) OUTS/$<_out.js
+########################################################################
+########################################################################
+XATSHOME=./../../../../../../XATSHOME
+########################################################################
+#
+XATS2JSD=$(XATSHOME)/xassets/JS/xats2js
+#
+XATS2JS_JSEMIT01=\
+$(XATSHOME)/xassets/JS/xats2js/xats2js_jsemit01_ats2_opt1.js
+XATS2JS_JSEMIT01=\
+$(XATSHOME)/xassets/JS/xats2js/xats2js_jsemit01_ats3_opt1.js
+#
+PY_XATS2JS_JSEMIT01=\
+$(XATSHOME)/xassets/PY/xats2js/xats2js_jsemit01_ats3_opt0.py
+#
+########################################################################
+########################################################################
+mydict00:: ; \
+$(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
+mydict00:: ; \
+$(CAT) $(XATS2JSD)/runtime/xats2js_js1emit.js >> OUTS/$@_out.js
+mydict00:: ; \
+$(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/$@_out.js
+mydict00:: ; \
+$(CAT) $(XATS2JSD)/runtime/srcgen2_prelude_node.js >> OUTS/$@_out.js
+mydict00:: ; \
+$(CAT) $(XATSHOME)/contrib/githwxi/xatslib/DATS/CATS/JS/mylib00.cats >> OUTS/$@_out.js
+mydict00:: ; \
+$(CAT) $(XATSHOME)/contrib/githwxi/xatslib/DATS/CATS/JS/NODE/mylib00.cats >> OUTS/$@_out.js
+mydict00:: mydict00.dats; \
+$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+########################################################################
+PY_mydict00:: ; \
+$(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
+PY_mydict00:: ; \
+$(CAT) $(XATS2JSD)/runtime/xats2js_js1emit.js >> OUTS/$@_out.js
+PY_mydict00:: ; \
+$(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/$@_out.js
+PY_mydict00:: ; \
+$(CAT) $(XATS2JSD)/runtime/srcgen2_prelude_node.js >> OUTS/$@_out.js
+PY_mydict00:: ; \
+$(CAT) $(XATSHOME)/contrib/githwxi/xatslib/DATS/CATS/JS/mylib00.cats >> OUTS/$@_out.js
+PY_mydict00:: ; \
+$(CAT) $(XATSHOME)/contrib/githwxi/xatslib/DATS/CATS/JS/NODE/mylib00.cats >> OUTS/$@_out.js
+PY_mydict00:: mydict00.dats; $(PYTHON) $(PY_XATS2JS_JSEMIT01) __void__ $< >> OUTS/$@_out.js
+########################################################################
+########################################################################
+##################### end of [Makefile_jsemit01] #######################
