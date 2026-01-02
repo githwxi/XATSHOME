@@ -64,26 +64,30 @@ then (print(c); true) else false)
 (* ****** ****** *)
 //
 fun
-cstrm_split_lines
-(cs: strm_vt(cgtz)): strm_vt(strn) =
+strm$cgtz_vt_line$split_lstrm$strn
+  (cs: strm_vt(cgtz)): strm_vt(strn) =
 (
 strm_vt_map0$f1un<rs>
 (css, lam(cs) => strn_make_llist(cs))
 ) where
 {
-#typedef c0 = cgtz
-#vwtpdef cs = strm_vt(cgtz)
-#vwtpdef rs = list_vt(cgtz)
+#typedef
+c0 = cgtz
+#vwtpdef
+cs = strm_vt(cgtz)
+#vwtpdef
+rs = list_vt(cgtz)
 val css =
 gseq_segmentize0$f1un_lstrm$llist<cs><c0>(cs, lam(ch) => (ch = '\n'))
-}(*let*)//end-of-[strn_split_lines(cs)]
+}(*let*)//end-of-[strm$cgtz_vt_line$split_lstrm$strn]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 val
 words_wstrm =
-cstrm_split_lines(words_cstrm)
+strm$cgtz_vt_line$split_lstrm$strn
+  (words_cstrm)
 //
 (*
 val
@@ -98,7 +102,6 @@ then (println(w); true) else false)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
 //
 fun
 wtest1
@@ -145,7 +148,8 @@ filter$test1
 <strn>( w0 ) =
 (
 if
-length(w0)<6
+(
+length(w0)<6)
 then false else
 (
 if // if
@@ -158,14 +162,14 @@ then wtest2(w0, cs) else false))
 (* ****** ****** *)
 //
 val
-solutions_wstrm =
+solns_wstrm =
 spelling$main(words_wstrm, 'y', "aecinty")
 //
 val
 _(*bool*) =
 strm_vt_iforall0$f2un<strn>
 (
-solutions_wstrm,
+solns_wstrm,
 lam(i, w) =>
 if (i < 100) then (println(w); true) else false)
 //
