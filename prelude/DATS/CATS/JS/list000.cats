@@ -35,70 +35,52 @@ Authoremail: gmhwxiATgmailDOTcom
 ////////////////////////////////////////////////////////////////////////.
 ////////////////////////////////////////////////////////////////////////.
 //
-//
 function
-XATS2JS_strm_vt_forall0$f1un
-  (fxs, test)
+XATS2JS_list_vt_foritm0$f1un
+  (xs, work)
 {
   let nilq1 =
-    XATS2JS_strmcon_vt_nilq1
+    XATS2JS_list_vt_nilq1
   while (1) {
-    let cxs =
-      XATS2JS_lazy_vt_eval(fxs)
-    if (nilq1(cxs))
-    {
+    if (nilq1(xs)) {
       break;
     } else {
-      let x01 =
-        XATS2JS_strmcon_vt_head$raw1(cxs)
-      if (test(x01))
-      {
-        fxs = XATS2JS_strmcon_vt_tail$raw0(cxs)
-      } else {
-        fxs = XATS2JS_strmcon_vt_tail$raw0(cxs)
-        XATS2JS_lazy_vt_free(fxs); return false
-      }
+      let x1 =
+        XATS2JS_list_vt_head$raw1(xs)
+      work(x1)
+      xs = XATS2JS_list_vt_tail$raw0(xs)
     }
   }
-  return true // XATS2JS_strm_vt_forall0$f1un(...)
+  return // XATS2JS_list_vt_foritm0$f1un
 }
 //
 ////////////////////////////////////////////////////////////////////////.
 //
 function
-XATS2JS_strm_vt_filter0$f1un
-  (fxs, test, free)
-{
-  return XATS2JS_lazy_vt_make_f0un(
-    () => XATS2JS_strmcon_vt_filter0$f1un(XATS2JS_lazy_vt_eval(fxs), test, free)
-  )
-}
-//
-function
-XATS2JS_strmcon_vt_filter0$f1un
-  (cxs, test, free)
+XATS2JS_list_vt_forall0$f1un
+  (xs, test, free)
 {
   let nilq1 =
-    XATS2JS_strmcon_vt_nilq1
+    XATS2JS_list_vt_nilq1
   while (1) {
-    if (nilq1(cxs))
-    {
-      return XATS2JS_strmcon_vt_nil()
+    if (nilq1(xs)) {
+      break;
     } else {
-      let x01 = XATS2JS_strmcon_vt_head$raw1(cxs)
-      let fxs = XATS2JS_strmcon_vt_tail$raw0(cxs)
-      if (test(x01)) {
-        return XATS2JS_strmcon_vt_cons(x01, XATS2JS_strm_vt_filter0$f1un(fxs, test, free))
+      let x1 =
+        XATS2JS_list_vt_head$raw1(xs)
+      if (test(x1)) {
+        xs = XATS2JS_list_vt_tail$raw0(xs)
       } else {
-        free(x01);
-        cxs = XATS2JS_lazy_vt_eval(fxs); continue;
+        xs = XATS2JS_list_vt_tail$raw0(xs)
+        XATS2JS_list_vt_foritm0$f1un(xs, free); return false
       }
     }
   }
+  return true // XATS2JS_list_vt_forall0$f1un
 }
 //
 ////////////////////////////////////////////////////////////////////////.
 ////////////////////////////////////////////////////////////////////////.
-// end of [ATS3/XANADU_prelude_DATS_CATS_JS_strm000.cats]
+// end of [ATS3/XANADU_prelude_DATS_CATS_JS_list000.cats]
 ////////////////////////////////////////////////////////////////////////.
 ////////////////////////////////////////////////////////////////////////.

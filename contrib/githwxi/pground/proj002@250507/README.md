@@ -66,6 +66,11 @@ Note that there is NO demo webpage built for this one.
 This one is for presenting the stream of prime numbers. One can move
 forward and backward along this stream by clicking on some buttons.
 
+## [misc010](./misc010)
+
+This one builds a stream of English words and then uses it to solve a
+word game. There is a demo webpage built for the word game.
+
 ########################################################################
 
 Happy ATS programming!
