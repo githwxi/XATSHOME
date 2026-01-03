@@ -16,6 +16,7 @@ all:: gtree
 clean:: ; rm -f *~
 ########################################################################
 cleanall:: ; rm -f *~
+cleanall:: ; rm -f OUTS/spelling_dats.js
 cleanall:: ; rm -f OUTS/JS_spelling_cats.js
 cleanall:: ; rm -f OUTS/JS_spelling_dats.js
 ########################################################################
@@ -30,12 +31,6 @@ XATS2JS_JSEMIT01=\
 $(XATSHOME)/xassets/JS/xats2js/xats2js_jsemit01_ats3_opt1.js
 #
 ########################################################################
-test:: ; \
-$(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
-test:: ; \
-$(CAT) $(XATS2JSD)/runtime/xats2js_js1emit.js >> OUTS/$@_out.js
-test:: ; \
-$(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/$@_out.js
 test:: spelling
 spelling: spelling.dats; \
 $(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
