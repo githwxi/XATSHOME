@@ -159,7 +159,7 @@ qsolve
 ) : strm_vt(board) =
 strm_vt_filter0
 (
-gtree$node_bfs$enumerate
+gtree$node_bfs$strmize
 <board>(board_nil((*void*))),
 lam(xs:board) => (board_length(xs) >= N))
 //

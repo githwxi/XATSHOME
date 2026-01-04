@@ -12,9 +12,10 @@ linear stream of lines.
 
 ## Tail-Recursion Optimization
 
-At this moment, ATS3/srcgen2/xats2js/srcgen1 is not yet translating
+At this moment, ATS3/srcgen2/xats2js/srcgen1 cannot yet translate
 tail-recursion into loop-based implementation. This example shows that
-one can avoid stack-overflow by providing loop-based implementation
-externally for functions like strm_vt_forall0 and strm_vt_filter0.
+one is able to avoid stack-overflow by providing loop-based
+implementation externally for functions like strm_vt_forall0 and
+strm_vt_filter0.
 
 Happy ATS programming!

@@ -33,6 +33,6 @@ Some code is present for testing the abstype lsrt (for sorted lists).
 
 This example (mydict00) builds a stream of words, where
 [gseq_segmentize0] is called to turn a linear stream of chars into a
-linear stream of lines.
+linear stream of lines. And compiling to both JS and PY is supported.
 
 Happy ATS programming!

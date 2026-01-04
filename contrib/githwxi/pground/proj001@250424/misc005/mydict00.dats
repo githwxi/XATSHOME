@@ -81,6 +81,11 @@ then (print(c); true) else false)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-01-04:
+This name reflects the type
+assigned to the named function.
+*)
 fun
 strm$cgtz_vt_line$split_lstrm$strn
   (cs: strm_vt(cgtz)): strm_vt(strn) =
@@ -89,6 +94,7 @@ strm_vt_map0$f1un<rs>
 (css, lam(cs) => strn_make_llist(cs))
 ) where
 {
+//
 #typedef
 c0 = cgtz
 #vwtpdef
@@ -97,6 +103,7 @@ cs = strm_vt(cgtz)
 rs = list_vt(cgtz)
 val css =
 gseq_segmentize0$f1un_lstrm$llist<cs><c0>(cs, lam(ch) => (ch = '\n'))
+//
 }(*let*)//end-of-[strm$cgtz_vt_line$split_lstrm$strn]
 //
 (* ****** ****** *)
