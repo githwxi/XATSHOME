@@ -25,4 +25,14 @@ There are several examples here showing compilation from ATS3 to PY
 Like [misc001](./misc001), one can find here some code making use of
 linear streams.
 
+## [misc004](./misc004)
+
+Some code is present for testing the abstype lsrt (for sorted lists).
+
+## [misc005](./misc005)
+
+This example (mydict00) builds a stream of words, where
+[gseq_segmentize0] is called to turn a linear stream of chars into a
+linear stream of lines.
+
 Happy ATS programming!
