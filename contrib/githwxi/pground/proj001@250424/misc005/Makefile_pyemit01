@@ -1,6 +1,6 @@
 ########################################################################
 ########################################################################
-# Makefile for misc002
+# Makefile for misc005
 ########################################################################
 ########################################################################
 CAT=cat
@@ -20,9 +20,7 @@ cleanall:: ; rm -f OUTS/*~
 cleanall:: ; rm -f OUTS/*_out.py
 ########################################################################
 testall:: \
-pstrm000; $(PYTHON) OUTS/$<_out.py
-testall:: \
-fpath000; $(PYTHON) OUTS/$<_out.py
+mydict00; $(PYTHON) OUTS/$<_out.py
 ########################################################################
 ########################################################################
 XATSHOME=./../../../../../../XATSHOME
@@ -39,60 +37,21 @@ $(XATSHOME)/xassets/PY/xats2py/xats2py_pyemit01_ats3_opt0.py
 #
 ########################################################################
 ########################################################################
-pstrm000:: ; \
-$(PRINTF) "## %s\n" "`date`" > OUTS/$@_out.py
-pstrm000:: ; \
-$(CAT) $(XATS2PYD)/runtime/xats2py_py1emit.py >> OUTS/$@_out.py
-pstrm000:: ; \
-$(CAT) $(XATS2PYD)/runtime/srcgen2_prelude.py >> OUTS/$@_out.py
-pstrm000:: pstrm000.dats; \
-$(NODE) --stack-size=8800 $(XATS2PY_PYEMIT01) $< >> OUTS/$@_out.py
-########################################################################
-pstrx000:: ; \
-$(PRINTF) "## %s\n" "`date`" > OUTS/$@_out.py
-pstrx000:: ; \
-$(CAT) $(XATS2PYD)/runtime/xats2py_py1emit.py >> OUTS/$@_out.py
-pstrx000:: ; \
-$(CAT) $(XATS2PYD)/runtime/srcgen2_prelude.py >> OUTS/$@_out.py
-pstrx000:: pstrx000.dats; \
-$(NODE) --stack-size=8800 $(XATS2PY_PYEMIT01) $< >> OUTS/$@_out.py
-########################################################################
-fpath000:: ; \
+mydict00:: ; \
 $(PRINTF) \
 "## %s\n" "`date`" > OUTS/$@_out.py
-fpath000:: ; \
+mydict00:: ; \
 $(PRINTF) "import sys\n" >> OUTS/$@_out.py
-fpath000:: ; \
-$(PRINTF) "sys.setrecursionlimit(10000)\n" >> OUTS/$@_out.py
-fpath000:: ; \
+mydict00:: ; \
+$(PRINTF) "sys.setrecursionlimit(1000)\n" >> OUTS/$@_out.py
+mydict00:: ; \
 $(CAT) $(XATS2PYD)/runtime/xats2py_py1emit.py >> OUTS/$@_out.py
-fpath000:: ; \
+mydict00:: ; \
 $(CAT) $(XATS2PYD)/runtime/srcgen2_prelude.py >> OUTS/$@_out.py
-fpath000:: ; \
+mydict00:: ; \
 $(CAT) $(XATSHOME)/contrib/githwxi/xatslib/DATS/CATS/PY/mylib00.cats >> OUTS/$@_out.py
-fpath000:: fpath000.dats; \
+mydict00:: mydict00.dats; \
 $(NODE) --stack-size=8800 $(XATS2PY_PYEMIT01) $< >> OUTS/$@_out.py
-########################################################################
-########################################################################
-PY_pstrm000:: ; \
-$(PRINTF) "## %s\n" "`date`" > OUTS/$@_out.py
-PY_pstrm000:: ; \
-$(CAT) $(XATS2PYD)/runtime/xats2py_py1emit.py >> OUTS/$@_out.py
-PY_pstrm000:: ; \
-$(CAT) $(XATS2PYD)/runtime/srcgen2_prelude.py >> OUTS/$@_out.py
-PY_pstrm000:: \
-pstrm000.dats; $(PYTHON) $(PY_XATS2PY_PYEMIT01) __void__ $< >> OUTS/$@_out.py
-########################################################################
-PY_fpath000:: ; \
-$(PRINTF) "## %s\n" "`date`" > OUTS/$@_out.py
-PY_fpath000:: ; \
-$(CAT) $(XATS2PYD)/runtime/xats2py_py1emit.py >> OUTS/$@_out.py
-PY_fpath000:: ; \
-$(CAT) $(XATS2PYD)/runtime/srcgen2_prelude.py >> OUTS/$@_out.py
-PY_fpath000:: ; \
-$(CAT) $(XATSHOME)/contrib/githwxi/xatslib/DATS/CATS/PY/mylib00.cats >> OUTS/$@_out.py
-PY_fpath000:: \
-fpath000.dats; $(PYTHON) $(PY_XATS2PY_PYEMIT01) __void__ $< >> OUTS/$@_out.py
 ########################################################################
 ########################################################################
 ##################### end of [Makefile_pyemit01] #######################

@@ -20,12 +20,19 @@ Thu Jan  1 05:54:01 PM EST 2026
 //
 (* ****** ****** *)
 //
+#if
+defq(_XATS2PY_)
 #include
-"prelude/HATS/prelude_JS_cats.hats"
+"prelude/HATS/prelude_PY_dats.hats"
+#endif//#ifdefq
+//
+#if
+defq(_XATS2JS_)
 #include
 "prelude/HATS/prelude_JS_dats.hats"
 #include
 "prelude/HATS/prelude_NODE_dats.hats"
+#endif//#ifdefq
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -33,9 +40,20 @@ Thu Jan  1 05:54:01 PM EST 2026
 #staload
 "./../../..\
 /xatslib/DATS/mylib00.dats"
+//
+#if
+defq(_XATS2PY_)
+#staload
+"./../../..\
+/xatslib/DATS/CATS/PY/mylib00.dats"
+#endif//#ifdefq
+//
+#if
+defq(_XATS2JS_)
 #staload
 "./../../..\
 /xatslib/DATS/CATS/JS/NODE/mylib00.dats"
+#endif//#ifdefq
 //
 (* ****** ****** *)
 (* ****** ****** *)
