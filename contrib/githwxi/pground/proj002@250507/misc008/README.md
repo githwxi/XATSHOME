@@ -13,5 +13,6 @@ on the same row, the same column, or the same diagnal.
 
 ## Implementation
 
-An implementation is given that makes direct use of breadth-first search,
-which itself is implemented as a template library (gtree.dats).
+An implementation is given that makes direct use of tree-based
+breadth-first search (BFS), which itself is implemented as a template
+library [gtree.dats](./gtree.dats).
