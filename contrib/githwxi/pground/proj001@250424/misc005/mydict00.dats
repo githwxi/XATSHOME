@@ -102,9 +102,11 @@ cs = strm_vt(cgtz)
 #vwtpdef
 rs = list_vt(cgtz)
 val css =
-gseq_segmentize0$f1un_lstrm$llist<cs><c0>(cs, lam(ch) => (ch = '\n'))
+(
+gseq_segmentize0$f1un_lstrm$llist
+< cs >< c0 >(cs, lam(ch) => ch = ('\n')))
 //
-}(*let*)//end-of-[strm$cgtz_vt_line$split_lstrm$strn]
+}(*where*)//end-of-[strm$cgtz_vt_line$split_lstrm$strn]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -179,7 +181,7 @@ then false else
 (
 if // if
 wtest1(w0, c1)
-then wtest2(w0, cs) else false))
+then wtest2(w0, cs) else false))//impltmp
 //
 }(*where*)//end-of-[spelling$game(ws,c1,cs)]
 //
