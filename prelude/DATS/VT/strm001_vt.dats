@@ -447,22 +447,24 @@ list_vt_reverse0<x0>
 strm_vt_rlistize0
   ( xs ) =
 (
-  loop(xs, r0)) where
+  loop(xs, rs)) where
 {
 //
-val r0 = list_vt_nil()
+val rs = list_vt_nil()
 //
 fun loop
 ( xs: strm_vt(x0)
-, r0: list_vt(x0)): list_vt(x0) =
+, rs: list_vt(x0)): list_vt(x0) =
 (
 case+ !xs of
 | ~
 strmcon_vt_nil
-  ((*0*)) => (r0)
+  ((*void*)) => (rs)
 | ~
 strmcon_vt_cons
-  (x1,xs) =>loop(xs,list_vt_cons(x1,r0)))
+  ( x1, xs ) =>
+(
+  loop(xs, list_vt_cons(x1, rs))))
 }(*where*)//end-of-[strm_vt_rlistize0(xs)]
 //
 (* ****** ****** *)
@@ -503,6 +505,18 @@ gseq_ifolditm0$f3un<strm_vt(x0)><x0><r0>
 (*
 HX-2025-05-31:
 Sat May 31 09:00:51 PM EDT 2025
+HX-2026-01-03:
+This implementation is UNSAFE
+as [e1] appears in two places!
+Please use [strm_vt_map$e0nv0]
+if possible.
+Here we get to see the issue of
+resource tunneling:
+How can we make sure that linear
+values captured inside a closure
+can be released type-safely after
+the closure is consumed?
+Sat Jan  3 11:09:01 PM EST 2026
 *)
 //
 #impltmp
@@ -512,7 +526,8 @@ Sat May 31 09:00:51 PM EDT 2025
 strm_vt_map$e1nv0
   ( xs, e1 ) =
 (
-strm_vt_map0<x0><y0>(xs)) where
+strm_vt_map0
+<x0><y0>(xs)) where
 {
 #impltmp
 map$fopr0<x0><y0>(x0) =
@@ -527,7 +542,8 @@ map$fopr0<x0><y0>(x0) =
 strq_vt_map$e1nv0
   ( xs, e1 ) =
 (
-strq_vt_map0<x0><y0>(xs)) where
+strq_vt_map0
+<x0><y0>(xs)) where
 {
 #impltmp
 map$fopr0<x0><y0>(x0) =
@@ -621,6 +637,48 @@ end//let
 //
 )(*case+*)//end-of-[auxloop(i0,xs:strm_vt(x0))]
 }(*where*)//end-of-[strm_vt_ord$iexists0<x0>(xs)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2026-01-03:
+Sat Jan  3 02:27:10 PM EST 2026
+*)
+//
+#impltmp
+< x0:vt >
+< y0:vt >
+< e1:vt >
+strm_vt_map$e0nv0
+  ( xs, e1 ) =
+(
+auxmain(xs, e1)) where
+{
+fun
+auxmain
+( xs
+: strm_vt(x0)
+, e1: ( ~e1 )
+) : strm_vt(y0) = $llazy
+(
+//
+case+ !xs of
+| ~
+strmcon_vt_nil() =>
+(
+g_free<e1>(e1);
+strmcon_vt_nil(*void*))
+| ~
+strmcon_vt_cons(x1, xs) =>
+let
+val y1 =
+map$e1nv$fopr0<x0><y0>(x1, e1)
+in//let
+strmcon_vt_cons(y1, auxmain(xs, e1))
+end//let
+)
+}(*where*)//end-of-[strm_vt_map$e0nv0(xs,e1)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

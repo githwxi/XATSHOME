@@ -2046,9 +2046,9 @@ strmcon_vt_nil() => optn_vt_nil(*0*)
 strmcon_vt_cons
 (   x1 , xs   ) =>
 let
-val () = free(xs) in optn_vt_cons(x1) end//let
+val () = free(xs) in optn_vt_cons(x1) end
 //
-end(*let*)//end-of-[gseq_search<xs:t0><x0:t0>(xs)]
+end(*let*)//end-of-[gseq_search<xs><x0>(xs)]
 //
 #impltmp
 < xs:t0 >
@@ -2059,7 +2059,158 @@ gseq_search$f1un
   gseq_search<xs><x0>(xs)) where
 {
 #impltmp search$test<x0>(x0) = test(x0)
-}(*where*)//endof[gseq_search$f1un<xs><x0>(xs,test)]
+}(*where*)//endof[gseq_search$f1un<xs><x0>(...)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2026-01-05:
+Mon Jan  5 12:17:18 PM EST 2026
+*)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_sortedq
+  ( xs ) =
+let
+//
+fun
+nilq
+(xs: xs): bool =
+gseq_nilq<xs><x0>(xs)
+//
+in//let0
+if // if
+(nilq(xs))
+then true else
+let
+//
+val x0 =
+$UN.gseq_head$raw<xs><x0>(xs)
+val xs =
+$UN.gseq_tail$raw<xs><x0>(xs)
+//
+in//let1
+(
+  auxloop(xs, x0))
+where
+{
+//
+fun
+auxloop
+(xs: xs, x0: x0): bool =
+(
+if
+nilq(xs)
+then true else
+let
+val x1 =
+$UN.gseq_head$raw<xs><x0>(xs)
+val xs =
+$UN.gseq_tail$raw<xs><x0>(xs)
+in//let
+if // if
+sortedq$lteq<x0>(x0, x1)
+then auxloop(xs, x1) else false end)
+//
+}(*where*)
+//
+end(*let1*)//end(else)//endof(if(nilq(xs)))
+//
+end(*let0*)//end-of-[gseq_sortedq<xs><x0>(xs)]
+//
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_sortedq
+  ( xs ) =
+let
+//
+fun
+nilq
+(xs: xs): bool =
+gseq_nilq<xs><x0>(xs)
+//
+in//let0
+//
+if // if
+(nilq(xs))
+then true else
+let
+//
+val xs =
+(
+gseq_strmize<xs><x0>(xs))
+val ~
+strmcon_vt_cons
+(   x0 , xs   ) = (  !xs  )
+//
+in//let1
+(
+  auxloop(xs, x0)
+) where
+{
+//
+#vwtpdef
+xs = strm_vt( x0 )
+//
+fun
+auxloop
+(xs: xs, x0: x0): bool =
+(
+case+ !xs of
+| ~
+strmcon_vt_nil
+(  (*void*)  ) => true
+| ~
+strmcon_vt_cons
+(   x1, xs   ) =>
+(
+if // if
+sortedq$lteq<x0>(x0, x1)
+then auxloop(xs, x1) else false))
+//
+}
+end(*let1*)//end(else)//endof(if(nilq(xs)))
+//
+end(*let0*)//end-of-[gseq_sortedq<xs><x0>(xs)]
+//
+(* ****** ****** *)
+//
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_sortedq$f2un
+  (xs, lteq) =
+(
+gseq_sortedq<xs><x0>(xs))
+where
+{
+#impltmp
+sortedq$lteq<x0>(*x1,x2*) = lteq
+}(*where*)//end-of-[gseq_sortedq$f2un(xs,lteq)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2026-01-04:
+Sun Jan  4 11:11:49 PM EST 2026
+*)
+#impltmp
+< xs:t0 >
+< x0:t0 >
+gseq_memberq(xs, x0) =
+(
+gseq_exists<xs><x0>(xs)) where
+{
+#impltmp
+exists$test<x0>(x1) = g_equal<x0>(x0, x1)
+}(*where*)//end-of-[gseq_memberq<xs><x0>(xs,x0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

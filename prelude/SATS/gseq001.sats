@@ -1550,6 +1550,39 @@ gseq_search$f1un
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-01-04:
+Sun Jan  4 11:11:49 PM EST 2026
+*)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_memberq(xs: xs, x0: x0): bool
+#symload memberq with gseq_memberq of 0100
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2026-01-05:
+Mon Jan  5 12:17:18 PM EST 2026
+*)
+//
+fun
+<xs:t0>
+<x0:t0>
+gseq_sortedq(xs: xs): bool
+fun
+<xs:t0>
+<x0:t0>
+gseq_sortedq$f2un
+(xs: xs, lteq: (x0, x0) -> bool): bool
+#symload gseq_sortedq with gseq_sortedq$f2un of 0100
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_SATS_gseq001.sats] *)
 (***********************************************************************)

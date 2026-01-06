@@ -563,24 +563,24 @@ list_vt_reverse0<x0>(xs) end
 strm_rlistize
   (  xs  ) =
 (
-  loop(xs, r0)) where
+  loop(xs, rs)) where
 {
 //
-val r0 = list_vt_nil()
+val rs = list_vt_nil()
 //
 fun loop
 ( xs: strm(x0)
-, r0: list_vt(x0)): list_vt(x0) =
+, rs: list_vt(x0)): list_vt(x0) =
 (
 case+ !xs of
 |
 strmcon_nil
-(  (*0*)  ) => (r0)
+(  (*0*)  ) => (rs)
 |
 strmcon_cons
 (  x1, xs  ) =>
 (
-  loop(xs, list_vt_cons(x1,r0))))
+  loop(xs, list_vt_cons(x1,rs))))
 }(*where*)//end-of-[strm_rlistize(xs)]
 //
 (* ****** ****** *)
@@ -598,7 +598,8 @@ Sun Dec 21 10:39:48 AM EST 2025
 strm_map$e1nv
   ( xs, e1 ) =
 (
-strm_map<x0><y0>(xs)) where
+strm_map
+<x0><y0>(xs)) where
 {
 #impltmp
 map$fopr<x0><y0>(x0) =
@@ -613,7 +614,8 @@ map$fopr<x0><y0>(x0) =
 strq_map$e1nv
   ( xs, e1 ) =
 (
-strq_map<x0><y0>(xs)) where
+strq_map
+<x0><y0>(xs)) where
 {
 #impltmp
 map$fopr<x0><y0>(x0) =
@@ -630,7 +632,8 @@ map$fopr<x0><y0>(x0) =
 strm_map$e1nv_vt
   ( xs, e1 ) =
 (
-strm_map_vt<x0><y0>(xs)) where
+strm_map_vt
+<x0><y0>(xs)) where
 {
 #impltmp
 map$fopr<x0><y0>(x0) =
@@ -645,13 +648,90 @@ map$fopr<x0><y0>(x0) =
 strq_map$e1nv_vt
   ( xs, e1 ) =
 (
-strq_map_vt<x0><y0>(xs)) where
+strq_map_vt
+<x0><y0>(xs)) where
 {
 #impltmp
 map$fopr<x0><y0>(x0) =
 (
   map$e1nv$fopr<x0><y0><e1>(x0, e1))
 }(*where*)//end-of-[strq_map$e1nv_vt(xs,e1)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2026-01-03:
+Sat Jan  3 01:43:58 PM EST 2026
+*)
+//
+#impltmp
+< x0:t0 >
+< y0:t0 >
+< e1:vt >
+strm_map$e0nv
+  (xs, e1) =
+(
+  auxmain(xs, e1)) where
+{
+fun
+auxmain
+( xs
+: strm(x0)
+, e1: (~e1)
+) : strm(y0) = $lazy
+(
+case+ !xs of
+| ~
+strmcon_nil() =>
+(
+g_free<e1>(e1);
+strmcon_nil(*void*))
+| ~
+strmcon_cons(x1, xs) =>
+let
+val y1 =
+map$e1nv$fopr<x0><y0>(x1, e1)
+in//let
+strmcon_cons(y1, auxmain(xs, e1))
+end//let
+)
+}(*where*)//end-of-[strm_map$e0nv(xs,e1)]
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:t0 >
+< y0:t0 >
+< e1:vt >
+strm_map$e0nv_vt
+  (xs, e1) =
+(
+  auxmain(xs, e1)) where
+{
+fun
+auxmain
+( xs
+: strm(x0)
+, e1: (~e1)
+) : strm_vt(y0) = $llazy
+(
+case+ !xs of
+| ~
+strmcon_nil() =>
+(
+g_free<e1>(e1);
+strmcon_vt_nil(*void*))
+| ~
+strmcon_cons(x1, xs) =>
+let
+val y1 =
+map$e1nv$fopr<x0><y0>(x1, e1)
+in//let
+strmcon_vt_cons(y1, auxmain(xs, e1))
+end//let
+)
+}(*where*)//end-of-[strm_map$e0nv_vt(xs,e1)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

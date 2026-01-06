@@ -80,11 +80,11 @@ strn_lower<>(JS_spelling_arg1())
 //
 #extern
 fun
-JS_spelling$main
+JS_spelling_main
   ( (*void*) ): void = $extnam()
 //
 #implfun
-JS_spelling$main
+JS_spelling_main
   ( (*void*) ) =
 let
 //
@@ -113,7 +113,7 @@ iforitm$work0
 <strn>(i, sol) = printsln("Word(", i+1, "): ", sol) }
 end//let
 //
-end//let//end-of-[JS_spelling$main()]
+end//let//end-of-[JS_spelling_main()]
 //
 (* ****** ****** *)
 (* ****** ****** *)

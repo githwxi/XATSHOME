@@ -107,7 +107,7 @@ val css =
 gseq_segmentize0$f1un_lstrm$llist<cs><c0>(dt, lam(ch) => (ch = '\n'))
 }(*where*)//end-of-[dict_line$split(dt)]
 //
-}(*where*)//end-of-[spelling$main(dt,c1,cs)
+}(*where*)//end-of-[spelling$main(dt,c1,cs)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

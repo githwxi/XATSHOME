@@ -34,7 +34,7 @@
 //
 (*
 Author: Hongwei Xi
-Fri Jan  2 01:41:33 PM EST 2026
+Sat Jan  3 04:14:44 PM EST 2026
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
@@ -42,9 +42,9 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 (*
-HX-2026-01-02:
+HX-2026-01-03:
 For implementing operations
-in JS that can be called in ATS.
+in PY that can be called in ATS.
 *)
 //
 (* ****** ****** *)
@@ -53,50 +53,51 @@ in JS that can be called in ATS.
 (*
 //
 (*
-HX-2026-01-02:
+HX-2026-01-03:
 Already inside
-[xats2js_js1emit.js]!
+[xats2py_py1emit.py]!
 *)
 //
 #extern
 fun
-XATS2JS_optn_nil
+XATS2PY_optn_nil
 {a:t0}
 ((*0*)): optn(a) = $extnam()
 #implfun
-XATS2JS_optn_nil() = optn_nil()
+XATS2PY_optn_nil() = optn_nil()
 #extern
 fun
-XATS2JS_optn_cons
+XATS2PY_optn_cons
 {a:t0}
 (x0: a): optn(a) = $extnam()
 #implfun
-XATS2JS_optn_cons(x0) = optn_cons(x0)
+XATS2PY_optn_cons(x0) = optn_cons(x0)
 //
 *)
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
 #extern
 fun
-XATS2JS_optn_nilq
+XATS2PY_optn_nilq
 {a:t0}
 ( xs
 : optn(a)): bool = $extnam()
 #implfun
-XATS2JS_optn_nilq(xs) =
+XATS2PY_optn_nilq(xs) =
 (
 case+ xs of
 |optn_nil() => true |optn_cons _ => false)
 //
 #extern
 fun
-XATS2JS_optn_consq
+XATS2PY_optn_consq
 {a:t0}
 ( xs
 : optn(a)): bool = $extnam()
 #implfun
-XATS2JS_optn_consq(xs) =
+XATS2PY_optn_consq(xs) =
 (
 case+ xs of
 |optn_nil() => false |optn_cons _ => (true))
@@ -105,23 +106,23 @@ case+ xs of
 //
 #extern
 fun
-XATS2JS_optn_head$raw
+XATS2PY_optn_head$raw
 {a:t0}
 ( xs
 : optn(a)): (a) = $extnam()
 #implfun
-XATS2JS_optn_head$raw(xs) =
+XATS2PY_optn_head$raw(xs) =
 (
 case- xs of optn_cons(x0) => (x0))
 //
 #extern
 fun
-XATS2JS_optn_uncons$raw
+XATS2PY_optn_uncons$raw
 {a:t0}
 ( xs
 : optn(a)): (a) = $extnam()
 #implfun
-XATS2JS_optn_uncons$raw(xs) =
+XATS2PY_optn_uncons$raw(xs) =
 (
 case- xs of optn_cons(x0) => (x0))
 //
@@ -131,51 +132,53 @@ case- xs of optn_cons(x0) => (x0))
 (*
 //
 (*
-HX-2026-01-02:
+HX-2026-01-03:
 Already inside
-[xats2js_js1emit.js]!
+[xats2py_py1emit.py]!
 *)
 //
 #extern
 fun
-XATS2JS_list_nil
+XATS2PY_list_nil
 {a:t0}
 ((*0*)): list(a) = $extnam()
 #implfun
-XATS2JS_list_nil() = list_nil()
+XATS2PY_list_nil() = list_nil()
 #extern
 fun
-XATS2JS_list_cons
+XATS2PY_list_cons
 {a:t0}
 ( x1: a//head
 , xs: list(a)): list(a) = $extnam()
 #implfun
-XATS2JS_list_cons(x1,xs) = list_cons(x1,xs)
+XATS2PY_list_cons(x1,xs) = list_cons(x1,xs)
 //
 *)
 //
 (* ****** ****** *)
+(* ****** ****** *)
+//
 //
 #extern
 fun
-XATS2JS_list_nilq
+XATS2PY_list_nilq
 {a:t0}
 ( xs
 : list(a)): bool = $extnam()
 #implfun
-XATS2JS_list_nilq(xs) =
+XATS2PY_list_nilq(xs) =
 (
 case+ xs of
 |list_nil() => true |list_cons _ => false)
 //
 #extern
 fun
-XATS2JS_list_consq
+XATS2PY_list_consq
 {a:t0}
 ( xs
 : list(a)): bool = $extnam()
 #implfun
-XATS2JS_list_consq(xs) =
+XATS2PY_list_consq(xs) =
 (
 case+ xs of
 |list_nil() => false |list_cons _ => (true))
@@ -184,12 +187,12 @@ case+ xs of
 //
 #extern
 fun
-XATS2JS_list_head$raw
+XATS2PY_list_head$raw
 {a:t0}
 ( xs
 : list(a)): (a) = $extnam()
 #implfun
-XATS2JS_list_head$raw(xs) =
+XATS2PY_list_head$raw(xs) =
 (
 case- xs of list_cons(x1, xs) => (x1))
 //
@@ -198,55 +201,55 @@ case- xs of list_cons(x1, xs) => (x1))
 //
 #extern
 fun
-XATS2JS_lazy_make_f0un
+XATS2PY_lazy_make_f0un
 {a:t0}
 ( f0
 : ()->(a)): lazy(a) = $extnam()
 #implfun
-XATS2JS_lazy_make_f0un(f0) = $lazy(f0())
+XATS2PY_lazy_make_f0un(f0) = $lazy(f0())
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #extern
 fun
-XATS2JS_strmcon_nil
+XATS2PY_strmcon_nil
 {a:t0}
 ((*0*)): strmcon(a) = $extnam()
 #implfun
-XATS2JS_strmcon_nil() = strmcon_nil()
+XATS2PY_strmcon_nil() = strmcon_nil()
 //
 #extern
 fun
-XATS2JS_strmcon_cons
+XATS2PY_strmcon_cons
 {a:t0}
 (x1: a//head
 ,xs: strm(a)): strmcon(a) = $extnam()
 #implfun
-XATS2JS_strmcon_cons(x1,xs) = strmcon_cons(x1,xs)
+XATS2PY_strmcon_cons(x1,xs) = strmcon_cons(x1,xs)
 //
 (* ****** ****** *)
 //
 #extern
 fun
-XATS2JS_strmcon_nilq
+XATS2PY_strmcon_nilq
 {a:t0}
 ( xs
 : strmcon(a)): bool = $extnam()
 #implfun
-XATS2JS_strmcon_nilq(xs) =
+XATS2PY_strmcon_nilq(xs) =
 (
 case+ xs of
 |strmcon_nil() => true |strmcon_cons _ => false)
 //
 #extern
 fun
-XATS2JS_strmcon_consq
+XATS2PY_strmcon_consq
 {a:t0}
 ( xs
 : strmcon(a)): bool = $extnam()
 #implfun
-XATS2JS_strmcon_consq(xs) =
+XATS2PY_strmcon_consq(xs) =
 (
 case+ xs of
 |strmcon_nil() => false |strmcon_cons _ => (true))
@@ -255,19 +258,20 @@ case+ xs of
 //
 #extern
 fun
-XATS2JS_strmcon_head$raw
+XATS2PY_strmcon_head$raw
 {a:t0}
 ( xs
 : strmcon(a)): (a) = $extnam()
 #implfun
-XATS2JS_strmcon_head$raw(xs) =
+XATS2PY_strmcon_head$raw(xs) =
 (
 case- xs of strmcon_cons(x1, xs) => (x1))
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
 (*
-HX-2026-01-02: For VT!
+HX-2026-01-03: For VT!
 *)
 (* ****** ****** *)
 (* ****** ****** *)
@@ -275,25 +279,25 @@ HX-2026-01-02: For VT!
 (*
 //
 (*
-HX-2026-01-02:
+HX-2026-01-03:
 Already inside
-[xats2js_js1emit.js]!
+[xats2py_py1emit.py]!
 *)
 //
 #extern
 fun
-XATS2JS_optn_vt_nil
+XATS2PY_optn_vt_nil
 {a:vt}
 ((*0*)): optn_vt(a) = $extnam()
 #implfun
-XATS2JS_optn_vt_nil() = optn_vt_nil()
+XATS2PY_optn_vt_nil() = optn_vt_nil()
 #extern
 fun
-XATS2JS_optn_vt_cons
+XATS2PY_optn_vt_cons
 {a:vt}
 (x0: a): optn_vt(a) = $extnam()
 #implfun
-XATS2JS_optn_vt_cons(x0) = optn_vt_cons(x0)
+XATS2PY_optn_vt_cons(x0) = optn_vt_cons(x0)
 //
 *)
 //
@@ -301,24 +305,24 @@ XATS2JS_optn_vt_cons(x0) = optn_vt_cons(x0)
 //
 #extern
 fun
-XATS2JS_optn_vt_nilq1
+XATS2PY_optn_vt_nilq1
 {a:vt}
 ( xs:
 ! optn_vt(a)): bool = $extnam()
 #implfun
-XATS2JS_optn_vt_nilq1(xs) =
+XATS2PY_optn_vt_nilq1(xs) =
 (
 case+ xs of
 |optn_vt_nil()=>true|optn_vt_cons(x0)=>false)
 //
 #extern
 fun
-XATS2JS_optn_vt_consq1
+XATS2PY_optn_vt_consq1
 {a:vt}
 ( xs:
 ! optn_vt(a)): bool = $extnam()
 #implfun
-XATS2JS_optn_vt_consq1(xs) =
+XATS2PY_optn_vt_consq1(xs) =
 (
 case+ xs of
 |optn_vt_nil()=>false|optn_vt_cons(x0)=>(true))
@@ -327,23 +331,23 @@ case+ xs of
 //
 #extern
 fun
-XATS2JS_optn_vt_head$raw0
+XATS2PY_optn_vt_head$raw0
 {a:vt}
 ( xs
 : optn_vt(a)): (a) = $extnam()
 #implfun
-XATS2JS_optn_vt_head$raw0(xs) =
+XATS2PY_optn_vt_head$raw0(xs) =
 (
 case- xs of ~optn_vt_cons(x0) => (x0))
 //
 #extern
 fun
-XATS2JS_optn_vt_uncons$raw0
+XATS2PY_optn_vt_uncons$raw0
 {a:vt}
 ( xs
 : optn_vt(a)): (a) = $extnam()
 #implfun
-XATS2JS_optn_vt_uncons$raw0(xs) =
+XATS2PY_optn_vt_uncons$raw0(xs) =
 (
 case- xs of ~optn_vt_cons(x0) => (x0))
 //
@@ -353,26 +357,26 @@ case- xs of ~optn_vt_cons(x0) => (x0))
 (*
 //
 (*
-HX-2026-01-02:
+HX-2026-01-03:
 Already inside
-[xats2js_js1emit.js]!
+[xats2py_py1emit.py]!
 *)
 //
 #extern
 fun
-XATS2JS_list_vt_nil
+XATS2PY_list_vt_nil
 {a:vt}
 ((*0*)): list_vt(a) = $extnam()
 #implfun
-XATS2JS_list_vt_nil() = list_vt_nil()
+XATS2PY_list_vt_nil() = list_vt_nil()
 #extern
 fun
-XATS2JS_list_vt_cons
+XATS2PY_list_vt_cons
 {a:vt}
 ( x1: a//head
 , xs: list_vt(a)): list_vt(a) = $extnam()
 #implfun
-XATS2JS_list_vt_cons(x1,xs) = list_vt_cons(x1,xs)
+XATS2PY_list_vt_cons(x1,xs) = list_vt_cons(x1,xs)
 //
 *)
 //
@@ -380,24 +384,24 @@ XATS2JS_list_vt_cons(x1,xs) = list_vt_cons(x1,xs)
 //
 #extern
 fun
-XATS2JS_list_vt_nilq1
+XATS2PY_list_vt_nilq1
 {a:vt}
 ( xs:
 ! list_vt(a)): bool = $extnam()
 #implfun
-XATS2JS_list_vt_nilq1(xs) =
+XATS2PY_list_vt_nilq1(xs) =
 (
 case+ xs of
 |list_vt_nil()=>true|list_vt_cons _ => false)
 //
 #extern
 fun
-XATS2JS_list_vt_consq1
+XATS2PY_list_vt_consq1
 {a:vt}
 ( xs:
 ! list_vt(a)): bool = $extnam()
 #implfun
-XATS2JS_list_vt_consq1(xs) =
+XATS2PY_list_vt_consq1(xs) =
 (
 case+ xs of
 |list_vt_nil()=>false|list_vt_cons _ => (true))
@@ -406,12 +410,12 @@ case+ xs of
 //
 #extern
 fun
-XATS2JS_list_vt_head$raw1
+XATS2PY_list_vt_head$raw1
 {a:vt}
 ( xs
 : list_vt(a)): (a) = $extnam()
 #implfun
-XATS2JS_list_vt_head$raw1(xs) =
+XATS2PY_list_vt_head$raw1(xs) =
 (
 case- xs of
 |
@@ -423,12 +427,12 @@ $UN.datacopy(x1) in $UN.enlinear(x1) end)
 //
 #extern
 fun
-XATS2JS_list_vt_tail$raw0
+XATS2PY_list_vt_tail$raw0
 {a:vt}
 ( xs:
 ~ list_vt(a)): list_vt(a) = $extnam()
 #implfun
-XATS2JS_list_vt_tail$raw0(xs) =
+XATS2PY_list_vt_tail$raw0(xs) =
 case- xs of
 | ~
 list_vt_cons
@@ -441,75 +445,75 @@ list_vt_cons
 //
 #extern
 fun
-XATS2JS_lazy_vt_eval
+XATS2PY_lazy_vt_eval
 {a:vt}
 ( lz:
 ~ lazy_vt(a)): (a) = $extnam()
 #implfun
-XATS2JS_lazy_vt_eval(lz) = $eval(lz)
+XATS2PY_lazy_vt_eval(lz) = $eval(lz)
 //
 #extern
 fun
-XATS2JS_lazy_vt_free
+XATS2PY_lazy_vt_free
 {a:vt}
 ( lz:
 ~ lazy_vt(a)): void = $extnam()
 #implfun
-XATS2JS_lazy_vt_free(lz) = $free(lz)
+XATS2PY_lazy_vt_free(lz) = $free(lz)
 //
 (* ****** ****** *)
 //
 #extern
 fun
-XATS2JS_lazy_vt_make_f0un
+XATS2PY_lazy_vt_make_f0un
 {a:vt}
 ( f0
 : ()->(a)): lazy_vt(a) = $extnam()
 #implfun
-XATS2JS_lazy_vt_make_f0un(f0) = $llazy(f0())
+XATS2PY_lazy_vt_make_f0un(f0) = $llazy(f0())
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #extern
 fun
-XATS2JS_strmcon_vt_nil
+XATS2PY_strmcon_vt_nil
 {a:vt}
 ((*0*)): strmcon_vt(a) = $extnam()
 #implfun
-XATS2JS_strmcon_vt_nil() = strmcon_vt_nil()
+XATS2PY_strmcon_vt_nil() = strmcon_vt_nil()
 //
 #extern
 fun
-XATS2JS_strmcon_vt_cons
+XATS2PY_strmcon_vt_cons
 {a:vt}
 (x1: a//head
 ,xs: strm_vt(a)): strmcon_vt(a) = $extnam()
 #implfun
-XATS2JS_strmcon_vt_cons(x1,xs) = strmcon_vt_cons(x1,xs)
+XATS2PY_strmcon_vt_cons(x1,xs) = strmcon_vt_cons(x1,xs)
 //
 (* ****** ****** *)
 //
 #extern
 fun
-XATS2JS_strmcon_vt_nilq1
+XATS2PY_strmcon_vt_nilq1
 {a:vt}
 ( xs:
 ! strmcon_vt(a)): bool = $extnam()
 #implfun
-XATS2JS_strmcon_vt_nilq1(xs) =
+XATS2PY_strmcon_vt_nilq1(xs) =
 (
 case+ xs of
 |strmcon_vt_nil()=>true|strmcon_vt_cons _ =>false)
 //
 #extern
 fun
-XATS2JS_strmcon_vt_consq1
+XATS2PY_strmcon_vt_consq1
 {a:vt}
 ( xs:
 ! strmcon_vt(a)): bool = $extnam()
 #implfun
-XATS2JS_strmcon_vt_consq1(xs) =
+XATS2PY_strmcon_vt_consq1(xs) =
 (
 case+ xs of
 |strmcon_vt_nil()=>false|strmcon_vt_cons _ =>(true))
@@ -518,12 +522,12 @@ case+ xs of
 //
 #extern
 fun
-XATS2JS_strmcon_vt_head$raw1
+XATS2PY_strmcon_vt_head$raw1
 {a:vt}
 ( xs:
 ! strmcon_vt(a)): (a) = $extnam()
 #implfun
-XATS2JS_strmcon_vt_head$raw1(xs) =
+XATS2PY_strmcon_vt_head$raw1(xs) =
 (
 case- xs of
 |
@@ -535,12 +539,12 @@ $UN.datacopy(x1) in $UN.enlinear(x1) end)
 //
 #extern
 fun
-XATS2JS_strmcon_vt_tail$raw0
+XATS2PY_strmcon_vt_tail$raw0
 {a:vt}
 ( xs:
 ~ strmcon_vt(a)): strm_vt(a) = $extnam()
 #implfun
-XATS2JS_strmcon_vt_tail$raw0(xs) =
+XATS2PY_strmcon_vt_tail$raw0(xs) =
 case- xs of
 | ~
 strmcon_vt_cons
@@ -552,5 +556,5 @@ strmcon_vt_cons
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_DATS_CATS_JS_precats.dats] *)
+(* end of [ATS3/XANADU_prelude_DATS_CATS_PY_precats.dats] *)
 (***********************************************************************)

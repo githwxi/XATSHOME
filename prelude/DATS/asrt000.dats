@@ -71,6 +71,32 @@ asrt_length
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+//
+(*
+HX-2026-01-04:
+This one also works!
+*)
+//
+#impltmp
+< x0: vt >
+asrt_exists
+  (  xs  ) =
+(
+asrt_length<x0>(xs) >
+asrt_search$idx<0>(xs))
+where
+{
+//
+#impltmp
+search$tcmp1
+< x0 >(*x0*) = exists$tcmp1<x0>
+//
+}(*where*)//end-of-[asrt_exists(xs)]
+*)
+//
+(* ****** ****** *)
+//
 #impltmp
 < x0: vt >
 asrt_exists
@@ -163,6 +189,20 @@ loop(li,mi) else loop(mi+1,ui))
 end(*let*)//end-of-[loop(li,ui)]
 //
 }(*where*)//end-of-[asrt_search$idx(xs)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+< x0:vt >
+asrt_memberq
+  (xs, x0) =
+(
+asrt_exists<x0>(xs)) where
+{
+#impltmp
+exists$tcmp1<x0>(x1) = g_cmp11<x0>(x0, x1)
+}(*where*)//end-of-[asrt_memberq<x0>(xs,x0)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

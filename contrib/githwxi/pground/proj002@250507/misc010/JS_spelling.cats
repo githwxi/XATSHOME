@@ -25,7 +25,7 @@ JS_spelling_call()
 {
 XATS2JS_the_print_store_clear();
 //
-JS_spelling$main();
+JS_spelling_main();
 //
 JS_spelling_output.innerHTML = XATS2JS_the_print_store_flush();
 //

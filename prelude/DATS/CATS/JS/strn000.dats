@@ -39,6 +39,23 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 #impltmp
 <(*tmp*)>
+strn_nilq
+  ( cs ) =
+(
+strn_length<>(cs) = 0)
+//
+#impltmp
+<(*tmp*)>
+strn_consq
+  ( cs ) =
+(
+strn_length<>(cs) > 0)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
 strn_length
   ( cs ) =
 (
@@ -93,6 +110,48 @@ XATS2JS_strn_print
 fun
 XATS2JS_strn_print(cs: strn): void = $extnam()
 }
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2026-01-04:
+Sun Jan  4 04:45:42 PM EST 2026
+*)
+//
+#impltmp
+<(*tmp*)>
+strn_get$at
+  (cs, i0) =
+(
+XATS2JS_strn_get$at$raw
+(    cs      , i0     ))
+where
+{
+#extern
+fun
+XATS2JS_strn_get$at$raw
+(    cs: strn, i0: nint    ): char = $extnam()
+}
+//
+(* ****** ****** *)
+//
+(*
+#impltmp
+<(*tmp*)>
+strn_fset$at
+  (cs, i0, c0) =
+(
+XATS2JS_strn_fset$at$raw
+(    cs,   i0,   c0    ))
+where
+{
+#extern
+fun
+XATS2JS_strn_fset$at$raw
+(cs: strn, i0: nint, c0: cgtz): strn = $extnam()
+}
+*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
