@@ -28,7 +28,7 @@ where
 //
 val xs = list_reverse_vt(xs)
 //
-fun
+fnx
 loop(xs, rs) =
 (
 case+ xs of

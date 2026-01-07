@@ -217,11 +217,12 @@ list_cons(wd0, _) = nd0
 val wds =
 word_adjs$get(wd0)
 val wds =
-strm_vt_filter0(wds)
+(
+strm_vt_filter0(wds))
 where
 {
 #impltmp
-filter$test1<strn> = word_test}
+filter$test1<strn> = word_test }
 //
 in//let
 strm_vt_map0$f1un

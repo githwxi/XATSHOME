@@ -11,14 +11,10 @@ PRINTF=printf
 PYTHON=python3
 ########################################################################
 ########################################################################
-all::
-all:: insrt000
-all:: msetz000
+all:: debug000
 ########################################################################
 testall:: \
-insrt000; $(NODE) OUTS/$<_out.js
-testall:: \
-msetz000; $(NODE) OUTS/$<_out.js
+debug000; $(NODE) OUTS/$<_out.js
 ########################################################################
 ########################################################################
 clean:: ; rm -f *~
@@ -43,31 +39,14 @@ $(XATSHOME)/xassets/PY/xats2js/xats2js_jsemit01_ats3_opt0.py
 #
 ########################################################################
 ########################################################################
-insrt000:: ; \
+debug000:: ; \
 $(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
-insrt000:: ; \
+debug000:: ; \
 $(CAT) $(XATS2JSD)/runtime/xats2js_js1emit.js >> OUTS/$@_out.js
-insrt000:: ; \
+debug000:: ; \
 $(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/$@_out.js
-insrt000:: insrt000.dats; \
+debug000:: debug000.dats; \
 $(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
-########################################################################
-msetz000:: ; \
-$(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
-msetz000:: ; \
-$(CAT) $(XATS2JSD)/runtime/xats2js_js1emit.js >> OUTS/$@_out.js
-msetz000:: ; \
-$(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/$@_out.js
-msetz000:: msetz000.dats; \
-$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
-########################################################################
-########################################################################
-insrt000_out1:: ; \
-npx google-closure-compiler -W QUIET \
-  --compilation_level SIMPLE --js=OUTS/insrt000_out.js --js_output_file=OUTS/insrt000_out1.js
-insrt000_out2:: ; \
-npx google-closure-compiler -W QUIET \
-  --compilation_level ADVANCED --js=OUTS/insrt000_out.js --js_output_file=OUTS/insrt000_out2.js
 ########################################################################
 ########################################################################
 ##################### end of [Makefile_jsemit01] #######################

@@ -318,6 +318,23 @@ pstrn":";g_psort<vw>((*void*)))
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-01-06:
+Tue Jan  6 11:19:12 PM EST 2026
+*)
+#impltmp
+< x0:vt >
+g_debug(x0) =
+(
+  x0 ) where
+{
+val () = (
+g_print1<x0>(x0); println())
+}(*where*)//end-of-[g_debug(x0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #impltmp
 < xs:vt >
 < x0:vt >
