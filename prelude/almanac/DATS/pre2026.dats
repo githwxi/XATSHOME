@@ -98,6 +98,54 @@ gasq$seg_decd<xs>(xsii) in//let
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2027-01-07:
+Wed Jan  7 12:37:11 PM EST 2026
+*)
+//
+#impltmp
+<(*tmp*)>
+nint_digitize
+  (  n0  ) =
+nint_base$digitize<>(n0, 10)
+#impltmp
+<(*tmp*)>
+nint_rdigitize
+  (  n0  ) =
+nint_base$rdigitize<>(n0, 10)
+//
+#impltmp
+<(*tmp*)>
+nint_base$digitize
+  (n0, b0) =
+strm_vt_rlistize0<ni>
+(
+nint_base$rdigitize<>(n0, b0))
+//
+#impltmp
+<(*tmp*)>
+nint_base$rdigitize
+  (n0, b0) =
+(
+  auxmain(n0)) where
+{
+//
+fun
+auxmain
+(n0: nint):
+strm_vt(nint) = $llazy
+(
+if // if
+(n0 <= 0)
+then strmcon_vt_nil(*0*) else
+(
+  strmcon_vt_cons(n0%b0, auxmain(n0/b0))))
+//
+}(*where*)//end-of-[nint_base$rdigitize<>(n0,b0)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_almanac_SATS_pre2026.sats] *)
+(* end of [ATS3/XANADU_prelude_almanac_DATS_pre2026.dats] *)
 (***********************************************************************)
