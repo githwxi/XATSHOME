@@ -20,7 +20,7 @@ fun
 fact(n: nint): nint =
 g_debug(
 if n > 0
-then n * fact(n-1) else 1)
+then n*fact(n-1) else 1)
 where
 {
 #typedef
@@ -30,8 +30,8 @@ g_debug<x0>(x0) =
 (
 g_debug<x0>(x0)) where
 {
-val () =
-prints("fact(", n, ") = ")}}
+val () = prints("\
+debug: fact(", n, ") = ")}}
 //
 (* ****** ****** *)
 //
