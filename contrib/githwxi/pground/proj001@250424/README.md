@@ -35,4 +35,9 @@ This example (mydict00) builds a stream of words, where
 [gseq_segmentize0] is called to turn a linear stream of chars into a
 linear stream of lines. And compiling to both JS and PY is supported.
 
+## [misc006](./misc006)
+
+This example (debug000) shows a simple of way of using [g_debug] for
+debugging.
+
 Happy ATS programming!
