@@ -12,9 +12,12 @@ PYTHON=python3
 ########################################################################
 ########################################################################
 all:: debug000
+all:: debug001
 ########################################################################
 testall:: \
 debug000; $(NODE) OUTS/$<_out.js
+testall:: \
+debug001; $(NODE) OUTS/$<_out.js
 ########################################################################
 ########################################################################
 clean:: ; rm -f *~
@@ -46,6 +49,15 @@ $(CAT) $(XATS2JSD)/runtime/xats2js_js1emit.js >> OUTS/$@_out.js
 debug000:: ; \
 $(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/$@_out.js
 debug000:: debug000.dats; \
+$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+########################################################################
+debug001:: ; \
+$(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
+debug001:: ; \
+$(CAT) $(XATS2JSD)/runtime/xats2js_js1emit.js >> OUTS/$@_out.js
+debug001:: ; \
+$(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/$@_out.js
+debug001:: debug001.dats; \
 $(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
 ########################################################################
 ########################################################################

@@ -1,9 +1,9 @@
 (* ****** ****** *)
 (* ****** ****** *)
 (*
-HX-2026-01-06:
+HX-2026-01-07:
 For testing gdbg000 functions
-Tue Jan  6 11:26:47 PM EST 2026
+Wed Jan  7 01:43:49 AM EST 2026
 *)
 (* ****** ****** *)
 (* ****** ****** *)
@@ -17,28 +17,48 @@ Tue Jan  6 11:26:47 PM EST 2026
 (* ****** ****** *)
 //
 fun
-fact(n: nint): nint =
+<a:t0>
+listrev
+( xs
+: list(a)): list(a) =
+(
+  auxmain(xs)) where
+{
+//
+fun
+auxmain
+(xs: list(a)): list(a) =
 g_debug(
-if n > 0
-then n*fact(n-1) else 1)
+(
+case+ xs of
+|
+list_nil() => list_nil()
+|
+list_cons(x1, xs) =>
+list_extend(auxmain(xs), x1)))
 where
 {
-#typedef 
-x0 = nint
+#typedef
+rs = list(a)
 #impltmp
-g_debug<x0>(x0) =
+g_debug<rs>(rs) =
 (
-g_debug<x0>(x0)) where
+g_debug<rs>(rs)) where
 {
 val () = prints("\
-debug:fact(", n, ") = ")}
+listrev:auxmain(", xs, ") = ")}
 }
 //
+}(*where*)//end-of-[listrev<a>(xs)]
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
-val N = 10
-val () = printsln(
-"fact(", N, ") = ", fact(N))
+val xs =
+list_vt2t(nint_listize(10))
+val () = printsln("xs = ", xs)
+val ys = listrev<nint>(xs)
+val () = printsln("ys = ", ys)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -50,5 +70,5 @@ console_log(the_print_store_flush((*void*)))
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [githwxi/pground/proj001@250424/misc006/debug000.dats] *)
+(* end of [githwxi/pground/proj001@250424/misc006/debug001.dats] *)
 (***********************************************************************)
