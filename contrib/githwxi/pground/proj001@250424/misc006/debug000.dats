@@ -17,7 +17,8 @@ Tue Jan  6 11:26:47 PM EST 2026
 (* ****** ****** *)
 //
 fun
-fact(n: nint): nint =
+fact
+(n: nint): nint =
 g_debug(
 if n > 0
 then n*fact(n-1) else 1)
@@ -28,9 +29,10 @@ x0 = nint
 #impltmp
 g_debug<x0>(x0) =
 (
-g_debug<x0>(x0)) where
+println(x0); x0) where
 {
-val () = prints("\
+val () =
+prints("\
 debug:fact(", n, ") = ")}
 }
 //
@@ -39,6 +41,12 @@ debug:fact(", n, ") = ")}
 val N = 10
 val () = printsln(
 "fact(", N, ") = ", fact(N))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val fact10 =
+f1un_trace(fact, "fact")(10)
 //
 (* ****** ****** *)
 (* ****** ****** *)

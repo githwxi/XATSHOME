@@ -38,15 +38,17 @@ list_cons(x1, xs) =>
 list_extend(auxmain(xs), x1)))
 where
 {
+//
 #typedef
 rs = list(a)
 #impltmp
 g_debug<rs>(rs) =
 (
-g_debug<rs>(rs)) where
+println(rs); rs) where
 {
 val () = prints("\
 listrev:auxmain(", xs, ") = ")}
+//
 }
 //
 }(*where*)//end-of-[listrev<a>(xs)]
@@ -55,8 +57,11 @@ listrev:auxmain(", xs, ") = ")}
 (* ****** ****** *)
 //
 val xs =
-list_vt2t(nint_listize(10))
-val () = printsln("xs = ", xs)
+list_vt2t
+(nint_listize(10))
+val () =
+printsln("xs = ", xs)
+//
 val ys = listrev<nint>(xs)
 val () = printsln("ys = ", ys)
 //
