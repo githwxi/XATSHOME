@@ -40,4 +40,10 @@ linear stream of lines. And compiling to both JS and PY is supported.
 This example (debug000) shows a simple of way of using [g_debug] for
 debugging.
 
+## [misc007](./misc007)
+
+This example (STmonad0) gives in ATS3 a direct implementation
+of the so-called state monad. In particular, runST is implemented
+in a type-safe manner.
+
 Happy ATS programming!
