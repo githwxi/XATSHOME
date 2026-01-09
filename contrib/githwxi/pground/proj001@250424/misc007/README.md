@@ -22,7 +22,8 @@ fun binder
 , fx: (!ST, T0) -> T1) = lam(st: ST) => fx(mx(st))
 ```
 
-Note that the type (!ST, T0) -> T1 is used instead of T0 -> M(T1).
+Note that the type (!ST, T0) -> T1 is assigned to fx
+instead of T0 -> M(T1).
   
 Also, runST can be readily defined as follows in a type-safe manner:
 
@@ -37,8 +38,10 @@ val x0 = mx(st) in STfree(st); x0 end
 
 where STinit creates an initial state and STfree frees a state.
 
-This is quite remarkable. In Haskell, implementing runST often
-relies on some internal "magic". For instance, the actual GHC.ST
-implementation often uses *unsafeCoerce*.
+This example showcases the power of linear types. In Haskell,
+implementing runST often relies on some internal "magic". For
+instance, the actual GHC.ST implementation often uses *unsafeCoerce*,
+essentially mapping the ST monad to the same machinery as IO without
+the external side effects.
 
 Happy ATS programming!
