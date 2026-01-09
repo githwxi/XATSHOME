@@ -44,7 +44,7 @@ instance, the actual GHC.ST implementation often uses *unsafeCoerce*,
 essentially mapping the ST monad to the same machinery as IO without
 the external side effects.
 
-# Commentary by Hongwei Xi
+## Commentary by Hongwei Xi
 
 The state monad in Haskell is a very interesting higher-order and
 higher-rank mechanism (of great intellectual appeal). While it can
