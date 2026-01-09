@@ -15,11 +15,11 @@ underlying state in M. Naturally, the monadic operators associated with
 M can be define as follows:
 
 ```
-fun return(x0: T0) = lam(st: ST) => (x0)
+fun return(x0: T0) = lam(st: !ST) => (x0)
 
 fun binder
 ( mx: M(T0)
-, fx: (!ST, T0) -> T1) = lam(st: ST) => fx(mx(st))
+, fx: (!ST, T0) -> T1) = lam(st: !ST) => fx(mx(st))
 ```
 
 Note that the type (!ST, T0) -> T1 is assigned to fx

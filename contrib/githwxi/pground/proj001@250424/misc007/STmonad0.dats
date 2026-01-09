@@ -1,4 +1,11 @@
 (* ****** ****** *)
+(*
+HX-2026-01-08:
+Just this little bit of code
+should already convince one to
+adopt linear types :) Cheers!!!
+Thu Jan  8 11:07:30 PM EST 2026
+*)
 (* ****** ****** *)
 //
 #extern
