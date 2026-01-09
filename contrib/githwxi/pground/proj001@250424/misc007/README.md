@@ -1,0 +1,44 @@
+# State Monad
+
+## DATE
+
+<pre>
+Thu Jan  8 11:07:30 PM EST 2026
+</pre>
+  
+## Description
+
+In [STmonad0.dats](./STmonad0.dats), one can find an implementation
+of state monad in ATS3. Given a type T0, the monadic version M(T0) of
+T0 is defined as (!ST) -> T0, where ST is the (linear) type for the
+underlying state in M. Naturally, the monadic operators associated with
+M can be define as follows:
+
+```
+fun return(x0: T0) = lam(st: ST) => (x0)
+
+fun binder
+( mx: M(T0)
+, fx: (!ST, T0) -> T1) = lam(st: ST) => fx(mx(st))
+```
+
+Note that the type (!ST, T0) -> T1 is used instead of T0 -> M(T1).
+  
+Also, runST can be readily defined as follows in a type-safe manner:
+
+```
+fun
+runST
+(mx: M(T0)): T0 =
+let
+val st = STinit()
+val x0 = mx(st) in STfree(st); x0 end
+```
+
+where STinit creates an initial state and STfree frees a state.
+
+This is quite remarkable. In Haskell, implementing runST often
+relies on some internal "magic". For instance, the actual GHC.ST
+implementation often uses *unsafeCoerce*.
+
+Happy ATS programming!
