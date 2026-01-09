@@ -44,4 +44,18 @@ instance, the actual GHC.ST implementation often uses *unsafeCoerce*,
 essentially mapping the ST monad to the same machinery as IO without
 the external side effects.
 
+# Commentary by Hongwei Xi
+
+The state monad in Haskell is a very interesting higher-order and
+higher-rank mechanism (of great intellectual appeal). While it can
+certainly be supported in ATS3, what is not so certain is whether it
+should be supported in the first place since the motivating factor
+for supporting it in Haskell does not exist in ATS3.
+
+Given that the notion of state underlying a state monad can be modeled
+as a linear abstract type, ATS3 can directly support safe imperative
+programming (where a state can be modified) with no explicit need for
+a state monad. Please see [myeval00.dats](./myeval00.dats) for a concrete
+example of programming with linear state.
+
 Happy ATS programming!
