@@ -46,4 +46,9 @@ This example (STmonad0) gives in ATS3 a direct implementation
 of the so-called state monad. In particular, runST is implemented
 in a type-safe manner.
 
+## [misc008](./misc008)
+
+Streamization means turning a collection of values into a *linear*
+stream of these values.  It is truly a bit of magic of ATS3 :)
+
 Happy ATS programming!
