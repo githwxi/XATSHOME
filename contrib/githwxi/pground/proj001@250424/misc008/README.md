@@ -14,10 +14,13 @@ also *listization* in ATS3, which turns a collection of values into a
 linear list of these values.
 
 Let us use T(A) for the type of some collection of values of type
-A. Then T(A) supports streamization via a function `strmize` if the
+A. Then T(A) can support streamization via a function `strmize` if the
 function turns a given collection xs of type T(A) into a linear stream
 of type `strm_vt(A)` such that each value in the given collection xs
-"occurs" in the returned linear stream.
+"occurs" in the returned linear stream. Clearly, there can be more
+than one way for T(A) to support streamization. For instance, for a
+tree of values, there are dfs-streamization (based on depth-first
+traversal), bfs-streamization (based on breadth-first traversal), etc.
 
 ## Commentary by Hongwei Xi
 
