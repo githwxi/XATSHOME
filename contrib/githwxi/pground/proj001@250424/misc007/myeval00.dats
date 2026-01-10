@@ -15,30 +15,29 @@ Linear states are far more direct!
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
 datatype
 token =
 | TOKint of sint
 | TOKopr of strn
+//
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 #absvtbx state_vx
-
+#vwtpdef state = state_vx
+//
 (* ****** ****** *)
-(* ****** ****** *)
-
-#vwtpdef
-state = state_vx
 
 local
-
+//
 #vwtpdef
 stack = list_vt(sint)
 #absimpl
 state_vx = a0rf_vt(stack)
-
+//
 in//local
-
+//
 (* ****** ****** *)
 //
 fun
@@ -80,7 +79,7 @@ a0rf_vt_lset(
   st, list_vt_cons(i0, sk)) end
 //
 (* ****** ****** *)
-
+//
 end(*local*)//end-of-(absimpl(state_vx))
 
 (* ****** ****** *)
@@ -162,7 +161,7 @@ TOKopr("+"), TOKint(3), TOKopr("*"))
 val tks =
 list_cons(
 TOKint(1), list_cons(TOKint(2), tks))
-val (  ) =
+val (  ) = // HX: (1 + 2) * 3 = 9
 printsln("myeval(tks) = ", myeval(tks))
 //
 (* ****** ****** *)

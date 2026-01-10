@@ -58,4 +58,7 @@ programming (where a state can be modified) with no explicit need for
 a state monad. Please see [myeval00.dats](./myeval00.dats) for a concrete
 example of programming with linear state.
 
+Fundamentally, linear states are just (linear) values in ATS3. And
+this has opened up so many possibilities!
+
 Happy ATS programming!
