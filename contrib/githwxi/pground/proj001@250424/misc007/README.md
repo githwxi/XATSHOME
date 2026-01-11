@@ -55,7 +55,7 @@ for supporting it in Haskell does not exist in ATS3.
 Given that the notion of state underlying a state monad can be modeled
 as a linear abstract type, ATS3 can directly support safe imperative
 programming (where a state can be modified) with no explicit need for
-a state monad. Please see [myeval00.dats](./myeval00.dats) for a concrete
+a state monad. Please see [misc007.dats](./misc007.dats) for a concrete
 example of programming with linear state.
 
 Fundamentally, linear states are just (linear) values in ATS3. And

@@ -66,7 +66,7 @@ build a `T B` as the return value of `traverse`?
 
 I often read that `Functor` in Haskell gives us a way to map a pure
 function and preserve shape and `Traversable` gives us a way to map an
-effectful function and preserve shape. Preserving shape makes perfect
+effectful function and preserve shape. Preserving shape makes good
 sense for the `fmap` function in `Functor` as one can imagine that
 `fmap` *simultaneously* maps a given function to each value in a given
 collection. But preserving shape makes less sense for `traverse` in
