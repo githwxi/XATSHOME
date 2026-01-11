@@ -60,16 +60,22 @@ which, by the way, corresponds to `map$e1nv_list` in ATS3 (if `[B]` in
 Haskell translates to `list(B)` in ATS3).
 
 The rationale for this change is easily understood. After the
-traversal is done, what is accumulated can be naturally represented as
-a list. Why is it necessary or even beneficial to build a `T B` as the
-return value of `traverse`? Actually, it is also beneficial to have the
-following variant of `traverse` (that accumulates nothing):
+traversal is *sequentially* done, what is accumulated can be naturally
+represented as a list. Then why is it necessary or even beneficial to
+build a `T B` as the return value of `traverse`? Actually, it is also
+quite useful to have the following variant of `traverse` (that
+accumulates nothing):
 
 ```
 traverse :: (Traversable T) => ((!ST, A) -> void) -> ((!ST, T A) -> void)
 ```
 
 which, by the way, corresponds to `foritm$e1nv` in ATS3.
-  
+
+I often read that `Functor` in Haskell gives us a way to map pure
+functions and preserve shape and `Traversable` gives us a way to map
+effectful functions and preserve shape. In ATS3, preserving shape is
+treated as an optional but not essential part of `map` (Functor) or
+`map$e1nv` (Traversable).
 
 Happy ATS programming!
