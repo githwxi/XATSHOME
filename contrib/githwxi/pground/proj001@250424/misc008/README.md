@@ -62,20 +62,19 @@ Haskell translates to `list(B)` in ATS3).
 The rationale for this change is easily understood. After the
 traversal is *sequentially* done, what is accumulated can be naturally
 represented as a list. Then why is it necessary or even beneficial to
-build a `T B` as the return value of `traverse`? Actually, it is also
-quite useful to have the following variant of `traverse` (that
-accumulates nothing):
+build a `T B` as the return value of `traverse`? 
 
-```
-traverse :: (Traversable T) => ((!ST, A) -> void) -> ((!ST, T A) -> void)
-```
+I often read that `Functor` in Haskell gives us a way to map a pure
+function and preserve shape and `Traversable` gives us a way to map an
+effectful function and preserve shape. Preserving shape makes perfect
+sense for the `fmap` function in `Functor` as one can imagine that
+`fmap` *simultaneously* maps a given function to each value in a given
+collection. But preserving shape makes less sense for `traverse` in
+`Traversable` as `traverse` *sequentially* maps a given (effectful)
+function to each value in a given collection (unless the underlying
+effects are commutable).
 
-which, by the way, corresponds to `foritm$e1nv` in ATS3.
-
-I often read that `Functor` in Haskell gives us a way to map pure
-functions and preserve shape and `Traversable` gives us a way to map
-effectful functions and preserve shape. In ATS3, preserving shape is
-treated as an optional but not essential part of `map` (Functor) or
-`map$e1nv` (Traversable).
+In ATS3, preserving shape is treated as an optional (but not essential)
+part of `map` (Functor) or `map$e1nv` (Traversable).
 
 Happy ATS programming!
