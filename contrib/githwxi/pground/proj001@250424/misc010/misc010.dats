@@ -26,9 +26,9 @@ Mon Jan 12 09:26:32 AM EST 2026
 (*
 -- HX-2026-01-12:
 -- Here is a Haskell version:
-primes = filterPrime [2..] where
-  filterPrime (p:xs) =
-    p : filterPrime [x | x <- xs, x `mod` p /= 0]
+primes = sieve [2..] where
+  sieve (p:xs) =
+    p : sieve [x | x <- xs, x `mod` p /= 0]
 *)
 
 (* ****** ****** *)
@@ -52,13 +52,12 @@ primes = filterPrime [2..] where
 //
 val
 thePrimes =
-sieve(from(2)) where{
-  fun
-  sieve(xs: ls(si)) =
-  let val (p :: xs) = !xs in
-    $llazy(
-      p :: sieve(filter0(xs,lam(x:si)=>x%p>0)))
-  end // end-of-[let val (p :: xs) = !xs in ...]
+sieve(from(2)) where {
+  fun sieve(xs: ls(si)) =
+    let val (p :: xs) = !xs in
+      $llazy(
+        p :: sieve(filter0(xs,lam(x:si)=>x%p>0)))
+    end // end-of-[let val (p :: xs) = !xs in ...]
 }
 //
 (* ****** ****** *)

@@ -68,6 +68,26 @@ ls is a shorthand for strm_vt and si for sint) so as to help the
 compiler to resolve overloaded symbols. And such annotations are
 primarily added for function arguments.
 
+## The cost of "elegant syntax"
+
+Haskellers are often very proud of the "elegant syntax" of Haskell,
+which tends to be concise and "mathematical". A lot of ideas on
+supporting symbol overload in ATS3 are motivated by a desire to
+compete with Haskell in terms of syntax design.
+
+
+In ATS3, "elegant syntax" is good for code presentation but may not be
+so good for constructing the presented code. Symbol overloading can
+readily "get in the way" as it inevitably complicates error-message
+reporting.  I (Hongwei Xi) tend to use verbose syntax during code
+development and then do "code beautification" after the development
+phase is over.
+
+By the way, I have not yet caught the fever of creating esoteric
+symbolic names (e.g., `<$>`, `<*>`, `^.`, `~.`, `%~`) for
+overloading. Syntactic crimes are bound to be made in the name of
+elegance.  Please stay tuned :)
+
 ## Commentary by Hongwei Xi
 
 *Programming language design is more art than mathematics, and it
