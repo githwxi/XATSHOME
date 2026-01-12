@@ -70,22 +70,21 @@ primarily added for function arguments.
 
 ## Commentary by Hongwei Xi
 
-*Programming language design* is more art than mathematics, and it
+*Programming language design is more art than mathematics, and it
  needs to take a holistic view.*
 
 In the literature of programming language studies, there is a BIG
 portion on type inference. Probably the most famous type inference
 algorithm is given the name Hindley-Milner. And countless efforts have
-been spent to "improve" it.
+been spent on "improving" it.
 
 In Hindley-Milner, let-generalization (of free type variables) is
 performed.  When a variable is bound by let, the type inference
 algorithm automatically quantifies over any free type variables in its
 inferred type that are not constrained by the surrounding scope (i.e.,
 the type environment). This allows the bound variable to be used at
-different types within the scope of the let expression, and thus
-achieving a form of polymorphism that is referred to as
-`let-polymorphism`.
+different types within the scope of the let expression, thus achieving
+a form of polymorphism (which is referred to as `let-polymorphism`).
 
 But what is the cost of performing let-generalization?  In programming
 language design, features are often fighting each other.  With
