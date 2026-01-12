@@ -60,9 +60,12 @@ In ATS3, there are a variety of lists: functional (list), linear
 function (list_vt), lazy functional (strm), and linear lazy functional
 (strm_vt). Also, for each lazy kind, there are two more versions:
 finite (strq) and infinite (strx). Often, one needs to supply type
-annotations (e.g., `xs:ls(si)` where ls is a shorthand for strm_vt) so
-as to help the compiler to resolve overloaded symbols.
+annotations (e.g., `xs:ls(si)` where ls is a shorthand for strm_vt and
+si for sint) so as to help the compiler to resolve overloaded
+symbols. And such annotations are primarily for function arguments.
 
 ## Commentary by Hongwei Xi
+
+*Programming language design needs to take a holistic view.*
 
 Happy ATS programming!
