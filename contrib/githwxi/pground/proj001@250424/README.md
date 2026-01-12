@@ -56,7 +56,15 @@ stream of these values.  It is truly a bit of magic of ATS3 :)
 What is GSEQ? GSEQ is for generic sequences.  Whenever a value
 supports streamization, then the value can be treated as a GSEQ (via
 the supported streamization).  What is GASQ? Similar to GSEQ, GASQ is
-for array-like generic sequences. Hence, a GASQ is a GSEQ, but not
+for generic array-like sequences. Hence, a GASQ is a GSEQ, but not
 vice versa.
 
+## [misc010](./misc010)
+
+The support for symbol overloading in ATS3 is versatile. However, one
+may not want to use "elegant syntax" during code construction as
+symbol overloading inevitable complicates error-message reporting,
+making it harder, especially for a non-expert, to comprehend the
+meaning of error (especially, type-error) messages.
+  
 Happy ATS programming!
