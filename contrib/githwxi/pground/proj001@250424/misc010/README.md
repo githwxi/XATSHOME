@@ -59,13 +59,46 @@ The infix operator `::` is an overloaded symbol:
 In ATS3, there are a variety of lists: functional (list), linear
 function (list_vt), lazy functional (strm), and linear lazy functional
 (strm_vt). Also, for each lazy kind, there are two more versions:
-finite (strq) and infinite (strx). Often, one needs to supply type
-annotations (e.g., `xs:ls(si)` where ls is a shorthand for strm_vt and
-si for sint) so as to help the compiler to resolve overloaded
-symbols. And such annotations are primarily for function arguments.
+finite (strq) and infinite (strx). That is, a strm-stream can be
+either finite or infinite; a strq-stream much be finite; a strx-stream
+must be infinite.
+
+Often, one needs to supply type annotations (e.g., `xs:ls(si)` where
+ls is a shorthand for strm_vt and si for sint) so as to help the
+compiler to resolve overloaded symbols. And such annotations are
+primarily added for function arguments.
 
 ## Commentary by Hongwei Xi
 
-*Programming language design needs to take a holistic view.*
+*Programming language design* is more art than mathematics, and it
+ needs to take a holistic view.*
+
+In the literature of programming language studies, there is a BIG
+portion on type inference. Probably the most famous type inference
+algorithm is given the name Hindley-Milner. And countless efforts have
+been spent to "improve" it.
+
+In Hindley-Milner, let-generalization (of free type variables) is
+performed.  When a variable is bound by let, the type inference
+algorithm automatically quantifies over any free type variables in its
+inferred type that are not constrained by the surrounding scope (i.e.,
+the type environment). This allows the bound variable to be used at
+different types within the scope of the let expression, and thus
+achieving a form of polymorphism that is referred to as
+`let-polymorphism`.
+
+But what is the cost of performing let-generalization?  In programming
+language design, features are often fighting each other.  With
+Hindley-Milner, it becomes very difficult to support overloading of
+symbols. In Standard ML (and many of its dialects), support for symbol
+overloading is poor at best.  And heroic efforts are made in Haskell
+in order to reconcile type inference and symbol overloading.
+
+It took a very long time for me to finally decide to fully abandon
+let-generalization in ATS3. Essentially, type inference in ATS3 makes
+only use of the Hindley part of Hindley-Milner. This decision has
+opened so many opportunities in the design space for ATS3. In
+particular, the current versatile support of symbol overloading in
+ATS3 owes its very existence to this decision.
 
 Happy ATS programming!
