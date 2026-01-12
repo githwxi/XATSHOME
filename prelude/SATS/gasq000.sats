@@ -52,12 +52,19 @@ fun
 <xs:t0>
 <x0:t0>
 gasq_get$at
-(xs: xs,i0: ni): (x0)
+(xs: xs, i0: ni): (x0)
 fun
 <xs:t0>
 <x0:t0>
 gasq_set$at
 (xs: xs, i0: ni, x0: x0): void
+//
+#typedef
+gasq_get$at
+(xs:t0, x0:t0) = (xs, ni) -> (x0)
+#typedef
+gasq_set$at
+(xs:t0, x0:t0) = (xs, ni, x0) -> void
 //
 (* ****** ****** *)
 (* ****** ****** *)

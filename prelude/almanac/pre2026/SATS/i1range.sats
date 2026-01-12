@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2024 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2026 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -26,11 +26,12 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
 (*
-Mon 29 Jul 2024 06:15:29 PM EDT
+Sun Jan 11 10:36:44 AM EST 2026
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -38,75 +39,98 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#staload UN = 
-"prelude/SATS/unsfx00.sats"
+(*
+HX-2026-01-11:
+i1range:
+one-dimension int range
+i1range(lb, ub)
+stands for [lb, ub), that is,
+left-inclusive and right-inclusive
+*)
+#abstype
+i1range_t0 == (si, si)
+#typedef i1range = i1range_t0
+//
+(*
+HX-2026-01-11:
+[i1ranges] is for
+a list of *disjoint* intervals!
+*)
+#abstbox
+i1ranges_t0 == lsrt(i1range)
+#typedef i1ranges = i1ranges_t0
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#impltmp
-< xs:vt >
-< x0:vt >
-GLSEQ_unmk0
-(  gseq  ) = $UN.castxy0(gseq)
-#impltmp
-< xs:vt >
-< x0:vt >
-GLSEQ_unmk1
-(  gseq  ) = $UN.castxy1(gseq)
+fcast
+i1range_encd
+(lbub: (sint, sint)): i1range
+fcast
+i1range_decd(i1range): (si, si)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#impltmp
-< xs:vt >
-< x0:vt >
-GLSEQ_forall0
-  (gseq) =
-(
-gseq_forall0<xs><x0>(GLSEQ_unmk0(gseq)))
+fun<>
+i1range_lb$get(i1range): sint
+fun i1range_ub$get(i1range): sint
 //
-#impltmp
-< xs:vt >
-< x0:vt >
-GLSEQ_forall1
-  (gseq) =
-let
-val
-(pf|xs) = GLSEQ_unmk1(gseq)
-val btf = gseq_forall1<xs><x0>(xs)
-prval () = owed_vt_return0(pf, xs) in btf
-end(*let*)//end-of-[GLSEQ_forall1<xs><x0>(gseq)]
+#symload lb with i1range_lb$get
+#symload ub with i1range_ub$get
 //
 (* ****** ****** *)
+(* ****** ****** *)
 //
-#impltmp
-< xs:vt >
-< x0:vt >
-GLSEQ_forall0$f1un
-  (gseq, test) =
-(
-GLSEQ_forall0<xs><x0>(gseq))
-where
-{
-#impltmp forall$test0<x0>(x0) = test(x0)
-}(*where*)//end-of-[GLSEQ_forall0$f1un<xs><x0>(...)]
+fun<>
+i1range_make_lbub
+(lb: sint, ub: sint): i1range
 //
-#impltmp
-< xs:vt >
-< x0:vt >
-GLSEQ_forall1$f1un
-  (gseq, test) =
-(
-GLSEQ_forall1<xs><x0>(gseq))
-where
-{
-#impltmp forall$test1<x0>(x0) = test(x0)
-}(*where*)//end-of-[GLSEQ_forall1$f1un<xs><x0>(...)]
+#symload
+range with i1range_make_lbub
+#symload
+i1range with i1range_make_lbub
+//
+(* ****** ****** *)
+(* ****** ****** *)
+fun<>
+i1range_length(i1range): (nint)
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun<>
+i1range_get$at: gasq_get$at(i1range, si)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun<>
+i1range_forall: gseq_forall(i1range, si)
+fun<>
+i1range_rforall: gseq_rforall(i1range, si)
+//
+fun<>
+i1range_strmize: gseq_strmize(i1range, si)
+fun<>
+i1range_rstrmize: gseq_strmize(i1range, si)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun<>
+list_make_i1range(i1range): list(si)
+fun<>
+list_vt_make_i1range(i1range): list_vt(si)
+fun<>
+strm_vt_make_i1range(i1range): strm_vt(si)
+//
+#symload list with list_make_i1range
+#symload list_vt with list_vt_make_i1range
+#symload strm_vt with strm_vt_make_i1range
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_DATS_VT_gcls000_vt.dats] *)
+(* end of [ATS3/XANADU_prelude_almanac_pre2026_SATS_i1range.sats] *)
 (***********************************************************************)

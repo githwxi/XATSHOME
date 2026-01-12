@@ -88,6 +88,59 @@ nint_base$rdigitize
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-01-12:
+For each given sint i0,
+lte$strmize(i0)
+yields: (i0, i0-1, i0-2, ...)
+gte$strmize(i0)
+yields: (i0, i0+1, i0+2, ...)
+Mon Jan 12 01:30:34 AM EST 2026
+*)
+//
+(*
+HX: [start] is included
+*)
+fun<>
+sint_lte$strmize
+ (start: sint): strm_vt(sint)
+fun<>
+sint_gte$strmize
+ (start: sint): strm_vt(sint)
+(*
+//
+#symload
+from$dn with sint_lte$strmize of 1000
+#symload
+sint_from$dn with sint_lte$strmize of 1000
+//
+#symload
+from$up with sint_gte$strmize of 1000
+#symload
+sint_from$up with sint_gte$strmize of 1000
+//
+*)
+//
+(*
+HX-2026-01-12:
+[start] is excluded
+[finish] is excluded
+btw$strmize(0, 10) = (0, 1, ..., 9)
+btw$strmize(10, 0) = (10, 9, ..., 1)
+*)
+fun<>
+sint_btw$strmize
+(start: sint, finish: sint): strm_vt(sint)
+(*
+#symload
+from$to with sint_gte$strmize of 1000
+#symload
+sint_from$to with sint_gte$strmize of 1000
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_almanac_SATS_pre2026.sats] *)
 (***********************************************************************)
