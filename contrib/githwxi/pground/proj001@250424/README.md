@@ -63,7 +63,7 @@ vice versa.
 
 The support for symbol overloading in ATS3 is versatile. However, one
 may not want to use "elegant syntax" during code construction as
-symbol overloading inevitable complicates error-message reporting,
+symbol overloading inevitably complicates error-message reporting,
 making it harder, especially for a non-expert, to comprehend the
 meaning of error (especially, type-error) messages.
   

@@ -52,13 +52,20 @@ primes = sieve [2..] where
 //
 val
 thePrimes =
-sieve(from(2)) where {
-  fun sieve(xs: ls(si)) =
+sieve(from(2)) where
+{
+  #vwtpdef xs = ls(si)
+  fun sieve(xs: xs): xs =
     let val (p :: xs) = !xs in
       $llazy(
         p :: sieve(filter0(xs,lam(x:si)=>x%p>0)))
     end // end-of-[let val (p :: xs) = !xs in ...]
 }
+//
+(* ****** ****** *)
+//
+val () = print0s("thePrimes = ", thePrimes, '\n')
+val () = console_log(the_print_store_flush((*void*)))
 //
 (* ****** ****** *)
 (* ****** ****** *)

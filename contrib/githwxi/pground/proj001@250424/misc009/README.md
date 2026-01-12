@@ -20,6 +20,15 @@ sequence of values of type X0.
 ## What is GASQ?
 
 Similar to GSEQ, GASQ is for generic array-like sequences. Hence, a
-GASQ is a GSEQ, but not vice versa.
+GASQ is a GSEQ, but not vice versa. The declaration of the following
+cast function `GASQ_GSEQ$cast` allows one to cast a GASQ into a GSEQ:
+
+```
+fcast
+GASQ_GSEQ$cast
+{xs:t0}{x0:t0}
+(gasq: GASQ(xs, x0)): GSEQ(xs, x0)
+#symload GSEQ with GASQ_GSEQ$cast of 1000
+```
 
 Happy ATS programming!

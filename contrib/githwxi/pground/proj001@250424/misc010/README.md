@@ -29,7 +29,8 @@ follows:
 
 ```
 val thePrimes = sieve(from(2)) where {
-  fun sieve(xs:ls(si)) =
+  #vwtpdef xs = ls(si)
+  fun sieve(xs: xs): xs =
     let val (p :: xs) = !xs in
       $llazy(p :: sieve(filter0(xs, lam(x:si)=>x%p>0))) end
 }
@@ -63,10 +64,11 @@ finite (strq) and infinite (strx). That is, a strm-stream can be
 either finite or infinite; a strq-stream much be finite; a strx-stream
 must be infinite.
 
-Often, one needs to supply type annotations (e.g., `xs:ls(si)` where
-ls is a shorthand for strm_vt and si for sint) so as to help the
-compiler to resolve overloaded symbols. And such annotations are
-primarily added for function arguments.
+Often, one needs to supply type annotations (e.g., `xs:xs` where the
+type annotation `xs` is a shorthand for `ls(si)` and and `ls` for
+`strm_vt` and `si` for `sint`) so as to help the compiler to resolve
+overloaded symbols. And such annotations are primarily added for
+function arguments.
 
 ## The cost of "elegant syntax"
 
