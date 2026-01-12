@@ -51,4 +51,12 @@ in a type-safe manner.
 Streamization means turning a collection of values into a *linear*
 stream of these values.  It is truly a bit of magic of ATS3 :)
 
+## [misc009](./misc009)
+
+What is GSEQ? GSEQ is for generic sequences.  Whenever a value
+supports streamization, then the value can be treated as a GSEQ (via
+the supported streamization).  What is GASQ? Similar to GSEQ, GASQ is
+for array-like generic sequences. Hence, a GASQ is a GSEQ, but not
+vice versa.
+
 Happy ATS programming!

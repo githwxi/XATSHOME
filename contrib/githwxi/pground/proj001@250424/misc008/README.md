@@ -74,7 +74,8 @@ collection. But preserving shape makes less sense for `traverse` in
 function to each value in a given collection (unless the underlying
 effects are commutable).
 
-In ATS3, preserving shape is treated as an optional (but not essential)
-part of `map` (Functor) or `map$e1nv` (Traversable).
+In ATS3, preserving shape is treated as an optional (but not
+essential) part of `map` (corresponding to `fmap` in `Functor`) or
+`map$e1nv` (corresponding to `traverse` in `Traversable`).
 
 Happy ATS programming!
