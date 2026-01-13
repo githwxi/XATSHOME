@@ -26,26 +26,26 @@ Tue Jan 13 10:37:50 AM EST 2026
 (* ****** ****** *)
 //
 #abstype
-GSEQ$nint$rdigitize
+GSEQ$nint_rdigitize
 #extern
 fcast
-GSEQ$nint$rdigitize:
-nint -> GSEQ$nint$rdigitize
+GSEQ$nint_rdigitize:
+nint -> GSEQ$nint_rdigitize
 #extern
 fcast
-GSEQ$nint$rdigitize_un
-(ds: GSEQ$nint$rdigitize): nint
+GSEQ$nint_rdigitize_un
+(ds: GSEQ$nint_rdigitize): nint
 //
 (* ****** ****** *)
 //
 #impltmp
 gseq_forall
 <
-GSEQ$nint$rdigitize
+GSEQ$nint_rdigitize
 ><   ni   >(  xs  ) =
 let
 val n =
-GSEQ$nint$rdigitize_un(xs)
+GSEQ$nint_rdigitize_un(xs)
 in//let
 (
 fix f(n:nint): bool =>
@@ -63,7 +63,7 @@ then f(n/10) else false))(n)end//let
 fun
 nint_digit$length(n: nint): nint =
 gseq_length<
-GSEQ$nint$rdigitize><ni>(GSEQ$nint$rdigitize(n))
+GSEQ$nint_rdigitize><ni>(GSEQ$nint_rdigitize(n))
 //
 (* ****** ****** *)
 (* ****** ****** *)
