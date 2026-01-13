@@ -61,6 +61,14 @@ then f(n/10) else false))(n)end//let
 (* ****** ****** *)
 //
 fun
+nint_digit$sum(n: nint): nint =
+gseq_sum<
+GSEQ$nint_rdigitize><ni>(GSEQ$nint_rdigitize(n))
+fun
+nint_digit$prod(n: nint): nint =
+gseq_prod<
+GSEQ$nint_rdigitize><ni>(GSEQ$nint_rdigitize(n))
+fun
 nint_digit$length(n: nint): nint =
 gseq_length<
 GSEQ$nint_rdigitize><ni>(GSEQ$nint_rdigitize(n))
@@ -68,10 +76,17 @@ GSEQ$nint_rdigitize><ni>(GSEQ$nint_rdigitize(n))
 (* ****** ****** *)
 (* ****** ****** *)
 //
+val () =
+printsln("\
+digit$sum(12345) = ", nint_digit$sum(12345))
+val () =
+printsln("\
+digit$prod(12345) = ", nint_digit$prod(12345))
 //
 val () =
 printsln("\
 digit$length(12345) = ", nint_digit$length(12345))
+//
 val () = console_log(the_print_store_flush((*void*)))
 //
 (* ****** ****** *)
