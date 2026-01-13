@@ -29,14 +29,14 @@ follows:
 
 ```
 val thePrimes = sieve(from(2)) where {
-  #vwtpdef xs = ls(si)
+  #vwtpdef xs = lsm(si) // lsm for strm_vt // si for sint
   fun sieve(xs: xs): xs =
     let val (p :: xs) = !xs in
       $llazy(p :: sieve(filter0(xs, lam(x:si)=>x%p>0))) end
 }
 ```
 
-The version in ATS3 is slightly more verbose for some inherent
+This version in ATS3 is slightly more verbose for some
 reasons.  Unlike Haskell, evaluation in ATS3 is eager by
 default. Hence, the keyword `$llazy` is used to indicate a stream
 (that is, a lazy list) is constructed.  There is no support in ATS3
@@ -65,16 +65,29 @@ either finite or infinite; a strq-stream much be finite; a strx-stream
 must be infinite.
 
 Often, one needs to supply type annotations (e.g., `xs:xs` where the
-type annotation `xs` is a shorthand for `ls(si)` and and `ls` for
+type annotation `xs` is a shorthand for `lsm(si)` and `lsm` for
 `strm_vt` and `si` for `sint`) so as to help the compiler to resolve
 overloaded symbols. And such annotations are primarily added for
 function arguments.
+
+By the way, with just a single change of `lsm` into `lsx` (which is
+for `strx_vt`), a strx-stream of all the prime numbers is constructed:
+
+
+```
+val thePrimes = sieve(from(2)) where {
+  #vwtpdef xs = lsx(si) // lsx for strx_vt // si for sint
+  fun sieve(xs: xs): xs =
+    let val (p :: xs) = !xs in
+      $llazy(p :: sieve(filter0(xs, lam(x:si)=>x%p>0))) end
+}
+```
 
 ## The cost of "elegant syntax"
 
 Haskellers are often very proud of the "elegant syntax" of Haskell,
 which tends to be concise and "mathematical". A lot of ideas on
-supporting symbol overload in ATS3 are motivated by a desire to
+supporting symbol overloading in ATS3 are motivated by a desire to
 compete with Haskell in terms of syntax design.
 
 

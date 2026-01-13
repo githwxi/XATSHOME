@@ -34,7 +34,8 @@ primes = sieve [2..] where
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#sexpdef ls = strm_vt
+#sexpdef lsm = strm_vt
+#sexpdef lsx = strx_vt
 //
 #symload :: with list_cons
 #symload :: with list_vt_cons
@@ -46,6 +47,7 @@ primes = sieve [2..] where
 #symload :: with strxcon_vt_cons
 //
 #symload from with sint_gte$strmize
+#symload from with sint_gte$strxize
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -54,7 +56,7 @@ val
 thePrimes =
 sieve(from(2)) where
 {
-  #vwtpdef xs = ls(si)
+  #vwtpdef xs = lsx(si)
   fun sieve(xs: xs): xs =
     let val (p :: xs) = !xs in
       $llazy(
