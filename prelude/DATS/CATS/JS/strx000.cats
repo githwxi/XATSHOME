@@ -1,12 +1,3 @@
-// Wed Jan 14 02:01:35 PM EST 2026
-////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////
-/*
-the beg of
-[ATS3-XANADU/srcgen2/xats2js/srcgen1/xshared/runtime/xats2js_prelude_node.js]
-*/
-////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////.
 //                                                                    //.
 //                         Applied Type System                        //.
@@ -15,7 +6,7 @@ the beg of
 
 /*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2024 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2026 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -38,86 +29,61 @@ the beg of
 ////////////////////////////////////////////////////////////////////////.
 /*
 Author: Hongwei Xi
-Sun 01 Sep 2024 08:04:48 AM EDT
+Wed Jan 14 01:17:42 PM EST 2026
 Authoremail: gmhwxiATgmailDOTcom
 */
 ////////////////////////////////////////////////////////////////////////.
 ////////////////////////////////////////////////////////////////////////.
-const
-XATS2JS_NODE_fs =
-require('node:fs')
-// HX: the same as require('fs')
-////////////////////////////////////////////////////////////////////////.
 //
 function
-XATS2JS_NODE_g_print
-  (x0)
+XATS2JS_strx_vt_forall0$f1un
+  (fxs, test)
 {
-  let rep = x0.toString();
-  process.stdout.write(rep);
-  return; // XATS2JS_NODE_g_print
+  while (1) {
+    let cxs =
+      XATS2JS_lazy_vt_eval(fxs)
+    let x01 =
+      XATS2JS_strxcon_vt_head$raw1(cxs)
+    if (test(x01))
+    {
+      fxs = XATS2JS_strxcon_vt_tail$raw0(cxs)
+    } else {
+      fxs = XATS2JS_strxcon_vt_tail$raw0(cxs)
+      XATS2JS_lazy_vt_free(fxs); return false
+    }
+  }
+  return true // XATS2JS_strx_vt_forall0$f1un(...)
 }
 //
 ////////////////////////////////////////////////////////////////////////.
 //
 function
-XATS2JS_NODE_sint_print
-  (i0)
+XATS2JS_strx_vt_filter0$f1un
+  (fxs, test, free)
 {
-  XATS2JS_NODE_g_print(i0);
-  return; // XATS2JS_NODE_sint_print
+  return XATS2JS_lazy_vt_make_f0un(
+    () => XATS2JS_strxcon_vt_filter0$f1un(XATS2JS_lazy_vt_eval(fxs), test, free)
+  )
 }
 //
 function
-XATS2JS_NODE_uint_print
-  (u0)
+XATS2JS_strxcon_vt_filter0$f1un
+  (cxs, test, free)
 {
-  XATS2JS_NODE_g_print(u0);
-  return; // XATS2JS_NODE_uint_print
-}
-////////////////////////////////////////////////////////////////////////.
-//
-function
-XATS2JS_NODE_bool_print
-  (b0)
-{
-  XATS2JS_NODE_g_print(b0);
-  return; // XATS2JS_NODE_bool_print
-}
-////////////////////////////////////////////////////////////////////////.
-//
-function
-XATS2JS_NODE_char_print
-  (c0)
-{
-  let cs =
-  String.fromCharCode(c0)
-  XATS2JS_NODE_g_print(cs);
-  return; // XATS2JS_NODE_char_print
-}
-//
-////////////////////////////////////////////////////////////////////////.
-//
-function
-XATS2JS_NODE_dflt_print
-  (f0)
-{
-  XATS2JS_NODE_g_print(f0);
-  return; // XATS2JS_NODE_dflt_print
-}
-//
-////////////////////////////////////////////////////////////////////////.
-//
-function
-XATS2JS_NODE_strn_print
-  (cs)
-{
-  XATS2JS_NODE_g_print(cs);
-  return; // XATS2JS_NODE_strn_print
+  while (1) {
+    let x01 = XATS2JS_strxcon_vt_head$raw1(cxs)
+    let fxs = XATS2JS_strxcon_vt_tail$raw0(cxs)
+    if (test(x01)) {
+      return XATS2JS_strxcon_vt_cons(x01, XATS2JS_strx_vt_filter0$f1un(fxs, test, free))
+    } else {
+      free(x01);
+      cxs = XATS2JS_lazy_vt_eval(fxs); continue;
+    }
+  }
 }
 //
 ////////////////////////////////////////////////////////////////////////.
 ////////////////////////////////////////////////////////////////////////.
-// end of [ATS3/XANADU_prelude_DATS_CATS_JS_NODE_node000.cats]
+// end of [ATS3/XANADU_prelude_DATS_CATS_JS_strx000.cats]
 ////////////////////////////////////////////////////////////////////////.
 ////////////////////////////////////////////////////////////////////////.

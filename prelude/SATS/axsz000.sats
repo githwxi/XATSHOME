@@ -163,12 +163,12 @@ a1sz_length
 (* ****** ****** *)
 //
 fun
-<a:vt>
+<a:t0>
 a1sz_get$at
 {n:i0}
 (a1sz(a, n), nint(n)): ( a )
 fun
-<a:vt>
+<a:t0>
 a1sz_set$at
 {n:i0}
 (a1sz(a, n), nint(n), a): void
@@ -183,12 +183,12 @@ a1sz_set$at
 fun
 <a:vt>
 a1sz_cget$at
-{n:nat}
+{n:i0}
 (A:a1sz(a,n), i:nintlt(n)): (a)
 fun
 <a:vt>
 a1sz_setf$at
-{n:nat}
+{n:i0}
 (A:a1sz(a,n), i:nintlt(n), x:a): void
 //
 #symload cget$at with a1sz_cget$at of 1000
@@ -199,13 +199,13 @@ a1sz_setf$at
 fun
 <a:vt>
 a1sz_lget$at
-{n:nat}
+{n:i0}
 ( A: a1sz(a,n)
 , i: nintlt(n)): (owed(a) | a)
 fun
 <a:vt>
 a1sz_lset$at
-{n:nat}
+{n:i0}
 (f: owed(a)
 |A: a1sz(a,n), i:nintlt(n), x:a): void
 //

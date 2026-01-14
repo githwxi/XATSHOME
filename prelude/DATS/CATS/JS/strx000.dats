@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2024 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2026 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -30,90 +30,73 @@
 //
 (*
 Author: Hongwei Xi
-Sun 11 Aug 2024 07:19:56 PM EDT
+Wed Jan 14 01:16:23 PM EST 2026
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#extern
 fun
-<a:t0>
-a1sz_vt_get$at1
-{n:i0}
-(!a1sz_vt(a, n), nint(n)): ( a )
-fun
-<a:t0>
-a1sz_vt_set$at1
-{n:i0}
-(!a1sz_vt(a, n), nint(n), a): void
-//
-#symload
-[] with a1sz_vt_get$at1 of 1000
-#symload
-[] with a1sz_vt_set$at1 of 1000
-#symload
-get$at1 with a1sz_vt_get$at1 of 1000
-#symload
-set$at1 with a1sz_vt_set$at1 of 1000
+XATS2JS_strx_vt_forall0$f1un
+{x0:vt}
+( xs
+: strx_vt(x0)
+, test
+: (~x0) -> bool): bool
+= $extnam()//extern(./strx000.cats)
 //
 (* ****** ****** *)
 //
+#impltmp
+< x0:vt >
+strx_vt_forall0
+  (  xs  ) =
+let
 fun
-<a:vt>
-a1sz_vt_cget$at1
-{n:i0}
-(!a1sz_vt(a,n), nintlt(n)): (a)
-fun
-<a:vt>
-a1sz_vt_setf$at1
-{n:i0}
-(!a1sz_vt(a,n), nintlt(n), a): void
-//
-#symload
-cget$at1 with a1sz_vt_cget$at1 of 1000
-#symload
-setf$at1 with a1sz_vt_setf$at1 of 1000
-//
-(* ****** ****** *)
-//
-fun
-<a:vt>
-a1sz_vt_lget$at1
-{n:i0}
-( A:
-! a1sz_vt(a,n)
-, i: nintlt(n)): (owed(a) | a)
-fun
-<a:vt>
-a1sz_vt_lset$at1
-{n:i0}
-( f: owed(a)
-| A:
-! a1sz_vt(a,n), nintlt(n), a): void
-//
-#symload
-lget$at1 with a1sz_vt_lget$at1 of 1000
-#symload
-lset$at1 with a1sz_vt_lset$at1 of 1000
+test(x0: ~x0): bool =
+(
+  forall$test0<x0>(x0))
+in//let
+XATS2JS_strx_vt_forall0$f1un{x0}(xs, test)
+end(*let*)//end-of-[strx_vt_forall0<x0>(xs)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fcast // fun
-GLSEQ_make_a1sz_vt
-{a:vt}
-(A:a1sz_vt(a)): GLSEQ(a1sz_vt(a), a)
-#symload GLSEQ with GLSEQ_make_a1sz_vt of 1000
-fcast // fun
-GLASQ_make_a1sz_vt
-{a:vt}
-(A:a1sz_vt(a)): GLASQ(a1sz_vt(a), a)
-#symload GLASQ with GLASQ_make_a1sz_vt of 1000
+#extern
+fun
+XATS2JS_strx_vt_filter0$f1un
+{x0:vt}
+( xs
+: strx_vt(x0)
+, test
+: (!x0) -> bool
+, free
+: (~x0) -> void): strx_vt(x0)
+= $extnam()//extern(./strx000.cats)
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:vt >
+strx_vt_filter0
+  (  xs  ) =
+let
+fun
+test(x0: !x0): bool =
+(
+  filter$test1<x0>(x0))
+fun
+free(x0: ~x0): void = g_free<x0>(x0)
+in//let
+XATS2JS_strx_vt_filter0$f1un{x0}(xs, test, free)
+end(*let*)//end-of-[strx_vt_filter0<x0>(xs)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_SATS_VT_axsz000_vt.sats] *)
+(* end of [ATS3/XANADU_prelude_DATS_CATS_JS_strx000.dats] *)
 (***********************************************************************)
