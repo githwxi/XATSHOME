@@ -18,6 +18,24 @@ can readily implement a tail-recursive function in a special style so
 that no potential stack-overflow caused by executing this function is
 guaranteed.
 
-## 
+## State Transition
+
+Given a type ST for states, a *functional* state transition function
+is one of the type `(ST) -> ST`. For instance, such a function `fupdt`
+is declared as follows where ST is assumed to be non-linear:
+
+```
+fun fupdt(st: ST): ST
+```
+
+In the case where ST is linear, a *functional* state transition function
+is one of the type `(!ST) -> ST`. For instance, such a function `fupdt1`
+is declared as follows:
+
+```
+fun fupdt1(st: !ST): ST
+```
+
+Tail-recursion can be readily built on top of functional state transition.
 
 Happy ATS programming!
