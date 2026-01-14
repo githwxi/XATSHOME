@@ -68,6 +68,7 @@ fun
 nint_digit$prod(n: nint): nint =
 gseq_prod<
 GSEQ$nint_rdigitize><ni>(GSEQ$nint_rdigitize(n))
+//
 fun
 nint_digit$length(n: nint): nint =
 gseq_length<

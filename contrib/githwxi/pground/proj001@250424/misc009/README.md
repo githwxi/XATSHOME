@@ -20,9 +20,9 @@ sequence of values of type X0.
 For instance, given a natural number N, we can streamize it into the
 sequence (0, 1, ..., N-1); this streamization yields a cast of nint
 (the type for natural numbers) into GSEQ(nint, nint) (where the second
-nint is for the digits). It also makes sense to streamize N into the
-sequence ((), (), ..., ()) of N void-values, which yields a cast of
-nint into GSEQ(nint, void).
+nint is for the natural numbers less than N). It also makes sense to
+streamize N into the sequence ((), (), ..., ()) of N void-values,
+which yields a cast of nint into GSEQ(nint, void).
 
 What happens if we want a GSEQ based on the streamization of N into
 the sequence (N, N-1, ..., 1). This streamization also yields a cast
