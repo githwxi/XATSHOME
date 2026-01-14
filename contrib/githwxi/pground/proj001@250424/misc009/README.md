@@ -48,13 +48,16 @@ fcast
 GSEQ$nint_dn$streamize_un: GSEQ$nint_dn$streamize -> nint
 ```
 
+This abstype-based solution clearly reminds one of newtypes in
+Haskell.
+
 Please see [misc009.dats](./misc009.dats) for a completed example,
-which the involved streamization turns a natural number into a
+where the involved streamization turns a natural number into a
 sequence of digits.  The very point being made in the example is that
 we can compute the sum of the digits in a given natural number based
 on a form of digitization of the number while not actually turning the
 number into a sequence of digits. There is zero overhead here in the
-sense that the code for summation is the same as if one wrote a
+sense that the code for summation is the same as a corresponding
 loop-based implementation.
 
 ## What is GASQ?
