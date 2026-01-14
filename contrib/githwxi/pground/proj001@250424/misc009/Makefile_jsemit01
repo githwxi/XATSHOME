@@ -47,6 +47,9 @@ $(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/$@_out.js
 misc009:: misc009.dats; \
 $(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
 ########################################################################
+misc009_out1:: ; \
+npx google-closure-compiler -W QUIET \
+  --compilation_level SIMPLE --js=OUTS/misc009_out.js --js_output_file=OUTS/misc009_out1.js
 misc009_out2:: ; \
 npx google-closure-compiler -W QUIET \
   --compilation_level ADVANCED --js=OUTS/misc009_out.js --js_output_file=OUTS/misc009_out2.js
