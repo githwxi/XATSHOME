@@ -47,6 +47,15 @@ $(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/$@_out.js
 fact000:: fact000.dats; \
 $(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
 ########################################################################
+fibo000:: ; \
+$(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
+fibo000:: ; \
+$(CAT) $(XATS2JSD)/runtime/xats2js_js1emit.js >> OUTS/$@_out.js
+fibo000:: ; \
+$(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/$@_out.js
+fibo000:: fibo000.dats; \
+$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+########################################################################
 misc011:: ; \
 $(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
 misc011:: ; \

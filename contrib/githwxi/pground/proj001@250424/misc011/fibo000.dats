@@ -24,60 +24,63 @@ Mon Jan 12 09:26:32 AM EST 2026
 (* ****** ****** *)
 //
 fun
-fact_trec
+fibo_trec
 (n: sint): sint =
 (
-  loop(n, 1)) where
+  loop(n, 0, 1)) where
 {
 fun
-loop(i, r) =
+loop(i, r1, r2) =
 (
 if (i > 0)
-then loop(i-1, i*r) else (r))
+then loop(i-1, r2, r1+r2) else r1)
 }
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 val () =
-printsln("fact_trec(10) = ", fact_trec(10))
+printsln("fibo_trec(10) = ", fibo_trec(10))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-fact_iter
+fibo_iter
 (n: sint): sint =
-let
-//
-#typedef
-frame = @(sint, sint)
-//
-fun//fun
-trans(fm: frame): frame =
-let
-val (i, r) = fm in//let
 (
-if(i > 0)then(i-1, i*r)else(i, r))
-end//let
-//
-in(*let*)
-//
 (
-search0
-(
-f1un_iter(trans, (n, 1))).1
+g_state$trans
+<state>( st0 )).1
 ) where
 {
+//
+#typedef
+state =
+(sint, sint, sint)
+//
+val st0 = (n, 0, 1)
+//
 #impltmp
-search$test1<frame>(fm) = (fm.0 <= 0)}
-end//let
+state$trans$test
+< state >(  st  ) = (st.0 <= 0)
+//
+#impltmp
+state$trans$fupdt
+< state >(  st  ) =
+let
+val (i, r1, r2) = st in//let
+(
+if (i > 0)
+then @(i-1, r2, r1+r2) else st) end
+//
+}(*where*)//endof[fibo_iter(n:sint):sint]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 val () =
-printsln("fact_iter(10) = ", fact_iter(10))
+printsln("fibo_iter(10) = ", fibo_iter(10))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -89,5 +92,5 @@ console_log(the_print_store_flush((*void*)))
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [githwxi/pground/proj001@250424/misc011/fact000.dats] *)
+(* end of [githwxi/pground/proj001@250424/misc011/fibo000.dats] *)
 (***********************************************************************)

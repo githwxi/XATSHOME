@@ -54,6 +54,9 @@ HX-2026-01-11: For LFP
 #staload
 "./../pre2026/DATS/i1range.dats"
 //
+#staload
+"./../pre2026/DATS/trec000.dats"
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
