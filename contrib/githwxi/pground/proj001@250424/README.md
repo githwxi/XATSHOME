@@ -66,5 +66,17 @@ may not want to use "elegant syntax" during code construction as
 symbol overloading inevitably complicates error-message reporting,
 making it harder, especially for a non-expert, to comprehend the
 meaning of error (especially, type-error) messages.
+
+## [misc011](./misc011)
+
+Tail-recursion optimization (TRO), which turns tail-recursive
+functions into some form of loop-based implementation, is vital
+importance in functional programming, where traditional loops (e.g.,
+for-loops, while-loops) are often implemented as tail-recursive
+functions. Without TRO, functional programming runs the risk of
+frequent stack overflows due to deep recursion. However, instead of
+relying on a compiler performing TRO, a programmer can also perform
+manual TRO through a technique referred to as tail-recursion via
+(functional) state transition.
   
 Happy ATS programming!
