@@ -44,6 +44,55 @@ excptcon LBNotFound of ()
 (* ****** ****** *)
 //
 fun
+<a:vt>
+raise$Underflow
+( (*void*) ): (a) =
+(
+$raise Underflow())
+where
+{
+val () =
+console_log("raise$Underflow")
+}
+//
+fun
+<a:vt>
+raise$Overflow
+( (*void*) ): (a) =
+(
+$raise Overflow())
+where
+{
+val () =
+console_log("raise$Overflow")
+}
+//
+fun
+<a:vt>
+raise$RBNotFound
+( (*void*) ): (a) =
+(
+$raise RBNotFound())
+where
+{
+val () =
+console_log("raise$RBNotFound")}
+//
+fun
+<a:vt>
+raise$LBNotFound
+( (*void*) ): (a) =
+(
+$raise LBNotFound())
+where
+{
+val () =
+console_log("raise$LBNotFound")}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
 bf$interp
 (src: strn): void =
 let
@@ -55,7 +104,7 @@ let
       fun loop 
         (idx: sint, acc: sint): sint = 
           if idx >= pln
-          then $raise RBNotFound()
+          then raise$RBNotFound()
           else (
             case+ 0 of
             | _ when (src[idx] = '[') => loop (idx + 1, acc + 1)
@@ -71,7 +120,7 @@ let
       fun loop 
         (idx: sint, acc: sint): sint = 
           if idx = (-1)
-          then $raise LBNotFound()
+          then raise$LBNotFound()
           else (
             case+ 0  of
             | _ when (src[idx] = '[') => if acc = 1 then idx else loop (idx - 1, acc - 1)
@@ -121,9 +170,9 @@ let
       | _ when src[pct] = '-' =>
         (pst[ptr] := ifval(cur = 0, UCHARMAX, cur - 1); loop$frame(pct + 1, ptr))
       | _ when src[pct] = '<' =>
-        if ptr = 0 then $raise Underflow() else loop$frame(pct + 1, ptr - 1)
+        if ptr = 0 then raise$Underflow() else loop$frame(pct + 1, ptr - 1)
       | _ when src[pct] = '>' =>
-        if ptr + 1 = TAPESIZE then $raise Overflow() else loop$frame(pct + 1, ptr + 1)
+        if ptr + 1 = TAPESIZE then raise$Overflow() else loop$frame(pct + 1, ptr + 1)
       | _ when src[pct] = '.' =>
         let val () = print(char(cur)) in loop$frame(pct + 1, ptr) end
       | _ when src[pct] = ',' =>
@@ -146,6 +195,32 @@ val
 hello_bf = "\
 ++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++."
 val (  ) = bf$interp(hello_bf)
+val (  ) = console_log(the_print_store_flush((*void*)))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val
+hello2_bf = "\
++[-->-[>>+>-----<<]<--<---]>-.>>>+.>>..+++[.>]<<<<.+++.------.<<-.>>>>+."
+val (  ) =
+try
+bf$interp
+(hello2_bf)
+with
+| ~Overflow() =>
+(
+  printsln("Overflow() is raised!"))
+| ~Underflow() =>
+(
+  printsln("Underflow() is raised!"))
+| ~LBNotFound() =>
+(
+  printsln("LBNotFound() is raised!"))
+| ~RBNotFound() =>
+(
+  printsln("RBNotFound() is raised!"))
+// end-of-[try(bf$interp(hello2_bf))]
 val (  ) = console_log(the_print_store_flush((*void*)))
 //
 (* ****** ****** *)
