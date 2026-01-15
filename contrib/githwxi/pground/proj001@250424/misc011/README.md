@@ -78,6 +78,6 @@ Given ST0 = (n, 0, 1) as the initial state, we can construct a stream
 of states beginning with ST0 such that the next state of each state ST
 is obtained from applying `loop$trans` to ST. Then we search for the first
 state ST in this stream such that (ST.0 = 0) holds; then ST.1 is the value
-of Fibonacci(n) (that is, fibo$trec(n)).
+of applying `fibo$trec` to n (that is, Fibonacci(n)).
 
 Happy ATS programming!
