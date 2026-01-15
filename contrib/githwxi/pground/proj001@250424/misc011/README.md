@@ -83,6 +83,6 @@ that the stream is infinite.  We then search for the first state ST in
 this stream such that (ST.0 = 0) holds; then ST.1 is the value of applying
 `fibo$trec` to n (that is, Fibonacci(n)).
 
-Please find further details in [fibo000.dats](./fibo000.dats).
+Please find further implementation details in [fibo000.dats](./fibo000.dats).
 
 Happy ATS programming!
