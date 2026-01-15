@@ -113,16 +113,64 @@ then @(i-1, r2, r1+r2) else st) end
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-01-15:
+This one uses CBR:
+trans1x: (&state) -> void
+*)
+fun
+fibo$iter3
+(n: sint): sint =
+(
+let
+val () =
+g_state$trans1x
+<state>( st0 )in(st0.1)end)
+where
+{
+//
+#typedef
+state =
+(sint, sint, sint)
+//
+var st0
+  : state = (n, 0, 1)
+//
+#impltmp
+state$trans$test1x
+< state >(  st  ) = (st.0 <= 0)
+//
+#impltmp
+state$trans$updt1x
+< state >(  st  ) =
+let
+val (i, r1, r2) = st in//let
+//
+if // if
+(i > 0)
+then let
+  val () = st.0 := i-1
+  val () = st.1 := (r2)
+  val () = st.2 := r1+r2 in (*0*) end
+//
+end(*let*)//endof[state$trans$updt1x(...)]
+//
+}(*where*)//endof[fibo$iter3(n:sint):sint]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 val () =
 printsln("fibo$iter1(10) = ", fibo$iter1(10))
 val () =
 printsln("fibo$iter2(10) = ", fibo$iter2(10))
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
 val () =
-console_log(the_print_store_flush((*void*)))
+printsln("fibo$iter3(10) = ", fibo$iter3(10))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val () = console_log(the_print_store_flush((*void*)))
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -72,7 +72,7 @@ val
 (i, r1, r2) = st
 in//let
 if (i > 0) then (i-1, r2, r1+r2) else st)
-end//let//end-of-[loop$trans]
+end//let//end-of-[loop$trans(st:state):state]
   
 ```
 
