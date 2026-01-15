@@ -61,7 +61,7 @@ In ATS3, there are a variety of lists: functional (list), linear
 function (list_vt), lazy functional (strm), and linear lazy functional
 (strm_vt). Also, for each lazy kind, there are two more versions:
 finite (strq) and infinite (strx). That is, a strm-stream can be
-either finite or infinite; a strq-stream much be finite; a strx-stream
+either finite or infinite; a strq-stream must be finite; a strx-stream
 must be infinite.
 
 Often, one needs to supply type annotations (e.g., `xs:xs` where the

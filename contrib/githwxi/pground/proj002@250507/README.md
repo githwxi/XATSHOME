@@ -71,6 +71,15 @@ forward and backward along this stream by clicking on some buttons.
 This one builds a stream of English words and then uses it to solve a
 word game. There is a demo webpage built for the word game.
 
+## [misc011](./misc011)
+
+Doublets is a word game invented by Lewis Carroll (1832-1898), the
+author of children's classics "Alice in Wonderland".
+An implementation of the game is given and a demo webpage is built for it.
+The most interesting part of this implementation lies in the implementation
+of a generic BFS-streamization for breadth-first search, which a "tunneling"
+technique is used for resource sharing.
+
 ########################################################################
 
 Happy ATS programming!

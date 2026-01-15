@@ -57,15 +57,17 @@ What is GSEQ? GSEQ is for generic sequences.  Whenever a value
 supports streamization, then the value can be treated as a GSEQ (via
 the supported streamization).  What is GASQ? Similar to GSEQ, GASQ is
 for generic array-like sequences. Hence, a GASQ is a GSEQ, but not
-vice versa.
+vice versa. And GSEQ_vt (a.k.a. GLSEQ) and GASQ_vt (a.k.a. GLASQ) are
+the linear version of GSEQ and GASQ, respectively.
 
 ## [misc010](./misc010)
 
-The support for symbol overloading in ATS3 is versatile. However, one
-may not want to use "elegant syntax" during code construction as
-symbol overloading inevitably complicates error-message reporting,
-making it harder, especially for a non-expert, to comprehend the
-meaning of error (especially, type-error) messages.
+The support for symbol overloading in ATS3 is versatile.
+However, one may not want to use "elegant syntax" during
+code construction as symbol overloading inevitably complicates
+error-message reporting, making it harder, especially for a
+non-expert, to comprehend the meaning of error (especially,
+type-error) messages.
 
 ## [misc011](./misc011)
 
@@ -79,4 +81,8 @@ relying on a compiler performing TRO, a programmer can also perform
 manual TRO through a technique referred to as tail-recursion via
 (functional) state transition.
   
+########################################################################
+
 Happy ATS programming!
+
+########################################################################
