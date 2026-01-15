@@ -46,7 +46,7 @@ fun
 fibo$trec
 (n: sint): sint =
 (
-  loop(n, 0, 1)) where
+loop(n, 0, 1)) where
 {
 fun
 loop(i, r1, r2) =
@@ -61,23 +61,28 @@ the tail-recursive `loop`:
 
 ```
 #typedef
-state = (sint, sint, sint)
+state =
+(sint, sint, sint)
 
 fun
 loop$trans
 (st: state): state =
 let
 val
-(i, r1, r2) = st in
+(i, r1, r2) = st
+in//let
 if (i > 0) then (i-1, r2, r1+r2) else st)
 end//let//end-of-[loop$trans]
   
 ```
 
-Given ST0 = (n, 0, 1) as the initial state, we can construct a stream
-of states beginning with ST0 such that the next state of each state ST
-is obtained from applying `loop$trans` to ST. Then we search for the first
-state ST in this stream such that (ST.0 = 0) holds; then ST.1 is the value
-of applying `fibo$trec` to n (that is, Fibonacci(n)).
+Given ST0 = (n, 0, 1) as the initial state, we can construct a linear
+stream (strx_vt) of states beginning with ST0 such that the next state
+of each state ST is obtained from applying `loop$trans` to ST. Note
+that the stream is infinite.  We then search for the first state ST in
+this stream such that (ST.0 = 0) holds; then ST.1 is the value of applying
+`fibo$trec` to n (that is, Fibonacci(n)).
+
+Please find further details in [fibo000.dats](./fibo000.dats).
 
 Happy ATS programming!

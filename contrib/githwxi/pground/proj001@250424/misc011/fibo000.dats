@@ -46,7 +46,41 @@ printsln("fibo$trec(10) = ", fibo$trec(10))
 (* ****** ****** *)
 //
 fun
-fibo$iter
+fibo$iter1
+(n: sint): sint =
+let
+//
+#typedef
+state =
+(sint, sint, sint)
+//
+fun//fun
+loop$trans
+(st: state): state =
+let
+val (i, r1, r2) = st in//let
+(
+if (i > 0)
+then @(i-1, r2, r1+r2) else st) end
+//
+in(*let*)
+//
+(
+search0
+(
+f1un_iter
+(loop$trans, (n, 0, 1))).1)
+where
+{
+#impltmp
+search$test1<state>(st) = (st.0 <= 0)}
+end//let
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+fibo$iter2
 (n: sint): sint =
 (
 (
@@ -74,13 +108,15 @@ val (i, r1, r2) = st in//let
 if (i > 0)
 then @(i-1, r2, r1+r2) else st) end
 //
-}(*where*)//endof[fibo$iter(n:sint):sint]
+}(*where*)//endof[fibo$iter2(n:sint):sint]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 val () =
-printsln("fibo$iter(10) = ", fibo$iter(10))
+printsln("fibo$iter1(10) = ", fibo$iter1(10))
+val () =
+printsln("fibo$iter2(10) = ", fibo$iter2(10))
 //
 (* ****** ****** *)
 (* ****** ****** *)
