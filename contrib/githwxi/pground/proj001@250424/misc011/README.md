@@ -37,5 +37,47 @@ fun fupdt1(st: !ST): ST
 ```
 
 Tail-recursion can be readily built on top of functional state transition.
+Let us see a concrete example. The following function `fibo$trec` computes
+Fibonacci numbers, where the inner function `loop` is tail-recursive:
+
+
+```
+fun
+fibo$trec
+(n: sint): sint =
+(
+  loop(n, 0, 1)) where
+{
+fun
+loop(i, r1, r2) =
+(
+if (i > 0)
+then loop(i-1, r2, r1+r2) else r1)
+}
+```
+
+We implement as follows a state transition function `loop$trans` based
+the tail-recursive `loop`:
+
+```
+#typedef
+state = (sint, sint, sint)
+
+fun
+loop$trans
+(st: state): state =
+let
+val
+(i, r1, r2) = st in
+if (i > 0) then (i-1, r2, r1+r2) else st)
+end//let//end-of-[loop$trans]
+  
+```
+
+Given ST0 = (n, 0, 1) as the initial state, we can construct a stream
+of states beginning with ST0 such that the next state of each state ST
+is obtained from applying `loop$trans` to ST. Then we search for the first
+state ST in this stream such that (ST.0 = 0) holds; then ST.1 is the value
+of Fibonacci(n) (that is, fibo$trec(n)).
 
 Happy ATS programming!

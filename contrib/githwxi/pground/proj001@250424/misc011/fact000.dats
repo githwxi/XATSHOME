@@ -24,7 +24,7 @@ Mon Jan 12 09:26:32 AM EST 2026
 (* ****** ****** *)
 //
 fun
-fact_trec
+fact$trec
 (n: sint): sint =
 (
   loop(n, 1)) where
@@ -40,13 +40,13 @@ then loop(i-1, i*r) else (r))
 (* ****** ****** *)
 //
 val () =
-printsln("fact_trec(10) = ", fact_trec(10))
+printsln("fact$trec(10) = ", fact$trec(10))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-fact_iter
+fact$iter
 (n: sint): sint =
 let
 //
@@ -77,7 +77,7 @@ end//let
 (* ****** ****** *)
 //
 val () =
-printsln("fact_iter(10) = ", fact_iter(10))
+printsln("fact$iter(10) = ", fact$iter(10))
 //
 (* ****** ****** *)
 (* ****** ****** *)

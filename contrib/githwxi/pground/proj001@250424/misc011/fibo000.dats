@@ -24,7 +24,7 @@ Mon Jan 12 09:26:32 AM EST 2026
 (* ****** ****** *)
 //
 fun
-fibo_trec
+fibo$trec
 (n: sint): sint =
 (
   loop(n, 0, 1)) where
@@ -40,13 +40,13 @@ then loop(i-1, r2, r1+r2) else r1)
 (* ****** ****** *)
 //
 val () =
-printsln("fibo_trec(10) = ", fibo_trec(10))
+printsln("fibo$trec(10) = ", fibo$trec(10))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-fibo_iter
+fibo$iter
 (n: sint): sint =
 (
 (
@@ -74,13 +74,13 @@ val (i, r1, r2) = st in//let
 if (i > 0)
 then @(i-1, r2, r1+r2) else st) end
 //
-}(*where*)//endof[fibo_iter(n:sint):sint]
+}(*where*)//endof[fibo$iter(n:sint):sint]
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 val () =
-printsln("fibo_iter(10) = ", fibo_iter(10))
+printsln("fibo$iter(10) = ", fibo$iter(10))
 //
 (* ****** ****** *)
 (* ****** ****** *)
