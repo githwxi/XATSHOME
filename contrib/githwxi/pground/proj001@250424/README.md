@@ -70,7 +70,7 @@ meaning of error (especially, type-error) messages.
 ## [misc011](./misc011)
 
 Tail-recursion optimization (TRO), which turns tail-recursive
-functions into some form of loop-based implementation, is vital
+functions into some form of loop-based implementation, is of vital
 importance in functional programming, where traditional loops (e.g.,
 for-loops, while-loops) are often implemented as tail-recursive
 functions. Without TRO, functional programming runs the risk of

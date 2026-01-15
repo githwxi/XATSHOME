@@ -5,7 +5,7 @@ HX-2026-01-14:
 Wed Jan 14 08:36:03 PM EST 2026
 Plz find the original version of
 this program in DATS/brainfxxk.dats
-(written by Gavin Zhao around 2026/01)
+(written by Gavin Zhao around 2025/01)
 This version is mainly for testing
 a methold for performing so-called
 "manual tail-recursion optimization"
@@ -30,10 +30,6 @@ a methold for performing so-called
 (* ****** ****** *)
 val UCHARMAX = 255
 val TAPESIZE = 4096
-(*
-#define UCHARMAX 255
-#define TAPE_SIZE 4096 // not supported
-*)
 (* ****** ****** *)
 (* ****** ****** *)
 #typedef cell = uint
@@ -44,14 +40,6 @@ excptcon Overflow of ()
 excptcon Underflow of ()
 excptcon RBNotFound of ()
 excptcon LBNotFound of ()
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-max(x:si, y:si): si =
-(
-  if x >= y then x else y)
-//
 (* ****** ****** *)
 (* ****** ****** *)
 //
