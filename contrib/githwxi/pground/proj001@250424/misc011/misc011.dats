@@ -267,6 +267,7 @@ with
 val
 len = length(inp)
 //
+(*
 var
 idx: nint = ( 0 )
 #impltmp
@@ -279,6 +280,7 @@ let
 val
 chr = inp[idx] in//let
 idx:=idx+1; char_to$code(chr) end
+*)
 //
 (*
 val
@@ -301,6 +303,19 @@ char_to$code(inp[i]), 255)}}
 <(*tmp*)>
 bf$getchar() = getchar((*0*))
 *)
+//
+val
+getcopt =
+f0un_enum$make_strm_vt
+(   strmize( inp )   )
+#impltmp
+<(*tmp*)>
+bf$getchar() =
+(
+case+
+getcopt() of
+| ~optn_vt_nil() => (255)
+| ~optn_vt_cons(chr) => ord(chr))
 //
 #impltmp
 <(*tmp*)>
