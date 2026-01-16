@@ -439,6 +439,43 @@ strxcon_vt_cons(r0, auxloop(fopr, r1))end)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-01-15:
+Thu Jan 15 07:44:43 PM EST 2026
+*)
+//
+#impltmp
+< x0:vt >
+f0un_enum$make_strx_vt
+  (  xs  ) =
+let
+//
+#vwtpdef
+xs = strx_vt(x0)
+//
+val rf = a0rf_vt<xs>(xs)
+//
+in//let
+//
+lam() =>
+let
+val xs =
+(
+  a0rf_vt_lget(rf))//val
+in//let
+(
+  a0rf_vt_lset(rf, xs); x0)
+where
+{
+val+
+strxcon_vt_cons(x0, xs) = !xs }
+end(*let*)//end-of-(lam() => ...)
+//
+end(*let*)//end-of-[f0un_enum$make_strx_vt(xs)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_DATS_gfun000.dats] *)
 (***********************************************************************)

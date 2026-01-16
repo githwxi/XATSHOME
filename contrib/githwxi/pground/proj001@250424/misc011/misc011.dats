@@ -263,11 +263,12 @@ with
   printsln("RBNotFound() is raised!"))
 ) where // end-of-(try(bf$interp<>(src))
 {
-var
-idx: nint = (0)
+//
 val
 len = length(inp)
 //
+var
+idx: nint = ( 0 )
 #impltmp
 <(*tmp*)>
 bf$getchar() =
@@ -278,6 +279,28 @@ let
 val
 chr = inp[idx] in//let
 idx:=idx+1; char_to$code(chr) end
+//
+(*
+val
+getchar =
+f0un_enum$make_strx_vt
+(     auxmain(0)     )
+where
+{
+fun
+auxmain
+(i: sint) = $llazy
+(
+strxcon_vt_cons
+(ch, auxmain(i+1))) where
+{
+val ch =
+ifval(i < len,
+char_to$code(inp[i]), 255)}}
+#impltmp
+<(*tmp*)>
+bf$getchar() = getchar((*0*))
+*)
 //
 #impltmp
 <(*tmp*)>
