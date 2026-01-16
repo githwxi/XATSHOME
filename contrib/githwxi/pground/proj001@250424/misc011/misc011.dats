@@ -102,7 +102,16 @@ console_log("raise$LBNotFound")
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
+#extern
+fun<>
+bf$getchar(): nint
+#extern
+fun<>
+bf$putchar(chr: sint): void
+//
+(* ****** ****** *)
+//
+fun<>
 bf$interp
 (src: strn): void =
 let
@@ -184,9 +193,9 @@ let
       | _ when src[pct] = '>' =>
         if ptr + 1 = TAPESIZE then raise$Overflow() else loop$frame(pct + 1, ptr + 1)
       | _ when src[pct] = '.' =>
-        let val () = print(char(cur)) in loop$frame(pct + 1, ptr) end
+        let val () = bf$putchar<>(cur) in loop$frame(pct + 1, ptr) end
       | _ when src[pct] = ',' =>
-        let val () = (pst[ptr] := 255) in loop$frame(pct + 1, ptr) end
+        let val () = (pst[ptr] := bf$getchar<>()) in loop$frame(pct + 1, ptr) end
       | _ when src[pct] = '[' => 
         if cur = 0 then loop$frame(find_match_rb pct, ptr) else loop$frame(pct + 1, ptr)
       | _ when src[pct] = ']' =>
@@ -206,7 +215,7 @@ bf$interp$try
 (src: strn): void =
 (
 try
-bf$interp(src)
+bf$interp<>(src)
 with
 | ~Overflow() =>
 (
@@ -220,7 +229,63 @@ with
 | ~RBNotFound() =>
 (
   printsln("RBNotFound() is raised!"))
-)(*end(try)*)//end-of-[bf$interp$try(src)]
+) where
+{
+#impltmp
+<(*tmp*)>
+bf$getchar() = 0
+#impltmp
+<(*tmp*)>
+bf$putchar(chr) = print(char(chr))
+}(*where*)//end-of-[bf$interp$try(src)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun 
+bf$interp$try__inp
+(src: strn, inp: strn): void =
+(
+// try
+bf$interp<>(src)
+(*
+with
+| ~Overflow() =>
+(
+  printsln("Overflow() is raised!"))
+| ~Underflow() =>
+(
+  printsln("Underflow() is raised!"))
+| ~LBNotFound() =>
+(
+  printsln("LBNotFound() is raised!"))
+| ~RBNotFound() =>
+(
+  printsln("RBNotFound() is raised!"))
+*)
+) where // end-of-(try(bf$interp<>(src))
+{
+var
+idx: nint = (0)
+val
+len = length(inp)
+//
+#impltmp
+<(*tmp*)>
+bf$getchar() =
+if // if
+idx >= len
+then 255 else
+let
+val
+chr = inp[idx] in//let
+idx:=idx+1; char_to$code(chr) end
+//
+#impltmp
+<(*tmp*)>
+bf$putchar(chr) = print(char(chr))
+//
+}(*where*)//end-of-[bf$interp$try(src)]
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -230,8 +295,8 @@ hello_bf = "\
 ++++++++[>++++[>++>+++>+++>+<<<<-]>+>+>->>+[<]<-]>>.>---.+++++++..+++.>>.<-.<.+++.------.--------.>>+.>++."
 val (  ) =
 printsln("\
-bf$interp(hello_bf):")
-val (  ) = bf$interp(hello_bf)
+bf$interp$try(hello_bf):")
+val (  ) = bf$interp$try(hello_bf)
 val (  ) = console_log(the_print_store_flush((*void*)))
 //
 (* ****** ****** *)
@@ -252,6 +317,7 @@ val (  ) = console_log(the_print_store_flush((*void*)))
 //
 (* ****** ****** *)
 (* ****** ****** *)
+//
 //
 val rot13_bf = "\
 -,+[                         Read first character and start outer character reading loop\
@@ -284,11 +350,13 @@ val rot13_bf = "\
 ]                            End character reading loop\
 " // end-of-(val rot13_bf = ...)
 //
-val (  ) =
-printsln("\
-bf$interp$try(rot13_bf):")
-val (  ) = bf$interp$try(rot13_bf)
-val (  ) = console_log(the_print_store_flush((*void*)))
+val (  ) = printsln("rot13_bf(abcdefghijklmnopqrstuvwxyz):")
+val (  ) = bf$interp$try__inp(rot13_bf, "abcdefghijklmnopqrstuvwxyz")
+val (  ) = console_log(the_print_store_flush((*____________________*)))
+//
+val (  ) = printsln("rot13_bf(nopqrstuvwxyzabcdefghijklm):")
+val (  ) = bf$interp$try__inp(rot13_bf, "nopqrstuvwxyzabcdefghijklm")
+val (  ) = console_log(the_print_store_flush((*____________________*)))
 //
 (* ****** ****** *)
 (* ****** ****** *)
