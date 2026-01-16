@@ -246,9 +246,8 @@ fun
 bf$interp$try__inp
 (src: strn, inp: strn): void =
 (
-// try
+try
 bf$interp<>(src)
-(*
 with
 | ~Overflow() =>
 (
@@ -262,7 +261,6 @@ with
 | ~RBNotFound() =>
 (
   printsln("RBNotFound() is raised!"))
-*)
 ) where // end-of-(try(bf$interp<>(src))
 {
 var
@@ -317,7 +315,6 @@ val (  ) = console_log(the_print_store_flush((*void*)))
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
 //
 val rot13_bf = "\
 -,+[                         Read first character and start outer character reading loop\
