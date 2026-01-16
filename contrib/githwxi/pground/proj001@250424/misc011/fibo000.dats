@@ -117,6 +117,9 @@ then @(i-1, r2, r1+r2) else st) end
 HX-2026-01-15:
 This one uses CBR:
 trans1x: (&state) -> void
+This style is more efficient
+than [fibo$iter2] when states
+are of large size.
 *)
 fun
 fibo$iter3

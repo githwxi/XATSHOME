@@ -85,4 +85,10 @@ this stream such that (ST.0 = 0) holds; then ST.1 is the value of applying
 
 Please find further implementation details in [fibo000.dats](./fibo000.dats).
 
+## An Interpreter for Brainfxxk
+
+A more elaborate example of tail-recursion via state transition can be
+found in [misc011.dats](./misc011.dats), where an interpreter for the
+esoteric programming language Brainfxxk is implemented.
+
 Happy ATS programming!

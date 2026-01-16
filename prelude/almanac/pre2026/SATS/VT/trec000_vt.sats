@@ -52,12 +52,6 @@ state$updts$updt1(st1: !state): void
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
-HX-2026-01-15:
-This one can be more efficient
-for cases where [state] is large.
-Thu Jan 15 10:46:12 AM EST 2026
-*)
 fun
 <state:vt>
 g_state$updts1x(st0: &state): void
