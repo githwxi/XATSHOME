@@ -4,11 +4,11 @@
 HX-2026-01-14:
 Wed Jan 14 08:36:03 PM EST 2026
 Plz find the original version of
-this program in DATS/brainfxxk.dats
+this program in DATS/brainfxxk3.dats
 (written by Gavin Zhao around 2025/01)
 This version is mainly for testing
-a methold for performing so-called
-"manual tail-recursion optimization"
+a technique for performing so-called
+manual tail-recursion optimization (TRO)
 *)
 (* ****** ****** *)
 (* ****** ****** *)

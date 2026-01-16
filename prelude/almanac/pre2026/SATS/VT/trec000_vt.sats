@@ -41,13 +41,13 @@ Authoremail: gmhwxiATgmailDOTcom
 //
 fun
 <state:vt>
-g_state$trans0(st0: state): state
+g_state$updts1(st0: !state): void
 fun
 <state:vt>
-state$trans$test1(st1: !state): bool
+state$updts$test1(st1: !state): bool
 fun
 <state:vt>
-state$trans$fupdt1(st1: !state): state
+state$updts$updt1(st1: !state): void
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -60,13 +60,13 @@ Thu Jan 15 10:46:12 AM EST 2026
 *)
 fun
 <state:vt>
-g_state$trans1x(st0: &state): void
+g_state$updts1x(st0: &state): void
 fun
 <state:vt>
-state$trans$test1x(st1: &state): bool
+state$updts$test1x(st1: &state): bool
 fun
 <state:vt>
-state$trans$updt1x(st1: &state): (void)
+state$updts$updt1x(st1: &state): (void)
 //
 (* ****** ****** *)
 (* ****** ****** *)
