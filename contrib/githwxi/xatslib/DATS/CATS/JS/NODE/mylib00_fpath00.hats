@@ -68,7 +68,7 @@ let
 val nread =
 GITHWXI_NODE_readSyn$exn(STDIN, buffer)
 in//let
-if
+if // if
 (nread = 0)
 then strmcon_vt_nil() else
 (

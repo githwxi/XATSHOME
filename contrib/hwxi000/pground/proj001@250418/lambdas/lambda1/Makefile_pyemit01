@@ -45,7 +45,7 @@ $(XATS2PYD)/runtime/srcgen2_prelude.py >> OUTS/$@_out.py
 # HX-2025-04-28:
 # the flag '--_XATS2PY_' can soon be dropped!
 lambda1:: ; \
-$(NODE) --stack-size=8192 \
+$(NODE) --stack-size=8801 \
 $(XATS2PY_PYEMIT01) lambda1.dats --_XATS2PY_ >> OUTS/$@_out.py
 ########################################################################
 # lambda1:: ; \
