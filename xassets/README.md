@@ -77,7 +77,7 @@ for more details.
 There is also the following file containing a compiler from ATS3 to PY:
 
 ```
-JS/xats2js/xats2py_jsemit01_ats2_opt1.js
+JS/xats2py/xats2py_pyemit01_ats2_opt1.js
 ```
 
 Tail-recursion in this compiler is turned into loop-based implementation
@@ -99,9 +99,9 @@ SOME_PATH_TO refers some proper path leading to the compiler):
 python3 $(SOME_PATH_TO)/xats2js_jsemit01_ats3_opt0.py __void__ mycode.dats
 ```
 
-Compared to ATS3-to-JS-in-ATS3.js, ATS3-to-JS-in-ATS3.py is about 10-20 times
-slower. It is always suggested that ATS3-to-JS-in-ATS3.js be used if `node`
-is available.
+Compared to ATS3-to-JS-in-ATS3.js, ATS3-to-JS-in-ATS3.py is about
+10-20 times slower. It is suggested that ATS3-to-JS-in-ATS3.js be
+always used if `node` is available.
 
 ### ATS3-to-PY-in-ATS3.py ###
 
@@ -118,6 +118,6 @@ SOME_PATH_TO refers some proper path leading to the compiler):
 python3 $(SOME_PATH_TO)/xats2py_pyemit01_ats3_opt0.py __void__ mycode.dats
 ```
 
-Compared to ATS3-to-PY-in-ATS3.js, ATS3-to-PY-in-ATS3.py is about 10-20 times
-slower. It is always suggested that ATS3-to-PY-in-ATS3.js be used if `node`
-is available.
+Compared to ATS3-to-PY-in-ATS3.js, ATS3-to-PY-in-ATS3.py is about
+10-20 times slower. It is suggested that ATS3-to-PY-in-ATS3.js be
+always used if `node` is available.
