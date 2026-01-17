@@ -39,7 +39,7 @@ $(CAT) $(XATS2JSD)/runtime/xats2js_js1emit.js >> OUTS/$@_out.js
 test:: ; \
 $(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/$@_out.js
 test:: Game-of-24.dats; \
-$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+$(NODE) --stack-size=8802 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
 ########################################################################
 embedded:: ; \
 $(CPF) Game-of-24.cats OUTS/Game-of-24_cats.js
@@ -51,6 +51,6 @@ embedded:: ; \
 $(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/Game-of-24_dats.js
 embedded:: Game-of-24_dats
 Game-of-24_dats: Game-of-24.dats; \
-$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/Game-of-24_dats.js
+$(NODE) --stack-size=8802 $(XATS2JS_JSEMIT01) $< >> OUTS/Game-of-24_dats.js
 ########################################################################
 ##################### end of [Makefile_jsemit01] #######################

@@ -52,7 +52,7 @@ $(CAT) $(XATSHOME)/contrib/githwxi/xatslib/DATS/CATS/JS/mylib00.cats >> OUTS/$@_
 mydict00:: ; \
 $(CAT) $(XATSHOME)/contrib/githwxi/xatslib/DATS/CATS/JS/NODE/mylib00.cats >> OUTS/$@_out.js
 mydict00:: mydict00.dats; \
-$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+$(NODE) --stack-size=8801 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
 ########################################################################
 PY_mydict00:: ; \
 $(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js

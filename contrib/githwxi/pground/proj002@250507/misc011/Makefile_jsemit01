@@ -40,10 +40,10 @@ test:: ; \
 $(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/$@_out.js
 test:: ggrph
 ggrph: ggrph.dats; \
-$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/test_out.js
+$(NODE) --stack-size=8802 $(XATS2JS_JSEMIT01) $< >> OUTS/test_out.js
 test:: doublets
 doublets: doublets.dats; \
-$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/test_out.js
+$(NODE) --stack-size=8802 $(XATS2JS_JSEMIT01) $< >> OUTS/test_out.js
 ########################################################################
 embedded:: ; \
 $(CPF) JS_doublets.cats OUTS/JS_doublets_cats.js
@@ -55,9 +55,9 @@ embedded:: ; \
 $(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/JS_doublets_dats.js
 embedded:: \
 doublets.dats ; \
-$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/JS_doublets_dats.js
+$(NODE) --stack-size=8802 $(XATS2JS_JSEMIT01) $< >> OUTS/JS_doublets_dats.js
 embedded:: \
 JS_doublets.dats ; \
-$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/JS_doublets_dats.js
+$(NODE) --stack-size=8802 $(XATS2JS_JSEMIT01) $< >> OUTS/JS_doublets_dats.js
 ########################################################################
 ##################### end of [Makefile_jsemit01] #######################

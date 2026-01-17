@@ -33,10 +33,10 @@ $(XATSHOME)/xassets/JS/xats2js/xats2js_jsemit01_ats3_opt1.js
 ########################################################################
 test:: spelling
 spelling: spelling.dats; \
-$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+$(NODE) --stack-size=8802 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
 test:: JS_spelling
 JS_spelling: JS_spelling.dats; \
-$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+$(NODE) --stack-size=8802 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
 ########################################################################
 embedded:: ; \
 $(CPF) JS_spelling.cats OUTS/JS_spelling_cats.js
@@ -48,9 +48,9 @@ embedded:: ; \
 $(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/JS_spelling_dats.js
 embedded:: \
 spelling.dats ; \
-$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/JS_spelling_dats.js
+$(NODE) --stack-size=8802 $(XATS2JS_JSEMIT01) $< >> OUTS/JS_spelling_dats.js
 embedded:: \
 JS_spelling.dats ; \
-$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/JS_spelling_dats.js
+$(NODE) --stack-size=8802 $(XATS2JS_JSEMIT01) $< >> OUTS/JS_spelling_dats.js
 ########################################################################
 ##################### end of [Makefile_jsemit01] #######################

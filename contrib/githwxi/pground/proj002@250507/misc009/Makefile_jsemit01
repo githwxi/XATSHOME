@@ -41,9 +41,9 @@ embedded:: ; \
 $(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/JS_StreamDemo_dats.js
 embedded:: StreamDemo
 StreamDemo: StreamDemo.dats; \
-$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/JS_StreamDemo_dats.js
+$(NODE) --stack-size=8802 $(XATS2JS_JSEMIT01) $< >> OUTS/JS_StreamDemo_dats.js
 embedded:: JS_StreamDemo
 JS_StreamDemo: JS_StreamDemo.dats; \
-$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/JS_StreamDemo_dats.js
+$(NODE) --stack-size=8802 $(XATS2JS_JSEMIT01) $< >> OUTS/JS_StreamDemo_dats.js
 ########################################################################
 ##################### end of [Makefile_jsemit01] #######################

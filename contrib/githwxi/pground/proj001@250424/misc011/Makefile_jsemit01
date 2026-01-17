@@ -54,7 +54,7 @@ $(CAT) $(XATS2JSD)/runtime/srcgen2_precats.js >> OUTS/$@_out.js
 fact000:: ; \
 $(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/$@_out.js
 fact000:: fact000.dats; \
-$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+$(NODE) --stack-size=8801 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
 ########################################################################
 fibo000:: ; \
 $(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
@@ -65,7 +65,7 @@ $(CAT) $(XATS2JSD)/runtime/srcgen2_precats.js >> OUTS/$@_out.js
 fibo000:: ; \
 $(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/$@_out.js
 fibo000:: fibo000.dats; \
-$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+$(NODE) --stack-size=8801 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
 ########################################################################
 misc011:: ; \
 $(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
@@ -76,7 +76,7 @@ $(CAT) $(XATS2JSD)/runtime/srcgen2_precats.js >> OUTS/$@_out.js
 misc011:: ; \
 $(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/$@_out.js
 misc011:: misc011.dats; \
-$(NODE) --stack-size=8192 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+$(NODE) --stack-size=8801 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
 ########################################################################
 misc011_out1:: ; \
 npx google-closure-compiler -W QUIET \
