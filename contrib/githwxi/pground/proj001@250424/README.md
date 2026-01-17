@@ -81,8 +81,11 @@ relying on a compiler performing TRO, a programmer can also perform
 manual TRO through a technique referred to as tail-recursion via
 (functional) state transition.
   
+<!--
 ########################################################################
-
 Happy ATS programming!
-
 ########################################################################
+-->
+
+[comment]: # Sat Jan 17 03:30:48 PM EST 2026
+[comment]: # HX-2026-01-17: I tested (misc000 - misc011) and all passed!
