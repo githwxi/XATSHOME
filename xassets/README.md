@@ -23,17 +23,28 @@ contains a compiler from ATS3 to JS:
 JS/xats2js/xats2js_jsemit01_ats3_opt1.js
 ```
 
-One can invoke the compiler as follows (where
-SOME_PATH_TO refers some proper path leading to the compiler):
+One can invoke the compiler as follows (where SOME_PATH_TO refers some
+proper path leading to the compiler):
 
 ```
-node --stack-size=8800 $(SOME_PATH_TO)/xats2js_jsemit01_ats3_opt1.js mycode.dats
+node --stack-size=8801 $(SOME_PATH_TO)/xats2js_jsemit01_ats3_opt1.js mycode.dats
 ```
 
-The expected output of the above command-line is some code in JavaScript,
-which can be readily mixed with other code in JavaScript obtained elsewhere.
-Please find some running examples inside `contrib/githwxi/pground` for
-more details.
+The expected output of the above command-line is some code in
+JavaScript, which can be readily mixed with other code in JavaScript
+obtained elsewhere.  Please find some running examples inside
+`contrib/githwxi/pground` for more details.
+
+There is also the following file containing a compiler from ATS3 to JS:
+
+```
+JS/xats2js/xats2js_jsemit01_ats2_opt1.js
+```
+
+Tail-recursion in this compiler is turned into loop-based
+implementation (by srcgen1/xats2js), allowing it to be run by `node`
+with a far less value for `stack-size`. In fact, the previous compiler
+is bootstrpped by this one.
 
 ### ATS3-to-PY-in-ATS3.js ###
 
@@ -55,17 +66,27 @@ One can invoke the compiler as follows (where
 SOME_PATH_TO refers some proper path leading to the compiler):
 
 ```
-node --stack-size=8800 $(SOME_PATH_TO)/xats2py_pyemit01_ats3_opt1.js mycode.dats
+node --stack-size=8801 $(SOME_PATH_TO)/xats2py_pyemit01_ats3_opt1.js mycode.dats
 ```
 
 The expected output of the above command-line is some code in Python3,
-which can be readily mixed with other code in Python3 obtained elsewhere. Please
-find some running examples inside `contrib/githwxi/pground` for more details.
+which can be readily mixed with other code in Python3 obtained
+elsewhere. Please find some running examples inside `contrib/githwxi/pground`
+for more details.
+
+There is also the following file containing a compiler from ATS3 to PY:
+
+```
+JS/xats2js/xats2py_jsemit01_ats2_opt1.js
+```
+
+Tail-recursion in this compiler is turned into loop-based implementation
+(by srcgen1/xats2js), allowing it to be run by `node` with a far less value set
+for `stack-size`.
 
 ### ATS3-to-JS-in-ATS3.py ###
 
-The following file
-contains a compiler from ATS3 to JS:
+The following file contains a compiler from ATS3 to JS:
 
 ```
 PY/xats2js/xats2js_jsemit01_ats3_opt0.py
@@ -84,8 +105,7 @@ is available.
 
 ### ATS3-to-PY-in-ATS3.py ###
 
-The following file
-contains a compiler from ATS3 to PY:
+The following file contains a compiler from ATS3 to PY:
 
 ```
 PY/xats2py/xats2py_pyemit01_ats3_opt0.py
