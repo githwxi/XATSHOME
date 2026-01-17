@@ -12,17 +12,29 @@ PYTHON=python3
 ########################################################################
 ########################################################################
 all:: pstrm000
+all:: pstrx000
 all:: fpath000
+all:: PY_pstrm000
+all:: PY_fpath000
 ########################################################################
 clean:: ; rm -f *~
 cleanall:: ; rm -f *~
 cleanall:: ; rm -f OUTS/*~
 cleanall:: ; rm -f OUTS/*_out.py
 ########################################################################
+#
 testall:: \
 pstrm000; $(PYTHON) OUTS/$<_out.py
 testall:: \
+pstrx000; $(PYTHON) OUTS/$<_out.py
+testall:: \
 fpath000; $(PYTHON) OUTS/$<_out.py
+#
+testall:: \
+PY_pstrm000; $(PYTHON) OUTS/$<_out.py
+testall:: \
+PY_fpath000; $(PYTHON) OUTS/$<_out.py
+#
 ########################################################################
 ########################################################################
 XATSHOME=./../../../../../../XATSHOME
@@ -44,6 +56,8 @@ $(PRINTF) "## %s\n" "`date`" > OUTS/$@_out.py
 pstrm000:: ; \
 $(CAT) $(XATS2PYD)/runtime/xats2py_py1emit.py >> OUTS/$@_out.py
 pstrm000:: ; \
+$(CAT) $(XATS2PYD)/runtime/srcgen2_precats.py >> OUTS/$@_out.py
+pstrm000:: ; \
 $(CAT) $(XATS2PYD)/runtime/srcgen2_prelude.py >> OUTS/$@_out.py
 pstrm000:: pstrm000.dats; \
 $(NODE) --stack-size=8801 $(XATS2PY_PYEMIT01) $< >> OUTS/$@_out.py
@@ -52,6 +66,8 @@ pstrx000:: ; \
 $(PRINTF) "## %s\n" "`date`" > OUTS/$@_out.py
 pstrx000:: ; \
 $(CAT) $(XATS2PYD)/runtime/xats2py_py1emit.py >> OUTS/$@_out.py
+pstrx000:: ; \
+$(CAT) $(XATS2PYD)/runtime/srcgen2_precats.py >> OUTS/$@_out.py
 pstrx000:: ; \
 $(CAT) $(XATS2PYD)/runtime/srcgen2_prelude.py >> OUTS/$@_out.py
 pstrx000:: pstrx000.dats; \
@@ -67,6 +83,8 @@ $(PRINTF) "sys.setrecursionlimit(10000)\n" >> OUTS/$@_out.py
 fpath000:: ; \
 $(CAT) $(XATS2PYD)/runtime/xats2py_py1emit.py >> OUTS/$@_out.py
 fpath000:: ; \
+$(CAT) $(XATS2PYD)/runtime/srcgen2_precats.py >> OUTS/$@_out.py
+fpath000:: ; \
 $(CAT) $(XATS2PYD)/runtime/srcgen2_prelude.py >> OUTS/$@_out.py
 fpath000:: ; \
 $(CAT) $(XATSHOME)/contrib/githwxi/xatslib/DATS/CATS/PY/mylib00.cats >> OUTS/$@_out.py
@@ -79,6 +97,8 @@ $(PRINTF) "## %s\n" "`date`" > OUTS/$@_out.py
 PY_pstrm000:: ; \
 $(CAT) $(XATS2PYD)/runtime/xats2py_py1emit.py >> OUTS/$@_out.py
 PY_pstrm000:: ; \
+$(CAT) $(XATS2PYD)/runtime/srcgen2_precats.py >> OUTS/$@_out.py
+PY_pstrm000:: ; \
 $(CAT) $(XATS2PYD)/runtime/srcgen2_prelude.py >> OUTS/$@_out.py
 PY_pstrm000:: \
 pstrm000.dats; $(PYTHON) $(PY_XATS2PY_PYEMIT01) __void__ $< >> OUTS/$@_out.py
@@ -87,6 +107,8 @@ PY_fpath000:: ; \
 $(PRINTF) "## %s\n" "`date`" > OUTS/$@_out.py
 PY_fpath000:: ; \
 $(CAT) $(XATS2PYD)/runtime/xats2py_py1emit.py >> OUTS/$@_out.py
+PY_fpath000:: ; \
+$(CAT) $(XATS2PYD)/runtime/srcgen2_precats.py >> OUTS/$@_out.py
 PY_fpath000:: ; \
 $(CAT) $(XATS2PYD)/runtime/srcgen2_prelude.py >> OUTS/$@_out.py
 PY_fpath000:: ; \
