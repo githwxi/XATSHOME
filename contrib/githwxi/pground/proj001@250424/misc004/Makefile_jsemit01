@@ -48,6 +48,8 @@ $(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
 insrt000:: ; \
 $(CAT) $(XATS2JSD)/runtime/xats2js_js1emit.js >> OUTS/$@_out.js
 insrt000:: ; \
+$(CAT) $(XATS2JSD)/runtime/srcgen2_precats.js >> OUTS/$@_out.js
+insrt000:: ; \
 $(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/$@_out.js
 insrt000:: insrt000.dats; \
 $(NODE) --stack-size=8801 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
@@ -56,6 +58,8 @@ msetz000:: ; \
 $(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
 msetz000:: ; \
 $(CAT) $(XATS2JSD)/runtime/xats2js_js1emit.js >> OUTS/$@_out.js
+msetz000:: ; \
+$(CAT) $(XATS2JSD)/runtime/srcgen2_precats.js >> OUTS/$@_out.js
 msetz000:: ; \
 $(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/$@_out.js
 msetz000:: msetz000.dats; \

@@ -44,6 +44,8 @@ $(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
 mydict00:: ; \
 $(CAT) $(XATS2JSD)/runtime/xats2js_js1emit.js >> OUTS/$@_out.js
 mydict00:: ; \
+$(CAT) $(XATS2JSD)/runtime/srcgen2_precats.js >> OUTS/$@_out.js
+mydict00:: ; \
 $(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/$@_out.js
 mydict00:: ; \
 $(CAT) $(XATS2JSD)/runtime/srcgen2_prelude_node.js >> OUTS/$@_out.js
@@ -58,6 +60,8 @@ PY_mydict00:: ; \
 $(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
 PY_mydict00:: ; \
 $(CAT) $(XATS2JSD)/runtime/xats2js_js1emit.js >> OUTS/$@_out.js
+PY_mydict00:: ; \
+$(CAT) $(XATS2JSD)/runtime/srcgen2_precats.js >> OUTS/$@_out.js
 PY_mydict00:: ; \
 $(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/$@_out.js
 PY_mydict00:: ; \

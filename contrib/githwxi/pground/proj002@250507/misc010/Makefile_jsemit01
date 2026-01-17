@@ -45,6 +45,8 @@ $(PRINTF) "// %s\n" "`date`" > OUTS/JS_spelling_dats.js
 embedded:: ; \
 $(CAT) $(XATS2JSD)/runtime/xats2js_js1emit.js >> OUTS/JS_spelling_dats.js
 embedded:: ; \
+$(CAT) $(XATS2JSD)/runtime/srcgen2_precats.js >> OUTS/JS_spelling_dats.js
+embedded:: ; \
 $(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/JS_spelling_dats.js
 embedded:: \
 spelling.dats ; \

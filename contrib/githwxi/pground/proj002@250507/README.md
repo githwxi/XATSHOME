@@ -80,8 +80,10 @@ The most interesting part of this implementation lies in the implementation
 of a generic BFS-streamization for breadth-first search, which a "tunneling"
 technique is used for resource sharing.
 
+<!--
 ########################################################################
-
 Happy ATS programming!
-
 ########################################################################
+-->
+
+[comment]: # HX-2026-01-17: I tested (misc000 - misc011) and all passed!

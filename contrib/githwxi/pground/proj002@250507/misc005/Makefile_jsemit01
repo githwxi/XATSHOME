@@ -37,6 +37,8 @@ $(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
 test:: ; \
 $(CAT) $(XATS2JSD)/runtime/xats2js_js1emit.js >> OUTS/$@_out.js
 test:: ; \
+$(CAT) $(XATS2JSD)/runtime/srcgen2_precats.js >> OUTS/$@_out.js
+test:: ; \
 $(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/$@_out.js
 test:: Game-of-24.dats; \
 $(NODE) --stack-size=8802 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
@@ -47,6 +49,8 @@ embedded:: ; \
 $(PRINTF) "// %s\n" "`date`" > OUTS/Game-of-24_dats.js
 embedded:: ; \
 $(CAT) $(XATS2JSD)/runtime/xats2js_js1emit.js >> OUTS/Game-of-24_dats.js
+embedded:: ; \
+$(CAT) $(XATS2JSD)/runtime/srcgen2_precats.js >> OUTS/Game-of-24_dats.js
 embedded:: ; \
 $(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/Game-of-24_dats.js
 embedded:: Game-of-24_dats

@@ -14,9 +14,7 @@ PYTHON=python3
 all:: misc008
 ########################################################################
 testall:: \
-debug000; $(NODE) OUTS/$<_out.js
-testall:: \
-debug001; $(NODE) OUTS/$<_out.js
+misc008; $(NODE) OUTS/$<_out.js
 ########################################################################
 ########################################################################
 clean:: ; rm -f *~
@@ -44,6 +42,8 @@ misc008:: ; \
 $(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
 misc008:: ; \
 $(CAT) $(XATS2JSD)/runtime/xats2js_js1emit.js >> OUTS/$@_out.js
+misc008:: ; \
+$(CAT) $(XATS2JSD)/runtime/srcgen2_precats.js >> OUTS/$@_out.js
 misc008:: ; \
 $(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/$@_out.js
 misc008:: misc008.dats; \

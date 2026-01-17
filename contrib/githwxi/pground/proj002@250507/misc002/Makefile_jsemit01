@@ -38,6 +38,8 @@ $(PRINTF) "// %s\n" "`date`" > OUTS/$@_dats.js
 counter:: ; \
 $(CAT) $(XATS2JSD)/runtime/xats2js_js1emit.js >> OUTS/$@_dats.js
 counter:: ; \
+$(CAT) $(XATS2JSD)/runtime/srcgen2_precats.js >> OUTS/$@_dats.js
+counter:: ; \
 $(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/$@_dats.js
 counter:: counter.dats; \
 $(NODE) --stack-size=8802 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_dats.js

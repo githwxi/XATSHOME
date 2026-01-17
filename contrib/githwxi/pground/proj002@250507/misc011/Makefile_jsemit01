@@ -37,6 +37,8 @@ $(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
 test:: ; \
 $(CAT) $(XATS2JSD)/runtime/xats2js_js1emit.js >> OUTS/$@_out.js
 test:: ; \
+$(CAT) $(XATS2JSD)/runtime/srcgen2_precats.js >> OUTS/$@_out.js
+test:: ; \
 $(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/$@_out.js
 test:: ggrph
 ggrph: ggrph.dats; \
@@ -51,6 +53,8 @@ embedded:: ; \
 $(PRINTF) "// %s\n" "`date`" > OUTS/JS_doublets_dats.js
 embedded:: ; \
 $(CAT) $(XATS2JSD)/runtime/xats2js_js1emit.js >> OUTS/JS_doublets_dats.js
+embedded:: ; \
+$(CAT) $(XATS2JSD)/runtime/srcgen2_precats.js >> OUTS/JS_doublets_dats.js
 embedded:: ; \
 $(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/JS_doublets_dats.js
 embedded:: \
