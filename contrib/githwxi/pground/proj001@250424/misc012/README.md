@@ -8,4 +8,7 @@ Fri Jan 16 03:15:04 PM EST 2026
   
 ## Description
 
+The example tests the handling of large multiline strings
+in ATS3.
+
 Happy ATS programming!
