@@ -40,7 +40,8 @@ defq(_XATS2JS_)
 (* ****** ****** *)
 (* ****** ****** *)
 //
-val mywords = "\
+val
+mywords = "\
 A
 AA
 AAA
@@ -104380,9 +104381,18 @@ zygotes
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#extern
+fun
+mywords$get(): strn
+#implfun
+mywords$get() = mywords
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 val () =
 printsln("\
-length(mywords) = ", length(mywords))
+length(mywords) = ", length(mywords$get()))
 //
 (* ****** ****** *)
 //
