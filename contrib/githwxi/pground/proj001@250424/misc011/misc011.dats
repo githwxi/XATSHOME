@@ -20,11 +20,35 @@ manual tail-recursion optimization (TRO)
 //
 #include
 "prelude/HATS/prelude_dats.hats"
+//
+(* ****** ****** *)
+//
+#if
+defq(_XATS2JS_)
+//
 #include
 "prelude\
 /almanac/HATS/pre2026_dats.hats"
 #include
 "prelude/HATS/prelude_JS_dats.hats"
+//
+#endif//#ifdefq
+//
+(* ****** ****** *)
+//
+#if
+defq(_XATS2PY_)
+//
+fun
+console_log
+(msg: strn) = println()
+fun
+the_print_store_flush() = ""
+//
+#include
+"prelude/HATS/prelude_PY_dats.hats"
+//
+#endif//#ifdefq
 //
 (* ****** ****** *)
 (* ****** ****** *)
