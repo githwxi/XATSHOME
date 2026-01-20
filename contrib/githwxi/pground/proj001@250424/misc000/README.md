@@ -61,6 +61,10 @@ One can use a Makefile like `Makefile_jpemit01` and
 `Makefile_jsemit01` to streamline the process of compiling and
 executing a program written in ATS3.
 
+There are also versions of ATS3 compilers that are programs in
+Python. Please see `Makefile_pjemit01` and `Makefile_pyemit01` for
+information on using them.
+
 By the way, we can also use the following line to print "Hello,
 world!" plus a newline. According to the naming convention of ATS3,
 `prints` is a plural form of `print`, meaning to apply `print`
