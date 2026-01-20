@@ -9,5 +9,5 @@ XATS2PYD=./../../../../../xassets/PY/xats2py
 hello: ; \
 $(NODE) --stack-size=8800 \
   ${XATS2PJD}/xats2py_pyemit01_ats3_opt1.js hello.dats | $(CAT) \
-  ${XATS2PYD}/runtime/xats2py_py1emit.py ${PY_XATS2PYD}/runtime/srcgen2_prelude.py - | $(PYTHON)
+  ${XATS2PYD}/runtime/xats2py_py1emit.py ${XATS2PYD}/runtime/srcgen2_prelude.py - | $(PYTHON)
 ########################################################################
