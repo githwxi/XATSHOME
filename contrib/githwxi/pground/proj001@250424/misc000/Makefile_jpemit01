@@ -3,12 +3,11 @@ CAT=cat
 NODE=node
 PYTHON=python3
 ########################################################################
-XATS2JSD=./../../../../../xassets/JS/xats2js
-XATS2JPD=./../../../../../xassets/PY/xats2js
+XATS2JPD=./../../../../../xassets/JS/xats2py
+XATS2PYD=./../../../../../xassets/PY/xats2py
 ########################################################################
 hello: ; \
-$(PYTHON) \
-  ${XATS2JPD}/xats2js_jsemit01_ats3_opt0.py __void__ hello.dats | $(CAT) \
-  ${XATS2JSD}/runtime/xats2js_js1emit.js \
-  ${XATS2JSD}/runtime/srcgen2_prelude.js ${XATS2JSD}/runtime/srcgen2_prelude_node.js - | $(NODE)
+$(NODE) --stack-size=8800 \
+  ${XATS2JPD}/xats2py_pyemit01_ats3_opt1.js hello.dats | $(CAT) \
+  ${XATS2PYD}/runtime/xats2py_py1emit.py ${XATS2PYD}/runtime/srcgen2_prelude.py - | $(PYTHON)
 ########################################################################

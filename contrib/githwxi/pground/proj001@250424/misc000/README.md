@@ -36,12 +36,11 @@ generated PY code. Here is a way to compile and execute the program
 from the current directory:
 
 ```
-JS_XATS2PYD=./../../../../../xassets/JS/xats2py; \
-PY_XATS2PYD=./../../../../../xassets/PY/xats2py; \
+XATS2JPD=./../../../../../xassets/JS/xats2py; \
+XATS2PYD=./../../../../../xassets/PY/xats2py; \
 node --stack-size=8800 \
-  ${JS_XATS2PYD}/xats2py_pyemit01_ats3_opt1.js hello.dats | \
-cat \
-  ${PY_XATS2PYD}/runtime/xats2py_py1emit.py ${PY_XATS2PYD}/runtime/srcgen2_prelude.py - | python3
+  ${XATS2JPD}/xats2py_pyemit01_ats3_opt1.js hello.dats | cat \
+  ${XATS2PYD}/runtime/xats2py_py1emit.py ${XATS2PYD}/runtime/srcgen2_prelude.py - | python3
 ```
 
 We can also use `xats2js` to compile `hello.dats` (properly modified
@@ -51,15 +50,14 @@ compiler) in the generated JS code in order to run it. Here is a way
 to compile and execute the program from the current directory:
 
 ```
-JS_XATS2JSD=./../../../../../xassets/JS/xats2js; \
+XATS2JSD=./../../../../../xassets/JS/xats2js; \
 node --stack-size=8800 \
-  ${JS_XATS2JSD}/xats2js_jsemit01_ats3_opt1.js hello.dats | \
-cat \
-  ${JS_XATS2JSD}/runtime/xats2js_js1emit.js \
-  ${JS_XATS2JSD}/runtime/srcgen2_prelude.js ${JS_XATS2JSD}/runtime/srcgen2_prelude_node.js - | node
+  ${XATS2JSD}/xats2js_jsemit01_ats3_opt1.js hello.dats | cat \
+  ${XATS2JSD}/runtime/xats2js_js1emit.js \
+  ${XATS2JSD}/runtime/srcgen2_prelude.js ${XATS2JSD}/runtime/srcgen2_prelude_node.js - | node
 ```
 
-One can use a Makefile like `Makefile_pyemit01` and
+One can use a Makefile like `Makefile_jpemit01` and
 `Makefile_jsemit01` to streamline the process of compiling and
 executing a program written in ATS3.
 

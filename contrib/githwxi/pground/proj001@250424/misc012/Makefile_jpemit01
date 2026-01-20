@@ -39,7 +39,7 @@ XATS2JS_JSEMIT01=\
 $(XATSHOME)/xassets/JS/xats2js/xats2js_jsemit01_ats2_opt1.js
 #
 # HX: [ats2] is needed for TRO
-XATS2PY_PYEMIT01=\
+JP_XATS2PY_PYEMIT01=\
 $(XATSHOME)/xassets/JS/xats2py/xats2py_pyemit01_ats2_opt1.js
 #
 ########################################################################
@@ -66,7 +66,7 @@ $(CAT) $(XATS2PYD)/runtime/srcgen2_precats.py >> OUTS/$@_out.py
 JP_mywords:: ; \
 $(CAT) $(XATS2PYD)/runtime/srcgen2_prelude.py >> OUTS/$@_out.py
 JP_mywords:: mywords.dats; \
-$(NODE) --stack-size=8801 $(XATS2PY_PYEMIT01) $< >> OUTS/$@_out.py
+$(NODE) --stack-size=8801 $(JP_XATS2PY_PYEMIT01) $< >> OUTS/$@_out.py
 ########################################################################
 mywords_out1:: ; \
 npx google-closure-compiler -W QUIET \
