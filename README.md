@@ -14,8 +14,6 @@ There is a directory of the name 'contrib'. For now, there is
 following the example or from scratch. There will be other examples
 in this directory that you can follow in the future.
 
-which is bootstrapped from the source of the compiler.
-
 Please set the envionment variable XATSHOME to the directory where
 XATSHOME is located. For instance, I set it to '~/Research/XATSHOME'
 on one of my computers (running bash):
@@ -24,7 +22,10 @@ on one of my computers (running bash):
 export XATSHOME=${HOME}/Research/XATSHOME
 ```
 
-#### XATS2JS
+Currently, there are compilers from ATS3 to JavaScript (JS) and
+Python-3 (PY) in XATSHOME.
+
+#### XATS2JS for compiling ATS3 to JS
 
 The currently released ATS3-to-JS compiler is stored in the following
 BIG file:
@@ -32,6 +33,8 @@ BIG file:
 ```
 xassets/JS/xats2js/xats2js_jsemit01_ats3_opt1.js
 ```
+
+which is bootstrapped from the source of the compiler.
 
 In the directory 'contrib/githwxi', the compiler can be invoked
 as follows:
@@ -57,7 +60,7 @@ ATS3 to JS:
 contrib/githwxi/pground/proj001@250424/misc001/Makefile
 ```
 
-#### XATS2PY
+#### XATS2PY for compiling ATS3 to PY
 
 The currently released ATS3-to-PY compiler is stored in the following
 BIG file:
