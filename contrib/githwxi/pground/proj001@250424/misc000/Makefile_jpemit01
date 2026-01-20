@@ -1,0 +1,14 @@
+########################################################################
+CAT=cat
+NODE=node
+PYTHON=python3
+########################################################################
+XATS2JSD=./../../../../../xassets/JS/xats2js
+XATS2JPD=./../../../../../xassets/PY/xats2js
+########################################################################
+hello: ; \
+$(PYTHON) \
+  ${XATS2JPD}/xats2js_jsemit01_ats3_opt0.py __void__ hello.dats | $(CAT) \
+  ${XATS2JSD}/runtime/xats2js_js1emit.js \
+  ${XATS2JSD}/runtime/srcgen2_prelude.js ${XATS2JSD}/runtime/srcgen2_prelude_node.js - | $(NODE)
+########################################################################

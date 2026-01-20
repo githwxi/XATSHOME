@@ -12,12 +12,12 @@ PYTHON=python3
 ########################################################################
 ########################################################################
 all:: mywords
-all:: PY_mywords
+all:: JP_mywords
 ########################################################################
 testall:: \
 mywords; $(NODE) OUTS/$<_out.js
 testall:: \
-PY_mywords; $(NODE) OUTS/$<_out.js
+JP_mywords; $(NODE) OUTS/$<_out.js
 ########################################################################
 ########################################################################
 clean:: ; rm -f *~
@@ -57,15 +57,15 @@ $(CAT) $(XATS2JSD)/runtime/srcgen2_prelude_node.js >> OUTS/$@_out.js
 mywords:: mywords.dats; \
 $(NODE) --stack-size=8801 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
 ########################################################################
-PY_mywords:: ; \
+JP_mywords:: ; \
 $(PRINTF) "## %s\n" "`date`" > OUTS/$@_out.py
-PY_mywords:: ; \
+JP_mywords:: ; \
 $(CAT) $(XATS2PYD)/runtime/xats2py_py1emit.py >> OUTS/$@_out.py
-PY_mywords:: ; \
+JP_mywords:: ; \
 $(CAT) $(XATS2PYD)/runtime/srcgen2_precats.py >> OUTS/$@_out.py
-PY_mywords:: ; \
+JP_mywords:: ; \
 $(CAT) $(XATS2PYD)/runtime/srcgen2_prelude.py >> OUTS/$@_out.py
-PY_mywords:: mywords.dats; \
+JP_mywords:: mywords.dats; \
 $(NODE) --stack-size=8801 $(XATS2PY_PYEMIT01) $< >> OUTS/$@_out.py
 ########################################################################
 mywords_out1:: ; \

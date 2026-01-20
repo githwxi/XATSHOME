@@ -22,7 +22,7 @@ fibo000; $(NODE) OUTS/$<_out.js
 testall:: \
 misc011; $(NODE) OUTS/$<_out.js
 testall:: \
-PY_misc011; $(PYTHON) OUTS/$<_out.py
+JP_misc011; $(PYTHON) OUTS/$<_out.py
 ########################################################################
 ########################################################################
 clean:: ; rm -f *~
@@ -82,29 +82,29 @@ $(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/$@_out.js
 misc011:: misc011.dats; \
 $(NODE) --stack-size=8801 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
 ########################################################################
-PY_misc011:: ; \
+JP_misc011:: ; \
 $(PRINTF) \
 "## %s\n" "`date`" > OUTS/$@_out.py
-PY_misc011:: ; \
+JP_misc011:: ; \
 $(PRINTF) \
 "########################" >> OUTS/$@_out.py
-PY_misc011:: ; \
+JP_misc011:: ; \
 $(PRINTF) \
 "########################" >> OUTS/$@_out.py
-PY_misc011:: ; \
+JP_misc011:: ; \
 $(PRINTF) \
 "########################\n" >> OUTS/$@_out.py
-PY_misc011:: ; \
+JP_misc011:: ; \
 $(PRINTF) \
 "import sys\n%s\n" \
 "sys.setrecursionlimit(10000)" >> OUTS/$@_out.py
-PY_misc011:: ; \
+JP_misc011:: ; \
 $(CAT) $(XATS2PYD)/runtime/xats2py_py1emit.py >> OUTS/$@_out.py
-PY_misc011:: ; \
+JP_misc011:: ; \
 $(CAT) $(XATS2PYD)/runtime/srcgen2_precats.py >> OUTS/$@_out.py
-PY_misc011:: ; \
+JP_misc011:: ; \
 $(CAT) $(XATS2PYD)/runtime/srcgen2_prelude.py >> OUTS/$@_out.py
-PY_misc011:: misc011.dats; \
+JP_misc011:: misc011.dats; \
 $(NODE) --stack-size=8801 $(XATS2PY_PYEMIT01) $< >> OUTS/$@_out.py
 ########################################################################
 misc011_out1:: ; \
