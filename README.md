@@ -14,13 +14,6 @@ There is a directory of the name 'contrib'. For now, there is
 following the example or from scratch. There will be other examples
 in this directory that you can follow in the future.
 
-The currently released ATS3-to-JS compiler is stored in the following
-BIG file:
-
-```
-xassets/JS/xats2js/xats2js_jsemit01_ats3_opt1.js
-```
-
 which is bootstrapped from the source of the compiler.
 
 Please set the envionment variable XATSHOME to the directory where
@@ -29,6 +22,15 @@ on one of my computers (running bash):
 
 ```
 export XATSHOME=${HOME}/Research/XATSHOME
+```
+
+#### XATS2JS
+
+The currently released ATS3-to-JS compiler is stored in the following
+BIG file:
+
+```
+xassets/JS/xats2js/xats2js_jsemit01_ats3_opt1.js
 ```
 
 In the directory 'contrib/githwxi', the compiler can be invoked
@@ -53,4 +55,29 @@ ATS3 to JS:
 
 ```
 contrib/githwxi/pground/proj001@250424/misc001/Makefile
+```
+
+#### XATS2PY
+
+The currently released ATS3-to-PY compiler is stored in the following
+BIG file:
+
+```
+xassets/JS/xats2py/xats2py_pyemit01_ats3_opt1.js
+```
+
+It can be used in a way very similar to the above ATS3-to-JS compiler.
+The generated PY code needs some code in the following directory in
+order to run:
+
+```
+./../../xassets/PY/xats2py/runtime/xats2py_py1emit.py
+./../../xassets/PY/xats2py/runtime/srcgen2_prelude.py
+```
+
+Please see the following Makefile for a complete example of compiling
+ATS3 to PY:
+
+```
+contrib/githwxi/pground/proj001@250424/misc002/Makefile
 ```
