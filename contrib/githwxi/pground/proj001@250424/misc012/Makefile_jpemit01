@@ -17,7 +17,7 @@ all:: JP_mywords
 testall:: \
 mywords; $(NODE) OUTS/$<_out.js
 testall:: \
-JP_mywords; $(NODE) OUTS/$<_out.js
+JP_mywords; $(PYTHON) OUTS/$<_out.py
 ########################################################################
 ########################################################################
 clean:: ; rm -f *~

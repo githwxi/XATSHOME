@@ -17,16 +17,16 @@ Mon Dec 22 11:55:28 AM EST 2025
 //
 #extern
 fun<>
-strm_vt_beg(): strn
+strm_vt$beg(): strn
 #extern
 fun<>
-strm_vt_end(): strn
+strm_vt$end(): strn
 #extern
 fun<>
-strm_vt_sep(): strn
+strm_vt$sep(): strn
 #extern
 fun<>
-strm_vt_rst(): strn
+strm_vt$rst(): strn
 //
 #extern
 fun
@@ -42,7 +42,7 @@ strm_vt_all$print0
 //
 #extern
 fun<>
-strm_vt_print$len(): sint
+strm_vt$print$len(): sint
 #extern
 fun
 <x0:vt>
@@ -60,23 +60,23 @@ strm_vt_print0<x0>(*void*)
 //
 #impltmp
 <>(*tmp*)
-strm_vt_end() = ")"
+strm_vt$end() = ")"
 #impltmp
 <>(*tmp*)
-strm_vt_sep() = ","
+strm_vt$sep() = ","
 #impltmp
 <>(*tmp*)
-strm_vt_rst() = "..."
+strm_vt$rst() = "..."
 //
 #impltmp
 <>(*tmp*)
-strm_vt_beg() = "$strm_vt("
+strm_vt$beg() = "$strm_vt("
 //
 (* ****** ****** *)
 //
 #impltmp
 <>(*tmp*)
-strm_vt_print$len() = (10)
+strm_vt$print$len() = (10)
 //
 (* ****** ****** *)
 //
@@ -85,7 +85,7 @@ strm_vt_print$len() = (10)
 strm_vt_print0(xs) =
 let
 val len = 
-strm_vt_print$len<>()
+strm_vt$print$len<>()
 in//let
 if
 (len < 0)
@@ -105,7 +105,7 @@ loop
 (xs, 0(*i0*)) where
 {
 val () =
-pstrn(strm_vt_beg<>())
+pstrn(strm_vt$beg<>())
 }
 ) where
 {
@@ -120,7 +120,7 @@ case+ !xs of
 | ~
 strmcon_vt_nil() =>
 (
-pstrn(strm_vt_end<>())
+pstrn(strm_vt$end<>())
 )
 | ~
 strmcon_vt_cons(x0, xs) =>
@@ -130,7 +130,7 @@ val () =
 if
 (i0 > 0)
 then
-pstrn(strm_vt_sep<>())
+pstrn(strm_vt$sep<>())
 //
 in
 (
@@ -153,7 +153,7 @@ loop
 (xs, 0(*i0*)) where
 {
 val () =
-pstrn(strm_vt_beg<>())
+pstrn(strm_vt$beg<>())
 }
 ) where
 {
@@ -169,7 +169,7 @@ loop
 case+ !xs of
 | ~
 strmcon_vt_nil() =>
-pstrn(strm_vt_end<>())
+pstrn(strm_vt$end<>())
 | ~
 strmcon_vt_cons(x0, xs) =>
 if
@@ -186,14 +186,14 @@ val () =
 if
 (i0 > 0)
 then
-pstrn(strm_vt_sep<>())
+pstrn(strm_vt$sep<>())
 //
 val () =
-pstrn(strm_vt_rst<>())
+pstrn(strm_vt$rst<>())
 //
 in
 (
-pstrn(strm_vt_end<>()))
+pstrn(strm_vt$end<>()))
 end // end of [if-then]
 else
 let
@@ -202,7 +202,7 @@ val () =
 if
 (i0 > 0)
 then
-pstrn(strm_vt_sep<>())
+pstrn(strm_vt$sep<>())
 //
 in//let
 (
