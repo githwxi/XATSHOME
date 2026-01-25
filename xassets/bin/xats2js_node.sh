@@ -12,12 +12,13 @@ if [ ! -d "$XATSHOME" ] ; then
   echo "XATSHOME should have been available at '${XATSHOME}'"; exit 1
 fi
 ##################################################################
-XATS2JS_JSEMIT00="$XATSHOME/xassets/JS/xats2js/xats2js_jsemit01_ats2_opt1.js"
+XATS2JS_JSEMIT01="${XATSHOME}/xassets/JS/xats2js/xats2js_jsemit01_ats2_opt1.js"
+XATS2JS_JSEMIT01="${XATSHOME}/xassets/JS/xats2js/xats2js_jsemit01_ats3_opt1.js"
 ##################################################################
 #
 case $prog in
   xats2js)
-    exec ${NODE} --stack-size=8800 ${XATS2JS_JSEMIT00} $@
+    exec ${NODE} --stack-size=8801 ${XATS2JS_JSEMIT01} $@
     ;;
   *)
     echo "This is a script for xats2js."

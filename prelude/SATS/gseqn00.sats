@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2024 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2026 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -30,7 +30,7 @@
 (*
 Author: Hongwei Xi
 (*
-Sat 07 Sep 2024 07:21:46 AM EDT
+Thu Jan 22 09:14:02 AM EST 2026
 *)
 Authoremail: gmhwxiATgmailDOTcom
 *)
@@ -39,165 +39,178 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 //
 (*
-HX-2025-12-20:
-Sat Dec 20 11:21:52 AM EST 2025
+//
+HX-2020-07-04:
+Sequences with length
+HX-2026-01-22:
+Revisiting an old idea :)
+Thu Jan 22 09:23:47 AM EST 2026
+//
 *)
 //
-fun<>
-strm_nil
-{a:t0}((*0*)): strm(a)
-fun<>
-strq_nil
-{a:t0}((*0*)): strq(a, 0)
-//
+(* ****** ****** *)
+(* ****** ****** *)
+#typedef
+nlt(i0:int) = nintlt(i0)
+#typedef
+nlte(i0:int) = nintlte(i0)
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-<a:t0>
-strm_sing
-( x0: ( a ) ): strm(a)
-fun
-<a:t0>
-strq_sing
-( x0: ( a ) ): strq(a, 1)
-//
-fun
-<a:t0>
-strm_cons
+#sexpdef
+listn(a:t0) =
 (
-x0: ( a ),
-xs: strm( a )): strm( a )
-fun
-<a:t0>
-strq_cons
-{n:i0}
+  lam(n:i0) => list(a,n))
+#sexpdef
+strqn(a:t0) =
 (
-x0: ( a ),
-xs: strq(a, n)): strq(a, n+1)
+  lam(n:i0) => strq(a,n))
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
-<a:t0>
-strm_eval(strm(a)): strmcon(a)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-(*
-HX-2025-12-20:
-Sat Dec 20 12:27:24 PM EST 2025
-*)
-fun
+<xs:
+i0->t0>
 <x0:t0>
-strm_head
-(xs: strm(x0)): (x0)
-fun
-<x0:t0>
-strm_tail
-(xs: strm(x0)): strm(x0)
-//
-#symload
-head with strm_head of 1000
-#symload
-tail with strm_tail of 1000
-//
-(* ****** ****** *)
+gseqn_nil
+( (*void*) ): xs(0)
 //
 fun
+<xs:
+i0->t0>
 <x0:t0>
-strm_head$opt
-(xs: strm(x0)): optn_vt(x0)
-fun
-<x0:t0>
-strm_tail$opt
-(xs: strm(x0)): optn_vt(strm(x0))
-//
-#symload
-head$opt with strm_head$opt of 1000
-#symload
-tail$opt with strm_tail$opt of 1000
+<ln:i0>
+gseqn_cons
+(x0:x0, xs:xs(ln)): xs(ln+1)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
+<xs:
+i0->t0>
 <x0:t0>
-strm_length
-(xs: strm(x0)): (nint)
-fun
-<x0:t0>
-strq_length
-{n0:i0}(xs: strq(x0,n0)): sint(n0)
+<ln:i0>
+gseqn_nilq
+ (xs: xs(ln)): bool(ln=0)
 //
-#symload length with strm_length of 1000
-#symload length with strq_length of 1000
+fun
+<xs:
+i0->t0>
+<x0:t0>
+<ln:i0>
+gseqn_consq
+  (xs: xs(ln)): bool(ln>0)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 fun
+<xs:
+i0->t0>
 <x0:t0>
-strm_append
-( xs: strm(x0)
-, ys: strm(x0)): strm(x0)
+<y0:t0>
+<ln:i0>
+gseqn_map_list
+  (xs:xs(ln)): list(y0,ln)
 fun
+<xs:
+i0->t0>
 <x0:t0>
-strq_append
-{n1,n2:i0}
-( xs: strq(x0,n1)
-, ys: strq(x0,n2)): strq(x0,n1+n2)
+<y0:t0>
+<ln:i0>
+gseqn_map_rlist
+  (xs:xs(ln)): list(y0,ln)
+//
+(* ****** ****** *)
 //
 fun
+<xs:
+i0->t0>
 <x0:t0>
-strm_append_vt
-( xs: strm(x0)
-, ys: strm(x0)): strm_vt(x0)
+<y0:t0>
+<ln:i0>
+gseqn_map_list$f1un
+( xs: xs(ln)
+, fopr: (nlt(ln), x0) -> y0): list(y0,ln)
 fun
+<xs:
+i0->t0>
 <x0:t0>
-strq_append_vt
-{n1,n2:i0}
-( xs: strq(x0,n1)
-, ys: strq(x0,n2)): strq_vt(x0,n1+n2)
-//
-#symload append with strm_append of 1000
-#symload append with strq_append of 1000
-#symload append_vt with strm_append_vt of 1000
-#symload append_vt with strq_append_vt of 1000
+<y0:t0>
+<ln:i0>
+gseqn_map_rlist$f1un
+( xs: xs(ln)
+, fopr: (nlt(ln), x0) -> y0): list(y0,ln)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(*
-HX-2025-12-21:
-Sun Dec 21 07:13:28 PM EST 2025
-*)
-//
-fun<>
-strm_beg(): strn
-fun<>
-strm_end(): strn
-fun<>
-strm_sep(): strn
-fun<>
-strm_rst(): strn
+fun
+<xs:
+i0->t0>
+<x0:t0>
+<y0:vt>
+<ln:i0>
+gseqn_map_llist
+  (xs:xs(ln)): list_vt(y0,ln)
 //
 fun
+<xs:
+i0->t0>
 <x0:t0>
-strm_print(xs: strm(x0)): void
+<y0:vt>
+<ln:i0>
+gseqn_map_rllist
+  (xs:xs(ln)): list_vt(y0,ln)
+//
+(* ****** ****** *)
 //
 fun
+<xs:
+i0->t0>
 <x0:t0>
-strm_all$print(xs: strm(x0)): void
-//
-fun<>
-strm$print$len(): ( sint )
+<y0:vt>
+<ln:i0>
+gseqn_map_llist$f1un
+( xs: xs(ln)
+, fopr: (nlt(ln), x0) -> y0): list_vt(y0,ln)
 fun
+<xs:
+i0->t0>
 <x0:t0>
-strm_len$print(xs: strm(x0), ln: sint): void
+<y0:vt>
+<ln:i0>
+gseqn_map_rllist$f1un
+( xs: xs(ln)
+, fopr: (nlt(ln), x0) -> y0): list_vt(y0,ln)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<xs:
+i0->t0>
+<x0:t0>
+<y0:vt>
+<ln:i0>
+gseqn_map_lstrq
+  (xs:xs(ln)): strq_vt(y0,ln)
+//
+fun
+<xs:
+i0->t0>
+<x0:t0>
+<y0:vt>
+<ln:i0>
+gseqn_map_lstrq$f1un
+( xs: xs(ln)
+, fopr: (nlt(ln), x0) -> y0): strq_vt(y0,ln)
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_SATS_strm000.sats] *)
+(* end of [ATS3/XANADU_prelude_SATS_gseqn00.sats] *)
 (***********************************************************************)

@@ -12,12 +12,12 @@ if [ ! -d "$XATSHOME" ] ; then
   echo "XATSHOME should have been available at '${XATSHOME}'"; exit 1
 fi
 ##################################################################
-XATS2PY_PYEMIT00="$XATSHOME/xassets/JS/xats2py/xats2py_pyemit01_ats3_opt1.js"
+XATS2PY_PYEMIT01="${XATSHOME}/xassets/JS/xats2py/xats2py_pyemit01_ats3_opt1.js"
 ##################################################################
 #
 case $prog in
   xats2py)
-    exec ${NODE} --stack-size=8800 ${XATS2PY_PYEMIT00} $@
+    exec ${NODE} --stack-size=8801 ${XATS2PY_PYEMIT01} $@
     ;;
   *)
     echo "This is a script for xats2py."
