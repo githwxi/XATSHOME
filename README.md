@@ -40,7 +40,7 @@ In the directory 'contrib/githwxi', the compiler can be invoked
 as follows:
 
 ```
-node --stack-size=8000 \
+node --stack-size=8800 \
   ./../../xassets/JS/xats2js/xats2js_jsemit01_ats3_opt1.js mycode.dats
 ```
 
