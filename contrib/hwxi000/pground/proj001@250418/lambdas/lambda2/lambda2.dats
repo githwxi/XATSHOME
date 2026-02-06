@@ -151,8 +151,9 @@ prints(
 //
 ) where
 {
-  #impltmp g_print<term> = auxpr }
-}(*where*)//end-of-[term_print<>(tm0)]
+#impltmp g_print<term>(*tm0*) = auxpr(*tm0*)
+}(*where*)
+}(*where*)//end-of-[term_print<>(tm0:term):void]
 //
 (* ****** ****** *)
 //
