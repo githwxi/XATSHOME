@@ -54,6 +54,10 @@ pure lambda-calculus
 |TMlam of (tvar, term)
 |TMapp of (term, term)
 //
+|TMfst of term
+|TMsnd of term
+|TMtup of (term, term)
+//
 |TMopr of (topr, list(term))
 |TMif0 of (term, term, term)
 //
@@ -115,21 +119,25 @@ auxpr
 (
 //
 case+ tm0 of
-|
-TMint(int) =>
+//
+|TMint(int) =>
 prints("TMint(", int, ")")
-|
-TMbtf(btf) =>
+|TMbtf(btf) =>
 prints("TMbtf(", btf, ")")
-|
-TMvar(nam) =>
+//
+|TMvar(nam) =>
 prints("TMvar(", nam, ")")
-|
-TMlam(x01, tmx) =>
+|TMlam(x01, tmx) =>
 prints("TMlam(", x01, ";", tmx, ")")
-|
-TMapp(tm1, tm2) =>
+|TMapp(tm1, tm2) =>
 prints("TMapp(", tm1, ";", tm2, ")")
+//
+|TMfst(tup) =>
+prints("TMfst(", tup, ")")
+|TMsnd(tup) =>
+prints("TMsnd(", tup, ")")
+|TMtup(tm1, tm2) =>
+prints("TMtup(", tm1, ";", tm2, ")")
 //
 |
 TMopr(opr, tms) =>
@@ -301,6 +309,17 @@ else TMlam(x01, subst(tmx))
 (
   TMapp(subst(tm1), subst(tm2)))
 //
+(* ****** ****** *)
+//
+|TMfst(tup) => TMfst(subst(tup))
+|TMsnd(tup) => TMsnd(subst(tup))
+//
+|TMtup(tm1, tm2) =>
+(
+  TMtup(subst(tm1), subst(tm2)))
+//
+(* ****** ****** *)
+//
 |TMopr(f00, tms) =>
 (
 TMopr(f00, f_map$list(subst)(tms)))
@@ -365,6 +384,30 @@ term_interp
 _(*non-TMlam*) =>
 TMapp(tm1, term_interp(tm2))
 end//let//end-of-[TMapp(...)]
+//
+|TMfst
+(  tup  ) =>
+(
+case- tup of
+|TMtup(tm1, _) => tm1
+) where
+{
+val tup = term_interp(tup) }
+|TMsnd
+(  tup  ) =>
+(
+case- tup of
+|TMtup(_, tm2) => tm2
+) where
+{
+val tup = term_interp(tup) }
+|TMtup
+(tm1, tm2) =>
+(
+TMtup(tm1, tm2)) where
+{
+val tm1 = term_interp(tm1)
+val tm2 = term_interp(tm2) }
 //
 |TMopr
 (pnm, tms) =>
@@ -655,6 +698,7 @@ tval =
 //
 |TVint of sint
 |TVbtf of bool
+|TVtup of (tval, tval)
 |TVclo of (term, xenv)
 //
 (*
@@ -693,6 +737,10 @@ prints("TVint(", int, ")")
 |TVbtf(btf) =>
 prints("TVbtf(", btf, ")")
 //
+|TVtup(tv1, tv2) =>
+prints
+("TVtup(", tv1, ";", tv2, ")")
+//
 |TVclo(tm1, env) =>
 prints
 ("TVclo(", tm1, ";", "...", ")")
@@ -719,6 +767,9 @@ term_eval00(tm0: term): tval
 #extern
 fun
 term_eval01(tm0: term, env: xenv): tval
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #implfun
 term_eval00(tm0) = term_eval01(tm0, EVnil())
@@ -773,6 +824,10 @@ case- opt of
 end(*let*)//end-of-[TMvar(x00)]
 //
 |
+TMlam
+(x01, tmx) => TVclo(tm0, env)
+//
+|
 TMapp
 (tm1, tm2) =>
 let
@@ -813,9 +868,41 @@ env = EVcons(x01, tv2, env) }
 //
 end(*let*)//end-of-[TMapp(...)]
 //
+(* ****** ****** *)
+//
 |
-TMlam
-(x01, tmx) => TVclo(tm0, env)
+TMfst(tup) =>
+let
+val
+tup = term_eval01(tup, env)
+in//let
+(
+case-
+tup of TVtup(tv1, _) => tv1)
+end
+//
+|
+TMsnd(tup) =>
+let
+val
+tup = term_eval01(tup, env)
+in//let
+(
+case-
+tup of TVtup(_, tv2) => tv2)
+end//let//end-of-[TMsnd(tup)]
+//
+|
+TMtup(tm1, tm2) =>
+(
+  TVtup(tv1, tv2)) where
+{
+val tv1 = term_eval01(tm1, env)
+val tv2 = term_eval01(tm2, env)
+}
+//
+(* ****** ****** *)
+//
 |
 TMfix
 (f00, x01, tmx) => TVclo(tm0, env)
