@@ -1,8 +1,8 @@
 (* ****** ****** *)
 (* ****** ****** *)
 (*
-HX-2025-06-17:
-Tue Jun 17 02:03:38 AM EDT 2025
+HX-2025-06-02:
+Tue Jun  2 02:45:51 PM EDT 2025
 *)
 (* ****** ****** *)
 (* ****** ****** *)
@@ -32,7 +32,7 @@ defq(_XATS2PY_)
 (* ****** ****** *)
 //
 val () = prints
-("Hello from [lambda1]!\n")
+("Hello from [lambda0]!\n")
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -492,13 +492,13 @@ TMlam(x01, term_subst(tmx, f00, tm0)))
 //
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 val () = printsln("\
 TMapp(TMdbl, TMint(10)) = ", TMapp(TMdbl, TMint(10)))
 val () = printsln("\
 TMapp(TMdbl, TMint(10)) = ", term_interp(TMapp(TMdbl, TMint(10)))
 )(*end-of(printsln)*)
-
+//
 val () =
 printsln("\
 TMapp(TMsqr, TMint(10)) = ", TMapp(TMsqr, TMint(10)))
@@ -506,15 +506,15 @@ val () =
 printsln("\
 TMapp(TMsqr, TMint(10)) = ", term_interp(TMapp(TMsqr, TMint(10)))
 )(*end-of(printsln)*)
-
+//
 val () = printsln("\
 TMapp(TMapp(TMtwo, TMtpl), TMint(10)) = ",
 term_interp(TMapp(TMapp(TMtwo, TMtpl), TMint(10))))
-
+//
 val () = printsln("\
 TMapp(TMapp(TMapp(TMtwo, TMtwo), TMtpl), TMint(10)) = ",
 term_interp(TMapp(TMapp(TMapp(TMtwo, TMtwo), TMtpl), TMint(10))))
-
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -584,7 +584,7 @@ TMopr("||", list@(tm1, tm2))
 //
 (* ****** ****** *)
 (* ****** ****** *)
-
+//
 val
 TMfact =
 TMapp(Y, F) where
@@ -604,7 +604,7 @@ TMlam
 
 val () = printsln
 ("TMapp(TMfact, TMint(5)) = ", term_interp(TMapp(TMfact, TMint(5))))
-
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
@@ -642,398 +642,8 @@ where
 val f = TMvar"f" and x = TMvar"x"
 }
 //
-(*
 val () = printsln
 ("TMapp(TMfact2, TMint(5)) = ", term_interp(TMapp(TMfact2, TMint(5))))
-*)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-datatype
-tval =
-//
-|TVint of sint
-|TVbtf of bool
-|TVclo of (term, xenv)
-//
-(*
-HX: [xenv] is
-like a read-only stack!
-*)
-and xenv =
-|EVnil of ()
-|EVcons of (tvar, tval, xenv)
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#extern
-fun<>
-tval_print(tval: tval): void
-#extern
-fun<>
-evnx_print(xenv: xenv): void
-//
-#impltmp
-<(*tmp*)>
-tval_print
- ( tv0 ) =
-(
-auxpr(tv0)) where
-{
-fun
-auxpr
-(tv0: tval): void =
-(
-case+ tv0 of
-//
-|TVint(int) =>
-prints("TVint(", int, ")")
-|TVbtf(btf) =>
-prints("TVbtf(", btf, ")")
-//
-|TVclo(tm1, env) =>
-prints
-("TVclo(", tm1, ";", "...", ")")
-//
-) where
-{
-  #impltmp g_print<tval> = auxpr }
-}(*where*)//end-of-[tval_print<>(tm0)]
-//
-(* ****** ****** *)
-//
-local
-val tval_print__ = tval_print<>
-in//local
-#impltmp g_print<tval> = tval_print__
-end//local
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#extern
-fun
-term_eval00(tm0: term): tval
-#extern
-fun
-term_eval01(tm0: term, env: xenv): tval
-//
-#implfun
-term_eval00(tm0) = term_eval01(tm0, EVnil())
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-xenv_search
-( env: xenv
-, x00: tvar): optn_vt(tval) =
-(
-case+ env of
-|
-EVnil() =>
-optn_vt_nil()
-|
-EVcons
-(x01, v01, env) =>
-( if
-  (x00 = x01)
-  then
-  optn_vt_cons(v01)
-  else xenv_search(env, x00))
-)(*case+*)//end-of-[xenv_search(...)]
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#implfun
-term_eval01
-(tm0, env) =
-(
-case+ tm0 of
-|
-TMint(int) => TVint(int)
-|
-TMbtf(btf) => TVbtf(btf)
-//
-|
-TMvar(x00) =>
-let
-val opt =
-xenv_search(env, x00)
-in//let
-case- opt of
-(*
-| ~optn_vt_nil
-( (*void*) ) => TVvar(x00)
-*)
-| ~optn_vt_cons(tvx) => tvx
-end(*let*)//end-of-[TMvar(x00)]
-//
-|
-TMapp
-(tm1, tm2) =>
-let
-//
-val tv1 =
-term_eval01(tm1, env)
-val tv2 =
-term_eval01(tm2, env)
-//
-in//let
-//
-case- tv1 of
-|
-TVclo
-(tm1, env) =>
-(
-case+ tm1 of
-|
-TMlam
-(x01, tmx) =>
-term_eval01(tmx, env)
-where
-{
-val
-env = EVcons(x01, tv2, env) }
-|
-TMfix
-(f00, x01, tmx) =>
-term_eval01(tmx, env)
-where
-{
-val
-env = EVcons(f00, tv1, env)
-val
-env = EVcons(x01, tv2, env) }
-//
-)
-//
-end(*let*)//end-of-[TMapp(...)]
-//
-|
-TMlam
-(x01, tmx) => TVclo(tm0, env)
-|
-TMfix
-(f00, x01, tmx) => TVclo(tm0, env)
-//
-|TMopr
-(pnm, tms) =>
-(
-case- pnm of
-//
-|"+" =>
-(
-TVint(i01+i02)) where
-{
-val-list_cons(tm1, tms) = tms
-val-list_cons(tm2, tms) = tms
-val-
-TVint(i01) = term_eval01(tm1, env)
-val-
-TVint(i02) = term_eval01(tm2, env)
-}
-//
-|"-" =>
-(
-TVint(i01-i02)) where
-{
-val-list_cons(tm1, tms) = tms
-val-list_cons(tm2, tms) = tms
-val-
-TVint(i01) = term_eval01(tm1, env)
-val-
-TVint(i02) = term_eval01(tm2, env)
-}
-//
-|"*" =>
-(
-TVint(i01*i02)) where
-{
-val-list_cons(tm1, tms) = tms
-val-list_cons(tm2, tms) = tms
-val-
-TVint(i01) = term_eval01(tm1, env)
-val-
-TVint(i02) = term_eval01(tm2, env)
-}
-//
-|"/" =>
-(
-TVint(i01/i02)) where
-{
-val-list_cons(tm1, tms) = tms
-val-list_cons(tm2, tms) = tms
-val-
-TVint(i01) = term_eval01(tm1, env)
-val-
-TVint(i02) = term_eval01(tm2, env)
-}
-//
-|"%" =>
-(
-TVint(i01%i02)) where
-{
-val-list_cons(tm1, tms) = tms
-val-list_cons(tm2, tms) = tms
-val-
-TVint(i01) = term_eval01(tm1, env)
-val-
-TVint(i02) = term_eval01(tm2, env)
-}
-//
-|"<" =>
-(
-TVbtf(i01<i02)) where
-{
-val-list_cons(tm1, tms) = tms
-val-list_cons(tm2, tms) = tms
-val-
-TVint(i01) = term_eval01(tm1, env)
-val-
-TVint(i02) = term_eval01(tm2, env)
-}
-//
-|">" =>
-(
-TVbtf(i01>i02)) where
-{
-val-list_cons(tm1, tms) = tms
-val-list_cons(tm2, tms) = tms
-val-
-TVint(i01) = term_eval01(tm1, env)
-val-
-TVint(i02) = term_eval01(tm2, env)
-}
-//
-|"=" =>
-(
-TVbtf(i01=i02)) where
-{
-val-list_cons(tm1, tms) = tms
-val-list_cons(tm2, tms) = tms
-val-
-TVint(i01) = term_eval01(tm1, env)
-val-
-TVint(i02) = term_eval01(tm2, env)
-}
-//
-|"<=" =>
-(
-TVbtf(i01<=i02)) where
-{
-val-list_cons(tm1, tms) = tms
-val-list_cons(tm2, tms) = tms
-val-
-TVint(i01) = term_eval01(tm1, env)
-val-
-TVint(i02) = term_eval01(tm2, env)
-}
-//
-|">=" =>
-(
-TVbtf(i01>=i02)) where
-{
-val-list_cons(tm1, tms) = tms
-val-list_cons(tm2, tms) = tms
-val-
-TVint(i01) = term_eval01(tm1, env)
-val-
-TVint(i02) = term_eval01(tm2, env)
-}
-//
-|"!=" =>
-(
-TVbtf(i01!=i02)) where
-{
-val-list_cons(tm1, tms) = tms
-val-list_cons(tm2, tms) = tms
-val-
-TVint(i01) = term_eval01(tm1, env)
-val-
-TVint(i02) = term_eval01(tm2, env)
-}
-//
-|"||" =>
-let
-val-list_cons(tm1, tms) = tms
-val-list_cons(tm2, tms) = tms
-val-
-TVbtf(b01) = term_eval01(tm1, env)
-in//let
-//
-if
-(b01)
-then
-TVbtf(true)
-else TVbtf(b02) where
-{
-val-
-TVbtf(b02) = term_eval01(tm2, env)}
-//
-end//let
-//
-|"&&" =>
-let
-val-list_cons(tm1, tms) = tms
-val-list_cons(tm2, tms) = tms
-val-
-TVbtf(b01) = term_eval01(tm1, env)
-in//let
-//
-if
-(~b01)
-then
-TVbtf(~true)
-else TVbtf(b02) where
-{
-val-
-TVbtf(b02) = term_eval01(tm2, env)}
-//
-end//let
-//
-)(*case+*)//end-of-[TMopr(pnm,tms)]
-//
-|
-TMif0
-(tm1, tm2, tm3) =>
-let
-val-
-TVbtf(btf) =
-term_eval01(tm1, env)
-in//let
-term_eval01
-(if btf then tm2 else tm3, env)
-end//let
-//
-|
-TMlet
-(x01, tm1, tm2) =>
-(
-  term_eval01(tm2, env)
-) where
-{
-val tv1 = term_eval01(tm1, env)
-val env = EVcons(x01, tv1, env) }
-//
-) where
-{
-//
-(*
-val () =
-printsln("term_eval01: tm0 = ", tm0)
-*)
-//
-}(*where*)//end-of-[term_eval01(tm0,env)]
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-val () = printsln
-("TMapp(TMfact2, TMint(5)) = ", term_eval00(TMapp(TMfact2, TMint(5))))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -1050,5 +660,5 @@ console_log
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [hwxi000/pground/proj001@250418/lambdas/lambda2/lambda2.dats] *)
+(* end of [hwxi000/pground/proj001@250418/lambdas/lambda0/lambda0.dats] *)
 (***********************************************************************)
