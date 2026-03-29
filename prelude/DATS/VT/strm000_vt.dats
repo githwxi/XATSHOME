@@ -86,6 +86,8 @@ strmcon_vt_cons
 < a: vt >
 strm_vt_cons(x0, xs) =
 $llazy(
+free(x0);
+free(xs);
 strmcon_vt_cons(x0, xs))
 //
 (* ****** ****** *)
@@ -113,6 +115,8 @@ strqcon_vt_cons
 < a: vt >
 strq_vt_cons(x0, xs) =
 $llazy(
+free(x0);
+free(xs);
 strqcon_vt_cons(x0, xs))
 //
 (* ****** ****** *)
@@ -121,6 +125,12 @@ strqcon_vt_cons(x0, xs))
 #impltmp
 < a: vt >
 strm_vt_free(xs) = $free(xs)
+//
+(*
+HX-2026-02-28:
+During type-checking,
+[$eval(xs) -> !xs] is done
+*)
 #impltmp
 < a: vt >
 strm_vt_eval(xs) = $eval(xs)
@@ -147,19 +157,35 @@ Wed 17 Jul 2024 10:27:26 PM EDT
 //
 #impltmp
 { x0:vt }
-gseq$sep
-<
+gseq$sep<
 strm_vt(x0)><x0>() = ","
 #impltmp
 { x0:vt }
-gseq$end
-<
+gseq$end<
 strm_vt(x0)><x0>() = ")"
 #impltmp
 { x0:vt }
-gseq$beg
-<
+gseq$rst<
+strm_vt(x0)><x0>() = "..."
+#impltmp
+{ x0:vt }
+gseq$beg<
 strm_vt(x0)><x0>() = "strm_vt("
+//
+(*
+#impltmp
+{ x0:vt }
+gseq$beg<
+strm_vt(x0)><x0> = strm_vt$beg<>
+#impltmp
+{ x0:vt }
+gseq$end<
+strm_vt(x0)><x0> = strm_vt$end<>
+#impltmp
+{ x0:vt }
+gseq$sep<
+strm_vt(x0)><x0> = strm_vt$sep<>
+*)
 //
 (* ****** ****** *)
 //
@@ -244,7 +270,7 @@ strm_vt_head0
 | ~
 strmcon_vt_cons
 (   x1, xs   ) =>
-let val () = $free(xs) in x1 end)
+let val () = free(xs) in x1 end)
 //
 #impltmp
 < x0:vt >
@@ -275,7 +301,7 @@ strmcon_vt_cons
 (   x1, xs   ) =>
 let
 val () =
-$free(xs) in optn_vt_cons(x1) end
+free(xs) in optn_vt_cons(x1) end
 )
 //
 #impltmp
@@ -316,10 +342,11 @@ strm_vt_lstrm$concat0
 {
 fun auxmain(xss) = $llazy
 (
+free(xss);
 case+ !xss of
 | ~
 strmcon_vt_nil() =>
-strmcon_vt_nil()
+strmcon_vt_nil((*0*))
 | ~
 strmcon_vt_cons(xs1, xss) => !
 (
@@ -371,6 +398,7 @@ Sun Dec 21 07:20:03 PM EST 2025
 //
 (* ****** ****** *)
 //
+(*
 #impltmp
 <>(*tmp*)
 strm_vt$end() = ")"
@@ -380,10 +408,10 @@ strm_vt$sep() = ","
 #impltmp
 <>(*tmp*)
 strm_vt$rst() = "..."
-//
 #impltmp
 <>(*tmp*)
-strm_vt$beg() = "$strm_vt("
+strm_vt$beg() = "strm_vt("
+*)
 //
 (* ****** ****** *)
 //
@@ -434,7 +462,7 @@ case+ !xs of
 strmcon_vt_nil
 (  (*void*)  ) =>
 (
-pstrn(strm_vt$end<>())
+pstrn(strmend(*0*))
 )
 | ~
 strmcon_vt_cons
@@ -445,7 +473,7 @@ val () =
 if
 (i0 > 0)
 then
-pstrn(strm_vt$sep<>())
+pstrn(strmsep(*0*))
 //
 in
 (
@@ -476,6 +504,19 @@ pstrn(strm_vt$beg<>())
 #vwtpdef
 xs = strm_vt(x0)
 //
+val
+strmbeg =
+gseq$beg<xs><x0>()
+val
+strmsep =
+gseq$sep<xs><x0>()
+val
+strmrst =
+gseq$rst<xs><x0>()
+val
+strmend =
+gseq$end<xs><x0>()
+//
 fnx
 loop
 ( xs: xs
@@ -485,7 +526,7 @@ case+ !xs of
 | ~
 strmcon_vt_nil
 (  (*void*)  ) =>
-pstrn(strm_vt$end<>())
+pstrn(strmend(*0*))
 | ~
 strmcon_vt_cons
 (   x0, xs   ) =>
@@ -505,14 +546,14 @@ val () =
 if
 (i0 > 0)
 then
-pstrn(strm_vt$sep<>())
+pstrn(strmsep(*0*))
 //
 val () =
-pstrn(strm_vt$rst<>())
+pstrn(strmrst(*0*))
 //
 in
 (
-pstrn(strm_vt$end<>()))
+pstrn(strmend(*0*)))
 end // end of [if-then]
 else
 let
@@ -521,7 +562,8 @@ val () =
 if
 (i0 > 0)
 then
-pstrn(strm_vt$sep<>())
+(
+pstrn(strmsep(*0*)))
 //
 in//let
 (
@@ -569,6 +611,7 @@ then xs else
 (
 $llazy
 (
+free(xs);
 case+ !xs of
 | ~
 strmcon_vt_nil
@@ -600,12 +643,14 @@ fun
 auxmain
 (xs: xs, n0: ni): xs = $llazy
 (
-if
+free(xs);
+if // if
 (n0 <= 0)
-then
+then // then
 (
 free(xs);
-strmcon_vt_nil()) else
+strmcon_vt_nil())
+else // else
 (
 case+ !xs of
 | ~

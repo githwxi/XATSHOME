@@ -68,7 +68,7 @@ folditm$fopr1
 (r0, x0) = g_add01<x0>(r0, x0)
 in//let
 gseq_folditm1<xs><x0><x0>(xs, r0)
-end(*let*)//end-of-[gseq_sum0(xs)]
+end(*let*)//end-of-[gseq_sum1(xs)]
 //
 (* ****** ****** *)
 //
@@ -149,29 +149,31 @@ gseq$end<xs><x0>()
 //
 in//let
 //
-strn_fmake_env$fwork<xs>
+strn_fmake_env$fwork
+<        xs        >
 (
 xs,
 lam(xs, work) =>
 let
 val () =
-strn_foritm$f1un
-(  xbeg , work  )
+strn_foritm$f1un(xbeg, work)
 //
 val () =
 gseq_iforitm0$f2un
 <   xs  ><  x0   >
 (
 xs,
-lam(i0, x0) =>
+lam(i0, x0: ~x0) =>
 (
-if (i0 >= 1) then
+if // if
+(i0 >= 1) then//then
 strn_foritm$f1un(xsep, work)
 ;
 let
-  val
-  xrep = g_torep0<x0>(x0)
-in//let
+val
+xrep =
+(
+  g_torep0<x0>(x0)) in//let
 (
 strn_foritm$f1un(xrep, work))
 end//let
@@ -256,6 +258,7 @@ then
 (
   false ) where
 {
+val () = g_free(x0)
 val () =
 strn_print
 (gseq$omit<xs><x0>()) }
@@ -554,40 +557,6 @@ HX-2024-07-15:
 Mon 15 Jul 2024 04:25:27 PM EDT
 *)
 //
-#impltmp
-< xs:vt >
-< x0:vt >
-gseq_get$at0
-  (xs, i0) =
-let
-//
-var r0: x0 // x0?
-val p0 = $addr(r0)
-//
-val b0 =
-(
-gseq_iforall0<xs><x0>(xs)
-) where
-{
-#impltmp
-iforall$test0
-<x0>(j0, x0) =
-if
-(j0 < i0)
-then
-(g_free<x0>(x0); true)
-else
-($UN.p2tr_set<x0>(p0, x0); false)
-}
-in//let
-  if
-  not(b0)
-  then
-  $UN.p2tr_get<x0>(p0)
-  else get$at$exn0<xs><x0>(xs, i0)
-end//let//end-of-[gseq_get$at0(xs, i0)]
-//
-(* ****** ****** *)
 //
 #impltmp
 < xs:vt >
@@ -620,7 +589,42 @@ in//let
   if not(b0)
   then $UN.p2tr_get<x0>(p0)
   else get$at$exn1<xs><x0>(xs, i0)
-end//let//end-of-[gseq_get$at1(xs, i0)]
+end//let//end-of-[gseq_get$at1(xs,i0)]
+//
+(* ****** ****** *)
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gseq_get$at$opt0
+  (xs, i0) =
+let
+//
+var r0: x0 // x0?
+val p0 = $addr(r0)
+//
+val b0 =
+(
+gseq_iforall0<xs><x0>(xs)
+) where
+{
+#impltmp
+iforall$test0
+<x0>(j0, x0) =
+if
+(j0 < i0)
+then
+(g_free<x0>(x0); true)
+else(
+$UN.p2tr_set<x0>(p0, x0); false)
+}
+in//let
+(
+if (b0)
+then optn_nil(*0*) else
+(
+  optn_cons($UN.p2tr_get<x0>(p0)))
+end//let//endof(gseq_get$at$opt0(xs,i0))
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -643,7 +647,7 @@ where
 {
 val xs = gseq_strmize0<xs><x0>(xs)
 val ys = gseq_strmize0<ys><x0>(ys)
-}
+}(*where*)//end-of-[gseq_append00(...)]
 //
 #impltmp
 < xs:vt >
@@ -658,7 +662,7 @@ where
 {
 val xs = gseq_strmize0<xs><x0>(xs)
 val ys = gseq_strmize1<ys><x0>(ys)
-}
+}(*where*)//end-of-[gseq_append01(...)]
 //
 #impltmp
 < xs:vt >
@@ -673,7 +677,7 @@ where
 {
 val xs = gseq_strmize1<xs><x0>(xs)
 val ys = gseq_strmize0<ys><x0>(ys)
-}
+}(*where*)//end-of-[gseq_append10(...)]
 //
 #impltmp
 < xs:vt >
@@ -688,7 +692,7 @@ where
 {
 val xs = gseq_strmize1<xs><x0>(xs)
 val ys = gseq_strmize1<ys><x0>(ys)
-}
+}(*where*)//end-of-[gseq_append11(...)]
 //
 (* ****** ****** *)
 //
@@ -710,7 +714,7 @@ where
 {
 val xs = gseq_strmize0<xs><x0>(xs)
 val ys = gseq_strmize0<ys><x0>(ys)
-}
+}(*where*)//end-of-[gseq_prepend00(...)]
 //
 #impltmp
 < xs:vt >
@@ -725,7 +729,7 @@ where
 {
 val xs = gseq_strmize0<xs><x0>(xs)
 val ys = gseq_strmize1<ys><x0>(ys)
-}
+}(*where*)//end-of-[gseq_prepend01(...)]
 //
 #impltmp
 < xs:vt >
@@ -740,7 +744,7 @@ where
 {
 val xs = gseq_strmize1<xs><x0>(xs)
 val ys = gseq_strmize0<ys><x0>(ys)
-}
+}(*where*)//end-of-[gseq_prepend10(...)]
 //
 #impltmp
 < xs:vt >
@@ -755,7 +759,7 @@ where
 {
 val xs = gseq_strmize1<xs><x0>(xs)
 val ys = gseq_strmize1<ys><x0>(ys)
-}
+}(*where*)//end-of-[gseq_prepend11(...)]
 //
 (* ****** ****** *)
 //
