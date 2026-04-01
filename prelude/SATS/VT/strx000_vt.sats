@@ -108,6 +108,7 @@ strx_vt_prepend0__lstrq0
 HX-2026-01-13:
 Tue Jan 13 02:42:01 AM EST 2026
 *)
+(*
 fun<>
 strx_vt$beg(): strn
 fun<>
@@ -116,6 +117,7 @@ fun<>
 strx_vt$sep(): strn
 fun<>
 strx_vt$rst(): strn
+*)
 //
 fun
 <x0:vt>
@@ -127,10 +129,8 @@ strx_vt_all$print0(xs: strx_vt(x0)): void
 //
 (*
 fun<>
-strx_vt_print$len(): sint
+strx_vt$print$len(): ( sint ) // HX: all: -1
 *)
-fun<>
-strx_vt$print$len(): sint
 fun
 <x0:vt>
 strx_vt_len$print0(xs: strx_vt(x0), ln: sint): void

@@ -98,6 +98,10 @@ gseq$end
 <strx_vt(x0)><x0>() = ")"
 #impltmp
 { x0:vt }
+gseq$rst
+<strx_vt(x0)><x0>() = "..."
+#impltmp
+{ x0:vt }
 gseq$beg
 <strx_vt(x0)><x0>() = "strx_vt("
 //
@@ -152,6 +156,7 @@ Tue Jan 13 02:45:54 AM EST 2026
 //
 (* ****** ****** *)
 //
+(*
 #impltmp
 <>(*tmp*)
 strx_vt$end() = ")"
@@ -161,16 +166,22 @@ strx_vt$sep() = ","
 #impltmp
 <>(*tmp*)
 strx_vt$rst() = "..."
-//
 #impltmp
 <>(*tmp*)
-strx_vt$beg() = "$strx_vt("
+strx_vt$beg() = "strx_vt("
+*)
 //
 (* ****** ****** *)
 //
+(*
 #impltmp
 <>(*tmp*)
 strx_vt$print$len() = (10)
+*)
+#impltmp
+{ x0:t0 }
+gseq$prlen
+<strx_vt(x0)><x0>() = ( 10 )
 //
 (* ****** ****** *)
 //
@@ -178,10 +189,15 @@ strx_vt$print$len() = (10)
 <x0>(*tmp*)
 strx_vt_print0(xs) =
 let
+(*
 val len = 
-strx_vt$print$len<>((*void*))
+strx_vt$print$len<>()
+*)
+val len =
+gseq$prlen
+<strx_vt(x0)><x0>((*0*))
 in//let
-if
+if // if
 (len < 0)
 then strx_vt_all$print0<x0>(xs)
 else strx_vt_len$print0<x0>(xs, len)
@@ -199,12 +215,27 @@ loop
 (xs, 0(*i0*)) where
 {
 val () =
-pstrn(strx_vt$beg<>())
+(
+pstrn(strxbeg(*0*)))
 }
 ) where
 {
 #vwtpdef
 xs = strx_vt(x0)
+//
+val
+strxbeg =
+gseq$beg<xs><x0>()
+val
+strxsep =
+gseq$sep<xs><x0>()
+val
+strxrst =
+gseq$rst<xs><x0>()
+val
+strxend =
+gseq$end<xs><x0>()
+//
 fnx
 loop
 ( xs: xs
@@ -220,7 +251,8 @@ val () =
 if // if
 (i0 > 0)
 then//then
-pstrn(strx_vt$sep<>())
+(
+pstrn(strxsep(*0*)))
 //
 in//let
 (
@@ -243,13 +275,27 @@ loop
 (xs, 0(*i0*)) where
 {
 val () =
-pstrn(strx_vt$beg<>())
+(
+pstrn(strxbeg(*0*)))
 }
 ) where
 {
 //
 #vwtpdef
 xs = strx_vt(x0)
+//
+val
+strxbeg =
+gseq$beg<xs><x0>()
+val
+strxsep =
+gseq$sep<xs><x0>()
+val
+strxrst =
+gseq$rst<xs><x0>()
+val
+strxend =
+gseq$end<xs><x0>()
 //
 fnx
 loop
@@ -274,14 +320,16 @@ val () =
 if
 (i0 > 0)
 then
-pstrn(strx_vt$sep<>())
+(
+pstrn(strxsep(*0*)))
 //
 val () =
-pstrn(strx_vt$rst<>())
+(
+pstrn(strxrst(*0*)))
 //
 in//let//then
 (
-pstrn(strx_vt$end<>()))
+pstrn(strxend(*0*)))
 end // end of [if-then]
 else
 let
@@ -290,7 +338,8 @@ val () =
 if // if
 (i0 > 0)
 then//then
-pstrn(strx_vt$sep<>())
+(
+pstrn(strxsep(*0*)))
 //
 in//let//else
 (

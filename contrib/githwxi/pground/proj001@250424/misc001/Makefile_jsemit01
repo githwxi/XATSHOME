@@ -13,6 +13,7 @@ PYTHON=python3
 ########################################################################
 all:: pstrm000
 all:: pstrm001
+all:: pstrm002
 all:: fpath000
 ########################################################################
 clean:: ; rm -f *~
@@ -23,6 +24,7 @@ cleanall:: ; rm -f OUTS/*_out?.js
 ########################################################################
 testall:: pstrm000; $(NODE) OUTS/$<_out.js
 testall:: pstrm001; $(NODE) OUTS/$<_out.js
+testall:: pstrm002; $(NODE) OUTS/$<_out.js
 testall:: fpath000; $(NODE) OUTS/$<_out.js
 ########################################################################
 ########################################################################
@@ -63,6 +65,17 @@ $(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/$@_out.js
 pstrm001:: pstrm001.dats; \
 $(NODE) --stack-size=8801 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
 ########################################################################
+pstrm002:: ; \
+$(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
+pstrm002:: ; \
+$(CAT) $(XATS2JSD)/runtime/xats2js_js1emit.js >> OUTS/$@_out.js
+pstrm002:: ; \
+$(CAT) $(XATS2JSD)/runtime/srcgen2_precats.js >> OUTS/$@_out.js
+pstrm002:: ; \
+$(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/$@_out.js
+pstrm002:: pstrm002.dats; \
+$(NODE) --stack-size=8801 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+########################################################################
 fpath000:: ; \
 $(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
 fpath000:: ; \
@@ -94,6 +107,13 @@ pstrm001_out2:: ; \
 npx google-closure-compiler -W QUIET \
   --compilation_level ADVANCED --js=OUTS/pstrm001_out.js --js_output_file=OUTS/pstrm001_out2.js
 ########################################################################
+pstrm002_out1:: ; \
+npx google-closure-compiler -W QUIET \
+  --compilation_level SIMPLE --js=OUTS/pstrm002_out.js --js_output_file=OUTS/pstrm002_out1.js
+pstrm002_out2:: ; \
+npx google-closure-compiler -W QUIET \
+  --compilation_level ADVANCED --js=OUTS/pstrm002_out.js --js_output_file=OUTS/pstrm002_out2.js
+########################################################################
 ########################################################################
 PY_pstrm000:: ; \
 $(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
@@ -116,6 +136,17 @@ PY_pstrm001:: ; \
 $(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/$@_out.js
 PY_pstrm001:: \
 pstrm001.dats; $(PYTHON) $(PY_XATS2JS_JSEMIT01) __void__ $< >> OUTS/$@_out.js
+########################################################################
+PY_pstrm002:: ; \
+$(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
+PY_pstrm002:: ; \
+$(CAT) $(XATS2JSD)/runtime/xats2js_js1emit.js >> OUTS/$@_out.js
+PY_pstrm002:: ; \
+$(CAT) $(XATS2JSD)/runtime/srcgen2_precats.js >> OUTS/$@_out.js
+PY_pstrm002:: ; \
+$(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/$@_out.js
+PY_pstrm002:: \
+pstrm002.dats; $(PYTHON) $(PY_XATS2JS_JSEMIT01) __void__ $< >> OUTS/$@_out.js
 ########################################################################
 PY_fpath000:: ; \
 $(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
