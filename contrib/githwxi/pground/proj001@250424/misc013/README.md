@@ -1,4 +1,4 @@
-# Multiline Strings
+# Solving the 8-queen puzzle
 
 ## DATE
 
