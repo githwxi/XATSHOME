@@ -1,0 +1,78 @@
+########################################################################
+########################################################################
+# Makefile for misc011
+########################################################################
+########################################################################
+CAT=cat
+BUN=bun
+ECHO=echo
+NODE=node
+PRINTF=printf
+PYTHON=python3
+########################################################################
+########################################################################
+all:: q8ueens
+all:: JP_q8ueens
+########################################################################
+testall:: \
+q8ueens; $(NODE) OUTS/$<_out.js
+testall:: \
+JP_q8ueens; $(PYTHON) OUTS/$<_out.py
+########################################################################
+########################################################################
+clean:: ; rm -f *~
+cleanall:: ; rm -f *~
+cleanall:: ; rm -f OUTS/*~
+cleanall:: ; rm -f OUTS/*_out.js
+cleanall:: ; rm -f OUTS/*_out.py
+cleanall:: ; rm -f OUTS/*_out?.js
+########################################################################
+########################################################################
+XATSHOME=./../../../../../../XATSHOME
+########################################################################
+#
+XATS2JSD=$(XATSHOME)/xassets/JS/xats2js
+XATS2PYD=$(XATSHOME)/xassets/PY/xats2py
+#
+# HX: [ats2] is needed for TRO
+XATS2JS_JSEMIT01=\
+$(XATSHOME)/xassets/JS/xats2js/xats2js_jsemit01_ats2_opt1.js
+#
+# HX: [ats2] is needed for TRO
+JP_XATS2PY_PYEMIT01=\
+$(XATSHOME)/xassets/JS/xats2py/xats2py_pyemit01_ats2_opt1.js
+#
+########################################################################
+########################################################################
+q8ueens:: ; \
+$(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
+q8ueens:: ; \
+$(CAT) $(XATS2JSD)/runtime/xats2js_js1emit.js >> OUTS/$@_out.js
+q8ueens:: ; \
+$(CAT) $(XATS2JSD)/runtime/srcgen2_precats.js >> OUTS/$@_out.js
+q8ueens:: ; \
+$(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/$@_out.js
+q8ueens:: ; \
+$(CAT) $(XATS2JSD)/runtime/srcgen2_prelude_node.js >> OUTS/$@_out.js
+q8ueens:: q8ueens.dats; \
+$(NODE) --stack-size=8801 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+########################################################################
+JP_q8ueens:: ; \
+$(PRINTF) "## %s\n" "`date`" > OUTS/$@_out.py
+JP_q8ueens:: ; \
+$(CAT) $(XATS2PYD)/runtime/xats2py_py1emit.py >> OUTS/$@_out.py
+JP_q8ueens:: ; \
+$(CAT) $(XATS2PYD)/runtime/srcgen2_precats.py >> OUTS/$@_out.py
+JP_q8ueens:: ; \
+$(CAT) $(XATS2PYD)/runtime/srcgen2_prelude.py >> OUTS/$@_out.py
+JP_q8ueens:: q8ueens.dats; \
+$(NODE) --stack-size=8801 $(JP_XATS2PY_PYEMIT01) $< >> OUTS/$@_out.py
+########################################################################
+q8ueens_out1:: ; \
+npx google-closure-compiler -W QUIET \
+  --compilation_level SIMPLE --js=OUTS/q8ueens_out.js --js_output_file=OUTS/q8ueens_out1.js
+q8ueens_out2:: ; \
+npx google-closure-compiler -W QUIET \
+  --compilation_level ADVANCED --js=OUTS/q8ueens_out.js --js_output_file=OUTS/q8ueens_out2.js
+########################################################################
+##################### end of [Makefile_jsemit01] #######################

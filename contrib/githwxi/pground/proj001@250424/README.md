@@ -80,6 +80,10 @@ frequent stack overflows due to deep recursion. However, instead of
 relying on a compiler performing TRO, a programmer can also perform
 manual TRO through a technique referred to as tail-recursion via
 (functional) state transition.
+
+## [misc012](./misc012)
+
+This example tests multi-line strings.
   
 <!--
 ########################################################################
