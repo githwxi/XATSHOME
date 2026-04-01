@@ -3,12 +3,12 @@
 ## DATE
 
 <pre>
-Fri Jan 16 03:15:04 PM EST 2026
+Wed Apr  1 07:51:07 PM EDT 2026
 </pre>
   
 ## Description
 
-The example tests the handling of large multiline strings
-in ATS3.
+This example translates an 8-queen puzzle solver
+written in ATS2 recently by Zhou Zhan (Louvrre).
 
 Happy ATS programming!
