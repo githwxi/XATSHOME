@@ -46,8 +46,6 @@ Wed Apr  1 07:39:10 PM EDT 2026
 #define N 8
 #sexpdef N = 8
 
-val count = ref<int> (0)
-
 fun check {n:nat} (c: int, xs: list(int, n), d: int): bool =
   case+ xs of
   | list_nil() => true
@@ -59,6 +57,7 @@ fun check {n:nat} (c: int, xs: list(int, n), d: int): bool =
       else check(c, rest, d + 1)
 
 fun solve {n:nat | n <= N} (n: int n, current: list(int, N-n)): void =
+(
   if n = 0 then (
     let
       val () = printsln("Solution: ", current)
@@ -66,7 +65,7 @@ fun solve {n:nat | n <= N} (n: int n, current: list(int, N-n)): void =
   ) else (
     loop(0, n, current)
   )
-where {
+) where {
   fun loop {n:pos | n <= N} {i:nat | i <= N} (
     i: int i, n: int n, current: list(int, N-n)
   ): void =
@@ -74,7 +73,7 @@ where {
       if check(i, current, 1) then 
         solve(n - 1, list_cons(i, current));
       loop(i + 1, n, current)
-    ) else ()
+    ) // else ()
 }
 
 val () = solve(N, list_nil())
