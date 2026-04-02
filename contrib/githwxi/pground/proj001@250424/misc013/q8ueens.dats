@@ -43,6 +43,16 @@ Wed Apr  1 07:39:10 PM EDT 2026
 (* ****** ****** *)
 (* ****** ****** *)
 
+(*
+fun
+andso(x, y) = if x then y else false
+fun
+orels(x, y) = if x then (true) else y
+*)
+
+(* ****** ****** *)
+(* ****** ****** *)
+
 #define N 8
 #sexpdef N = 8
 
@@ -51,10 +61,10 @@ fun check {n:nat} (c: int, xs: list(int, n), d: int): bool =
   | list_nil() => true
   | list_cons(x, rest) => 
 (*
-      if c = x || abs(c - x) = d then false
+      if (c = x || abs(c-x) = d) then false
 *)
-      if (if c = x then true else abs(c-x) = d) then false
-      else check(c, rest, d + 1)
+      if c = x then false else (
+        if abs(c-x) = d then false else check(c, rest, d + 1))
 
 fun solve {n:nat | n <= N} (n: int n, current: list(int, N-n)): void =
 (
