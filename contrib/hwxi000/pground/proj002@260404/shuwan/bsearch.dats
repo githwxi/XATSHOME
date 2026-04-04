@@ -127,9 +127,9 @@ val (  ) = printsln("res4 = ", res4)
 (*
 HX-2026-04-04:
 This one is correct:
-Given n, it returns
-the least x satisfying
-the inequality: n <= x^3
+Given n, it returns the
+greatest number x satisfying
+(x^3 <= n).
 *)
 fun
 bsearch2_fun
@@ -146,13 +146,13 @@ let
 val mid = lb+(ub-lb) / 2
 in//let
 if // if
-(x0 <= f(mid))
+(x0 < f(mid))
 then
 bsearch2_fun(f, x0, lb, mid)
 else
 bsearch2_fun(f, x0, mid+1, ub)
 end
-) else (lb)//end-of-[if(lb<ub)]
+) else (lb-1)//end-of-[if(lb<ub)]
 )
 //
 fun icrt2 (x: sint) =
