@@ -11,8 +11,8 @@ PRINTF=printf
 PYTHON=python3
 ########################################################################
 ########################################################################
-all:: q8ueens
-all:: JP_q8ueens
+all:: coin
+all:: JP_coin
 ########################################################################
 testall:: \
 q8ueens; $(NODE) OUTS/$<_out.js
@@ -44,36 +44,62 @@ $(XATSHOME)/xassets/JS/xats2py/xats2py_pyemit01_ats2_opt1.js
 #
 ########################################################################
 ########################################################################
-q8ueens:: ; \
+coin:: ; \
 $(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
-q8ueens:: ; \
+coin:: ; \
 $(CAT) $(XATS2JSD)/runtime/xats2js_js1emit.js >> OUTS/$@_out.js
-q8ueens:: ; \
+coin:: ; \
 $(CAT) $(XATS2JSD)/runtime/srcgen2_precats.js >> OUTS/$@_out.js
-q8ueens:: ; \
+coin:: ; \
 $(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/$@_out.js
-q8ueens:: ; \
+coin:: ; \
 $(CAT) $(XATS2JSD)/runtime/srcgen2_prelude_node.js >> OUTS/$@_out.js
-q8ueens:: q8ueens.dats; \
+coin:: coin.dats; \
 $(NODE) --stack-size=8801 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
 ########################################################################
-JP_q8ueens:: ; \
+puzzle:: ; \
+$(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
+puzzle:: ; \
+$(CAT) $(XATS2JSD)/runtime/xats2js_js1emit.js >> OUTS/$@_out.js
+puzzle:: ; \
+$(CAT) $(XATS2JSD)/runtime/srcgen2_precats.js >> OUTS/$@_out.js
+puzzle:: ; \
+$(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/$@_out.js
+puzzle:: ; \
+$(CAT) $(XATS2JSD)/runtime/srcgen2_prelude_node.js >> OUTS/$@_out.js
+puzzle:: puzzle.dats; \
+$(NODE) --stack-size=8801 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+########################################################################
+########################################################################
+JP_coin:: ; \
 $(PRINTF) "## %s\n" "`date`" > OUTS/$@_out.py
-JP_q8ueens:: ; \
+JP_coin:: ; \
 $(CAT) $(XATS2PYD)/runtime/xats2py_py1emit.py >> OUTS/$@_out.py
-JP_q8ueens:: ; \
+JP_coin:: ; \
 $(CAT) $(XATS2PYD)/runtime/srcgen2_precats.py >> OUTS/$@_out.py
-JP_q8ueens:: ; \
+JP_coin:: ; \
 $(CAT) $(XATS2PYD)/runtime/srcgen2_prelude.py >> OUTS/$@_out.py
-JP_q8ueens:: q8ueens.dats; \
+JP_coin:: coin.dats; \
 $(NODE) --stack-size=8801 $(JP_XATS2PY_PYEMIT01) $< >> OUTS/$@_out.py
 ########################################################################
-q8ueens_out1:: ; \
+JP_puzzle:: ; \
+$(PRINTF) "## %s\n" "`date`" > OUTS/$@_out.py
+JP_puzzle:: ; \
+$(CAT) $(XATS2PYD)/runtime/xats2py_py1emit.py >> OUTS/$@_out.py
+JP_puzzle:: ; \
+$(CAT) $(XATS2PYD)/runtime/srcgen2_precats.py >> OUTS/$@_out.py
+JP_puzzle:: ; \
+$(CAT) $(XATS2PYD)/runtime/srcgen2_prelude.py >> OUTS/$@_out.py
+JP_puzzle:: puzzle.dats; \
+$(NODE) --stack-size=8801 $(JP_XATS2PY_PYEMIT01) $< >> OUTS/$@_out.py
+########################################################################
+########################################################################
+coin_out1:: ; \
 npx google-closure-compiler -W QUIET \
-  --compilation_level SIMPLE --js=OUTS/q8ueens_out.js --js_output_file=OUTS/q8ueens_out1.js
-q8ueens_out2:: ; \
+  --compilation_level SIMPLE --js=OUTS/coin_out.js --js_output_file=OUTS/coin_out1.js
+coin_out2:: ; \
 npx google-closure-compiler -W QUIET \
-  --compilation_level ADVANCED --js=OUTS/q8ueens_out.js --js_output_file=OUTS/q8ueens_out2.js
+  --compilation_level ADVANCED --js=OUTS/coin_out.js --js_output_file=OUTS/coin_out2.js
 ########################################################################
 ##################### end of [Makefile_jpemit01] #######################
 ########################################################################
