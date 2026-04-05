@@ -106,6 +106,17 @@ $(CAT) $(XATS2PYD)/runtime/srcgen2_prelude.py >> OUTS/$@_out.py
 JP_puzzle:: puzzle.dats; \
 $(NODE) --stack-size=8801 $(JP_XATS2PY_PYEMIT01) $< >> OUTS/$@_out.py
 ########################################################################
+JP_bsearch:: ; \
+$(PRINTF) "## %s\n" "`date`" > OUTS/$@_out.py
+JP_bsearch:: ; \
+$(CAT) $(XATS2PYD)/runtime/xats2py_py1emit.py >> OUTS/$@_out.py
+JP_bsearch:: ; \
+$(CAT) $(XATS2PYD)/runtime/srcgen2_precats.py >> OUTS/$@_out.py
+JP_bsearch:: ; \
+$(CAT) $(XATS2PYD)/runtime/srcgen2_prelude.py >> OUTS/$@_out.py
+JP_bsearch:: bsearch.dats; \
+$(NODE) --stack-size=8801 $(JP_XATS2PY_PYEMIT01) $< >> OUTS/$@_out.py
+########################################################################
 ########################################################################
 coin_out1:: ; \
 npx google-closure-compiler -W QUIET \

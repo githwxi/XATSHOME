@@ -85,5 +85,5 @@ val () = printsln("test_result = ", test_result)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [githwxi/pground/proj002@260404/shuwan/coin.dats] *)
+(* end of [hwxi000/pground/proj002@260404/shuwan/coin.dats] *)
 (***********************************************************************)
