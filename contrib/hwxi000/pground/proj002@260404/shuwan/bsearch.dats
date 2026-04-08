@@ -49,7 +49,7 @@ by Shuwan Zhao (shuwan) in SML
 Sat Apr  4 03:32:04 PM EDT 2026
 //
 fun bsearch_fun(f,x0,lb,ub)=
-   if lb<ub then 
+   if lb < ub then 
       let val mid = lb + (ub - lb) div 2
       in 
         if x0 < f(mid) then
@@ -89,11 +89,11 @@ bsearch_fun
 ,x0:sint
 ,lb:sint,ub:sint) =
 if
-(lb<ub)
+(lb < ub)
 then//then
 ( 
 let
-val mid = lb+(ub-lb) / 2
+val mid = lb+(ub-lb)/2
 in//let
 if // if
 (x0 < f(mid))
@@ -102,7 +102,7 @@ bsearch_fun(f, x0, lb, mid-1)
 else
 bsearch_fun(f, x0, mid+1, ub)
 end
-) else (ub)//end-of-[if(lb<ub)]
+) else (ub)//end-of-[if(lb < ub)]
 //
 fun icrt (x: sint) =
   let
@@ -112,14 +112,14 @@ fun icrt (x: sint) =
   end
 //
 val res1 = icrt 30   
-val (  ) = printsln("res1 = ", res1)
+val (  ) = printsln("icrt(30) = ", res1)
 val res2 = icrt 999
-val (  ) = printsln("res2 = ", res2)
+val (  ) = printsln("icrt(999) = ", res2)
 //
 val res3 = icrt 1000
-val (  ) = printsln("res3 = ", res3)
+val (  ) = printsln("icrt(1000) = ", res3)
 val res4 = icrt 1001
-val (  ) = printsln("res4 = ", res4)
+val (  ) = printsln("icrt(1001) = ", res4)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -139,11 +139,11 @@ bsearch2_fun
 ,lb:sint,ub:sint) =
 (
 if//if
-(lb<ub)
+(lb < ub)
 then//then
 ( 
 let
-val mid = lb+(ub-lb) / 2
+val mid = lb+(ub-lb)/2
 in//let
 if // if
 (x0 < f(mid))
@@ -152,7 +152,7 @@ bsearch2_fun(f, x0, lb, mid)
 else
 bsearch2_fun(f, x0, mid+1, ub)
 end
-) else (lb-1)//end-of-[if(lb<ub)]
+) else (lb-1)//end-of-[if(lb < ub)]
 )
 //
 fun icrt2 (x: sint) =
@@ -163,14 +163,14 @@ fun icrt2 (x: sint) =
   end
 //
 val r2es1 = icrt2 30   
-val (   ) = printsln("r2es1 = ", r2es1)
+val (   ) = printsln("icrt2(30) = ", r2es1)
 val r2es2 = icrt2 999
-val (   ) = printsln("r2es2 = ", r2es2)
+val (   ) = printsln("icrt2(999) = ", r2es2)
 //
 val r2es3 = icrt2 1000
-val (   ) = printsln("r2es3 = ", r2es3)
+val (   ) = printsln("icrt2(1000) = ", r2es3)
 val r2es4 = icrt2 1001
-val (   ) = printsln("r2es4 = ", r2es4)
+val (   ) = printsln("icrt2(1001) = ", r2es4)
 //
 (* ****** ****** *)
 (* ****** ****** *)
