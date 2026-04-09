@@ -109,6 +109,17 @@ $(CAT) $(XATS2PYD)/runtime/srcgen2_prelude.py >> OUTS/$@_out.py
 JP_coin:: coin.dats; \
 $(NODE) --stack-size=8801 $(JP_XATS2PY_PYEMIT01) $< >> OUTS/$@_out.py
 ########################################################################
+JP_coin2:: ; \
+$(PRINTF) "## %s\n" "`date`" > OUTS/$@_out.py
+JP_coin2:: ; \
+$(CAT) $(XATS2PYD)/runtime/xats2py_py1emit.py >> OUTS/$@_out.py
+JP_coin2:: ; \
+$(CAT) $(XATS2PYD)/runtime/srcgen2_precats.py >> OUTS/$@_out.py
+JP_coin2:: ; \
+$(CAT) $(XATS2PYD)/runtime/srcgen2_prelude.py >> OUTS/$@_out.py
+JP_coin2:: coin2.dats; \
+$(NODE) --stack-size=8801 $(JP_XATS2PY_PYEMIT01) $< >> OUTS/$@_out.py
+########################################################################
 JP_puzzle:: ; \
 $(PRINTF) "## %s\n" "`date`" > OUTS/$@_out.py
 JP_puzzle:: ; \

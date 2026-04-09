@@ -51,8 +51,10 @@ Sat Apr  4 03:05:09 PM EDT 2026
 fun count (0, _) = 1
   | count (_, []) = 0
   | count (sum, c::cs) =
-    if sum < 0 then 0 
-    else count (sum, cs) + count (sum - c, c::cs);
+    if // if
+    (sum < 0)
+    then 0 else (
+      count(sum, cs)+count(sum-c, c::cs))
 val test_result = count(10, [25, 10, 5, 1]);
 //
 *)
@@ -62,9 +64,9 @@ val test_result = count(10, [25, 10, 5, 1]);
 fun
 count
 (sum: sint
-,cs : !list_vt(nint)) =
+,cs0: !list_vt(nint)) =
 case+
-(sum, cs) of
+(sum, cs0) of
 |
 ( 0, _ ) => 1
 |
@@ -72,19 +74,20 @@ case+
 , list_vt_nil()) => 0
 |
 ( sum
-, list_vt_cons(c1, ds)) =>
+, list_vt_cons(c1, cs1)) =>
 (
 if // if
-(sum < 0) then (0) else
-(count(sum, ds) + count(sum - c1, cs)))
+(sum < 0)
+then ( 0 ) else
+(count(sum, cs1) + count(sum-c1, cs0)))
 //
-val cs =
+val cs0 =
 list_vt@(25, 10, 5, 1)
 val
-test_result = count(10, cs)
-val () = list_vt_free(  cs  )
+test_result = count(10, cs0)
+val ( ) = list_vt_free( cs0 )
 //
-val () = printsln("test_result = ", test_result)
+val ( ) = printsln("test_result = ", test_result)
 //
 (* ****** ****** *)
 (* ****** ****** *)
