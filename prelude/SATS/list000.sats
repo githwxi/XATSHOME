@@ -244,7 +244,13 @@ fun
 list_appendx0_vt
 {m,n:i0}
 ( xs: list(a, m)
-, ys: list_vt(a, n)): list_vt(a, m+n)
+, ys: ~list_vt(a, n)): list_vt(a, m+n)
+fun
+<a:t0>
+list_appendx1_vt
+{m,n:i0}
+( xs: list(a, m)
+, ys: !list_vt(a, n)): list_vt(a, m+n)
 //
 (* ****** ****** *)
 //
@@ -254,6 +260,8 @@ append with list_append of 1000
 append_vt with list_append_vt of 1000
 #symload
 appendx0_vt with list_appendx0_vt of 1000
+#symload
+appendx1_vt with list_appendx1_vt of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -308,6 +316,47 @@ rappend with list_rappend of 1000
 rappend_vt with list_rappend_vt of 1000
 #symload
 rappendx0_vt with list_rappendx0_vt of 1000
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<a:t0>
+list_prepend
+{m,n:i0}
+( xs: list(a, m)
+, ys: list(a, n)): list(a, m+n)
+fun
+<a:t0>
+list_prepend_vt
+{m,n:i0}
+( xs: list(a, m)
+, ys: list(a, n)): list(a, m+n)
+//
+fun
+<a:t0>
+list_prependx0
+{m,n:i0}
+( xs: list(a, m)
+, ys: ~list_vt(a, n)): list(a, m+n)
+fun
+<a:t0>
+list_prependrx0
+{m,n:i0}
+( xs: list(a, m)
+, ys: ~list_vt(a, n)): list(a, m+n)
+//
+(* ****** ****** *)
+//
+#symload
+prepend with list_prepend of 1000
+#symload
+prepend_vt with list_prepend_vt of 1000
+//
+#symload
+prependx0 with list_prependrx0 of 1000
+#symload
+prependrx0 with list_prependrx0 of 1000
 //
 (* ****** ****** *)
 (* ****** ****** *)

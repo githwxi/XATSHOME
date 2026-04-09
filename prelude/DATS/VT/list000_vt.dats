@@ -461,6 +461,19 @@ end // end of [list_vt_cons(...)]
 //
 #impltmp
 < a: vt >
+list_vt_rappend10
+  (xs, ys) =
+(
+list_vt_rappend00<a>(xs, ys)
+) where
+{
+  val xs = list_vt_copy<a>(xs)
+}(*where*)//end-of-[list_vt_rappend01(...)]
+//
+(* ****** ****** *)
+//
+#impltmp
+< a: vt >
 list_vt_reverse0(xs) =
 list_vt_rappend00<a>(xs, list_vt_nil(*void*))
 //
@@ -655,6 +668,80 @@ val ln = list_vt$make$len<>()
 #impltmp
 { a:vt }
 g_make<list_vt(a)>(*0*) = list_vt_make<a>(*0*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+HX-2026-04-08:
+Wed Apr  8 10:41:47 PM EDT 2026
+*)
+//
+#impltmp
+< x0:vt >
+list_vt_make_lt0up1(xs) =
+(
+list_vt_make_1val<x0>(xs.0))
+//
+#impltmp
+< x0:vt >
+list_vt_make_lt0up2(xs) =
+let
+val @(x0, x1) = xs in
+(
+list_vt_make_2val<x0>(x0, x1))
+end//let//end-of-[list_vt_make_lt0up2]
+//
+#impltmp
+< x0:vt >
+list_vt_make_lt0up3(xs) =
+let
+val @(x0, x1, x2) = xs in
+(
+list_vt_make_3val<x0>(x0, x1, x2))
+end//let//end-of-[list_vt_make_lt0up3]
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:vt >
+list_vt_make_lt0up4(xs) =
+let
+val
+@(x0, x1, x2, x3) = xs in
+(
+list_vt_cons(x0,
+  list_vt_make_3val<x0>(x1, x2, x3)))
+end//let//end-of-[list_vt_make_t0up4(xs)]
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:vt >
+list_vt_make_lt0up5(xs) =
+let
+val
+@(x0, x1, x2, x3, x4) = xs in
+(
+list_vt_cons(x0,
+list_vt_cons(x1,
+  list_vt_make_3val<x0>(x2, x3, x4))))
+end//let//end-of-[list_vt_make_t0up5(xs)]
+//
+(* ****** ****** *)
+//
+#impltmp
+< x0:vt >
+list_vt_make_lt0up6(xs) =
+let
+val
+@(x0, x1, x2, x3, x4, x5) = xs in
+(
+list_vt_cons(x0,
+list_vt_cons(x1,
+list_vt_cons(x2,
+  list_vt_make_3val<x0>(x3, x4, x5)))))
+end//let//end-of-[list_vt_make_t0up6(xs)]
 //
 (* ****** ****** *)
 (* ****** ****** *)

@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2024 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2026 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -28,13 +28,74 @@
 (* ****** ****** *)
 (* ****** ****** *)
 //
-#abstype
-uopt_t0_i0_t0
-( a:t0,b:b0 ) <= @(a, sint)
-#sexpdef uopt = uopt_t0_i0_t0
+(*
+HX-2026-04-08:
+This one is likely no
+longer needed as [uopt] can
+be implemented as uflat(optn)!
+Wed Apr  8 02:51:46 AM EDT 2026
+*)
 //
-#typedef
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
+Author: Hongwei Xi
+Wed Apr  8 09:15:52 AM EDT 2026
+Authoremail: gmhwxiATgmailDOTcom
+*)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#abstype
+uopt_t0_b0_t0
+( a:t0,b:b0 ) <= @(sint, a)
+#sexpdef uopt = uopt_t0_b0_t0
+//
+#vwtpdef
 uopt(a:t0) = [b:b0] uopt(a, b)
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+uopt_none
+((*0*)): uopt(x0, ff)
+fun
+<x0:t0>
+uopt_some
+(x0: x0): uopt(x0, tt)
+fun
+<x0:t0>
+uopt_unsome
+(xs: uopt(x0, tt)): (x0)
+//
+(* ****** ****** *)
+//
+fun
+<x0:t0>
+uopt_nilq
+{b1:b0}
+(xs: uopt(x0, b1)): bool(~b1)
+fun
+<x0:t0>
+uopt_noneq
+{b1:b0}
+(xs: uopt(x0, b1)): bool(~b1)
+//
+fun
+<x0:t0>
+uopt_consq
+{b1:b0}
+(xs: uopt(x0, b1)): bool( b1)
+fun
+<x0:t0>
+uopt_someq
+{b1:b0}
+(xs: uopt(x0, b1)): bool( b1)
+//
 //
 (* ****** ****** *)
 (* ****** ****** *)

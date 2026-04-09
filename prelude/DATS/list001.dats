@@ -644,7 +644,7 @@ fmake$fwork$work<x0>(x0) =
 $UN.p2tr_set
 (p0,list_vt_cons(x0, $UN.p2tr_get(p0)))
 //
-}(*where*)//end-of-[list_fmake((*0*))]
+}(*where*)//end-of-[list_fmake((*000*))]
 //
 #impltmp
 < x0:t0 >
@@ -837,7 +837,13 @@ list_vt2t(list_filter_vt<x0>(xs))
 < x0:t0 >
 list_filter$f1un
   (xs, test) =
-list_vt2t(list_filter$f1un_vt<x0>(xs, test))
+list_vt2t(
+  list_filter$f1un_vt<x0>(xs, test))
+//
+#impltmp
+{ x0:t0 }
+gseq_filter_list
+<list(x0)><x0>(*xs*) = list_filter<x0>(*xs*)
 //
 (* ****** ****** *)
 //
@@ -881,6 +887,11 @@ where
 {
 #impltmp filter$test<x0> = test(*void*)
 }(*where*)//end-of-[list_filter$f1un_vt(xs)]
+//
+#impltmp
+{ x0:t0 }
+gseq_filter_llist
+<list(x0)><x0>(*xs*) = list_filter_vt<x0>(*xs*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -969,10 +980,12 @@ where{
 |list_cons(_, _) =>
 (
 strmcon_vt_cons((x1, rs),
-auxmain(xs.0, xs.1, list_vt_cons(x1, ys))))
+auxmain(
+  xs.0, xs.1, list_vt_cons(x1, ys))))
 where{
-  val rs = 
-  list_vt_rappend10(ys, list_reverse_vt(xs)) }
+  val rs = list_copy_vt<x0>(xs)
+  val rs = list_vt_rappend10<x0>(ys,rs)
+}(*where*)
 )(*case+*)//end-of-[auxmain(x1, xs, ys)]
 //
 }(*where*)//end-of-[list_cons( x1, xs )]

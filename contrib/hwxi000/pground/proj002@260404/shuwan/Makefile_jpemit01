@@ -12,6 +12,7 @@ PYTHON=python3
 ########################################################################
 ########################################################################
 all:: coin
+all:: coin2
 all:: JP_coin
 ########################################################################
 testall:: \
@@ -55,6 +56,19 @@ $(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/$@_out.js
 coin:: ; \
 $(CAT) $(XATS2JSD)/runtime/srcgen2_prelude_node.js >> OUTS/$@_out.js
 coin:: coin.dats; \
+$(NODE) --stack-size=8801 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+########################################################################
+coin2:: ; \
+$(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
+coin2:: ; \
+$(CAT) $(XATS2JSD)/runtime/xats2js_js1emit.js >> OUTS/$@_out.js
+coin2:: ; \
+$(CAT) $(XATS2JSD)/runtime/srcgen2_precats.js >> OUTS/$@_out.js
+coin2:: ; \
+$(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/$@_out.js
+coin2:: ; \
+$(CAT) $(XATS2JSD)/runtime/srcgen2_prelude_node.js >> OUTS/$@_out.js
+coin2:: coin2.dats; \
 $(NODE) --stack-size=8801 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
 ########################################################################
 puzzle:: ; \

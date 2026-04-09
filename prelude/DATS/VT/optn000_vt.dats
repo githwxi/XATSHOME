@@ -204,7 +204,7 @@ optn_vt_nil() => 0
 | ~
 optn_vt_cons(x0) =>
 let
-val () = g_free<x0>(x0)in(1)end)
+val () = g_free<a>(x0)in(1)end)
 (*case+*)//endof(optn_vt_length0)
 //
 (* ****** ****** *)
@@ -252,11 +252,11 @@ optn_vt_cons
 #impltmp
 { x0:vt }
 g_free<
-optn_vt(x0)> = optn_vt_free<x0>(*void*)
+optn_vt(x0)> = optn_vt_free<x0>(*xs*)
 #impltmp
 { x0:vt }
 gseq_free<
-optn_vt(x0)><x0> = optn_vt_free<x0>(*void*)
+optn_vt(x0)><x0> = optn_vt_free<x0>(*xs*)
 //
 (* ****** ****** *)
 //
@@ -276,11 +276,11 @@ case+ xs of
 #impltmp
 { x0:vt }
 g_copy<
-optn_vt(x0)> = optn_vt_copy<x0>(*void*)
+optn_vt(x0)> = optn_vt_copy<x0>(*xs*)
 #impltmp
 { x0:vt }
 gseq_copy<
-optn_vt(x0)><x0> = optn_vt_copy<x0>(*void*)
+optn_vt(x0)><x0> = optn_vt_copy<x0>(*xs*)
 //
 (* ****** ****** *)
 (* ****** ****** *)

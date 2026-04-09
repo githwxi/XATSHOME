@@ -255,13 +255,13 @@ HX-2024-07-10:
 Implementing the most specific one.
 HX-2024-07-13:
 This one is already added as the default!
-There is not harm to keep it here as a reference.
+There is no harm to keep it here as a reference.
 *)
 #impltmp
 { x0:vt }
 { y0:vt }
 gseq_map0_lstrm
-<strm_vt(x0)><x0><y0> = strm_vt_map0<x0><y0>(*void*)
+<strm_vt(x0)><x0><y0> = strm_vt_map0<x0><y0>(*0*)
 //
 (* ****** ****** *)
 //
@@ -285,7 +285,8 @@ free(xs);
 case+ !xs of
 | ~
 strmcon_vt_nil() =>
-strmcon_vt_nil(*void*)
+(
+strmcon_vt_nil(*0*))
 | ~
 strmcon_vt_cons(x1, xs) =>
 let
@@ -314,7 +315,7 @@ imap$fopr0<x0><y0>(*x0*) = fopr(*x0*)
 { x0:vt }
 { y0:vt }
 gseq_imap0_lstrm
-<strm_vt(x0)><x0><y0> = strm_vt_imap0<x0><y0>(*void*)
+<strm_vt(x0)><x0><y0> = strm_vt_imap0<x0><y0>(*0*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -322,6 +323,7 @@ gseq_imap0_lstrm
 (*
 HX-2026-04-01:
 Note <x0:t0> (not vt)!!!
+This one is tested in XATSHOME.
 It should be interesting to implement
 the version for <x0:vt>, where copying
 (via g_copy<x0>) is likely to be needed.
@@ -331,12 +333,13 @@ the version for <x0:vt>, where copying
 strm_vt_dedup0
   ( xs ) =
 (
-  dedup0(xs) )
+  auxmain(xs) )
 where
 {
 //
 fun
-dedup0(
+auxmain
+(
 xs:
 strm_vt(x0)): strm_vt(x0) =
 $llazy(
@@ -352,11 +355,11 @@ strmcon_vt_cons
   ( x1, xs ) =>
 (
 strmcon_vt_cons
-(x1, dedup0(xs))) where
+(x1, auxmain(xs))) where
 {
 val xs =
 (
-strm_vt_filter0<x0>(xs))
+  strm_vt_filter0<x0>(xs))
 where
 {
 #impltmp
@@ -367,7 +370,7 @@ not(dedup$equal<x0>(x1, x2)))
 }
 }(*where*)//end(strmcon_vt_cons(...))
 //
-)(*case+*)//end-of-(dedup0(xs)=llazy)
+)(*case+*)//end-of-(auxmain(xs)=llazy)
 //
 }(*where*)//end-of-(strm_vt_dedup0(xs))
 //
@@ -441,7 +444,7 @@ It is not harm to keep it here as a reference.
 #impltmp
 { x0:vt }
 gseq_filter0_lstrm
-<strm_vt(x0)><x0> = strm_vt_filter0<x0>(*void*)
+<strm_vt(x0)><x0> = strm_vt_filter0<x0>(*0*)
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -625,6 +628,62 @@ map$fopr0<x0><y0>(x0) =
 (* ****** ****** *)
 //
 (*
+HX-2026-04-04:
+Sat Apr  4 03:30:59 AM EDT 2026
+*)
+#impltmp
+< x0:t0 >
+strm_vt_ord$dedup0
+  ( xs ) =
+(
+  dedup1(xs) ) where
+{
+//
+fnx
+dedup1(
+xs:
+strm_vt(x0)): strm_vt(x0) =
+$llazy(
+//
+case+ !xs of
+| ~
+strmcon_vt_nil
+  ( (*0*) ) =>
+(
+strmcon_vt_nil())
+| ~
+strmcon_vt_cons
+  ( x1, xs ) => dedup2(x1, xs))
+//
+and
+dedup2(
+x1: x0,
+xs: strm_vt(x0)): strmcon_vt(x0) =
+(
+case+ !xs of
+|
+strmcon_vt_nil() =>
+(
+strmcon_vt_sing(x1))
+|
+strmcon_vt_cons(x2, xs) =>
+if // if
+(
+dedup$cmp
+(x1 , x2)) >= 0
+then(//then
+  dedup2(x1, xs))
+else(//else
+  strmcon_vt_cons
+  (x1, $llazy(dedup2(x2, xs))))//end(if)
+)(*case+*)//end-of-(dedup2(x1,xs)=llazy())
+//
+}(*where*)//end-of-(strm_vt_ord$dedup0(xs))
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
 HX-2025-12-26:
 Fri Dec 26 01:13:30 PM EST 2025
 *)
@@ -742,7 +801,7 @@ case+ !xs of
 strmcon_vt_nil() =>
 (
 g_free<e1>(e1);
-strmcon_vt_nil(*void*))
+strmcon_vt_nil(*0*))
 | ~
 strmcon_vt_cons(x1, xs) =>
 let

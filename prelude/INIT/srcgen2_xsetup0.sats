@@ -86,9 +86,14 @@ the_s2exp_ullint0 = ullint0
 (* ****** ****** *)
 //
 #typedef
-the_s2exp_lazy0(a:t0) = lazy(a)
+the_s2exp_lazy0
+(     a:t0     ) = lazy(a)
 #vwtpdef
-the_s2exp_llazy0(a:vt) = lazy_vt(a)
+the_s2exp_llazy0
+(     a:vt     ) = lazy_vt(a)
+#vwtpdef
+the_s2exp_elazy0
+( a:vt, env:vt ) = elazy_vt(a, env)
 //
 (* ****** ****** *)
 //
@@ -129,7 +134,6 @@ the_s2exp_a1ptr(*void*) = a1ptr_view
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-
+(***********************************************************************)
 (* end of [ATS3/XANADU_prelude_INIT_srcgen2_xsetup0.sats] *)
+(***********************************************************************)
