@@ -13,7 +13,14 @@ PYTHON=python3
 ########################################################################
 all:: coin
 all:: coin2
+all:: puzzle
+all:: bsearch
+all:: queens
 all:: JP_coin
+all:: JP_coin2
+all:: JP_puzzle
+all:: JP_bsearch
+all:: JP_queens
 ########################################################################
 testall:: \
 q8ueens; $(NODE) OUTS/$<_out.js
@@ -97,6 +104,19 @@ $(CAT) $(XATS2JSD)/runtime/srcgen2_prelude_node.js >> OUTS/$@_out.js
 bsearch:: bsearch.dats; \
 $(NODE) --stack-size=8801 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
 ########################################################################
+queens:: ; \
+$(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
+queens:: ; \
+$(CAT) $(XATS2JSD)/runtime/xats2js_js1emit.js >> OUTS/$@_out.js
+queens:: ; \
+$(CAT) $(XATS2JSD)/runtime/srcgen2_precats.js >> OUTS/$@_out.js
+queens:: ; \
+$(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/$@_out.js
+queens:: ; \
+$(CAT) $(XATS2JSD)/runtime/srcgen2_prelude_node.js >> OUTS/$@_out.js
+queens:: queens.dats; \
+$(NODE) --stack-size=8801 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+########################################################################
 ########################################################################
 JP_coin:: ; \
 $(PRINTF) "## %s\n" "`date`" > OUTS/$@_out.py
@@ -140,6 +160,17 @@ $(CAT) $(XATS2PYD)/runtime/srcgen2_precats.py >> OUTS/$@_out.py
 JP_bsearch:: ; \
 $(CAT) $(XATS2PYD)/runtime/srcgen2_prelude.py >> OUTS/$@_out.py
 JP_bsearch:: bsearch.dats; \
+$(NODE) --stack-size=8801 $(JP_XATS2PY_PYEMIT01) $< >> OUTS/$@_out.py
+########################################################################
+JP_queens:: ; \
+$(PRINTF) "## %s\n" "`date`" > OUTS/$@_out.py
+JP_queens:: ; \
+$(CAT) $(XATS2PYD)/runtime/xats2py_py1emit.py >> OUTS/$@_out.py
+JP_queens:: ; \
+$(CAT) $(XATS2PYD)/runtime/srcgen2_precats.py >> OUTS/$@_out.py
+JP_queens:: ; \
+$(CAT) $(XATS2PYD)/runtime/srcgen2_prelude.py >> OUTS/$@_out.py
+JP_queens:: queens.dats; \
 $(NODE) --stack-size=8801 $(JP_XATS2PY_PYEMIT01) $< >> OUTS/$@_out.py
 ########################################################################
 ########################################################################
