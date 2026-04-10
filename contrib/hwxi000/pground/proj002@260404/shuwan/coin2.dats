@@ -61,6 +61,12 @@ val test_result = count(10, [25, 10, 5, 1]);
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-04-08:
+I replaced [list] in
+coin.dats with [list_vt] to
+do a bit testing on linear types.
+*)
 fun
 count
 (sum: sint
