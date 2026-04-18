@@ -35,14 +35,15 @@ Payroll_type = @{
 Payroll_Employee$foritm
   (this) =
 (
-  forall(this.employee_a1sz)
+g_void(
+forall(this.employee_a1sz))
 ) where
 {
 //
 #typedef e1 = Employee
 #typedef x0 = optn(Employee)
 //
-impltmp
+#impltmp
 forall$test<x0>(x0) =
 (
 case+ x0 of
@@ -52,7 +53,7 @@ case+ x0 of
 let
 val () =
 (
-  foritm$work<e1>(e1)) in (true) end)
+  foritm$work<e1>(e1)) in (true) end))
 }
 //
 (* ****** ****** *)
@@ -99,10 +100,10 @@ Payroll_Employee$foritm(source))
 where
 {
 #typedef
-x0 = Empyloyee
+e1 = Employee
 #impltmp
-foritm$work<x0>(x0) =
-Payroll_add$employee$raw(this, x0) }
+foritm$work<e1>(e1) =
+Payroll_add$employee$raw(this, e1) }
 //
 (* ****** ****** *)
 (* ****** ****** *)
