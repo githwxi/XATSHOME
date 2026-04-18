@@ -30,6 +30,34 @@ Payroll_type = @{
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+<(*tmp*)>
+Payroll_Employee$foritm
+  (this) =
+(
+  forall(this.employee_a1sz)
+) where
+{
+//
+#typedef e1 = Employee
+#typedef x0 = optn(Employee)
+//
+impltmp
+forall$test<x0>(x0) =
+(
+case+ x0 of
+|optn_nil() => false
+|optn_cons(e1) =>
+(
+let
+val () =
+(
+  foritm$work<e1>(e1)) in (true) end)
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 #implfun
 Payroll_add$employee$raw
 ( this:

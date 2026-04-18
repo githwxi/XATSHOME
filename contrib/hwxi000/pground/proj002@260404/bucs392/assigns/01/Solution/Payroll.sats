@@ -33,8 +33,10 @@ Payroll_index$remove$raw
 
 (* ****** ****** *)
 
+(*
 fun<>
 Payroll_Employee$forall(this: Payroll): bool
+*)
 fun<>
 Payroll_Employee$foritm(this: Payroll): void
 
