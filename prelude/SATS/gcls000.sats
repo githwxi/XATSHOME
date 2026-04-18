@@ -347,7 +347,7 @@ fun
 <x0:t0>
 GSEQ_foritm$f1un
 ( gseq: GSEQ(xs, x0)
-, test: ( x0 )->void): void
+, work: ( x0 )->void): void
 //
 #symload foritm with GSEQ_foritm$f1un of 1000
 #symload foritm$fun with GSEQ_foritm$f1un of 1000
@@ -359,7 +359,7 @@ fun
 <x0:t0>
 GSEQ_rforitm$f1un
 ( gseq: GSEQ(xs, x0)
-, test: ( x0 )->void): void
+, work: ( x0 )->void): void
 //
 #symload rforitm with GSEQ_rforitm$f1un of 1000
 #symload rforitm$fun with GSEQ_rforitm$f1un of 1000
@@ -371,7 +371,7 @@ fun
 <x0:t0>
 GSEQ_iforitm$f2un
 ( gseq: GSEQ(xs, x0)
-, test: (ni, x0)->void): void
+, work: (ni, x0)->void): void
 //
 #symload iforitm with GSEQ_iforitm$f2un of 1000
 #symload iforitm$fun with GSEQ_iforitm$f2un of 1000
@@ -383,7 +383,7 @@ fun
 <x0:t0>
 GSEQ_irforitm$f2un
 ( gseq: GSEQ(xs, x0)
-, test: (ni, x0)->void): void
+, work: (ni, x0)->void): void
 //
 #symload irforitm with GSEQ_irforitm$f2un of 1000
 #symload irforitm$fun with GSEQ_irforitm$f2un of 1000
@@ -668,7 +668,7 @@ fun
 <x0:vt>
 GASQ_foritm$f1un
 ( gasq: GASQ(xs, x0)
-, test: ( x0 )->void): void
+, work: ( x0 )->void): void
 //
 #symload foritm with GASQ_foritm$f1un of 1000
 #symload foritm$fun with GASQ_foritm$f1un of 1000
@@ -680,7 +680,7 @@ fun
 <x0:vt>
 GASQ_rforitm$f1un
 ( gasq: GASQ(xs, x0)
-, test: ( x0 )->void): void
+, work: ( x0 )->void): void
 //
 #symload rforitm with GASQ_rforitm$f1un of 1000
 #symload rforitm$fun with GASQ_rforitm$f1un of 1000
@@ -692,7 +692,7 @@ fun
 <x0:vt>
 GASQ_iforitm$f2un
 ( gasq: GASQ(xs, x0)
-, test: (ni, x0)->void): void
+, work: (ni, x0)->void): void
 //
 #symload iforitm with GASQ_iforitm$f2un of 1000
 #symload iforitm$fun with GASQ_iforitm$f2un of 1000
@@ -704,7 +704,7 @@ fun
 <x0:vt>
 GASQ_irforitm$f2un
 ( gasq: GASQ(xs, x0)
-, test: (ni, x0)->void): void
+, work: (ni, x0)->void): void
 //
 #symload irforitm with GASQ_irforitm$f2un of 1000
 #symload irforitm$fun with GASQ_irforitm$f2un of 1000
