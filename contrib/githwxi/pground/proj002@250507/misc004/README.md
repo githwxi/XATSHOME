@@ -28,3 +28,6 @@ It is a straightforward tree-based search.
 ## Implementation
 
 An implementation is given that makes direct use of breadth-first search.
+Please see a demo [here](https://xatshome.github.io/contrib/githwxi/pground/proj002@250507/misc004/.).
+
+Happy ATS programming!

@@ -9,9 +9,6 @@ Mon Jan 12 09:26:32 AM EST 2026
 //
 #include
 "prelude/HATS/prelude_dats.hats"
-#include
-"prelude\
-/almanac/HATS/pre2026_dats.hats"
 //
 (* ****** ****** *)
 (* ****** ****** *)

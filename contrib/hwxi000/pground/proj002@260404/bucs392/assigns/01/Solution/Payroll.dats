@@ -40,7 +40,7 @@ forall(this.employee_a1sz))
 ) where
 {
 //
-#typedef e1 = Employee
+#typedef ee = Employee
 #typedef x0 = optn(Employee)
 //
 #impltmp
@@ -48,12 +48,12 @@ forall$test<x0>(x0) =
 (
 case+ x0 of
 |optn_nil() => false
-|optn_cons(e1) =>
+|optn_cons(ee) =>
 (
 let
 val () =
 (
-  foritm$work<e1>(e1)) in (true) end))
+  foritm$work<ee>(ee)) in (true) end))
 }
 //
 (* ****** ****** *)
@@ -100,14 +100,14 @@ Payroll_Employee$foritm(source))
 where
 {
 #typedef
-e1 = Employee
+ee = Employee
 #impltmp
-foritm$work<e1>(e1) =
-Payroll_add$employee$raw(this, e1) }
+foritm$work<ee>(ee) =
+Payroll_add$employee$raw(this, ee) }
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [hwxi000/pground/proj002@260404/bucs392/assigns/01/Solution/Payroll.sats] *)
+(* end of [hwxi000/pground/proj002@260404/bucs392/assigns/01/Solution/Payroll.dats] *)
 (***********************************************************************)
