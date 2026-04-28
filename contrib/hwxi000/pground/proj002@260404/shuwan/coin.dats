@@ -78,8 +78,10 @@ else
 //
 val
 test_result = count(10, list@(25, 10, 5, 1))
-//
-val () = printsln("test_result = ", test_result)
+val () = printsln("test_result(10) = ", test_result)
+val
+test_result = count(100, list@(25, 10, 5, 1))
+val () = printsln("test_result(100) = ", test_result)
 //
 (* ****** ****** *)
 (* ****** ****** *)
