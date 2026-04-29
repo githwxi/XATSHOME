@@ -117,6 +117,19 @@ $(CAT) $(XATS2JSD)/runtime/srcgen2_prelude_node.js >> OUTS/$@_out.js
 queens:: queens.dats; \
 $(NODE) --stack-size=8801 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
 ########################################################################
+sorting:: ; \
+$(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
+sorting:: ; \
+$(CAT) $(XATS2JSD)/runtime/xats2js_js1emit.js >> OUTS/$@_out.js
+sorting:: ; \
+$(CAT) $(XATS2JSD)/runtime/srcgen2_precats.js >> OUTS/$@_out.js
+sorting:: ; \
+$(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/$@_out.js
+sorting:: ; \
+$(CAT) $(XATS2JSD)/runtime/srcgen2_prelude_node.js >> OUTS/$@_out.js
+sorting:: sorting.dats; \
+$(NODE) --stack-size=8801 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+########################################################################
 ########################################################################
 JP_coin:: ; \
 $(PRINTF) "## %s\n" "`date`" > OUTS/$@_out.py
