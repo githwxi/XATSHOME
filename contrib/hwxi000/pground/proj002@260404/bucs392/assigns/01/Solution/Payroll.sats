@@ -25,12 +25,12 @@ INITIAL_MAXIMUM_SIZE: nint // = 1024
 //
 fun
 Payroll_add$employee$raw
-  (this: &Payroll, x: Employee): void
+  (this: Payroll, x: Employee): void
 //
 fun
 Payroll_index$remove$raw
-  (this: &Payroll, index: nint): void
-
+  (this: Payroll, index: nint): void
+//
 (* ****** ****** *)
 
 (*
@@ -48,7 +48,7 @@ Payroll_name$find(this: Payroll, name: strn): sint
 (* ****** ****** *)
 //
 fun
-Payroll_add$payroll(this: &Payroll, source: Payroll): void
+Payroll_add$payroll(this: Payroll, source: Payroll): void
 //
 (* ****** ****** *)
 (* ****** ****** *)

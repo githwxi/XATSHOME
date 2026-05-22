@@ -205,7 +205,7 @@ else
   list_cons(x, bubble_pass(tail1))))
 )
 //
-fun
+fnx
 bubblesort_loop
 (
 xs:
@@ -214,7 +214,7 @@ list(sint), n: sint): list(sint) =
 if n <= 1 then xs else 
 bubblesort_loop(bubble_pass(xs), n - 1))
 //
-}(*where*)//end-of-[bubblesort(xs:list(sint)]
+}(*where*)//end-of-[list_bubblesort(xs:list(sint)]
 //
 val () = printsln("\
 bubblesort(1,2,3,4,5,1,2,3,4,5) = ",

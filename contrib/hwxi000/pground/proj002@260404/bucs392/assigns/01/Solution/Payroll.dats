@@ -10,8 +10,6 @@ Fri Apr 17 05:58:25 PM EDT 2026
 (* ****** ****** *)
 #staload "./Payroll.sats"
 (* ****** ****** *)
-#staload "\
-prelude/almanac/pre2026/SATS/i1range.sats"
 (* ****** ****** *)
 //
 #implval
@@ -21,7 +19,7 @@ INITIAL_MAXIMUM_SIZE = 1024
 (* ****** ****** *)
 //
 #absimpl
-Payroll_type = @{
+Payroll_type = ref@{
   current_size= nint,
   maximum_size= nint,
   employee_a1sz= a1sz(optn(Employee))
