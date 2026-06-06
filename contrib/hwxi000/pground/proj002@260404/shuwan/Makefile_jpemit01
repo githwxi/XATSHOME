@@ -23,9 +23,9 @@ all:: JP_bsearch
 all:: JP_queens
 ########################################################################
 testall:: \
-q8ueens; $(NODE) OUTS/$<_out.js
+queens; $(NODE) OUTS/$<_out.js
 testall:: \
-JP_q8ueens; $(PYTHON) OUTS/$<_out.py
+JP_queens; $(PYTHON) OUTS/$<_out.py
 ########################################################################
 ########################################################################
 clean:: ; rm -f *~
@@ -190,9 +190,9 @@ $(NODE) --stack-size=8801 $(JP_XATS2PY_PYEMIT01) $< >> OUTS/$@_out.py
 coin_out1:: ; \
 npx google-closure-compiler -W QUIET \
   --compilation_level SIMPLE --js=OUTS/coin_out.js --js_output_file=OUTS/coin_out1.js
-coin_out2:: ; \
+coin2_out1:: ; \
 npx google-closure-compiler -W QUIET \
-  --compilation_level ADVANCED --js=OUTS/coin_out.js --js_output_file=OUTS/coin_out2.js
+  --compilation_level SIMPLE --js=OUTS/coin2_out.js --js_output_file=OUTS/coin2_out1.js
 ########################################################################
 ##################### end of [Makefile_jpemit01] #######################
 ########################################################################

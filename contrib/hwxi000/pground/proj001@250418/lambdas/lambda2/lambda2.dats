@@ -6,6 +6,13 @@ Tue Jun 17 02:03:38 AM EDT 2025
 *)
 (* ****** ****** *)
 (* ****** ****** *)
+(*
+HX-2025-06-17:
+This interpreter is closure-based
+It also handles tuples + projections
+*)
+(* ****** ****** *)
+(* ****** ****** *)
 #staload UN =
 "prelude/SATS/unsfx00.sats"
 (* ****** ****** *)

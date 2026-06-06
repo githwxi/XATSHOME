@@ -6,6 +6,12 @@ Tue Jun  2 02:45:51 PM EDT 2025
 *)
 (* ****** ****** *)
 (* ****** ****** *)
+(*
+HX-2025-06-02:
+A substitution-based interpreter
+*)
+(* ****** ****** *)
+(* ****** ****** *)
 #staload UN =
 "prelude/SATS/unsfx00.sats"
 (* ****** ****** *)
