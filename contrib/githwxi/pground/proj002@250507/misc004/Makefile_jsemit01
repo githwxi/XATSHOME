@@ -11,7 +11,7 @@ PRINTF=printf
 PYTHON=python3
 ########################################################################
 ########################################################################
-all:: Game-of-24
+all:: embedded
 ########################################################################
 clean:: ; rm -f *~
 ########################################################################
@@ -53,8 +53,8 @@ embedded:: ; \
 $(CAT) $(XATS2JSD)/runtime/srcgen2_precats.js >> OUTS/Game-of-24_dats.js
 embedded:: ; \
 $(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/Game-of-24_dats.js
-embedded:: Game-of-24_dats
-Game-of-24_dats: Game-of-24.dats; \
+embedded:: Game-of-24
+Game-of-24: Game-of-24.dats; \
 $(NODE) --stack-size=8802 $(XATS2JS_JSEMIT01) $< >> OUTS/Game-of-24_dats.js
 ########################################################################
 ##################### end of [Makefile_jsemit01] #######################
