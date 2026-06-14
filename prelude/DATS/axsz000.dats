@@ -63,13 +63,13 @@ g_ptype<vt>((*0*)); pstrn(")"))
 (* ****** ****** *)
 //
 #impltmp
-{ a: vt }
-g_print<a1sz(a)>
-  ( xs ) =
+{ x0:vt }
+g_print
+<a1sz(x0)>
+(   xs   ) =
 let
 //
-#vwtpdef x0 = (a)
-#typedef xs = a1sz(a)
+#typedef xs = a1sz(x0)
 //
 #impltmp
 gseq$sep<xs><x0>() = ","
@@ -81,7 +81,7 @@ gseq$beg<xs><x0>() = "a1sz("
 in//let
 (
   gseq_print1<xs><x0>( xs ) )
-end(*let*)//end(g_print<a1sz(a)>())
+end(*let*)//end(g_print<a1sz(x0)>())
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -139,7 +139,7 @@ Fri 06 Sep 2024 04:39:23 PM EDT
 < a: t0 >
 a1sz_make_list
   ( xs ) =
-a1sz_fmake_fwork<a>
+a1sz_make_fwork<a>
 (
 lam(work) =>
 gseq_foritm<list(a)><a>(xs, work))
@@ -150,7 +150,7 @@ gseq_foritm<list(a)><a>(xs, work))
 < a: t0 >
 a1sz_make_ncpy
   (n, x) =
-a1sz_fmake_fwork<a>
+a1sz_make_fwork<a>
 (
 lam(work) =>
 nint_foritm<>(n, lam(i) => work(x)))
@@ -159,7 +159,7 @@ nint_foritm<>(n, lam(i) => work(x)))
 < a: vt >
 a1sz_make_nfun
   (n, f) =
-a1sz_fmake_fwork<a>(
+a1sz_make_fwork<a>(
 lam(work) =>
 nint_foritm<>(n, lam(i) => work(f(i)))
 )(*...*)//end-of-[a1sz_make_nfun(n,f)]
@@ -172,7 +172,7 @@ nint_foritm<>(n, lam(i) => work(f(i)))
 a1sz_make_lstrm
   ( xs ) =
 (
-a1sz_fmake_fwork<a>(
+a1sz_make_fwork<a>(
 lam(work) =>
 (
   strm_vt_foritm0$f1un<a>(xs, work))))

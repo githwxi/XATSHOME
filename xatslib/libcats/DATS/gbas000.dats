@@ -22,9 +22,11 @@ FILRopt_vt = optn_vt(FILR)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#extern
 fun
 <a:t0>
 g_prout(obj:(a)): void
+#extern
 fun
 <a:t0>
 g_prerr(obj:(a)): void
@@ -32,8 +34,20 @@ g_prerr(obj:(a)): void
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#extern
 fun<>
 g_stdin((*void*)): FILR
+//
+(* ****** ****** *)
+//
+#extern
+fun
+<(*tmp*)>
+g_stdin$line$opt
+  ((*0*)): optn_vt(strn)
+//
+(* ****** ****** *)
+(* ****** ****** *)
 //
 #extern
 fun<>
@@ -46,9 +60,12 @@ g_stderr((*void*)): FILR
 //
 #extern
 fun<>
-g_print$out((*void*)): FILR
+g_print$out((*0*)): FILR
+//
 #impltmp
-g_print$out<>() = g_stdout()
+g_print$out
+< (*tmp*) >
+( (*nil*) ) = g_stdout<>()
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -118,22 +135,20 @@ g_fprint<x0>
 (* ****** ****** *)
 //
 #impltmp
-g_print<sint>(i0) =
+sint_print<>(i0) =
 sint_fprint(i0, g_print$out<>())
 #impltmp
-g_print<bool>(b0) =
+bool_print<>(b0) =
 bool_fprint(b0, g_print$out<>())
 #impltmp
-g_print<char>(c0) =
+char_print<>(c0) =
 char_fprint(c0, g_print$out<>())
 //
 #impltmp
-g_print<dflt>(f0) =
-(
+dflt_print<>(f0) =
 dflt_fprint(f0, g_print$out<>())
 #impltmp
-g_print<strn>(cs) =
-(
+strn_print<>(cs) =
 strn_fprint(cs, g_print$out<>())
 //
 (* ****** ****** *)
@@ -151,7 +166,6 @@ g_fprint(obj, out) =
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-
+(***********************************************************************)
 (* end of [ATS3/XANADU_xatslib_libcats_DATS_gbas000.dats] *)
+(***********************************************************************)

@@ -54,7 +54,7 @@ let
 //
 val sts =
 (
-  auxloop(st0))
+  mytrans(st0))
 //
 #impltmp
 search$test1<state> =
@@ -66,7 +66,7 @@ end where // end-of-(let...)
 {
 //
 fun
-auxloop
+mytrans
 ( st0
 : state)
 : strx_vt(state) = $llazy
@@ -76,8 +76,8 @@ val st1 =
 state$trans$fupdt<state>(st0))
 in//let
 (
-  strxcon_vt_cons(st0, auxloop(st1)))
-end//let//end-of-[auxloop(st0)]
+  strxcon_vt_cons(st0, mytrans(st1)))
+end(*let*)//end-of-[mytrans(st0:state)]
 //
 }(*where*)//end-of-[g_state$trans<state>(st0)]
 //

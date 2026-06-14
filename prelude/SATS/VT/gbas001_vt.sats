@@ -554,6 +554,19 @@ c3hoose$forall$test0(~x0, ~x0, ~x0): bool
 (* ****** ****** *)
 //
 (*
+HX-2026-04-16:
+Thu Apr 16 01:52:12 AM EDT 2026
+For instance,
+[gasq_sortedq] uses [sortedq$lteq1]
+*)
+fun
+<x0:vt>
+sortedq$lteq1(x1: !x0, x2: !x0): bool
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+(*
 HX-2026-04-06:
 Mon Apr  6 03:26:51 PM EDT 2026
 *)

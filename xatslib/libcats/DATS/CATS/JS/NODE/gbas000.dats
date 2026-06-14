@@ -6,20 +6,38 @@ Sun 15 Sep 2024 05:54:50 PM EDT
 *)
 (* ****** ****** *)
 (* ****** ****** *)
-#staload "./../../../gbas000.dats"
+//
+#staload
+"./../../../../DATS/gbas000.dats"
+//
+(* ****** ****** *)
+//
+#abstype NodeJS_ReadStream
+#abstype NodeJS_WriteStream
+#typedef NodeJS_ReadStream = FILR
+#typedef NodeJS_WriteStream = FILR
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+(*
+HX-2025-04-26:
+This one should only be
+used for async operations!
+*)
 #impltmp
 g_stdin<>() =
 (
 XATS2JS_NODE_g_stdin
-  ((*void*))) where
+  ((*0*))) where
 {
 #extern
 fun
-XATS2JS_NODE_g_stdin(): FILR = $extnam()
+XATS2JS_NODE_g_stdin
+  ((*0*)): NodeJS_ReadStream = $extnam()
 }
+*)
 //
 (* ****** ****** *)
 //
@@ -27,22 +45,24 @@ XATS2JS_NODE_g_stdin(): FILR = $extnam()
 g_stdout<>() =
 (
 XATS2JS_NODE_g_stdout
-  ((*void*))) where
+  ((*0*))) where
 {
 #extern
 fun
-XATS2JS_NODE_g_stdout(): FILR = $extnam()
+XATS2JS_NODE_g_stdout
+  ((*0*)): NodeJS_WriteStream = $extnam()
 }
 //
 #impltmp
 g_stderr<>() =
 (
 XATS2JS_NODE_g_stderr
-  ((*void*))) where
+  ((*0*))) where
 {
 #extern
 fun
-XATS2JS_NODE_g_stderr(): FILR = $extnam()
+XATS2JS_NODE_g_stderr
+  ((*0*)): NodeJS_WriteStream = $extnam()
 }
 //
 (* ****** ****** *)
@@ -131,7 +151,6 @@ XATS2JS_NODE_process_argv(): argv = $extnam()
 (* ****** ****** *)
 (* ****** ****** *)
 //
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-(* ****** ****** *)(* ****** ****** *)(* ****** ****** *)
-
+(***********************************************************************)
 (* end of [ATS3/XANADU_xatslib_libcats_DATS_CATS_JS_NODE_gbas000.dats] *)
+(***********************************************************************)

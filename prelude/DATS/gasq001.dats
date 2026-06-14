@@ -117,6 +117,8 @@ $UN.gasq_cget$at$raw
 }
 end//let//end-of-[gasq_strmize(xs)]
 //
+(* ****** ****** *)
+//
 #impltmp
 < xs:t0 >
 < x0:vt >
@@ -310,46 +312,23 @@ rexists$test1<x0>(*x0*) = test(*x0*)
 //
 (* ****** ****** *)
 //
+(*
+HX-2026-04-12:
+It is based on gasq_forall!
+Sun Apr 12 02:49:50 PM EDT 2026
+*)
 #impltmp
 < xs:t0 >
 < x0:vt >
 gasq_iforall(xs) =
-let
-val n0 =
-gasq_length
-<xs><x0>(xs)
-in//let
-(*
-HX-2024-07-22:
-This example shows
-the need for non-rec templates!
-*)
 (
-nint_forall<>(n0))
+gseq_iforall1<xs><x0>(xs))
 where
 {
 #impltmp
-forall$test<ni>(i0) =
-let
-val () =
-g_free<x0>(x0) in r0
-end where//endof(let)
-{
-//
-val
-(
-pf|x0) =
-$UN.gasq_lget$at$raw
-< xs >< x0 >( xs, i0 )
-//
-val r0 =
-iforall$test1<x0>(i0, x0)
-//
-pvx () =
-(
-  owed_vt_return0(pf, x0)) }
-}
-end//let//end-of-[gasq_iforall(xs)]
+gseq_forall1
+< xs >< x0 > = gasq_forall<xs><x0>
+}(*where*)//end-of-[gasq_iforall(xs)]
 //
 #impltmp
 < xs:t0 >
@@ -365,43 +344,23 @@ iforall$test1<x0> = test(*i0,x0*)//impl
 //
 (* ****** ****** *)
 //
+(*
+HX-2026-04-12:
+It is based on gasq_rforall!
+Sun Apr 12 02:49:50 PM EDT 2026
+*)
 #impltmp
 < xs:t0 >
 < x0:vt >
 gasq_irforall(xs) =
-let
-val n0 =
 (
-gasq_length
-<xs><x0>(xs))
-val n1 = (n0-1)
-in//let
-(
-nint_forall<>(n0))
+gseq_irforall1<xs><x0>(xs))
 where
 {
 #impltmp
-forall$test<ni>(i0) =
-let
-val () =
-g_free<x0>(x0) in r0
-end where//endof(let)
-{
-//
-val
-(
-pf|x0) =
-$UN.gasq_lget$at$raw
-< xs >< x0 >(xs, n1-i0)
-//
-val r0 =
-irforall$test1<x0>(i0, x0)
-//
-pvx () =
-(
-  owed_vt_return0(pf, x0)) }
-}
-end//let//end-of-[gasq_irforall(xs)]
+gseq_rforall1
+< xs >< x0 > = gasq_rforall<xs><x0>
+}(*where*)//end-of-[gasq_irforall(xs)]
 //
 #impltmp
 < xs:t0 >
@@ -418,41 +377,23 @@ irforall$test1<x0> = test(*i0,x0*)//impl
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-04-12:
+It is based on gasq_forall!
+Sun Apr 12 02:49:50 PM EDT 2026
+*)
 #impltmp
 < xs:t0 >
 < x0:vt >
 gasq_foritm(xs) =
-let
-val n0 =
-gasq_length
-<xs><x0>(xs)
-in//let
 (
-nint_foritm<>(n0))
+gseq_foritm1<xs><x0>(xs))
 where
 {
 #impltmp
-foritm$work<ni>(i0) =
-(
-  g_free<x0>(x0); ())
-where
-{
-//
-val
-(
-pf|x0) =
-$UN.gasq_lget$at$raw
-< xs >< x0 >( xs, i0 )
-//
-val () =
-(
-  foritm$work1<x0>(x0))
-//
-pvx () =
-(
-  owed_vt_return0(pf, x0)) }
-}
-end//let//end-of-[gasq_foritm(xs)]
+gseq_forall1
+< xs >< x0 > = gasq_forall<xs><x0>
+}(*where*)//end-of-[gasq_foritm(xs)]
 //
 #impltmp
 < xs:t0 >
@@ -468,43 +409,24 @@ foritm$work1<x0>(*x0*) = test(*x0*)
 //
 (* ****** ****** *)
 //
+(*
+HX-2026-04-12:
+It is based on gasq_rforall!
+Sun Apr 12 02:49:50 PM EDT 2026
+*)
+//
 #impltmp
 < xs:t0 >
 < x0:vt >
 gasq_rforitm(xs) =
-let
-val n0 =
 (
-gasq_length
-<xs><x0>(xs))
-val n1 = (n0-1)
-in//let
-(
-nint_foritm<>(n0))
+gseq_rforitm1<xs><x0>(xs))
 where
 {
 #impltmp
-foritm$work<ni>(i0) =
-(
-  g_free<x0>(x0); ())
-where
-{
-//
-val
-(
-pf|x0) =
-$UN.gasq_lget$at$raw
-< xs >< x0 >(xs, n1-i0)
-//
-val () =
-(
-  rforitm$work1<x0>(x0))
-//
-pvx () =
-(
-  owed_vt_return0(pf, x0)) }
-}
-end//let//end-of-[gasq_rforitm(xs)]
+gseq_rforall1
+< xs >< x0 > = gasq_rforall<xs><x0>
+}(*where*)//end-of-[gasq_rforitm(xs)]
 //
 #impltmp
 < xs:t0 >
@@ -520,41 +442,24 @@ rforitm$work1<x0>(*x0*) = test(*x0*)
 //
 (* ****** ****** *)
 //
+(*
+HX-2026-04-12:
+It is based on gasq_iforall!
+Sun Apr 12 02:49:50 PM EDT 2026
+*)
+//
 #impltmp
 < xs:t0 >
 < x0:vt >
 gasq_iforitm(xs) =
-let
-val n0 =
-gasq_length
-<xs><x0>(xs)
-in//let
 (
-nint_foritm<>(n0))
+gseq_iforitm1<xs><x0>(xs))
 where
 {
 #impltmp
-foritm$work<ni>(i0) =
-(
-  g_free<x0>(x0); ())
-where
-{
-//
-val
-(
-pf|x0) =
-$UN.gasq_lget$at$raw
-< xs >< x0 >( xs, i0 )
-//
-val () =
-(
-iforitm$work1<x0>(i0, x0))
-//
-pvx () =
-(
-  owed_vt_return0(pf, x0)) }
-}
-end//let//end-of-[gasq_iforitm(xs)]
+gseq_iforall1
+< xs >< x0 > = gasq_iforall<xs><x0>
+}(*where*)//end-of-[gasq_iforitm(xs)]
 //
 #impltmp
 < xs:t0 >
@@ -570,43 +475,24 @@ iforitm$work1<x0> = test(*i0,x0*)//impl
 //
 (* ****** ****** *)
 //
+(*
+HX-2026-04-12:
+It is based on gasq_irforall!
+Sun Apr 12 02:49:50 PM EDT 2026
+*)
+//
 #impltmp
 < xs:t0 >
 < x0:vt >
 gasq_irforitm(xs) =
-let
-val n0 =
 (
-gasq_length
-<xs><x0>(xs))
-val n1 = (n0-1)
-in//let
-(
-nint_foritm<>(n0))
+gseq_irforitm1<xs><x0>(xs))
 where
 {
 #impltmp
-foritm$work<ni>(i0) =
-(
-  g_free<x0>(x0); ())
-where
-{
-//
-val
-(
-pf|x0) =
-$UN.gasq_lget$at$raw
-< xs >< x0 >(xs, n1-i0)
-//
-val () =
-(
-irforitm$work1<x0>(i0, x0))
-//
-pvx () =
-(
-  owed_vt_return0(pf, x0)) }
-}
-end//let//end-of-[gasq_irforitm(xs)]
+gseq_irforall1
+< xs >< x0 > = gasq_irforall<xs><x0>
+}(*where*)//end-of-[gasq_irforitm(xs)]
 //
 #impltmp
 < xs:t0 >
@@ -658,11 +544,12 @@ mapref$fopr0<x0>(*x0*) = fopr(*x0*)
 (*
 HX-2026-01-05:
 Mon Jan  5 06:44:09 PM EST 2026
+Thu Apr 16 02:09:08 AM EDT 2026
 *)
 //
 #impltmp
 < xs:t0 >
-< x0:t0 >
+< x0:vt >
 gasq_sortedq
   ( xs ) =
 let
@@ -672,30 +559,43 @@ gasq_length<xs><x0>(xs)
 //
 fun
 auxloop
-(i0: nint, x0: x0): bool =
-(
-if
-(i0 >= ln)
-then true else
+(i0: nint, x0: !x0): bool =
 (
 if // if
-sortedq$lteq<x0>(x0, x1)
+(i0 >= ln)
+then true else
+let
+val res =
+(
+if // if
+sortedq$lteq1<x0>(x0, x1)
 then
 auxloop(i0+1, x1) else false)
-where
+pvx ( ) =
+owed_vt_return0(pf, x1) in res
+end where
 {
-val x1 =
-$UN.gasq_get$at$raw<xs><x0>(xs, i0)}
+val
+(pf | x1) =
+$UN.gasq_lget$at$raw<xs><x0>(xs, i0)}
 )
 //
 in//let
 //
-(
 if // if
 (ln <= 1)
 then true else
-auxloop(1, 
-  $UN.gasq_get$at$raw<xs><x0>(xs, 0)))
+let
+val res =
+auxloop(1, x0)
+pvx ( ) =
+owed_vt_return0(pf, x0) in res
+end where // end-of-(let)
+{
+val
+(pf | x0) =
+(
+  $UN.gasq_lget$at$raw<xs><x0>(xs, 0))}
 //
 end(*let*)//end-of-[gasq_sortedq<xs><x0>(xs)]
 //
@@ -703,7 +603,7 @@ end(*let*)//end-of-[gasq_sortedq<xs><x0>(xs)]
 //
 #impltmp
 < xs:t0 >
-< x0:t0 >
+< x0:vt >
 gasq_sortedq$f2un
   (xs, lteq) =
 (
@@ -711,7 +611,7 @@ gasq_sortedq<xs><x0>(xs))
 where
 {
 #impltmp
-sortedq$lteq<x0>(*x1,x2*) = lteq(*x1,x2*)
+sortedq$lteq1<x0>(*x1,x2*) = lteq(*x1,x2*)
 }(*where*)//end-of-[gasq_sortedq$f2un(xs,lteq)]
 //
 (* ****** ****** *)
@@ -785,7 +685,7 @@ end(*let*)//else//endof(bsearch(lb,ub))
 //
 #impltmp
 < xs:t0 >
-< x0:t0 >
+< x0:vt >
 gasq_bin$search$f1un
   (xs, tcmp) =
 (
@@ -793,7 +693,7 @@ gasq_bin$search<xs><x0>(xs))
 where
 {
 #impltmp
-search$tcmp<x0>(*x1,x2*) = tcmp(*x1,x2*)
+search$tcmp1<x0>(*x1,x2*) = tcmp(*x1,x2*)
 }(*where*)//end-of-[gasq_bin$search$f1un(xs,tcmp)]
 //
 (* ****** ****** *)

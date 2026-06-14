@@ -42,6 +42,74 @@ Authoremail: gmhwxiATgmailDOTcom
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2026-04-16:
+gasq_iforall0->gasq_forall0
+gasq_iforall1->gasq_forall1
+*)
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gasq_iforall0(xs) =
+(
+gseq_iforall0<xs><x0>(xs))
+where
+{
+#impltmp
+gseq_forall0
+< xs >< x0 > = gasq_forall0<xs><x0>
+}(*where*)//end-of-[gasq_iforall0(xs)]
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gasq_iforall1(xs) =
+(
+gseq_iforall1<xs><x0>(xs))
+where
+{
+#impltmp
+gseq_forall1
+< xs >< x0 > = gasq_forall1<xs><x0>
+}(*where*)//end-of-[gasq_iforall1(xs)]
+//
+(* ****** ****** *)
+//
+(*
+HX-2026-04-16:
+gasq_irforall0->gasq_rforall0
+gasq_irforall1->gasq_rforall1
+*)
+#impltmp
+< xs:vt >
+< x0:vt >
+gasq_irforall0(xs) =
+(
+gseq_irforall0<xs><x0>(xs))
+where
+{
+#impltmp
+gseq_rforall0
+< xs >< x0 > = gasq_rforall0<xs><x0>
+}(*where*)//end-of-[gasq_irforall0(xs)]
+//
+#impltmp
+< xs:vt >
+< x0:vt >
+gasq_irforall1(xs) =
+(
+gseq_irforall1<xs><x0>(xs))
+where
+{
+#impltmp
+gseq_rforall1
+< xs >< x0 > = gasq_rforall1<xs><x0>
+}(*where*)//end-of-[gasq_irforall1(xs)]
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
 (* end of [ATS3/XANADU_prelude_DATS_VT_gasq001_vt.dats] *)
 (***********************************************************************)
