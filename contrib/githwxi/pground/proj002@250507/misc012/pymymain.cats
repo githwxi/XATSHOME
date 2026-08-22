@@ -3,6 +3,12 @@
 API_URL = \
 "https://api.dictionaryapi.dev/api/v2/entries/en/"
 
+########################################################################
+#
+# HX-2026-08-22:
+# It is NOT really working
+# when too many requests are made!!!
+#
 def CATS_word_test(word):
     word = word.strip().lower()
 
