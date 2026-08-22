@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2025 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2026 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -30,7 +30,7 @@
 //
 (*
 Author: Hongwei Xi
-Wed Jan  8 02:50:50 AM EST 2025
+Sun Jun 28 11:04:40 AM EDT 2026
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
@@ -41,12 +41,12 @@ Authoremail: gmhwxiATgmailDOTcom
 g_si<dflt>
   ( i1 ) =
 (
-XATS2PY_si2dflt
+XATS2CM_si2dflt
   ( i1 )) where
 {
 #extern
 fcast
-XATS2PY_si2dflt
+XATS2CM_si2dflt
 (i1: sint): dflt = $extnam() }
 //
 (* ****** ****** *)
@@ -57,12 +57,12 @@ XATS2PY_si2dflt
 dflt_neg
   ( f1 ) =
 (
-XATS2PY_dflt_neg
+XATS2CM_dflt_neg
   ( f1 )) where
 {
 #extern
 fun
-XATS2PY_dflt_neg
+XATS2CM_dflt_neg
 (f1: dflt): dflt = $extnam() }
 //
 (* ****** ****** *)
@@ -72,12 +72,12 @@ XATS2PY_dflt_neg
 dflt_abs
   ( f1 ) =
 (
-XATS2PY_dflt_abs
+XATS2CM_dflt_abs
   ( f1 )) where
 {
 #extern
 fun
-XATS2PY_dflt_abs
+XATS2CM_dflt_abs
 (f1: dflt): dflt = $extnam() }
 //
 (* ****** ****** *)
@@ -88,12 +88,12 @@ XATS2PY_dflt_abs
 dflt_sqrt
   ( f1 ) =
 (
-XATS2PY_dflt_sqrt
+XATS2CM_dflt_sqrt
   ( f1 )) where
 {
 #extern
 fun
-XATS2PY_dflt_sqrt
+XATS2CM_dflt_sqrt
 (f1: dflt): dflt = $extnam() }
 //
 (* ****** ****** *)
@@ -103,12 +103,12 @@ XATS2PY_dflt_sqrt
 dflt_cbrt
   ( f1 ) =
 (
-XATS2PY_dflt_cbrt
+XATS2CM_dflt_cbrt
   ( f1 )) where
 {
 #extern
 fun
-XATS2PY_dflt_cbrt
+XATS2CM_dflt_cbrt
 (f1: dflt): dflt = $extnam() }
 //
 (* ****** ****** *)
@@ -119,12 +119,12 @@ XATS2PY_dflt_cbrt
 dflt_lt$dflt
   (f1, f2) =
 (
-XATS2PY_dflt_lt$dflt
+XATS2CM_dflt_lt$dflt
   (f1, f2)) where
 {
 #extern
 fun
-XATS2PY_dflt_lt$dflt
+XATS2CM_dflt_lt$dflt
 (f1: dflt, f2: dflt): bool = $extnam()
 }
 //
@@ -133,12 +133,12 @@ XATS2PY_dflt_lt$dflt
 dflt_gt_dflt
   (f1, f2) =
 (
-XATS2PY_dflt_gt$dflt
+XATS2CM_dflt_gt$dflt
   (f1, f2)) where
 {
 #extern
 fun
-XATS2PY_dflt_gt$dflt
+XATS2CM_dflt_gt$dflt
 (f1: dflt, f2: dflt): bool = $extnam()
 }
 //
@@ -147,12 +147,12 @@ XATS2PY_dflt_gt$dflt
 dflt_eq$dflt
   (f1, f2) =
 (
-XATS2PY_dflt_eq$dflt
+XATS2CM_dflt_eq$dflt
   (f1, f2)) where
 {
 #extern
 fun
-XATS2PY_dflt_eq$dflt
+XATS2CM_dflt_eq$dflt
 (f1: dflt, f2: dflt): bool = $extnam()
 }
 //
@@ -163,12 +163,12 @@ XATS2PY_dflt_eq$dflt
 dflt_lte$dflt
   (f1, f2) =
 (
-XATS2PY_dflt_lte$dflt
+XATS2CM_dflt_lte$dflt
   (f1, f2)) where
 {
 #extern
 fun
-XATS2PY_dflt_lte$dflt
+XATS2CM_dflt_lte$dflt
 (f1: dflt, f2: dflt): bool = $extnam()
 }
 //
@@ -177,12 +177,12 @@ XATS2PY_dflt_lte$dflt
 dflt_gte$dflt
   (f1, f2) =
 (
-XATS2PY_dflt_gte$dflt
+XATS2CM_dflt_gte$dflt
   (f1, f2)) where
 {
 #extern
 fun
-XATS2PY_dflt_gte$dflt
+XATS2CM_dflt_gte$dflt
 (f1: dflt, f2: dflt): bool = $extnam()
 }
 //
@@ -191,12 +191,12 @@ XATS2PY_dflt_gte$dflt
 dflt_neq$dflt
   (f1, f2) =
 (
-XATS2PY_dflt_neq$dflt
+XATS2CM_dflt_neq$dflt
   (f1, f2)) where
 {
 #extern
 fun
-XATS2PY_dflt_neq$dflt
+XATS2CM_dflt_neq$dflt
 (f1: dflt, f2: dflt): bool = $extnam()
 }
 //
@@ -208,12 +208,12 @@ XATS2PY_dflt_neq$dflt
 dflt_add$dflt
   (f1, f2) =
 (
-XATS2PY_dflt_add$dflt
+XATS2CM_dflt_add$dflt
   (f1, f2)) where
 {
 #extern
 fun
-XATS2PY_dflt_add$dflt
+XATS2CM_dflt_add$dflt
 (f1: dflt, f2: dflt): dflt = $extnam()
 }
 //
@@ -222,12 +222,12 @@ XATS2PY_dflt_add$dflt
 dflt_sub$dflt
   (f1, f2) =
 (
-XATS2PY_dflt_sub$dflt
+XATS2CM_dflt_sub$dflt
   (f1, f2)) where
 {
 #extern
 fun
-XATS2PY_dflt_sub$dflt
+XATS2CM_dflt_sub$dflt
 (f1: dflt, f2: dflt): dflt = $extnam()
 }
 //
@@ -236,12 +236,12 @@ XATS2PY_dflt_sub$dflt
 dflt_mul$dflt
   (f1, f2) =
 (
-XATS2PY_dflt_mul$dflt
+XATS2CM_dflt_mul$dflt
   (f1, f2)) where
 {
 #extern
 fun
-XATS2PY_dflt_mul$dflt
+XATS2CM_dflt_mul$dflt
 (f1: dflt, f2: dflt): dflt = $extnam()
 }
 //
@@ -250,12 +250,12 @@ XATS2PY_dflt_mul$dflt
 dflt_div$dflt
   (f1, f2) =
 (
-XATS2PY_dflt_div$dflt
+XATS2CM_dflt_div$dflt
   (f1, f2)) where
 {
 #extern
 fun
-XATS2PY_dflt_div$dflt
+XATS2CM_dflt_div$dflt
 (f1: dflt, f2: dflt): dflt = $extnam()
 }
 //
@@ -264,12 +264,12 @@ XATS2PY_dflt_div$dflt
 dflt_mod$dflt
   (f1, f2) =
 (
-XATS2PY_dflt_mod$dflt
+XATS2CM_dflt_mod$dflt
   (f1, f2)) where
 {
 #extern
 fun
-XATS2PY_dflt_mod$dflt
+XATS2CM_dflt_mod$dflt
 (f1: dflt, f2: dflt): dflt = $extnam()
 }
 //
@@ -281,12 +281,12 @@ XATS2PY_dflt_mod$dflt
 dflt_print
   ( f0 ) =
 (
-XATS2PY_dflt_print
+XATS2CM_dflt_print
   ( f0 )) where
 {
 #extern
 fun
-XATS2PY_dflt_print(f0: dflt): void = $extnam()
+XATS2CM_dflt_print(f0: dflt): void = $extnam()
 }
 //
 (* ****** ****** *)
@@ -297,12 +297,12 @@ XATS2PY_dflt_print(f0: dflt): void = $extnam()
 dflt_ceil
   ( df ) =
 (
-XATS2PY_dflt_ceil
+XATS2CM_dflt_ceil
   ( df )) where
 {
 #extern
 fun
-XATS2PY_dflt_ceil(df: dflt): dflt = $extnam()
+XATS2CM_dflt_ceil(df: dflt): dflt = $extnam()
 }
 //
 #impltmp
@@ -310,12 +310,12 @@ XATS2PY_dflt_ceil(df: dflt): dflt = $extnam()
 dflt_floor
   ( df ) =
 (
-XATS2PY_dflt_floor
+XATS2CM_dflt_floor
   ( df )) where
 {
 #extern
 fun
-XATS2PY_dflt_floor(df: dflt): dflt = $extnam()
+XATS2CM_dflt_floor(df: dflt): dflt = $extnam()
 }
 //
 #impltmp
@@ -323,12 +323,12 @@ XATS2PY_dflt_floor(df: dflt): dflt = $extnam()
 dflt_round
   ( df ) =
 (
-XATS2PY_dflt_round
+XATS2CM_dflt_round
   ( df )) where
 {
 #extern
 fun
-XATS2PY_dflt_round(df: dflt): dflt = $extnam()
+XATS2CM_dflt_round(df: dflt): dflt = $extnam()
 }
 //
 #impltmp
@@ -336,17 +336,17 @@ XATS2PY_dflt_round(df: dflt): dflt = $extnam()
 dflt_trunc
   ( df ) =
 (
-XATS2PY_dflt_trunc
+XATS2CM_dflt_trunc
   ( df )) where
 {
 #extern
 fun
-XATS2PY_dflt_trunc(df: dflt): dflt = $extnam()
+XATS2CM_dflt_trunc(df: dflt): dflt = $extnam()
 }
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_DATS_CATS_PY_gflt000.dats] *)
+(* end of [ATS3/XANADU_prelude_DATS_CATS_CM_gflt000.dats] *)
 (***********************************************************************)

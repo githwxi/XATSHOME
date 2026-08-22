@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2024 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2026 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -30,155 +30,197 @@
 //
 (*
 Author: Hongwei Xi
-Fri 16 Aug 2024 05:24:40 PM EDT
+Sun Jun 28 11:04:40 AM EDT 2026
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-#staload UN =
-"prelude/SATS/unsfx00.sats"
+//
+#impltmp
+<(*tmp*)>
+char_lt
+(c1, c2) =
+(
+XATS2CM_char_lt
+  (c1, c2)) where
+{
+#extern
+fun
+XATS2CM_char_lt
+(c1: char, c2: char): bool = $extnam()
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+char_gt
+(c1, c2) =
+(
+XATS2CM_char_gt
+  (c1, c2)) where
+{
+#extern
+fun
+XATS2CM_char_gt
+(c1: char, c2: char): bool = $extnam()
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+char_eq
+(c1, c2) =
+(
+XATS2CM_char_eq
+  (c1, c2)) where
+{
+#extern
+fun
+XATS2CM_char_eq
+(c1: char, c2: char): bool = $extnam()
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+char_lte
+(c1, c2) =
+(
+XATS2CM_char_lte
+  (c1, c2)) where
+{
+#extern
+fun
+XATS2CM_char_lte
+(c1: char, c2: char): bool = $extnam()
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+char_gte
+(c1, c2) =
+(
+XATS2CM_char_gte
+  (c1, c2)) where
+{
+#extern
+fun
+XATS2CM_char_gte
+(c1: char, c2: char): bool = $extnam()
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+char_neq
+(c1, c2) =
+(
+XATS2CM_char_neq
+  (c1, c2)) where
+{
+#extern
+fun
+XATS2CM_char_neq
+(c1: char, c2: char): bool = $extnam()
+}
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
 <(*tmp*)>
-strn_length
-  ( cs ) =
+char_add$sint
+  (c1, i2) =
 (
-XATS000_strn_length
-  ( cs )) where
+XATS2CM_char_add$sint
+  (c1, i2)) where
 {
 #extern
 fun
-XATS000_strn_length
-  (cs: strn): nint = $extnam()
+XATS2CM_char_add$sint
+(c1: char, i2: sint): char = $extnam()
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+char_sub$char
+  (c1, c2) =
+(
+XATS2CM_char_sub$char
+  (c1, c2)) where
+{
+#extern
+fun
+XATS2CM_char_sub$char
+(c1: char, c2: char): sint = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+char_print
+  ( c0 ) =
+(
+XATS2CM_char_print
+  ( c0 )) where
+{
+#extern
+fun
+XATS2CM_char_print(c0: char): void = $extnam()
 }
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (*
-HX-2024-09-04:
-Wed 04 Sep 2024 04:52:34 AM EDT
+HX-2026-01-17:
+Sat Jan 17 09:47:35 PM EST 2026
 *)
-//
 #impltmp
 <(*tmp*)>
-strn_cmp
-  (x1, x2) =
+sint_make_char(ch) =
 (
-XATS000_strn_cmp
-  (x1, x2)) where
+XATS2CM_sint_make_char(ch))
+where
 {
 #extern
 fun
-XATS000_strn_cmp
-(x1: strn, x2: strn): nint = $extnam()
+XATS2CM_sint_make_char(ch: char): sint = $extnam()
 }
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (*
-HX-2024-09-05:
-Thu 05 Sep 2024 11:11:27 AM EDT
+HX-2026-01-17:
+Sat Jan 17 09:47:35 PM EST 2026
 *)
-//
 #impltmp
 <(*tmp*)>
-strn_print
-  ( cs ) =
+char_make_sint(i0) =
 (
-XATS000_strn_print
-  ( cs )) where
+XATS2CM_char_make_sint(i0))
+where
 {
 #extern
 fun
-XATS000_strn_print(cs: strn): void = $extnam()
-}
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-<(*tmp*)>
-$UN.strn_get$at$raw
-  (cs, i0) =
-(
-XATS000_strn_get$at$raw
-  (cs, i0)) where
-{
-#extern
-fun
-XATS000_strn_get$at$raw
-  (cs: strn, i0: nint): cgtz = $extnam()
-}
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-(*
-HX-2024-08-16:
-Fri 16 Aug 2024 05:22:41 PM EDT
-*)
-//
-#impltmp
-<(*tmp*)>
-strn_make_fwork
-  (fwork) =
-(
-XATS000_strn_make_fwork
-  (fwork)) where
-{
-#extern
-fun
-XATS000_strn_make_fwork
-( fwork
-: ((cgtz)->void)->void): strn = $extnam()
-}
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-(*
-HX-2025-04-26:
-Sat Apr 26 08:48:02 PM EDT 2025
-*)
-//
-#impltmp
-<env:vt>
-strn_make_env$fwork
-  (env, fwork) =
-(
-XATS000_strn_make_env$fwork
-  (env, fwork)) where
-{
-#extern
-fun
-XATS000_strn_make_env$fwork
-( env: env
-, fwork: (env, cgtz->void)->void): strn = $extnam()
-}
-//
-#impltmp
-<env:vt>
-strn_make1_env$fwork
-  (env, fwork) =
-(
-XATS000_strn_make1_env$fwork
-  (env, fwork)) where
-{
-#extern
-fun
-XATS000_strn_make1_env$fwork
-( env: !env
-, fwork: (!env, cgtz->void)->void): strn = $extnam()
+XATS2CM_char_make_sint(i0: sint): char = $extnam()
 }
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_DATS_CATS_strn000.dats] *)
+(* end of [ATS3/XANADU_prelude_DATS_CATS_CM_char000.dats] *)
 (***********************************************************************)

@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2025 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2026 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -30,13 +30,30 @@
 //
 (*
 Author: Hongwei Xi
-Wed Jan  1 03:23:42 PM EST 2025
+Mon Jun 29 08:17:01 AM EDT 2026
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+<(*tmp*)>
+bool_assert$errmsg
+  (cond, emsg) =
+(
+XATS2CM_bool_assert$errmsg
+  (cond, emsg)) where
+{
+#extern
+fun
+XATS2CM_bool_assert$errmsg
+(cond: bool, emsg: strm): void = $extnam()
+}
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_DATS_CATS_PY_xtop000.dats] *)
+(* end of [ATS3/XANADU_prelude_DATS_CATS_CM_gdbg000.dats] *)
 (***********************************************************************)

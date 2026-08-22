@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2025 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2026 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -30,137 +30,51 @@
 //
 (*
 Author: Hongwei Xi
-Wed Jan  1 03:30:43 PM EST 2025
+Sun Apr 12 01:09:27 PM EDT 2026
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
-//
-#absimpl
-a1sz_vt_i0_tx
-(a: vt, n: i0) = $extbox("a1sz_tx")
-#absimpl
-a1sz_vt_i0_vx
-(a: vt, n: i0) = $extbox("a1sz_vx")
-//
+#staload UN =
+"prelude/SATS/unsfx00.sats"
 (* ****** ****** *)
 (* ****** ****** *)
 //
 #impltmp
-< a: vt >
-a1sz_length
- {n:i0}( A ) =
+{ t0:t0 }
+g_ptype
+<a1at(t0)>
+( (*void*) ) =
 (
-XATS2PY_a1sz_length
- {a}{n}( A )) where
-{
-#extern
-fun
-XATS2PY_a1sz_length
-{a:vt}
-{n:i0}
-(A: a1sz(a, n)): sint(n) = $extnam()
-}
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-< a: vt >
-a1sz_lget$at
-  (A, i) =
-(
-XATS2PY_a1sz_lget$at
-  (A, i)) where
-{
-#extern
-fun
-XATS2PY_a1sz_lget$at
-{a:vt}
-( A
-: a1sz(a)
-, i: nint): (owed(a) | a) = $extnam()
-}
-//
-#impltmp
-< a: vt >
-a1sz_lset$at
-  (f | A, i, x) =
-(
-XATS2PY_a1sz_lset$at
-  (f | A, i, x)) where
-{
-#extern
-fun
-XATS2PY_a1sz_lset$at
-{a:vt}
-(f:owed(a)
-|A:a1sz(a),i:nint,x:a): void = $extnam()
-}
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-#impltmp
-< a: t0 >
-a1sz_make_ncpy
-  (n, x) =
-(
-XATS2PY_a1sz_make_ncpy
-  (n, x)) where
-{
-#extern
-fun
-XATS2PY_a1sz_make_ncpy
-{a:t0}(n:nint, x:a): a1sz(a) = $extnam()
-}
+pstrn("a1at(");
+g_ptype<t0>((*0*)); pstrn(")"))
 //
 (* ****** ****** *)
 //
 #impltmp
-< a: vt >
-a1sz_make_nfun
-  (n, f) =
-(
-XATS2PY_a1sz_make_nfun
-  (n, f)) where
-{
-#extern
-fun
-XATS2PY_a1sz_make_nfun
-{a:t0}
-(n:nint, f:(nint)->(a)): a1sz(a) = $extnam()
-}
+{ x0:t0 }
+g_print
+<a1at(x0)>
+(   xs   ) =
+let
 //
-(* ****** ****** *)
-(* ****** ****** *)
-//
-(*
-HX-2025-04-27:
-Sun Apr 27 07:00:55 PM EDT 2025
-*)
+#typedef xs = a1at(x0)
 //
 #impltmp
-< x0:vt >
-a1sz_make_fwork
-  (fwork) =
+gseq$sep<xs><x0>() = ","
+#impltmp
+gseq$end<xs><x0>() = ")"
+#impltmp
+gseq$beg<xs><x0>() = "a1at("
+in//let
 (
-XATS2PY_a1sz_make_fwork
-  (fwork)) where
-{
-#extern
-fun
-XATS2PY_a1sz_make_fwork
-{ x0:vt }
-(
-fwork:
-((~x0) -> void) -> void): a1sz(x0) = $extnam()
-}
+  gseq_print1<xs><x0>( xs ) )
+end(*let*)//end(g_print<a1at(x0)>())
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_DATS_CATS_PY_axsz000.dats] *)
+(* end of [ATS3/XANADU_prelude_DATS_axat000.dats] *)
 (***********************************************************************)

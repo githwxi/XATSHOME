@@ -6,7 +6,7 @@
 
 (*
 ** ATS/Xanadu - Unleashing the Potential of Types!
-** Copyright (C) 2024 Hongwei Xi, ATS Trustful Software, Inc.
+** Copyright (C) 2026 Hongwei Xi, ATS Trustful Software, Inc.
 ** All rights reserved
 **
 ** ATS is free software;  you can  redistribute it and/or modify it under
@@ -26,134 +26,125 @@
 *)
 
 (* ****** ****** *)
+(* ****** ****** *)
 //
 (*
 Author: Hongwei Xi
-(*
-Sun 11 Aug 2024 09:11:41 AM EDT
-*)
+Sun Jun 28 11:04:40 AM EDT 2026
 Authoremail: gmhwxiATgmailDOTcom
 *)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
+#impltmp
+<(*tmp*)>
+bool_lt
+(b1, b2) =
+(
+XATS2CM_bool_lt
+  (b1, b2)) where
+{
+#extern
 fun
-<x0:t0>
-list_equal
-( xs: list(x0)
-, ys: list(x0)): bool//end-of-[fun]
+XATS2CM_bool_lt
+(b1: bool, b2: bool): bool = $extnam()
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+bool_gt
+(b1, b2) =
+(
+XATS2CM_bool_gt
+  (b1, b2)) where
+{
+#extern
+fun
+XATS2CM_bool_gt
+(b1: bool, b2: bool): bool = $extnam()
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+bool_eq
+(b1, b2) =
+(
+XATS2CM_bool_eq
+  (b1, b2)) where
+{
+#extern
+fun
+XATS2CM_bool_eq
+(b1: bool, b2: bool): bool = $extnam()
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+bool_lte
+(b1, b2) =
+(
+XATS2CM_bool_lte
+  (b1, b2)) where
+{
+#extern
+fun
+XATS2CM_bool_lte
+(b1: bool, b2: bool): bool = $extnam()
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+bool_gte
+(b1, b2) =
+(
+XATS2CM_bool_gte
+  (b1, b2)) where
+{
+#extern
+fun
+XATS2CM_bool_gte
+(b1: bool, b2: bool): bool = $extnam()
+}
+//
+(* ****** ****** *)
+//
+#impltmp
+<(*tmp*)>
+bool_neq
+(b1, b2) =
+(
+XATS2CM_bool_neq
+  (b1, b2)) where
+{
+#extern
+fun
+XATS2CM_bool_neq
+(b1: bool, b2: bool): bool = $extnam()
+}
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
-fun
-<x0:t0>
-<y0:t0>
-list_z2forall
-( xs: list(x0)
-, ys: list(y0)): bool//end-of-[fun]
-//
-fun
-<x0:t0>
-<y0:t0>
-list_z2iforall
-( xs: list(x0)
-, ys: list(y0)): bool//end-of-[fun]
-//
-#symload
-z2forall with list_z2forall of 1000
-#symload
-z2iforall with list_z2iforall of 1000
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<x0:t0>
-<y0:t0>
-list_z2forcmp
-( xs: list(x0)
-, ys: list(y0)): sint//end-of-[fun]
-//
-fun
-<x0:t0>
-<y0:t0>
-list_z2iforcmp
-( xs: list(x0)
-, ys: list(y0)): sint//end-of-[fun]
-//
-#symload
-z2forcmp with list_z2forcmp of 1000
-#symload
-z2iforcmp with list_z2iforcmp of 1000
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<x0:t0>
-<y0:t0>
-list_z2foritm
-( xs: list(x0)
-, ys: list(y0)): void//end-of-[fun]
-//
-fun
-<x0:t0>
-<y0:t0>
-list_z2iforitm
-( xs: list(x0)
-, ys: list(y0)): void//end-of-[fun]
-//
-#symload
-z2foritm with list_z2foritm of 1000
-#symload
-z2iforitm with list_z2iforitm of 1000
-//
-(* ****** ****** *)
-(* ****** ****** *)
-//
-fun
-<x0:t0>
-<y0:t0>
-<r0:t0>
-list_z2folditm
-(list(x0), list(y0), r0): (r0)
-fun
-<x0:t0>
-<y0:t0>
-<r0:t0>
-list_z2ifolditm
-(list(x0), list(y0), r0): (r0)
-//
-#symload
-z2folditm with list_z2folditm of 1000
-#symload
-z2ifolditm with list_z2ifolditm of 1000
-//
-(* ****** ****** *)
-//
-fun
-<x0:t0>
-<y0:t0>
-<r0:t0>
-list_z2foldall
-(list(x0), list(y0), r0): (r0)
-fun
-<x0:t0>
-<y0:t0>
-<r0:t0>
-list_z2ifoldall
-(list(x0), list(y0), r0): (r0)
-//
-#symload
-z2foldall with list_z2foldall of 1000
-#symload
-z2ifoldall with list_z2ifoldall of 1000
+#impltmp
+<(*tmp*)>
+bool_print(b0) =
+(
+if b0
+then strn_print<>("true")
+else strn_print<>("false"))//end(impl)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_SATS_list002.sats] *)
+(* end of [ATS3/XANADU_prelude_DATS_CATS_CM_bool000.dats] *)
 (***********************************************************************)
