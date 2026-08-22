@@ -20,7 +20,8 @@ def CATS_word_test(word):
     myurl = API_URL + word
 
     try:
-        response = requests.get(myurl, timeout=10)
+        response = \
+        requests.get(myurl, timeout=10)
 
         if response.status_code == 404:
             return False
