@@ -6,15 +6,15 @@ API_URL = \
 def CATS_word_test(word):
     word = word.strip().lower()
 
-    print(f"CATS_word_test: word = {word}")
+    print\
+    (f"CATS_word_test: word = {word}")
 
-    if not word.isalpha():
-        return False
+    if not word.isalpha(): return False
 
-    url = API_URL + word
+    myurl = API_URL + word
 
     try:
-        response = requests.get(url, timeout=10)
+        response = requests.get(myurl, timeout=10)
 
         if response.status_code == 404:
             return False
