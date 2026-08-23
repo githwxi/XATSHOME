@@ -7,7 +7,8 @@ cleanall
 ########################################################################
 cleanall:: ; rm -f *~
 ########################################################################
-cleanall:: ; $(MAKE) -C misc000 cleanall
+# cleanall:: ; \
+# $(MAKE) -C misc000 cleanall
 cleanall:: ; $(MAKE) -C misc001 cleanall
 cleanall:: ; $(MAKE) -C misc002 cleanall
 cleanall:: ; $(MAKE) -C misc003 cleanall
@@ -20,6 +21,7 @@ cleanall:: ; $(MAKE) -C misc009 cleanall
 cleanall:: ; $(MAKE) -C misc010 cleanall
 cleanall:: ; $(MAKE) -C misc011 cleanall
 cleanall:: ; $(MAKE) -C misc012 cleanall
+cleanall:: ; $(MAKE) -C misc013 cleanall
 ########################################################################
 ########################################################################
 ######################(end-of-(Makefile_cleanall))######################
