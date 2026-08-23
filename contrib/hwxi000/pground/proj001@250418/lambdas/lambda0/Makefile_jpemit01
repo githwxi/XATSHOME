@@ -5,11 +5,11 @@
 ########################################################################
 ########################################################################
 CAT=cat
-BUN=bun
 ECHO=echo
 NODE=node
 PRINTF=printf
 PYTHON=python3
+NPMNPX=npx @npmhwxi/xats2py-pyemit01-ats2
 ########################################################################
 ########################################################################
 all:: lambda0
@@ -44,13 +44,16 @@ lambda0:: ; $(CAT) \
 $(XATS2PYD)/runtime/srcgen2_prelude.py >> OUTS/$@_out.py
 # HX-2025-04-28:
 # the flag '--_XATS2PY_' can soon be dropped!
-lambda0:: ; \
-$(NODE) --stack-size=8801 \
-$(XATS2PY_PYEMIT01) lambda0.dats --_XATS2PY_ >> OUTS/$@_out.py
+# lambda0:: ; \
+# $(NODE) --stack-size=8801 \
+# $(XATS2PY_PYEMIT01) lambda0.dats --_XATS2PY_ >> OUTS/$@_out.py
+lambda0:: ; $(NPMNPX) lambda0.dats --_XATS2PY_ >> OUTS/$@_out.py
 ########################################################################
 # lambda0:: ; \
 # XATS2PY_PYEMIT01=$(XATSHOME)/xassets/PY/xats2py/xats2py_pyemit01_ats3_opt0.py \
 # $(PYTHON) $(XATS2PY_PYEMIT01) __void__ lambda0.dats --_XATS2PY_ >> OUTS/$@_out.py
 ########################################################################
 ########################################################################
-##################### end of [Makefile_pyemit01] #######################
+##################### end of [Makefile_jpemit01] #######################
+########################################################################
+########################################################################
