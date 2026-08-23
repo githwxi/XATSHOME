@@ -47,9 +47,10 @@ lambda0:: ; $(CAT) \
 $(XATS2JS)/runtime/srcgen2_prelude.js >> OUTS/$@_out.js
 # HX-2025-04-28:
 # the flag '--_XATS2JS_' can soon be dropped!
-lambda0:: ; \
-$(NODE) --stack-size=8192 \
-$(XATS2JS_JSEMIT01) lambda0.dats --_XATS2JS_ >> OUTS/$@_out.js
+# lambda0:: ; \
+# $(NODE) --stack-size=8192 \
+# $(XATS2JS_JSEMIT01) lambda0.dats --_XATS2JS_ >> OUTS/$@_out.js
+lambda0:: ; $(NPMNPX) lambda0.dats --_XATS2JS_ >> OUTS/$@_out.js
 ########################################################################
 # lambda0:: ; \
 # XATS2JS_JSEMIT01=\
@@ -66,3 +67,5 @@ npx google-closure-compiler -W QUIET \
 ########################################################################
 ########################################################################
 ##################### end of [Makefile_jsemit01] #######################
+########################################################################
+########################################################################
