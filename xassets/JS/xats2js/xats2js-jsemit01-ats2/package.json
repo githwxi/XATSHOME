@@ -1,0 +1,16 @@
+{
+    "name": "@npmhwxi/xats2js-jsemit01-ats2",
+    "version": "1.0.1",
+    "description": "Compiling ATS3 to JavaScript",
+    "bin": {
+        "xats2js-jsemit01": "bin/xats2js.js"
+    },
+    "files": [
+        "LICENSE",
+        "README.md",
+        "bin/xats2js.js"
+    ],
+    "engines": {
+        "node": ">=18"
+    }
+}

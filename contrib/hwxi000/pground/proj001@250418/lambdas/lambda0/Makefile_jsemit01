@@ -1,7 +1,7 @@
 ########################################################################
 ########################################################################
 # Makefile for
-# CS525-2024F-lambdas-lambda1
+# CS525-2024F-lambdas-lambda0
 ########################################################################
 ########################################################################
 CAT=cat
@@ -10,20 +10,21 @@ ECHO=echo
 NODE=node
 PRINTF=printf
 PYTHON=python3
+NPMNPX=npx @npmhwxi/xats2js-jsemit01-ats2
 ########################################################################
 ########################################################################
-all:: lambda1
+all:: lambda0
 ########################################################################
 ########################################################################
 testall:: \
-lambda1; $(NODE) OUTS/$<_out.js
+lambda0; $(NODE) OUTS/$<_out.js
 ########################################################################
 ########################################################################
 clean:: ; rm -f *~
 cleanall:: ; rm -f *~
-cleanall:: ; rm -f lambda1_out.js
-cleanall:: ; rm -f lambda1_out.py
-cleanall:: ; rm -f lambda1_out?.js
+cleanall:: ; rm -f lambda0_out.js
+cleanall:: ; rm -f lambda0_out.py
+cleanall:: ; rm -f lambda0_out?.js
 ########################################################################
 ########################################################################
 XATSHOME=./../../../../../../../XATSHOME
@@ -38,30 +39,30 @@ $(XATSHOME)/xassets/JS/xats2js/xats2js_jsemit01_ats3_opt1.js
 #
 ########################################################################
 ########################################################################
-lambda1:: ; \
+lambda0:: ; \
 $(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
-lambda1:: ; $(CAT) \
+lambda0:: ; $(CAT) \
 $(XATS2JS)/runtime/xats2js_js1emit.js >> OUTS/$@_out.js
-lambda1:: ; $(CAT) \
+lambda0:: ; $(CAT) \
 $(XATS2JS)/runtime/srcgen2_prelude.js >> OUTS/$@_out.js
 # HX-2025-04-28:
 # the flag '--_XATS2JS_' can soon be dropped!
-lambda1:: ; \
+lambda0:: ; \
 $(NODE) --stack-size=8192 \
-$(XATS2JS_JSEMIT01) lambda1.dats --_XATS2JS_ >> OUTS/$@_out.js
+$(XATS2JS_JSEMIT01) lambda0.dats --_XATS2JS_ >> OUTS/$@_out.js
 ########################################################################
-# lambda1:: ; \
+# lambda0:: ; \
 # XATS2JS_JSEMIT01=\
 # $(XATSHOME)/xassets/PY/xats2js/xats2js_jsemit01_ats3_opt0.py
 # $(PYTHON) \
-# $(XATS2JS_JSEMIT01) __void__ lambda1.dats --_XATS2JS_ >> OUTS/$@_out.js
+# $(XATS2JS_JSEMIT01) __void__ lambda0.dats --_XATS2JS_ >> OUTS/$@_out.js
 ########################################################################
-lambda1_out1:: ; \
+lambda0_out1:: ; \
 npx google-closure-compiler -W QUIET \
-  --compilation_level SIMPLE --js=OUTS/lambda1_out.js --js_output_file=OUTS/$@.js
-lambda1_out2:: ; \
+  --compilation_level SIMPLE --js=OUTS/lambda0_out.js --js_output_file=OUTS/$@.js
+lambda0_out2:: ; \
 npx google-closure-compiler -W QUIET \
-  --compilation_level ADVANCED --js=OUTS/lambda1_out.js --js_output_file=OUTS/$@.js
+  --compilation_level ADVANCED --js=OUTS/lambda0_out.js --js_output_file=OUTS/$@.js
 ########################################################################
 ########################################################################
 ##################### end of [Makefile_jsemit01] #######################

@@ -14,6 +14,7 @@
 #abstbox board
 (* ****** ****** *)
 (* ****** ****** *)
+//
 #extern
 fun
 board_nil(): board
@@ -24,6 +25,7 @@ board_cons
 #extern
 fun
 board_length(xs: board): sint
+//
 (* ****** ****** *)
 (* ****** ****** *)
 //
