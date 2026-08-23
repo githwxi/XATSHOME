@@ -5,11 +5,11 @@
 ########################################################################
 ########################################################################
 CAT=cat
-BUN=bun
 ECHO=echo
 NODE=node
 PRINTF=printf
 PYTHON=python3
+NPMNPX=npx @npmhwxi/xats2js-jsemit01-ats2
 ########################################################################
 ########################################################################
 all:: lambda2
@@ -46,9 +46,10 @@ lambda2:: ; $(CAT) \
 $(XATS2JS)/runtime/srcgen2_prelude.js >> OUTS/$@_out.js
 # HX-2025-04-28:
 # the flag '--_XATS2JS_' can soon be dropped!
-lambda2:: ; \
-$(NODE) --stack-size=8192 \
-$(XATS2JS_JSEMIT01) lambda2.dats --_XATS2JS_ >> OUTS/$@_out.js
+# lambda2:: ; \
+# $(NODE) --stack-size=8192 \
+# $(XATS2JS_JSEMIT01) lambda2.dats --_XATS2JS_ >> OUTS/$@_out.js
+lambda2:: ; $(NPMNPX) lambda2.dats --_XATS2JS_ >> OUTS/$@_out.js
 ########################################################################
 # lambda2:: ; \
 # XATS2JS_JSEMIT01=\
