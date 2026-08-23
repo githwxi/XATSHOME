@@ -80,6 +80,18 @@ The most interesting part of this implementation lies in the implementation
 of a generic BFS-streamization for breadth-first search, which a "tunneling"
 technique is used for resource sharing.
 
+## [misc012](./misc012)
+
+<!--
+Sat Aug 22 09:43:14 PM EDT 2026
+-->
+
+This one attempts to use an on-line dictionary to test whether two
+given words form a doublet. It does NOT actually work due to too many
+queries being issued during doublet testing. We can immediately sense
+(based on this example alone) the enormous difficulty in supporting
+"dynamic library services" for internet-based programming.
+
 <!--
 ########################################################################
 Happy ATS programming!

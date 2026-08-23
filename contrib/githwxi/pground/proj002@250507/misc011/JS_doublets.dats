@@ -78,7 +78,7 @@ case+ !sols of
 strmcon_vt_nil() =>
 printsln
 ( "[", arg1
-, "] and [", arg2, "] are not doublets!")
+, "] and [", arg2, "] are not a doublet!")
 | ~
 strmcon_vt_cons
 ( wpth , sols ) =>
@@ -87,7 +87,7 @@ val () = free(sols)
 in//let
 //
 printsln(
-"[", arg1, "] and [", arg2, "] are doublets:\n")
+"[", arg1, "] and [", arg2, "] are a doublet:\n")
 ;
 list_rforitm$f1un(wpth, lam(wdx) => println(wdx))
 //
