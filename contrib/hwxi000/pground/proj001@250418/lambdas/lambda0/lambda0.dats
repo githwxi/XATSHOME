@@ -29,6 +29,13 @@ defq(_XATS2JS_)
 #endif // end of [#if(defq(_XATS2JS_))]
 *)
 #elsif
+defq(_XATS2CM_)
+#include
+"prelude/HATS/prelude_CM_dats.hats"
+(*
+#endif // end of [#if(defq(_XATS2CM_))]
+*)
+#elsif
 defq(_XATS2PY_)
 #include
 "prelude/HATS/prelude_PY_dats.hats"

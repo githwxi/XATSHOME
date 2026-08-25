@@ -22,6 +22,7 @@ lambda0; $(NODE) OUTS/$<_out.js
 clean:: ; rm -f *~
 cleanall:: ; rm -f *~
 cleanall:: ; rm -f lambda0_out.js
+cleanall:: ; rm -f lambda0_out.cm
 cleanall:: ; rm -f lambda0_out.py
 cleanall:: ; rm -f lambda0_out?.js
 ########################################################################

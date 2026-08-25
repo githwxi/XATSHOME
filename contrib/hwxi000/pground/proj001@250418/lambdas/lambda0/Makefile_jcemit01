@@ -8,8 +8,8 @@ CAT=cat
 ECHO=echo
 NODE=node
 PRINTF=printf
-PYTHON=python3
-NPMNPX=npx @npmhwxi/xats2py-pyemit01-ats2
+SCHEME=scheme
+NPMNPX=npx @npmhwxi/xats2cm-cmemit01-ats2
 ########################################################################
 ########################################################################
 all:: lambda0
@@ -21,40 +21,40 @@ cleanall:: ; rm -f OUTS/*_out.cm
 cleanall:: ; rm -f OUTS/*_out.py
 cleanall:: ; rm -f OUTS/*_out?.js
 ########################################################################
-testall:: \
-lambda0; $(PYTHON) OUTS/$<_out.py
+testall:: lambda0; \
+$(SCHEME) --script OUTS/$<_out.cm
 ########################################################################
 XATSHOME=./../../../../../../../XATSHOME
 ########################################################################
 #
 XATS2JSD=$(XATSHOME)/xassets/JS/xats2js
-XATS2PYD=$(XATSHOME)/xassets/PY/xats2py
+XATS2CMD=$(XATSHOME)/xassets/CM/xats2cm
 #
-XATS2PY_PYEMIT01=\
-$(XATSHOME)/xassets/JS/xats2py/xats2py_pyemit01_ats2_opt1.js
-XATS2PY_PYEMIT01=\
-$(XATSHOME)/xassets/JS/xats2py/xats2py_pyemit01_ats3_opt1.js
+XATS2CM_CMEMIT01=\
+$(XATSHOME)/xassets/JS/xats2cm/xats2cm_cmemit01_ats2_opt1.js
+XATS2CM_CMEMIT01=\
+$(XATSHOME)/xassets/JS/xats2cm/xats2cm_cmemit01_ats3_opt1.js
 #
 ########################################################################
 ########################################################################
 lambda0:: ; \
-$(PRINTF) "## %s\n" "`date`" > OUTS/$@_out.py
+$(PRINTF) ";; %s\n" "`date`" > OUTS/$@_out.cm
 lambda0:: ; $(CAT) \
-$(XATS2PYD)/runtime/xats2py_py1emit.py >> OUTS/$@_out.py
+$(XATS2CMD)/runtime/xats2cm_cm1emit.cm >> OUTS/$@_out.cm
 lambda0:: ; $(CAT) \
-$(XATS2PYD)/runtime/srcgen2_prelude.py >> OUTS/$@_out.py
+$(XATS2CMD)/runtime/srcgen2_prelude.cm >> OUTS/$@_out.cm
 # HX-2025-04-28:
-# the flag '--_XATS2PY_' can soon be dropped!
-# lambda0:: ; \
-# $(NODE) --stack-size=8801 \
-# $(XATS2PY_PYEMIT01) lambda0.dats --_XATS2PY_ >> OUTS/$@_out.py
-lambda0:: ; $(NPMNPX) lambda0.dats --_XATS2PY_ >> OUTS/$@_out.py
+# the flag '--_XATS2CM_' can soon be dropped!
+lambda0:: ; \
+$(NODE) --stack-size=8801 \
+$(XATS2CM_CMEMIT01) lambda0.dats --_XATS2CM_ >> OUTS/$@_out.cm
+# lambda0:: ; $(NPMNPX) lambda0.dats --_XATS2CM_ >> OUTS/$@_out.cm
 ########################################################################
 # lambda0:: ; \
-# XATS2PY_PYEMIT01=$(XATSHOME)/xassets/PY/xats2py/xats2py_pyemit01_ats3_opt0.py \
-# $(PYTHON) $(XATS2PY_PYEMIT01) __void__ lambda0.dats --_XATS2PY_ >> OUTS/$@_out.py
+# XATS2CM_CMEMIT01=$(XATSHOME)/xassets/CM/xats2cm/xats2cm_cmemit01_ats3_opt0.cm \
+# $(CMTHON) $(XATS2CM_CMEMIT01) __void__ lambda0.dats --_XATS2CM_ >> OUTS/$@_out.cm
 ########################################################################
 ########################################################################
-##################### end of [Makefile_jpemit01] #######################
+##################### end of [Makefile_jcemit01] #######################
 ########################################################################
 ########################################################################
