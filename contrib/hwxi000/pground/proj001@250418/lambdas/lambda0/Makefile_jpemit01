@@ -51,8 +51,10 @@ $(XATS2PYD)/runtime/srcgen2_prelude.py >> OUTS/$@_out.py
 lambda0:: ; $(NPMNPX) lambda0.dats --_XATS2PY_ >> OUTS/$@_out.py
 ########################################################################
 # lambda0:: ; \
-# XATS2PY_PYEMIT01=$(XATSHOME)/xassets/PY/xats2py/xats2py_pyemit01_ats3_opt0.py \
-# $(PYTHON) $(XATS2PY_PYEMIT01) __void__ lambda0.dats --_XATS2PY_ >> OUTS/$@_out.py
+# XATS2PY_PYEMIT01=\
+# $(XATSHOME)/xassets/PY/xats2py/xats2py_pyemit01_ats3_opt0.py \
+# $(PYTHON) \
+# $(XATS2PY_PYEMIT01) __void__ lambda0.dats --_XATS2PY_ >> OUTS/$@_out.py
 ########################################################################
 ########################################################################
 ##################### end of [Makefile_jpemit01] #######################

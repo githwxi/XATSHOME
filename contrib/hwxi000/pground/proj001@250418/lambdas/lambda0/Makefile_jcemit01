@@ -45,14 +45,10 @@ lambda0:: ; $(CAT) \
 $(XATS2CMD)/runtime/srcgen2_prelude.cm >> OUTS/$@_out.cm
 # HX-2025-04-28:
 # the flag '--_XATS2CM_' can soon be dropped!
-lambda0:: ; \
-$(NODE) --stack-size=8801 \
-$(XATS2CM_CMEMIT01) lambda0.dats --_XATS2CM_ >> OUTS/$@_out.cm
-# lambda0:: ; $(NPMNPX) lambda0.dats --_XATS2CM_ >> OUTS/$@_out.cm
-########################################################################
 # lambda0:: ; \
-# XATS2CM_CMEMIT01=$(XATSHOME)/xassets/CM/xats2cm/xats2cm_cmemit01_ats3_opt0.cm \
-# $(CMTHON) $(XATS2CM_CMEMIT01) __void__ lambda0.dats --_XATS2CM_ >> OUTS/$@_out.cm
+# $(NODE) --stack-size=8801 \
+# $(XATS2CM_CMEMIT01) lambda0.dats --_XATS2CM_ >> OUTS/$@_out.cm
+lambda0:: ; $(NPMNPX) lambda0.dats --_XATS2CM_ >> OUTS/$@_out.cm
 ########################################################################
 ########################################################################
 ##################### end of [Makefile_jcemit01] #######################

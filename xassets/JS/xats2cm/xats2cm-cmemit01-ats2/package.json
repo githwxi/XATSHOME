@@ -1,0 +1,16 @@
+{
+    "name": "@npmhwxi/xats2cm-cmemit01-ats2",
+    "version": "1.0.2",
+    "description": "Compiling ATS3 to Scheme",
+    "bin": {
+        "xats2cm-cmemit01": "bin/xats2cm.js"
+    },
+    "files": [
+        "LICENSE",
+        "README.md",
+        "bin/xats2cm.js"
+    ],
+    "engines": {
+        "node": ">=18"
+    }
+}
