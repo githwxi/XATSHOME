@@ -1,6 +1,7 @@
 {
     "name": "@npmhwxi/xats2py-pyemit01-ats2",
     "version": "1.0.2",
+    "license": "MIT",
     "description": "Compiling ATS3 to Python~3",
     "bin": {
         "xats2py-pyemit01": "bin/xats2py.js"
