@@ -4,12 +4,12 @@
     "license": "MIT",
     "description": "Compiling ATS3 to Scheme",
     "bin": {
-        "xats2cm-cmemit01": "bin/xats2cm.js"
+        "xats2cm-cmemit01": "bin/xats2cm_cmemit01_ats2_opt1.js"
     },
     "files": [
         "LICENSE",
         "README.md",
-        "bin/xats2cm.js"
+        "bin/xats2cm_cmemit01_ats2_opt1.js"
     ],
     "engines": {
         "node": ">=18"

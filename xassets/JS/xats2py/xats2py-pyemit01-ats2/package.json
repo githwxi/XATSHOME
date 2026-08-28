@@ -4,12 +4,12 @@
     "license": "MIT",
     "description": "Compiling ATS3 to Python~3",
     "bin": {
-        "xats2py-pyemit01": "bin/xats2py.js"
+        "xats2py-pyemit01": "bin/xats2py_pyemit01_ats2_opt1.js"
     },
     "files": [
         "LICENSE",
         "README.md",
-        "bin/xats2py.js"
+        "bin/xats2py_pyemit01_ats2_opt1.js"
     ],
     "engines": {
         "node": ">=18"

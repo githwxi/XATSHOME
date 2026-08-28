@@ -1,0 +1,17 @@
+{
+    "name": "@npmhwxi/xatsopt-tcheck00-ats2",
+    "version": "1.0.1",
+    "license": "MIT",
+    "description": "Type-checking (only) ATS3 code",
+    "bin": {
+        "xatsopt-tcheck00": "bin/xatsopt_tcheck00_ats2_opt1.js"
+    },
+    "files": [
+        "LICENSE",
+        "README.md",
+        "bin/xatsopt_tcheck00_ats2_opt1.js"
+    ],
+    "engines": {
+        "node": ">=18"
+    }
+}
