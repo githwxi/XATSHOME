@@ -43,12 +43,12 @@ XATSHOME=./../../../../../../XATSHOME
 XATS2PYD=$(XATSHOME)/xassets/PY/xats2py
 #
 XATS2PY_PYEMIT01=\
-$(XATSHOME)/xassets/JS/xats2py/xats2py_pyemit01_ats2_opt1.js
+$(XATSHOME)/xassets/JS/xats2py/bin/xats2py_pyemit01_ats2_opt1.js
 XATS2PY_PYEMIT01=\
-$(XATSHOME)/xassets/JS/xats2py/xats2py_pyemit01_ats3_opt1.js
+$(XATSHOME)/xassets/JS/xats2py/bin/xats2py_pyemit01_ats3_opt1.js
 #
 PY_XATS2PY_PYEMIT01=\
-$(XATSHOME)/xassets/PY/xats2py/xats2py_pyemit01_ats3_opt0.py
+$(XATSHOME)/xassets/PY/xats2py/bin/xats2py_pyemit01_ats3_opt0.py
 #
 ########################################################################
 ########################################################################
