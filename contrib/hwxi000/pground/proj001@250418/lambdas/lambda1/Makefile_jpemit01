@@ -30,9 +30,9 @@ XATS2JSD=$(XATSHOME)/xassets/JS/xats2js
 XATS2PYD=$(XATSHOME)/xassets/PY/xats2py
 #
 XATS2PY_PYEMIT01=\
-$(XATSHOME)/xassets/JS/xats2py/xats2py_pyemit01_ats2_opt1.js
+$(XATSHOME)/xassets/JS/xats2py/bin/xats2py_pyemit01_ats2_opt1.js
 XATS2PY_PYEMIT01=\
-$(XATSHOME)/xassets/JS/xats2py/xats2py_pyemit01_ats3_opt1.js
+$(XATSHOME)/xassets/JS/xats2py/bin/xats2py_pyemit01_ats3_opt1.js
 #
 ########################################################################
 ########################################################################
@@ -50,7 +50,8 @@ $(XATS2PYD)/runtime/srcgen2_prelude.py >> OUTS/$@_out.py
 lambda1:: ; $(NPMNPX) lambda1.dats --_XATS2PY_ >> OUTS/$@_out.py
 ########################################################################
 # lambda1:: ; \
-# XATS2PY_PYEMIT01=$(XATSHOME)/xassets/PY/xats2py/xats2py_pyemit01_ats3_opt0.py \
+# XATS2PY_PYEMIT01=\
+# $(XATSHOME)/xassets/PY/xats2py/bin/xats2py_pyemit01_ats3_opt0.py \
 # $(PYTHON) $(XATS2PY_PYEMIT01) __void__ lambda1.dats --_XATS2PY_ >> OUTS/$@_out.py
 ########################################################################
 ########################################################################
