@@ -19,8 +19,6 @@ fi
 ##################################################################
 XATS2JS_JSEMIT01=\
 "${XATSHOME}/xassets/JS/xats2js/xats2js_jsemit01_ats2_opt1.js"
-XATS2JS_JSEMIT01=\
-"${XATSHOME}/xassets/JS/xats2js/xats2js_jsemit01_ats3_opt1.js"
 ##################################################################
 #
 case $prog in
