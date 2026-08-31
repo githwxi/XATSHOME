@@ -13,7 +13,7 @@ if [ ! -d "$XATSHOME" ] ; then
 fi
 ##################################################################
 XATS2PY_PYEMIT01=\
-"${XATSHOME}/xassets/JS/xats2py/xats2py_pyemit01_ats2_opt1.js"
+"${XATSHOME}/xassets/JS/xats2py/bin/xats2py_pyemit01_ats2_opt1.js"
 ##################################################################
 #
 case $prog in

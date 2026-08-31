@@ -13,7 +13,7 @@ if [ ! -d "$XATSHOME" ] ; then
 fi
 ##################################################################
 XATS2CM_CMEMIT01=\
-"${XATSHOME}/xassets/JS/xats2cm/xats2cm_cmemit01_ats2_opt1.js"
+"${XATSHOME}/xassets/JS/xats2cm/bin/xats2cm_cmemit01_ats2_opt1.js"
 ##################################################################
 #
 case $prog in
