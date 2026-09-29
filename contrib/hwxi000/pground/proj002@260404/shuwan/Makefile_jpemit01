@@ -14,18 +14,45 @@ PYTHON=python3
 all:: coin
 all:: coin2
 all:: puzzle
-all:: bsearch
 all:: queens
+all:: bsearch
+all:: sorting
 all:: JP_coin
 all:: JP_coin2
 all:: JP_puzzle
-all:: JP_bsearch
 all:: JP_queens
+all:: JP_bsearch
+all:: JP_sorting
 ########################################################################
-testall:: \
+########################################################################
+testall:: testall_js
+testall:: testall_jp
+########################################################################
+testall_js:: \
+coin; $(NODE) OUTS/$<_out.js
+testall_js:: \
+coin2; $(NODE) OUTS/$<_out.js
+testall_js:: \
+puzzle; $(NODE) OUTS/$<_out.js
+testall_js:: \
 queens; $(NODE) OUTS/$<_out.js
-testall:: \
+testall_js:: \
+bsearch; $(NODE) OUTS/$<_out.js
+testall_js:: \
+sorting; $(NODE) OUTS/$<_out.js
+########################################################################
+testall_jp:: \
+JP_coin; $(PYTHON) OUTS/$<_out.py
+testall_jp:: \
+JP_coin2; $(PYTHON) OUTS/$<_out.py
+testall_jp:: \
+JP_puzzle; $(PYTHON) OUTS/$<_out.py
+testall_jp:: \
 JP_queens; $(PYTHON) OUTS/$<_out.py
+testall_jp:: \
+JP_bsearch; $(PYTHON) OUTS/$<_out.py
+testall_jp:: \
+JP_sorting; $(PYTHON) OUTS/$<_out.py
 ########################################################################
 ########################################################################
 clean:: ; rm -f *~
@@ -109,24 +136,6 @@ $(XATS2JSD)/runtime/srcgen2_prelude_node.js >> OUTS/$@_out.js
 # $(NODE) --stack-size=8801 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
 puzzle:: ; $(JSEMIT01) puzzle.dats --_XATS2JS_ >> OUTS/$@_out.js
 ########################################################################
-bsearch:: ; \
-$(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
-bsearch:: ; \
-$(CAT) \
-$(XATS2JSD)/runtime/xats2js_js1emit.js >> OUTS/$@_out.js
-bsearch:: ; \
-$(CAT) \
-$(XATS2JSD)/runtime/srcgen2_precats.js >> OUTS/$@_out.js
-bsearch:: ; \
-$(CAT) \
-$(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/$@_out.js
-bsearch:: ; \
-$(CAT) \
-$(XATS2JSD)/runtime/srcgen2_prelude_node.js >> OUTS/$@_out.js
-# bsearch:: bsearch.dats; \
-# $(NODE) --stack-size=8801 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
-bsearch:: ; $(JSEMIT01) bsearch.dats --_XATS2JS_ >> OUTS/$@_out.js
-########################################################################
 queens:: ; \
 $(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
 queens:: ; \
@@ -144,6 +153,24 @@ $(XATS2JSD)/runtime/srcgen2_prelude_node.js >> OUTS/$@_out.js
 # queens:: queens.dats; \
 # $(NODE) --stack-size=8801 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
 queens:: ; $(JSEMIT01) queens.dats --_XATS2JS_ >> OUTS/$@_out.js
+########################################################################
+bsearch:: ; \
+$(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
+bsearch:: ; \
+$(CAT) \
+$(XATS2JSD)/runtime/xats2js_js1emit.js >> OUTS/$@_out.js
+bsearch:: ; \
+$(CAT) \
+$(XATS2JSD)/runtime/srcgen2_precats.js >> OUTS/$@_out.js
+bsearch:: ; \
+$(CAT) \
+$(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/$@_out.js
+bsearch:: ; \
+$(CAT) \
+$(XATS2JSD)/runtime/srcgen2_prelude_node.js >> OUTS/$@_out.js
+# bsearch:: bsearch.dats; \
+# $(NODE) --stack-size=8801 $(XATS2JS_JSEMIT01) $< >> OUTS/$@_out.js
+bsearch:: ; $(JSEMIT01) bsearch.dats --_XATS2JS_ >> OUTS/$@_out.js
 ########################################################################
 sorting:: ; \
 $(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
@@ -179,7 +206,7 @@ $(XATS2PYD)/runtime/srcgen2_prelude.py >> OUTS/$@_out.py
 # JP_coin:: coin.dats; \
 # $(NODE) \
 # --stack-size=8801 $(JP_XATS2PY_PYEMIT01) $< >> OUTS/$@_out.py
-JP_coin:: ; $(JSEMIT01) coin.dats --_XATS2JS_ >> OUTS/$@_out.js
+JP_coin:: ; $(PYEMIT01) coin.dats --_XATS2PY_ >> OUTS/$@_out.py
 ########################################################################
 JP_coin2:: ; \
 $(PRINTF) "## %s\n" "`date`" > OUTS/$@_out.py
@@ -195,7 +222,7 @@ $(XATS2PYD)/runtime/srcgen2_prelude.py >> OUTS/$@_out.py
 # JP_coin2:: coin2.dats; \
 # $(NODE) \
 # --stack-size=8801 $(JP_XATS2PY_PYEMIT01) $< >> OUTS/$@_out.py
-JP_coin2:: ; $(JSEMIT01) coin2.dats --_XATS2JS_ >> OUTS/$@_out.js
+JP_coin2:: ; $(PYEMIT01) coin2.dats --_XATS2PY_ >> OUTS/$@_out.py
 ########################################################################
 JP_puzzle:: ; \
 $(PRINTF) "## %s\n" "`date`" > OUTS/$@_out.py
@@ -211,23 +238,7 @@ $(XATS2PYD)/runtime/srcgen2_prelude.py >> OUTS/$@_out.py
 # JP_puzzle:: puzzle.dats; \
 # $(NODE) \
 # --stack-size=8801 $(JP_XATS2PY_PYEMIT01) $< >> OUTS/$@_out.py
-JP_puzzle:: ; $(JSEMIT01) puzzle.dats --_XATS2JS_ >> OUTS/$@_out.js
-########################################################################
-JP_bsearch:: ; \
-$(PRINTF) "## %s\n" "`date`" > OUTS/$@_out.py
-JP_bsearch:: ; \
-$(CAT) \
-$(XATS2PYD)/runtime/xats2py_py1emit.py >> OUTS/$@_out.py
-JP_bsearch:: ; \
-$(CAT) \
-$(XATS2PYD)/runtime/srcgen2_precats.py >> OUTS/$@_out.py
-JP_bsearch:: ; \
-$(CAT) \
-$(XATS2PYD)/runtime/srcgen2_prelude.py >> OUTS/$@_out.py
-# JP_bsearch:: bsearch.dats; \
-# $(NODE) \
---stack-size=8801 $(JP_XATS2PY_PYEMIT01) $< >> OUTS/$@_out.py
-JP_bsearch:: ; $(JSEMIT01) bsearch.dats --_XATS2JS_ >> OUTS/$@_out.js
+JP_puzzle:: ; $(PYEMIT01) puzzle.dats --_XATS2PY_ >> OUTS/$@_out.py
 ########################################################################
 JP_queens:: ; \
 $(PRINTF) "## %s\n" "`date`" > OUTS/$@_out.py
@@ -243,7 +254,39 @@ $(XATS2PYD)/runtime/srcgen2_prelude.py >> OUTS/$@_out.py
 # JP_queens:: queens.dats; \
 # $(NODE) \
 # --stack-size=8801 $(JP_XATS2PY_PYEMIT01) $< >> OUTS/$@_out.py
-JP_queens:: ; $(JSEMIT01) queens.dats --_XATS2JS_ >> OUTS/$@_out.js
+JP_queens:: ; $(PYEMIT01) queens.dats --_XATS2PY_ >> OUTS/$@_out.py
+########################################################################
+JP_bsearch:: ; \
+$(PRINTF) "## %s\n" "`date`" > OUTS/$@_out.py
+JP_bsearch:: ; \
+$(CAT) \
+$(XATS2PYD)/runtime/xats2py_py1emit.py >> OUTS/$@_out.py
+JP_bsearch:: ; \
+$(CAT) \
+$(XATS2PYD)/runtime/srcgen2_precats.py >> OUTS/$@_out.py
+JP_bsearch:: ; \
+$(CAT) \
+$(XATS2PYD)/runtime/srcgen2_prelude.py >> OUTS/$@_out.py
+# JP_bsearch:: bsearch.dats; \
+# $(NODE) \
+--stack-size=8801 $(JP_XATS2PY_PYEMIT01) $< >> OUTS/$@_out.py
+JP_bsearch:: ; $(PYEMIT01) bsearch.dats --_XATS2PY_ >> OUTS/$@_out.py
+########################################################################
+JP_sorting:: ; \
+$(PRINTF) "## %s\n" "`date`" > OUTS/$@_out.py
+JP_sorting:: ; \
+$(CAT) \
+$(XATS2PYD)/runtime/xats2py_py1emit.py >> OUTS/$@_out.py
+JP_sorting:: ; \
+$(CAT) \
+$(XATS2PYD)/runtime/srcgen2_precats.py >> OUTS/$@_out.py
+JP_sorting:: ; \
+$(CAT) \
+$(XATS2PYD)/runtime/srcgen2_prelude.py >> OUTS/$@_out.py
+# JP_sorting:: sorting.dats; \
+# $(NODE) \
+--stack-size=8801 $(JP_XATS2PY_PYEMIT01) $< >> OUTS/$@_out.py
+JP_sorting:: ; $(PYEMIT01) sorting.dats --_XATS2PY_ >> OUTS/$@_out.py
 ########################################################################
 ########################################################################
 coin_out1:: ; \

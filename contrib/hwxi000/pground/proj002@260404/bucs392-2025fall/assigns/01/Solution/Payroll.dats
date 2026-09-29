@@ -19,7 +19,7 @@ INITIAL_MAXIMUM_SIZE = 1024
 (* ****** ****** *)
 //
 #absimpl
-Payroll_type = ref@{
+Payroll_type = @{
   current_size= nint,
   maximum_size= nint,
   employee_a1sz= a1sz(optn(Employee))
@@ -33,7 +33,8 @@ Payroll_type = ref@{
 Payroll_Employee$foritm
   (this) =
 (
-g_void(
+g_void
+(
 forall(this.employee_a1sz))
 ) where
 {
@@ -60,7 +61,7 @@ val () =
 #implfun
 Payroll_add$employee$raw
 ( this:
-& Payroll, x0: Employee) =
+  Payroll, x0: Employee) =
 (
   this.employee_a1sz[n0] := t0)
 where
@@ -75,7 +76,7 @@ val () = this.current_size := n0+1 }
 #implfun
 Payroll_index$remove$raw
 ( this:
-& Payroll, i0: nint) =
+  Payroll, i0: nint) =
 (
 GSEQ(range(i0, n0-1)).foritm(
 lam(i1:sint) => A0[i1] := A0[i1+1])
@@ -92,7 +93,7 @@ val A0 = this.employee_a1sz(*void*) }
 #implfun
 Payroll_add$payroll
 ( this:
-& Payroll, source: Payroll) =
+  Payroll, source: Payroll) =
 (
 Payroll_Employee$foritm(source))
 where
@@ -107,5 +108,12 @@ Payroll_add$employee$raw(this, ee) }
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [hwxi000/pground/proj002@260404/bucs392-2025fall/assigns/01/Solution/Payroll.dats] *)
+(***********************************************************************)
+(*
+end of
+[
+hwxi000/
+pground/proj002@260404/bucs392-2025fall/assigns/01/Solution/Payroll.dats]
+*)
+(***********************************************************************)
 (***********************************************************************)

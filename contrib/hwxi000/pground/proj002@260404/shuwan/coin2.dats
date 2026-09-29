@@ -87,13 +87,20 @@ if // if
 then ( 0 ) else
 (count(sum, cs1) + count(sum-c1, cs0)))
 //
-val cs0 =
-list_vt@(25, 10, 5, 1)
-val
-test_result = count(10, cs0)
-val ( ) = list_vt_free( cs0 )
+(* ****** ****** *)
+(* ****** ****** *)
 //
-val ( ) = printsln("test_result = ", test_result)
+val cs =
+list_vt@(25, 10, 5, 1)
+val rs = count(10, cs)
+val () = list_vt_free(cs)
+val () = printsln("test_result(10) = ", rs)
+//
+val cs =
+list_vt@(25, 10, 5, 1)
+val rs = count(100, cs)
+val () = list_vt_free(cs)
+val () = printsln("test_result(100) = ", rs)
 //
 (* ****** ****** *)
 (* ****** ****** *)
