@@ -98,5 +98,5 @@ end(*let*)//end-of-[strm_vt_filter0<x0>(xs)]
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [ATS3/XANADU_prelude_DATS_CATS_PY_strm000.dats] *)
+(* end of [ATS3-XANADU/prelude/DATS/CATS/PY/strm000.dats] *)
 (***********************************************************************)

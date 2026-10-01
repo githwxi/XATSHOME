@@ -48,7 +48,7 @@ XATS2PY_strx_vt_forall0_f1un \
       XATS2PY_lazy_vt_free(fxs)
       return False
     ## end-of-(if(test(x01)))
-  return true ## XATS2PY_strx_vt_forall0_f1un(...)
+  return True ## XATS2PY_strx_vt_forall0_f1un(...)
 ##
 ########################################################################.
 ##
@@ -75,6 +75,6 @@ XATS2PY_strxcon_vt_filter0_f1un \
 ##
 ########################################################################.
 ########################################################################.
-## end of [ATS3/XANADU_prelude_DATS_CATS_PY_strx000.cats]
+## end of [ATS3-XANADU/prelude/DATS/CATS/PY/strx000.cats]
 ########################################################################.
 ########################################################################.
