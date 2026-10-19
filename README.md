@@ -31,7 +31,7 @@ The currently released ATS3-to-JS compiler is stored in the following
 BIG file:
 
 ```
-xassets/JS/xats2js/xats2js_jsemit01_ats3_opt1.js
+xassets/JS/xats2js/bin/xats2js_jsemit01_ats3_opt1.js
 ```
 
 which is bootstrapped from the source of the compiler.
@@ -41,7 +41,7 @@ as follows:
 
 ```
 node --stack-size=8800 \
-  ./../../xassets/JS/xats2js/xats2js_jsemit01_ats3_opt1.js mycode.dats
+  ./../../xassets/JS/xats2js/bin/xats2js_jsemit01_ats3_opt1.js mycode.dats
 ```
 
 where mycode.dats contains some ATS3 code to be compiled. The output
@@ -66,7 +66,7 @@ The currently released ATS3-to-PY compiler is stored in the following
 BIG file:
 
 ```
-xassets/JS/xats2py/xats2py_pyemit01_ats3_opt1.js
+xassets/JS/xats2py/bin/xats2py_pyemit01_ats3_opt1.js
 ```
 
 It can be used in a way very similar to the above ATS3-to-JS compiler.
