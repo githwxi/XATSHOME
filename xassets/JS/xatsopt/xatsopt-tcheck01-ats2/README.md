@@ -15,7 +15,9 @@ npx @npmhwxi/xatsopt-tcheck01-ats2 mycode.dats
 Happy programming in ATS!
 
 <!--
-Copy xatsopt_jsemit01_ats2.js to bin/xatsopt.js;
-then add the following line at the top of bin/xatsopt.js:
-#!/usr/bin/env node; then do 'npm pack' and 'npm publish --access'
+Copy xats2js_tcheck01_ats2_opt1.js to bin/.; then
+add at the top of bin/xats2js_tcheck01_ats2_opt1.js
+the following line:
+#!/usr/bin/env node
+then do 'npm pack' and 'npm publish --access public'
 -->

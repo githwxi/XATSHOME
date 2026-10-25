@@ -17,7 +17,17 @@ npx @npmhwxi/xatsopt-tcheck00-ats2 mycode.dats
 Happy programming in ATS!
 
 <!--
-Copy xatsopt_jsemit00_ats2.js to bin/xatsopt.js;
-then add the following line at the top of bin/xatsopt.js:
-#!/usr/bin/env node; then do 'npm pack' and 'npm publish --access'
+Check a specific version:
+npm \
+view <package-name>@<version> version
+
+Remove a specific version: 
+npm unpublish <package-name>@<version>
+
+Steps for upload a version:
+Copy xats2js_tcheck00_ats2_opt1.js to bin/.; then
+add at the top of bin/xats2js_tcheck00_ats2_opt1.js
+the following line:
+#!/usr/bin/env node
+Then do 'npm pack' and 'npm publish --access public'
 -->

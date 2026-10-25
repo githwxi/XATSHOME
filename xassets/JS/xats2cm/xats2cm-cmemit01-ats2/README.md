@@ -15,7 +15,9 @@ npx @npmhwxi/xats2cm-cmemit01-ats2 mycode.dats
 Happy programming in ATS!
 
 <!--
-Copy xats2cm_cmemit01_ats2.js to bin/xats2cm.js;
-then add the following line at the top of bin/xats2cm.js:
-#!/usr/bin/env node; then do 'npm pack' and 'npm publish --access'
+Copy xats2cm_cmemit01_ats2_opt1.js to bin/.; then
+add at the top of bin/xats2cm_cmemit01_ats2_opt1.js
+the following line:
+#!/usr/bin/env node
+Then do 'npm pack' and 'npm publish --access public'
 -->

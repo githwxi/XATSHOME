@@ -1,6 +1,6 @@
 {
     "name": "@npmhwxi/xats2js-jsemit01-ats2",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "license": "MIT",
     "description": "Compiling ATS3 to JavaScript",
     "bin": {
@@ -9,7 +9,8 @@
     "files": [
         "LICENSE",
         "README.md",
-        "bin/xats2js_jsemit01_ats2_opt1.js"
+        "bin/xats2js_jsemit01_ats2_opt1.js",
+        "runtime"
     ],
     "engines": {
         "node": ">=18"
