@@ -17,6 +17,7 @@ all:: lambda2
 clean:: ; rm -f *~
 cleanall:: ; rm -f *~
 cleanall:: ; rm -f OUTS/*_out.js
+cleanall:: ; rm -f OUTS/*_out.cm
 cleanall:: ; rm -f OUTS/*_out.py
 cleanall:: ; rm -f OUTS/*_out?.js
 ########################################################################
