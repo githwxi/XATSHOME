@@ -23,10 +23,13 @@ all:: JP_puzzle
 all:: JP_queens
 all:: JP_bsearch
 all:: JP_sorting
+all:: os_smoke
+all:: JP_os_smoke
 ########################################################################
 ########################################################################
 testall:: testall_js
 testall:: testall_jp
+testall:: testall_os
 ########################################################################
 testall_js:: \
 coin; $(NODE) OUTS/$<_out.js
@@ -54,6 +57,11 @@ JP_bsearch; $(PYTHON) OUTS/$<_out.py
 testall_jp:: \
 JP_sorting; $(PYTHON) OUTS/$<_out.py
 ########################################################################
+testall_os:: \
+os_smoke; $(NODE) OUTS/$<_out.js
+testall_os:: \
+JP_os_smoke; $(PYTHON) OUTS/$<_out.py
+########################################################################
 ########################################################################
 clean:: ; rm -f *~
 cleanall:: ; rm -f *~
@@ -64,6 +72,7 @@ cleanall:: ; rm -f OUTS/*_out?.js
 ########################################################################
 ########################################################################
 XATSHOME=./../../../../../../XATSHOME
+export XATSHOME
 ########################################################################
 #
 XATS2JSD=$(XATSHOME)/xassets/JS/xats2js
@@ -78,6 +87,11 @@ $(XATSHOME)/xassets/JS/xats2js/bin/xats2js_jsemit01_ats2_opt1.js
 PYEMIT01=npx @npmhwxi/xats2py-pyemit01-ats2
 JP_XATS2PY_PYEMIT01=\
 $(XATSHOME)/xassets/JS/xats2py/bin/xats2py_pyemit01_ats2_opt1.js
+#
+ATS3_XATS2JS_JSEMIT01=\
+$(XATSHOME)/xassets/JS/xats2js/bin/xats2js_jsemit01_ats3_opt1.js
+ATS3_XATS2PY_PYEMIT01=\
+$(XATSHOME)/xassets/JS/xats2py/bin/xats2py_pyemit01_ats3_opt1.js
 #
 ########################################################################
 ########################################################################
@@ -330,6 +344,34 @@ npx google-closure-compiler -W QUIET \
 coin2_out1:: ; \
 npx google-closure-compiler -W QUIET \
   --compilation_level SIMPLE --js=OUTS/coin2_out.js --js_output_file=OUTS/coin2_out1.js
+########################################################################
+os_smoke:: ; \
+$(PRINTF) "// %s\n" "`date`" > OUTS/$@_out.js
+os_smoke:: ; \
+$(CAT) $(XATS2JSD)/runtime/xats2js_js1emit.js >> OUTS/$@_out.js
+os_smoke:: ; \
+$(CAT) $(XATS2JSD)/runtime/srcgen2_precats.js >> OUTS/$@_out.js
+os_smoke:: ; \
+$(CAT) $(XATS2JSD)/runtime/srcgen2_prelude.js >> OUTS/$@_out.js
+os_smoke:: ; \
+$(CAT) $(XATS2JSD)/runtime/srcgen2_prelude_node.js >> OUTS/$@_out.js
+os_smoke:: os_node.cats os.dats; \
+$(CAT) os_node.cats >> OUTS/$@_out.js
+os_smoke:: os_smoke.dats os.sats os.dats; \
+$(NODE) --stack-size=8801 $(ATS3_XATS2JS_JSEMIT01) $< --_XATS2JS_ >> OUTS/$@_out.js
+########################################################################
+JP_os_smoke:: ; \
+$(PRINTF) "## %s\n" "`date`" > OUTS/$@_out.py
+JP_os_smoke:: ; \
+$(CAT) $(XATS2PYD)/runtime/xats2py_py1emit.py >> OUTS/$@_out.py
+JP_os_smoke:: ; \
+$(CAT) $(XATS2PYD)/runtime/srcgen2_precats.py >> OUTS/$@_out.py
+JP_os_smoke:: ; \
+$(CAT) $(XATS2PYD)/runtime/srcgen2_prelude.py >> OUTS/$@_out.py
+JP_os_smoke:: os_python.cats os.dats; \
+$(CAT) os_python.cats >> OUTS/$@_out.py
+JP_os_smoke:: os_smoke.dats os.sats os.dats; \
+$(NODE) --stack-size=8801 $(ATS3_XATS2PY_PYEMIT01) os_smoke.dats --_XATS2PY_ >> OUTS/$@_out.py
 ########################################################################
 ##################### end of [Makefile_jpemit01] #######################
 ########################################################################
