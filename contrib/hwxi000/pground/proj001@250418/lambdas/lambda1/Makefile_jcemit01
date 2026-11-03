@@ -1,0 +1,56 @@
+########################################################################
+########################################################################
+# Makefile for
+# CS525-2024F-lambdas-lambda1
+########################################################################
+########################################################################
+CAT=cat
+ECHO=echo
+NODE=node
+PRINTF=printf
+SCHEME=scheme
+NPMNPX=npx @npmhwxi/xats2cm-cmemit01-ats2
+########################################################################
+########################################################################
+all:: lambda1
+########################################################################
+clean:: ; rm -f *~
+cleanall:: ; rm -f *~
+cleanall:: ; rm -f OUTS/*_out.js
+cleanall:: ; rm -f OUTS/*_out.cm
+cleanall:: ; rm -f OUTS/*_out.py
+cleanall:: ; rm -f OUTS/*_out?.js
+########################################################################
+testall:: lambda1; \
+$(SCHEME) --script OUTS/$<_out.cm
+########################################################################
+XATSHOME=./../../../../../../../XATSHOME
+########################################################################
+#
+XATS2JSD=$(XATSHOME)/xassets/JS/xats2js
+XATS2CMD=$(XATSHOME)/xassets/CM/xats2cm
+#
+XATS2CM_CMEMIT01=\
+$(XATSHOME)/xassets/JS/xats2cm/xats2cm_cmemit01_ats2_opt1.js
+XATS2CM_CMEMIT01=\
+$(XATSHOME)/xassets/JS/xats2cm/xats2cm_cmemit01_ats3_opt1.js
+#
+########################################################################
+########################################################################
+lambda1:: ; \
+$(PRINTF) ";; %s\n" "`date`" > OUTS/$@_out.cm
+lambda1:: ; $(CAT) \
+$(XATS2CMD)/runtime/xats2cm_cm1emit.cm >> OUTS/$@_out.cm
+lambda1:: ; $(CAT) \
+$(XATS2CMD)/runtime/srcgen2_prelude.cm >> OUTS/$@_out.cm
+# HX-2025-04-28:
+# the flag '--_XATS2CM_' can soon be dropped!
+# lambda1:: ; \
+# $(NODE) --stack-size=8801 \
+# $(XATS2CM_CMEMIT01) lambda1.dats --_XATS2CM_ >> OUTS/$@_out.cm
+lambda1:: ; $(NPMNPX) lambda1.dats --_XATS2CM_ >> OUTS/$@_out.cm
+########################################################################
+########################################################################
+##################### end of [Makefile_jcemit01] #######################
+########################################################################
+########################################################################
