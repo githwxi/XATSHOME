@@ -1,8 +1,8 @@
 (* ****** ****** *)
 (* ****** ****** *)
 (*
-HX-2026-04-04:
-Sat Apr  4 03:05:09 PM EDT 2026
+HX-2026-04-08:
+Wed Apr  8 10:24:35 PM EDT 2026
 *)
 (* ****** ****** *)
 (* ****** ****** *)
@@ -37,7 +37,7 @@ defq(_XATS2JS_)
 //
 val () =
 printsln("\
-Hello from [coin.dats]!")
+Hello from [coin2.dats]!")
 //
 (* ****** ****** *)
 (* ****** ****** *)
@@ -51,41 +51,60 @@ Sat Apr  4 03:05:09 PM EDT 2026
 fun count (0, _) = 1
   | count (_, []) = 0
   | count (sum, c::cs) =
-    if sum < 0 then 0 
-    else count (sum, cs) + count (sum - c, c::cs);
+    if // if
+    (sum < 0)
+    then 0 else (
+      count(sum, cs)+count(sum-c, c::cs))
 val test_result = count(10, [25, 10, 5, 1]);
 //
 *)
 (* ****** ****** *)
 (* ****** ****** *)
 //
+(*
+HX-2025-04-08:
+I replaced [list] in
+coin.dats with [list_vt] to
+do a bit testing on linear types.
+*)
 fun
 count
-(sum, cs) =
+(sum: sint
+,cs0: !list_vt(nint)) =
 case+
-(sum, cs) of
+(sum, cs0) of
 |
-(0, _) => 1
+( 0, _ ) => 1
 |
-(_, list_nil()) => 0
+( _
+, list_vt_nil()) => 0
 |
-(sum, list_cons(c, cs)) =>
+( sum
+, list_vt_cons(c1, cs1)) =>
 (
-if sum < 0 then 0 
-else
-( count(sum, cs)
-+ count(sum - c, list_cons(c, cs))))
+if // if
+(sum < 0)
+then ( 0 ) else
+(count(sum, cs1) + count(sum-c1, cs0)))
 //
-val
-test_result = count(10, list@(25, 10, 5, 1))
-val () = printsln("test_result(10) = ", test_result)
-val
-test_result = count(100, list@(25, 10, 5, 1))
-val () = printsln("test_result(100) = ", test_result)
+(* ****** ****** *)
+(* ****** ****** *)
+//
+val cs =
+list_vt@(25, 10, 5, 1)
+val rs = count(10, cs)
+val () = list_vt_free(cs)
+val () = printsln("test_result(10) = ", rs)
+//
+val cs =
+list_vt@(25, 10, 5, 1)
+val rs = count(100, cs)
+val () = list_vt_free(cs)
+val () = printsln("test_result(100) = ", rs)
 //
 (* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
-(* end of [hwxi000/pground/proj002@260404/shuwan/coin.dats] *)
+(* end of [hwxi000/pground/proj002@260404/shuwan/TEST/coin2.dats] *)
 (***********************************************************************)
