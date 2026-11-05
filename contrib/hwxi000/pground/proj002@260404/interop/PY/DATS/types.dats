@@ -28,6 +28,46 @@ g_ptype
 pstrn("pylist(");
 g_ptype<t0>((*0*)); pstrn(")"))
 //
+(* ****** ****** *)
+//
+#impltmp
+{ x0:t0 }
+gseq_forall
+<pylist(x0)><x0>(xs) =
+(
+XATS2PY_pylist_forall$f1un(xs, test))
+where
+{
+//
+val
+test = forall$test<x0>
+//
+#extern
+fun
+XATS2PY_pylist_forall$f1un
+( xs: pylist(x0)
+, test: (x0) -> bool): bool = $extnam()
+}
+//
+#impltmp
+{ x0:t0 }
+gseq$sep
+<pylist(x0)><x0>() = ","
+#impltmp
+{ x0:t0 }
+gseq$end
+<pylist(x0)><x0>() = ")"
+#impltmp
+{ x0:t0 }
+gseq$beg
+<pylist(x0)><x0>() = "pylist("
+#impltmp
+{ x0:t0 }
+g_print<pylist(x0)> = gseq_print<pylist(x0)><x0>
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 (**********************************************************************)
 (**********************************************************************)
 (*

@@ -65,6 +65,7 @@ $(XATS2PYD)/runtime/srcgen2_precats.py >> OUTS/$@_out.py
 test01:: ; \
 $(CAT) \
 $(XATS2PYD)/runtime/srcgen2_prelude.py >> OUTS/$@_out.py
+test01:: ; $(CAT) ./../CATS/types.cats >> OUTS/$@_out.py
 test01:: ; $(CAT) ./../CATS/system.cats >> OUTS/$@_out.py
 # test01:: sorting.dats; \
 # $(NODE) \

@@ -1,0 +1,63 @@
+\documentclass[11pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{parskip}
+\usepackage{upquote}
+\sloppy
+
+\title{Common Python System Functions (\texttt{sys}, \texttt{io}, and \texttt{os})}
+\date{}
+
+\begin{document}
+\maketitle
+
+The signatures below use familiar mypy-style types. They are simplified for readability; exact annotations can vary with Python and typeshed versions. \texttt{PathLike[str]} means a string-compatible path object.
+
+\section{\texttt{sys}}
+
+\texttt{sys.argv} (\texttt{list[str]}) contains the command-line arguments. \texttt{argv[0]} is usually the script name.
+
+\texttt{sys.exit(status: int | str | None = None) -> NoReturn} raises \texttt{SystemExit} to end the program; an integer is the exit status.
+
+\texttt{sys.path} (\texttt{list[str]}) contains the directories and locations Python searches when importing modules.
+
+\texttt{sys.stdin} (\texttt{TextIO}) is the standard input stream.
+
+\texttt{sys.stdout} (\texttt{TextIO}) is the standard output stream.
+
+\texttt{sys.stderr} (\texttt{TextIO}) is the standard error stream.
+
+\texttt{sys.platform} (\texttt{str}) identifies the current platform, such as ``linux'' or ``win32''.
+
+\section{\texttt{io}}
+
+\texttt{io.open(file: str | bytes | int | PathLike[str] | PathLike[bytes], mode: str = "r", buffering: int = -1, encoding: str | None = None, errors: str | None = None, newline: str | None = None, closefd: bool = True, opener: Callable[[str, int], int] | None = None) -> IO[Any]} opens a file and returns a text or binary stream, depending on \texttt{mode}.
+
+\texttt{io.StringIO(initial\_value: str = "", newline: str = "}\textbackslash{}\textbackslash{}\texttt{n") -> StringIO} creates an in-memory text stream.
+
+\texttt{io.BytesIO(initial\_bytes: bytes = b"") -> BytesIO} creates an in-memory binary stream.
+
+\section{\texttt{os}}
+
+\texttt{os.getcwd() -> str} returns the current working directory.
+
+\texttt{os.chdir(path: str | PathLike[str]) -> None} changes the current working directory.
+
+\texttt{os.listdir(path: str | PathLike[str] = ".") -> list[str]} returns the names of entries in a directory.
+
+\texttt{os.mkdir(path: str | PathLike[str], mode: int = 0o777) -> None} creates one directory.
+
+\texttt{os.makedirs(name: str | PathLike[str], mode: int = 0o777, exist\_ok: bool = False) -> None} creates a directory and any missing parent directories.
+
+\texttt{os.remove(path: str | PathLike[str]) -> None} removes a file.
+
+\texttt{os.rename(src: str | PathLike[str], dst: str | PathLike[str]) -> None} renames or moves a file or directory.
+
+\texttt{os.path.join(path: str | PathLike[str], *paths: str | PathLike[str]) -> str} joins path components using the current platform's path separator.
+
+\texttt{os.environ} (\texttt{MutableMapping[str, str]}) maps environment variable names to values; changes update the process environment.
+
+\texttt{sys.argv}, \texttt{sys.path}, the standard streams, \texttt{sys.platform}, and \texttt{os.environ} are attributes, rather than functions.
+
+\end{document}

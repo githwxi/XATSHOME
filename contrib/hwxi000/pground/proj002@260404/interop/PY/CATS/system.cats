@@ -20,7 +20,7 @@ XATS2PY_os_listdir(path):
 ## end of
 ## [
 ## XATSHOME\
-## /contrib/hwxi000/pground/proj002@260404/interop/PY/DATS/system.dats]
+## /contrib/hwxi000/pground/proj002@260404/interop/PY/CATS/system.cats]
 ##
 ########################################################################
 ########################################################################
