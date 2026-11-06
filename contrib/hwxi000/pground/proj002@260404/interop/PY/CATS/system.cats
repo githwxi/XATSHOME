@@ -12,6 +12,16 @@ XATS2PY_os_getcwd():
     return os.getcwd()
 ########################################################################
 def \
+XATS2PY_os_chdir(path):
+    return os.chdir(path)
+def \
+XATS2PY_os_mkdir(path):
+    return os.mkdir(path)
+def \
+XATS2PY_os_rmdir(path):
+    return os.rmdir(path)
+########################################################################
+def \
 XATS2PY_os_listdir(path):
     return os.listdir(path)
 ########################################################################

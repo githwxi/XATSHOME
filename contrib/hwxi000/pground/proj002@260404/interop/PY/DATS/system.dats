@@ -110,6 +110,20 @@ XATS2PY_os_mkdir(path: fpath): void = $extnam()
 //
 #extern
 fun<>
+os_rmdir(path: fpath): void
+#impltmp
+os_rmdir<>(path) =
+(
+XATS2PY_os_rmdir(path))
+where
+{
+#extern
+fun
+XATS2PY_os_rmdir(path: fpath): void = $extnam()
+}
+//
+#extern
+fun<>
 os_listdir(path: fpath): pylist(strn)
 #impltmp
 os_listdir<>(path) =

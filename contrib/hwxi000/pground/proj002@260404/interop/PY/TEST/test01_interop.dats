@@ -27,6 +27,18 @@ val cwd_files = os_listdir(fpath(cwd))
 val ( ) = printsln("cwd_files = ", cwd_files)
 //
 (* ****** ****** *)
+//
+val
+tmpdir =
+fpath("/tmp/test01_rmdir")
+val ( ) = os_mkdir(tmpdir)
+val ( ) =
+printsln("[os_mkdir] created an empty test directory")
+val ( ) = os_rmdir(tmpdir)
+val ( ) =
+printsln("[os_rmdir] removed an empty test directory")
+//
+(* ****** ****** *)
 (* ****** ****** *)
 //
 (***********************************************************************)
