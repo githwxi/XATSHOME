@@ -20,6 +20,14 @@ Thu Nov  5 09:20:27 AM EST 2026
 (* ****** ****** *)
 (* ****** ****** *)
 //
+val ( ) =
+printsln("argv = ", sys_argv())
+val ( ) =
+printsln("path = ", sys_path())
+//
+(* ****** ****** *)
+(* ****** ****** *)
+//
 val cwd = os_getcwd()
 val ( ) = printsln("cwd = ", cwd)
 //

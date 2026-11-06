@@ -15,10 +15,34 @@ Tue Nov  3 09:38:54 PM EST 2026
 #extern
 fun<>
 sys_argv(): pylist(strn)
+#impltmp
+sys_argv<>() =
+(
+XATS2PY_sys_argv())
+where
+{
+#extern
+fun
+XATS2PY_sys_argv(): pylist(strn) = $extnam()
+}
+//
+(* ****** ****** *)
 //
 #extern
 fun<>
 sys_path(): pylist(strn)
+#impltmp
+sys_path<>() =
+(
+XATS2PY_sys_path())
+where
+{
+#extern
+fun
+XATS2PY_sys_path(): pylist(strn) = $extnam()
+}
+//
+(* ****** ****** *)
 //
 #extern
 fun<>
@@ -29,6 +53,8 @@ sys_stdout((*void*)): TextIO
 #extern
 fun<>
 sys_stderr((*void*)): TextIO
+//
+(* ****** ****** *)
 //
 #extern
 fun<>
